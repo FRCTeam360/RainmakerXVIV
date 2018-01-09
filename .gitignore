@@ -9,3 +9,4 @@ dist/
 *version.ini
 *.lock
 *.DS_Store
+/.metadata/
