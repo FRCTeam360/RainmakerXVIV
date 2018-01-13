@@ -27,6 +27,7 @@ public class Robot extends TimedRobot {
 	public static Pneumatics pneumatics;
 	Command Pressurize;
 	public static DriveTrain driveTrain;
+	public static VictorSPs victorSP;
 	public static OI oi;
 
 	Command m_autonomousCommand;
