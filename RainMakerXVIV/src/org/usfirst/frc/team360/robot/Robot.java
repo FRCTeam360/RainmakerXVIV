@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+
 import org.usfirst.frc.team360.robot.subsystems.*;
 
 /**
@@ -28,6 +29,7 @@ public class Robot extends TimedRobot {
 	Command Pressurize;
 	public static DriveTrain driveTrain;
 	public static OI oi;
+	public static navXsystem navX;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -41,6 +43,7 @@ public class Robot extends TimedRobot {
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
+		navX = new navXsystem();
 		oi = new OI();
 	}
 
@@ -89,6 +92,7 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		navX.startNavX();
 		driveTrain.setControlModeVoltage();
 	}
 
@@ -98,6 +102,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		navX.navXread();
+		
 	}
 
 	/**
