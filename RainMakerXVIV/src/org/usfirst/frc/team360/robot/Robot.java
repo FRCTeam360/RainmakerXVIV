@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team360.robot.subsystems.*;
+import org.usfirst.frc.team360.robot.commands.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,7 +29,7 @@ public class Robot extends TimedRobot {
 	Command Pressurize;
 	public static DriveTrain driveTrain;
 	public static OI oi;
-
+	Command motionMagic;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -42,6 +43,7 @@ public class Robot extends TimedRobot {
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		oi = new OI();
+		motionMagic  = new MotionMagic();
 	}
 
 	/**
@@ -90,6 +92,7 @@ public class Robot extends TimedRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		driveTrain.setControlModeVoltage();
+		motionMagic.start();
 	}
 
 	/**

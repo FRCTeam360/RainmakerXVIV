@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.util.concurrent.TimeUnit;
 
+import org.usfirst.frc.team360.robot.Robot;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
@@ -22,6 +24,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
  * An example command.  You can replace me with your own command.
  */
 public class MotionMagic extends Command {
+	
 	
 	TalonSRX _talon = new TalonSRX(3);
 	Joystick _joy = new Joystick(0);
@@ -73,6 +76,7 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 	
 	public MotionMagic() {
 		// Use requires() here to declare subsystem dependencies
+		requires(Robot.driveTrain);
 	}
 
 	// Called just before this Command runs the first time
@@ -96,8 +100,8 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 		_talon.config_kP(0, 0.2, kTimeoutMs);
 		_talon.config_kI(0, 0, kTimeoutMs);
 		_talon.config_kD(0, 0, kTimeoutMs);
-		_talon.configMotionCruiseVelocity(15000, kTimeoutMs);
-		_talon.configMotionAcceleration(6000, kTimeoutMs);
+		_talon.configMotionCruiseVelocity(7500, kTimeoutMs);
+		_talon.configMotionAcceleration(50, kTimeoutMs);
 		_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 		
 	}
@@ -115,8 +119,9 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 		_sb.append(_talon.getSelectedSensorVelocity(kPIDLoopIdx));
 		
 		if(_joy.getRawButton(1)) {
+				
 			
-			double targetPos = leftYstick * 4096 * 10.0;
+			double targetPos = leftYstick * 4096 * 2.5;
 			
 			_talon.set(ControlMode.MotionMagic, targetPos);
 			
