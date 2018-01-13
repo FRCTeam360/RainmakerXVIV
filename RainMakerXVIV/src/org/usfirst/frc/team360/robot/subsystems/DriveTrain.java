@@ -2,14 +2,12 @@ package org.usfirst.frc.team360.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team360.robot.*;
+import org.usfirst.frc.team360.robot.commands.JoystickTankDrive;
 
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-
-
-import org.usfirst.frc.team360.commands.JoystickTankDrive;
 public class DriveTrain extends Subsystem {
 	static TalonSRX motorRMaster = RobotMap.motorR1;
 	static TalonSRX motorRSlave = RobotMap.motorR2;

@@ -7,8 +7,8 @@
 
 package org.usfirst.frc.team360.robot;
 
-import org.usfirst.frc.team360.commands.ShiftDown;
-import org.usfirst.frc.team360.commands.ShiftUp;
+import org.usfirst.frc.team360.robot.commands.ShiftDown;
+import org.usfirst.frc.team360.robot.commands.ShiftUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;

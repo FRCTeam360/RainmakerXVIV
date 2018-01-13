@@ -1,33 +1,29 @@
-package org.usfirst.frc.team360.commands;
+package org.usfirst.frc.team360.robot.commands;
 
 import org.usfirst.frc.team360.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Pressurize extends Command {
+public class ShiftDown extends Command {
 
-    public Pressurize() {
-    	requires (Robot.pneumatics);
-    	
+    public ShiftDown() {
+    	requires(Robot.shifter);
     }
 
     protected void initialize() {
-
+    	Robot.shifter.close();
     }
 
     protected void execute() {
-    	Robot.pneumatics.pressurize(); 
     }
 
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     protected void end() {
-    	Robot.pneumatics.stop(); 
     }
 
     protected void interrupted() {
-    	end();
     }
 }

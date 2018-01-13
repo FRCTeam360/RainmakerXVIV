@@ -1,9 +1,9 @@
-package org.usfirst.frc.team360.commands;
+package org.usfirst.frc.team360.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team360.robot.*;
-import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team360.robot.subsystems.DriveTrain;;
 /**
  *
  */
