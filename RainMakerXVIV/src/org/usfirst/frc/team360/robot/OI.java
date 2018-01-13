@@ -7,6 +7,13 @@
 
 package org.usfirst.frc.team360.robot;
 
+import org.usfirst.frc.team360.commands.ShiftDown;
+import org.usfirst.frc.team360.commands.ShiftUp;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -39,4 +46,15 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	 public static Joystick joyR = new Joystick(0);
+	 public static Joystick joyL = new Joystick(1);
+	 public static Joystick joyOI = new Joystick(2); 
+	 
+	 public static Button buttonDriveDown = new JoystickButton(joyL, 1);
+	 public static Button buttonDriveUp = new JoystickButton(joyR, 1);
+	 
+	 public OI() {
+			buttonDriveUp.whenPressed(new ShiftUp());
+			buttonDriveDown.whenPressed(new ShiftDown());
+	 }
 }
