@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -22,25 +24,14 @@ public class navXsystem extends Subsystem {
     
     static boolean collisionDetected = false;
     
-    final static double kCollisionThreshold_DeltaG = 0.8f;
+    final static double kCollisionThreshold_DeltaG = 1.5f;
 	
     static int timesTriggered = 0;
-    
-	static AHRS ahrs = null;
-	
+
 	
 	@Override
 	protected void initDefaultCommand() {
 		
-	}
-	
-	public static void startNavX() {
-        try {
-            ahrs = new AHRS(SPI.Port.kMXP);
-        	ahrs.enableLogging(true);
-        } catch (RuntimeException ex ) {
-            DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
-        }
 	}
 	
 	public static void navXread() {
@@ -116,7 +107,7 @@ public class navXsystem extends Subsystem {
 	    	/* Omnimount Yaw Axis Information */
 	    	/* For more info, see http://navx-mxp.kauailabs.com/installation/omnimount */
 	    	
-	    	AHRS.BoardYawAxis yaw_axis1 = ahrs.getBoardYawAxis();
+	    	AHRS.BoardYawAxis yaw_axis1 = RobotMap.navX.getBoardYawAxis();
 	    	
 	    	SmartDashboard.putString( "YawAxisDirection: ", yaw_axis1.up ? "Up" : "Down" );
 	    	SmartDashboard.putNumber( "YawAxis: ", yaw_axis1.board_axis.getValue() );
@@ -138,24 +129,27 @@ public class navXsystem extends Subsystem {
 	    	
 	    	/* Connectivity Debugging Support */
 	    	
-	    	SmartDashboard.putNumber( "Byte_Count: ", ahrs.getByteCount());
-	    	SmartDashboard.putNumber( "Update_Count: ", ahrs.getUpdateCount());
-	    	
-		    double curr_world_linear_accel_x = ahrs.getWorldLinearAccelX();
-		    double currentJerkX = curr_world_linear_accel_x - last_world_linear_accel_x;
-		    last_world_linear_accel_x = curr_world_linear_accel_x;
-		    double curr_world_linear_accel_y = ahrs.getWorldLinearAccelY();
-		    double currentJerkY = curr_world_linear_accel_y - last_world_linear_accel_y;
-		    last_world_linear_accel_y = curr_world_linear_accel_y;
-			    
-		    if ( ( Math.abs(currentJerkX) > kCollisionThreshold_DeltaG ) ||
-		         ( Math.abs(currentJerkY) > kCollisionThreshold_DeltaG) ) {
-		        collisionDetected = true;
-		        timesTriggered++;
-		        DriverStation.reportError("TRIGGERED!!!, Times Triggered: " + timesTriggered, false);
-		        
-		    }
+	    	SmartDashboard.putNumber( "Byte_Count: ", RobotMap.navX.getByteCount());
+	    	SmartDashboard.putNumber( "Update_Count: ", RobotMap.navX.getUpdateCount());
 		
+	}
+	
+	public static void navXcrash() {
+		
+	    double curr_world_linear_accel_x = RobotMap.navX.getWorldLinearAccelX();
+	    double currentJerkX = curr_world_linear_accel_x - last_world_linear_accel_x;
+	    last_world_linear_accel_x = curr_world_linear_accel_x;
+	    double curr_world_linear_accel_y = RobotMap.navX.getWorldLinearAccelY();
+	    double currentJerkY = curr_world_linear_accel_y - last_world_linear_accel_y;
+	    last_world_linear_accel_y = curr_world_linear_accel_y;
+		    
+	    if ( ( Math.abs(currentJerkX) > kCollisionThreshold_DeltaG ) ||
+	         ( Math.abs(currentJerkY) > kCollisionThreshold_DeltaG) ) {
+	        collisionDetected = true;
+	        timesTriggered++;
+	        DriverStation.reportError("TRIGGERED!!!, Times Triggered: " + timesTriggered, false);
+	        
+	    }
 	}
 	
 }

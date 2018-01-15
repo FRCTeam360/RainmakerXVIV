@@ -39,7 +39,7 @@ public class RobotMap {
 	
 	public static AHRS navX = new AHRS(SPI.Port.kMXP);
 	
-	public static DoubleSolenoid shifter = new DoubleSolenoid(0, 1);
+	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 1);
 	 
 	public static Compressor compressor = new Compressor();
 	
@@ -61,9 +61,6 @@ public class RobotMap {
 	
 	public static double TotalYaw;
 	public static double YawRate;
-	
-//	public static float Compass;
-//	public static float Fused;
 	
 	public static boolean Moving;
 	public static boolean Rotating;
