@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class VictorDrive extends Command {
 
 	public static Joystick joy = new Joystick(0);
-	
+
     public VictorDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
