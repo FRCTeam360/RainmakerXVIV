@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team360.robot.commands.VictorDrive;
 import org.usfirst.frc.team360.robot.subsystems.*;
 
 /**
@@ -27,8 +27,8 @@ public class Robot extends TimedRobot {
 	public static Pneumatics pneumatics;
 	Command Pressurize;
 	public static DriveTrain driveTrain;
-	public static VictorSPs victorSP;
 	public static OI oi;
+	Command victorDrive;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -42,6 +42,7 @@ public class Robot extends TimedRobot {
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
+		victorDrive = new VictorDrive();
 		oi = new OI();
 	}
 
@@ -91,6 +92,7 @@ public class Robot extends TimedRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		driveTrain.setControlModeVoltage();
+		victorDrive.start();
 	}
 
 	/**
