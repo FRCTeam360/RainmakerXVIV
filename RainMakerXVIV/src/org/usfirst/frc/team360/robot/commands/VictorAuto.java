@@ -26,7 +26,7 @@ public class VictorAuto extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     		
-    		VictorSPs.motor1.set(0.5);
+    		VictorSPs.motor1.set(0.2);
    
     }
 
