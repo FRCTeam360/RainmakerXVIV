@@ -25,9 +25,9 @@ import org.usfirst.frc.team360.robot.subsystems.*;
 public class Robot extends TimedRobot {
 	public static Shifter shifter;
 	public static Pneumatics pneumatics;
-	Command Pressurize;
+	//Command Pressurize;
 	public static VictorSPs victorSP;
-	public static DriveTrain driveTrain;
+	//public static DriveTrain driveTrain;
 	public static OI oi;
 	Command victorDrive;
 
@@ -41,8 +41,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		shifter = new Shifter();
-		pneumatics = new Pneumatics();
-		driveTrain = new DriveTrain();
+		victorSP = new VictorSPs();
+		//pneumatics = new Pneumatics();
+		//driveTrain = new DriveTrain();
 		victorDrive = new VictorDrive();
 		oi = new OI();
 	}
@@ -92,7 +93,7 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		driveTrain.setControlModeVoltage();
+		//driveTrain.setControlModeVoltage();
 		victorDrive.start();
 	}
 
@@ -109,5 +110,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		victorDrive.start();
 	}
 }

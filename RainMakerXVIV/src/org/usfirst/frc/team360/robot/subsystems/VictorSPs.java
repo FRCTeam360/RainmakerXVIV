@@ -21,7 +21,6 @@ public class VictorSPs extends Subsystem {
 	// here. Call these from Commands.
 	public static VictorSP motor1 = RobotMap.motor1;
 	
-	
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.

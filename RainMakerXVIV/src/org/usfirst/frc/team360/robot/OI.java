@@ -7,8 +7,8 @@
 
 package org.usfirst.frc.team360.robot;
 
-import org.usfirst.frc.team360.robot.commands.ShiftDown;
-import org.usfirst.frc.team360.robot.commands.ShiftUp;
+//import org.usfirst.frc.team360.robot.commands.ShiftDown;
+//import org.usfirst.frc.team360.robot.commands.ShiftUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -54,7 +54,7 @@ public class OI {
 	 public static Button buttonDriveUp = new JoystickButton(joyR, 1);
 	 
 	 public OI() {
-			buttonDriveUp.whenPressed(new ShiftUp());
-			buttonDriveDown.whenPressed(new ShiftDown());
+			//buttonDriveUp.whenPressed(new ShiftUp());
+			//buttonDriveDown.whenPressed(new ShiftDown());
 	 }
 }
