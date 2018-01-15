@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
+import org.usfirst.frc.team360.commands.ControlVictor;
 import org.usfirst.frc.team360.robot.subsystems.*;
 
 /**
@@ -32,11 +33,12 @@ public class Robot extends TimedRobot{
 	public static Pneumatics pneumatics;
 	public static DriveTrain driveTrain;
 	public static navX navX;
-	public static OI oi;
 	Command Pressurize;
-	Command CollisionDetect;
+	public static OI oi;
+	public static VictorArm m_Victor;
 
 	Command m_autonomousCommand;
+	
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
@@ -68,6 +70,7 @@ public class Robot extends TimedRobot{
 		driveTrain = new DriveTrain();
 		navX = new navX();
 		Camera();
+		m_Victor = new VictorArm();
 		oi = new OI();
 	}
 

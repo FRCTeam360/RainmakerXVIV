@@ -1,5 +1,6 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team360.robot.*;
 
@@ -11,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import org.usfirst.frc.team360.commands.JoystickTankDrive;
 public class DriveTrain extends Subsystem {
+	
 	static TalonSRX motorRMaster = RobotMap.motorR1;
 	static TalonSRX motorRSlave = RobotMap.motorR2;
 	static TalonSRX motorLMaster = RobotMap.motorL1;
@@ -48,10 +50,9 @@ public class DriveTrain extends Subsystem {
 		motorLMaster.getSensorCollection().setQuadraturePosition(0, 0);
 	}
 	
-	public static void drive(double RMotor, double LMotor) {
+	public static void drive(double RMotor, double LMotor, double arm) {
 		motorRMaster.set(ControlMode.PercentOutput, RMotor);
 		motorLMaster.set(ControlMode.PercentOutput, LMotor);
-		  
 	}
 	public static void DriveR(double RMotor) {
 		motorRMaster.set(ControlMode.PercentOutput, RMotor);
@@ -65,7 +66,7 @@ public class DriveTrain extends Subsystem {
 	}
 	public void stopL(){
 		motorLMaster.set(ControlMode.PercentOutput, 0, 0);
-	}  
+	}
 	public void stopAll(){
 		  motorLMaster.set(ControlMode.PercentOutput, 0, 0);
 		  motorRMaster.set(ControlMode.PercentOutput, 0, 0);
@@ -73,10 +74,9 @@ public class DriveTrain extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new JoystickTankDrive());
     }
-    
+
     public void checkCurrent() {
-  
-   
+    	
     }
 }
 

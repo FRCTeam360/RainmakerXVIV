@@ -48,7 +48,10 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	 public static Joystick joyR = new Joystick(0);
 	 public static Joystick joyL = new Joystick(1);
-	 public static Joystick joyOI = new Joystick(2); 
+	 public static Joystick joyOI = new Joystick(2);
+	 
+	 public static JoystickButton armIN = new JoystickButton(joyOI, 10);
+	 public static JoystickButton armOUT = new JoystickButton(joyOI, 8);
 	 
 	 public static Button buttonDriveDown = new JoystickButton(joyL, 1);
 	 public static Button buttonDriveUp = new JoystickButton(joyR, 1);
