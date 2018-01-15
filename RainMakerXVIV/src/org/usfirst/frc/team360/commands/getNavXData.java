@@ -1,5 +1,6 @@
 package org.usfirst.frc.team360.commands;
 
+import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -12,23 +13,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class CollisionDetect extends Command {
+public class getNavXData extends Command {
 	
-	static double last_world_linear_accel_x;
-    static double last_world_linear_accel_y;
-    
-    static boolean collisionDetected = false;
-    
-    final static double kCollisionThreshold_DeltaG = 0.8f;
-	
-    static int timesTriggered = 0;
-    
 	static AHRS navX;
 	
 	
-    public CollisionDetect() {
+    public getNavXData() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.navX);
     }
 
     // Called just before this Command runs the first time
@@ -138,21 +131,6 @@ public class CollisionDetect extends Command {
     	
     	SmartDashboard.putNumber( "Byte_Count: ", navX.getByteCount());
     	SmartDashboard.putNumber( "Update_Count: ", navX.getUpdateCount());
-    	
-	    double curr_world_linear_accel_x = navX.getWorldLinearAccelX();
-	    double currentJerkX = curr_world_linear_accel_x - last_world_linear_accel_x;
-	    last_world_linear_accel_x = curr_world_linear_accel_x;
-	    double curr_world_linear_accel_y = navX.getWorldLinearAccelY();
-	    double currentJerkY = curr_world_linear_accel_y - last_world_linear_accel_y;
-	    last_world_linear_accel_y = curr_world_linear_accel_y;
-		    
-	    if ( ( Math.abs(currentJerkX) > kCollisionThreshold_DeltaG ) ||
-	         ( Math.abs(currentJerkY) > kCollisionThreshold_DeltaG) ) {
-	        collisionDetected = true;
-	        timesTriggered++;
-	        DriverStation.reportError("TRIGGERED!!!, Times Triggered: " + timesTriggered, false);
-	        
-	    }
     }
 
     // Make this return true when this Command no longer needs to run execute()

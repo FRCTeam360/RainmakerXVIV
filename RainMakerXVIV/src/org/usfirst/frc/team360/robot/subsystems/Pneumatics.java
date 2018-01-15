@@ -8,7 +8,7 @@ import org.usfirst.frc.team360.commands.Pressurize;
 
 public class Pneumatics extends Subsystem {
     Compressor comp = RobotMap.compressor;
-    public void pressurize (){
+    public void pressurize(){
     	comp.start();
     }
     public void stop(){

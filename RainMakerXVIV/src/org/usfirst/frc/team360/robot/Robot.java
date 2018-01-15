@@ -30,9 +30,11 @@ import org.usfirst.frc.team360.robot.subsystems.*;
 public class Robot extends TimedRobot{
 	public static Shifter shifter;
 	public static Pneumatics pneumatics;
-	Command Pressurize;
 	public static DriveTrain driveTrain;
+	public static navX navX;
 	public static OI oi;
+	Command Pressurize;
+	Command CollisionDetect;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -64,6 +66,7 @@ public class Robot extends TimedRobot{
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
+		navX = new navX();
 		Camera();
 		oi = new OI();
 	}
