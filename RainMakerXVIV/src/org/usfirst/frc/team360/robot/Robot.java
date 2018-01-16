@@ -12,8 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
-import org.usfirst.frc.team360.robot.commands.VictorAuto;
-import org.usfirst.frc.team360.robot.commands.VictorDrive;
+import org.usfirst.frc.team360.robot.commands.*;
 import org.usfirst.frc.team360.robot.subsystems.*;
 
 /**

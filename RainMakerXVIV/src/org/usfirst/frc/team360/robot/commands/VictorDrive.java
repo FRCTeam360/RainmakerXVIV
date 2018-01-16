@@ -25,9 +25,15 @@ public class VictorDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		
-    		VictorSPs.motor1.set(joy.getY());
-   
+
+    		if(joy.getRawButton(1)) {
+    			VictorSPs.motor1.set(-0.2);
+
+    		}
+    		else {
+    			VictorSPs.motor1.set(joy.getY());
+    		}
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
