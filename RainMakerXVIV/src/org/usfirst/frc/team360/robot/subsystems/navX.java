@@ -1,6 +1,6 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
-import org.usfirst.frc.team360.commands.getNavXData;
+import org.usfirst.frc.team360.commands.navXDataPool;
 import org.usfirst.frc.team360.robot.RobotMap;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -36,7 +36,7 @@ public class navX extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new getNavXData());
+        setDefaultCommand(new navXDataPool());
     }
 }
 
