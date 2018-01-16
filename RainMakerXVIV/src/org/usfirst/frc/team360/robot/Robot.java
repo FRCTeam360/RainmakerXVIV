@@ -33,9 +33,9 @@ public class Robot extends TimedRobot{
 	public static Pneumatics pneumatics;
 	public static DriveTrain driveTrain;
 	public static navX navX;
+	public static VictorArm m_Victor;
 	Command Pressurize;
 	public static OI oi;
-	public static VictorArm m_Victor;
 
 	Command m_autonomousCommand;
 	
