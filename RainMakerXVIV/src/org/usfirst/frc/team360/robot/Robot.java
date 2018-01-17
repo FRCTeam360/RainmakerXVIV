@@ -36,14 +36,13 @@ public class Robot extends TimedRobot {
 		navX = new navXsystem();
 		logger = new Logger();
 		navXCommandSystem = new navXstart();
-		logger.initLogger();
 		oi = new OI();
 		
 	}
 
 	@Override
 	public void disabledInit() {
-
+		logger.closeLogger();
 	}
 
 	@Override
@@ -54,9 +53,9 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-
+		RobotMap.RobotState = "Autonomous";
+		logger.initLogger();
 	}
-
 
 	@Override
 	public void autonomousPeriodic() {
@@ -65,7 +64,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		logger.logRobotState();
+		RobotMap.RobotState = "Tele OP";
+		logger.initLogger();
 		driveTrain.setControlModeVoltage();
 	}
 
@@ -77,5 +77,7 @@ public class Robot extends TimedRobot {
 	
 	@Override
 	public void testPeriodic() {
+		RobotMap.RobotState = "Test Mode";
+		logger.initLogger();
 	}
 }
