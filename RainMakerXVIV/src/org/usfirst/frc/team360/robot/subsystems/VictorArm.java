@@ -8,6 +8,7 @@ import org.usfirst.frc.team360.robot.RobotMap;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -37,12 +38,11 @@ public class VictorArm extends Subsystem {
 	}
 	
 	public void VictorAmp(){
-		int channel = 2;
-    	double Amp = pdp.getCurrent(channel);
-    	if(Amp >= 10) {
-    		Robot.m_Victor.stopMotor();
-    	}
+    	double Amp = pdp.getCurrent(2);
+    	SmartDashboard.putNumber("Amperage: ", Amp);
 	}
+	
+
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
