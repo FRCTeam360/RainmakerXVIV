@@ -22,15 +22,8 @@ public class ControlVictor extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	if(OI.armIN.equals(1)) {
-    		Robot.m_Victor.setMotor(.5);
-    		
-    	} else if(OI.armOUT.equals(1)){
-    		Robot.m_Victor.setMotor(-.5);
-    	} else {
-    		Robot.m_Victor.stopMotor();
-    	}
+    	Robot.m_Victor.VictorAmp();
+    	Robot.m_Victor.ControlVictor();
     }
 
     // Make this return true when this Command no longer needs to run execute()
