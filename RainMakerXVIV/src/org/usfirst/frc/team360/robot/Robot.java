@@ -42,8 +42,9 @@ public class Robot extends TimedRobot {
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
-		oi = new OI();
 		motionMagic  = new MotionMagic();
+		oi = new OI();
+		
 	}
 
 	/**
@@ -91,7 +92,7 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		driveTrain.setControlModeVoltage();
+	//	driveTrain.setControlModeVoltage();
 		motionMagic.start();
 	}
 

@@ -25,7 +25,6 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
  */
 public class MotionMagic extends Command {
 	
-	
 	TalonSRX _talon = new TalonSRX(3);
 	Joystick _joy = new Joystick(0);
 	StringBuilder _sb = new StringBuilder();
@@ -81,7 +80,9 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 
 	// Called just before this Command runs the first time
 	@Override
-	protected void initialize() {
+	protected void initialize() { //CAN I HAS MEMES PLEASE 
+		
+		System.out.println("hi");
 		
 		_talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
 		_talon.setSensorPhase(true);
@@ -96,7 +97,7 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 		_talon.configPeakOutputReverse(-1, kTimeoutMs);
 		
 		_talon.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
-		_talon.config_kF(0, 0.2, kTimeoutMs);
+		_talon.config_kF(0, 0, kTimeoutMs);
 		_talon.config_kP(0, 0.2, kTimeoutMs);
 		_talon.config_kI(0, 0, kTimeoutMs);
 		_talon.config_kD(0, 0, kTimeoutMs);
@@ -109,6 +110,8 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		
+		System.out.println("hi");
 		
 		double leftYstick = -1.0 * _joy.getY();
 		double motorOutput = _talon.getMotorOutputPercent();
@@ -133,7 +136,7 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 		
 		else {
 			
-			_talon.set(ControlMode.PercentOutput, leftYstick);
+			_talon.set(ControlMode.PercentOutput, motorOutput);
 			
 		}
 		
@@ -146,6 +149,7 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 		catch (Exception e) {}
 		
 	}
+	
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
