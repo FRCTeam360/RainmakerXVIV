@@ -97,7 +97,7 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 		_talon.configPeakOutputReverse(-1, kTimeoutMs);
 		
 		_talon.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
-		_talon.config_kF(0, 0, kTimeoutMs);
+		_talon.config_kF(0, 0.2, kTimeoutMs);
 		_talon.config_kP(0, 0.2, kTimeoutMs);
 		_talon.config_kI(0, 0, kTimeoutMs);
 		_talon.config_kD(0, 0, kTimeoutMs);
@@ -136,7 +136,7 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 		
 		else {
 			
-			_talon.set(ControlMode.PercentOutput, motorOutput);
+			_talon.set(ControlMode.PercentOutput, leftYstick);
 			
 		}
 		
