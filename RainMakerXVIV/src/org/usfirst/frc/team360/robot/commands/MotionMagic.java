@@ -80,9 +80,7 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 
 	// Called just before this Command runs the first time
 	@Override
-	protected void initialize() { //CAN I HAS MEMES PLEASE 
-		
-		System.out.println("hi");
+	protected void initialize() {
 		
 		_talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
 		_talon.setSensorPhase(true);
@@ -110,8 +108,6 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		
-		System.out.println("hi");
 		
 		double leftYstick = -1.0 * _joy.getY();
 		double motorOutput = _talon.getMotorOutputPercent();
