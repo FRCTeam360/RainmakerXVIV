@@ -28,6 +28,8 @@ public class Robot extends TimedRobot {
 	public static Pneumatics pneumatics;
 	Command Pressurize;
 	public static DriveTrain driveTrain;
+	public static Elevator elevator;
+	Command ElevatorMovement;
 	public static OI oi;
 	Command motionMagic;
 	Command m_autonomousCommand;
@@ -93,7 +95,7 @@ public class Robot extends TimedRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		driveTrain.setControlModeVoltage();
-		motionMagic.start();
+		
 	}
 
 	/**

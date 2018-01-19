@@ -1,26 +1,34 @@
 package org.usfirst.frc.team360.robot.commands;
 
+import org.usfirst.frc.team360.robot.Robot;
+
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc.team360.robot.*;
 /**
  *
  */
-public class JoystickTankDrive extends Command {
+public class ElevatorMovement extends Command {
 
-    public JoystickTankDrive() {
-    	requires(Robot.driveTrain); 
+	Joystick joyL = new Joystick(0);
+	
+    public ElevatorMovement() {
+       requires(Robot.elevator);
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void initialize() { 	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.driveTrain.DriveR(OI.joyR.getRawAxis(-1));
-    	Robot.driveTrain.DriveL(OI.joyL.getRawAxis(1));
+    	if(joyL.getRawButton(1)) {
+    		
+    		Robot.elevator.ElevUp();
+    		
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,6 +43,5 @@ public class JoystickTankDrive extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
