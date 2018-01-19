@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
 	Command Pressurize;
 	public static DriveTrain driveTrain;
 	public static Elevator elevator;
-	Command ElevatorMovement;
+	Command ElevatorUp;
 	public static OI oi;
 	Command motionMagic;
 	Command m_autonomousCommand;

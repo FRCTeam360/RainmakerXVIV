@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Elevator extends Subsystem {
-	TalonSRX _talon = new TalonSRX(3);
+	public TalonSRX _talon = new TalonSRX(3);
 	
 	public static final int kSlotIdx = 0;
 	public static final int kPIDLoopIdx = 0;
@@ -49,25 +49,8 @@ public class Elevator extends Subsystem {
 		_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 	}
 	
-	public void ElevUp() { 
-
-	double targetPos = 2 * 4096 * 2.5;
-	
-	_talon.set(ControlMode.MotionMagic, targetPos);
-    
-	}
-	
-	public void ElevDown() {
-		
-		double targetPos = -2 * 4096 * 2.5;
-		
-		_talon.set(ControlMode.MotionMagic, targetPos);
-		
-	}
-	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new ElevatorMovement());
     }
 }
 
