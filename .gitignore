@@ -1,0 +1,8 @@
+bin/
+build/
+dist/
+.metadata/*
+*.log
+*version.ini
+*.lock
+*.DS_Store
