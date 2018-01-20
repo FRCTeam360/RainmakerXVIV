@@ -5,7 +5,6 @@ import org.usfirst.frc.team360.robot.Robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -25,6 +24,8 @@ public class ElevatorUp extends Command {
     protected void execute() {
     	
     	if(OI.joyL.getRawButton(1)) {
+    		
+    		System.out.println("Working ElevatorUp");
     		
     		double targetPos = 2 * 4096;
     		

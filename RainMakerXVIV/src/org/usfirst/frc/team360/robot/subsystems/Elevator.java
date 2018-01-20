@@ -1,8 +1,5 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
-import org.usfirst.frc.team360.robot.commands.*;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -13,13 +10,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Elevator extends Subsystem {
-	public TalonSRX _talon = new TalonSRX(3);
+	public TalonSRX _talon = new TalonSRX(1);
 	
 	public static final int kSlotIdx = 0;
 	public static final int kPIDLoopIdx = 0;
 	public static final int kTimeoutMs = 10;
 
 	public void motionMagicInit() {
+		System.out.println("Working Subsystem");
 		
 		/* first choose the sensor */
 		_talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
@@ -43,8 +41,8 @@ public class Elevator extends Subsystem {
 		_talon.config_kI(0, 0, kTimeoutMs);
 		_talon.config_kD(0, 0, kTimeoutMs);
 		/* set acceleration and vcruise velocity - see documentation */
-		_talon.configMotionCruiseVelocity(15000, kTimeoutMs);
-		_talon.configMotionAcceleration(6000, kTimeoutMs);
+		_talon.configMotionCruiseVelocity(7500, kTimeoutMs);
+		_talon.configMotionAcceleration(100, kTimeoutMs);
 		/* zero the sensor */
 		_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 	}
