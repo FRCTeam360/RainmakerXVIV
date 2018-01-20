@@ -94,8 +94,8 @@ public class PathPlanner
 		this.origPath = doubleArrayCopy(path);
 
 		//default values DO NOT MODIFY;
-		pathAlpha = 0.7;
-		pathBeta = 0.3;
+		pathAlpha = 0.44;
+		pathBeta = 0.56;
 		pathTolerance = 0.0000001;
 
 		velocityAlpha = 0.1;
@@ -612,7 +612,7 @@ public class PathPlanner
 
 			leftPosition[i] = leftDist;
 			rightPosition[i] = rightDist;
-			System.out.println(leftPosition[i]);
+			System.out.println(smoothRightVelocity[i][0] + " " + smoothRightVelocity[i][1]);
 		}
 	}
 	
