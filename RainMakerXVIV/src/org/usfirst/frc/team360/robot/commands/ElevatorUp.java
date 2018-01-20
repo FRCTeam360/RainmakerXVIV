@@ -1,5 +1,6 @@
 package org.usfirst.frc.team360.robot.commands;
 
+import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.Robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -11,8 +12,6 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ElevatorUp extends Command {
-
-	Joystick joyL = new Joystick(0);
 	
     public ElevatorUp() {
        requires(Robot.elevator);
@@ -25,9 +24,9 @@ public class ElevatorUp extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(joyL.getRawButton(1)) {
+    	if(OI.joyL.getRawButton(1)) {
     		
-    		double targetPos = 2 * 4096 * 2.5;
+    		double targetPos = 2 * 4096;
     		
     		Robot.elevator._talon.set(ControlMode.MotionMagic, targetPos);
     		
