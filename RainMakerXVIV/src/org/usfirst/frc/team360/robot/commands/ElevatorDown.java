@@ -27,7 +27,7 @@ public class ElevatorDown extends Command {
     		
     		System.out.println("Working ElevatorDown");
     		
-    		double targetPos = -2 * 4096;
+    		double targetPos = -10 * 4096;
     		
     		Robot.elevator._talon.set(ControlMode.MotionMagic, targetPos);
     		
