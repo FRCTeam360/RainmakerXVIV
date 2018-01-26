@@ -35,8 +35,6 @@ public class Robot extends TimedRobot {
 
 	public static DriveTrain driveTrain;
 	public static Winch winch;
-	Joystick leftJoy = new Joystick(1);
-	Joystick OIJoy = new Joystick(2);
 
 	
 
