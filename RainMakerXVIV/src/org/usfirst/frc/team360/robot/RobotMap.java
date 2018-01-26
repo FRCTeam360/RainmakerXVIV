@@ -36,8 +36,8 @@ public class RobotMap {
 	
 	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
 
-	public static TalonSRX motorL1 = new TalonSRX(0);
-	public static TalonSRX motorL2 = new TalonSRX(1);
+	public static TalonSRX motorL1 = new TalonSRX(1);
+	public static TalonSRX motorL2 = new TalonSRX(0);
 	public static TalonSRX motorR1 = new TalonSRX(2);
 	public static TalonSRX motorR2 = new TalonSRX(3);
 }

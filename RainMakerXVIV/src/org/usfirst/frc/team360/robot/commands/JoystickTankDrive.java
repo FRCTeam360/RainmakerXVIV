@@ -1,12 +1,8 @@
 package org.usfirst.frc.team360.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team360.robot.*;
-import org.usfirst.frc.team360.robot.subsystems.DriveTrain;;
-/**
- *
- */
+
 public class JoystickTankDrive extends Command {
 
     public JoystickTankDrive() {
@@ -20,8 +16,8 @@ public class JoystickTankDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.driveTrain.DriveR(OI.joyR.getRawAxis(1));
-    	Robot.driveTrain.DriveL(OI.joyL.getRawAxis(1));
+    	Robot.driveTrain.driveR(-1 * OI.joyR.getRawAxis(1));
+    	Robot.driveTrain.driveL(-1 * OI.joyL.getRawAxis(1));
     }
 
     // Make this return true when this Command no longer needs to run execute()
