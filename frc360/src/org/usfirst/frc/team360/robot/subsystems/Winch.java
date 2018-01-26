@@ -1,27 +1,20 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
+import java.awt.Robot;
+import java.util.Set;
+
 import org.usfirst.frc.team360.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-
-public class Grabber extends Subsystem {
-
-	public static DoubleSolenoid grabber = RobotMap.grabber;
-
-	public void open(){
-		grabber.set(DoubleSolenoid.Value.kForward);
-
-	}
-
-	public void close() {
-		grabber.set(DoubleSolenoid.Value.kReverse);
-
-	}
+public class Winch extends Subsystem {
+	VictorSP Winch = RobotMap.motor1;
+	VictorSP Winch1 = RobotMap.motor2;
+	
 	
 
     // Put methods for controlling this subsystem
@@ -31,5 +24,11 @@ public class Grabber extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+	public void setMotorspeed(double speed) {
+		Winch.set(speed);{
+	    Winch1.set(speed);
+	    }
+	}
 }
 

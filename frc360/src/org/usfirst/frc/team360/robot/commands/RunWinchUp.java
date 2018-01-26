@@ -1,42 +1,47 @@
 package org.usfirst.frc.team360.robot.commands;
 
+import java.util.Set;
+
+import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class Grasp extends Command {
-	
-	public Grasp() {
-    	requires(Robot.grabber);
-    	
-    	
+public class RunWinchUp extends Command {
+
+    public RunWinchUp() {
+    	requires(Robot.winch);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.grabber.close();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    }
+    	Robot.winch.setMotorspeed(0.5);
+		System.out.println("Hello");
+   }
 
-    // Make this return true when this Command no longer needs to run execute()
+	// Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
+        
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.winch.setMotorspeed(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

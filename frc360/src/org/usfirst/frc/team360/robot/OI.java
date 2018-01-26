@@ -8,14 +8,14 @@
 
 package org.usfirst.frc.team360.robot;
 
-import org.usfirst.frc.team360.robot.commands.Grasp;
-import org.usfirst.frc.team360.robot.commands.Launcher;
 import org.usfirst.frc.team360.robot.triggers.DoubleButton;
+import org.usfirst.frc.team360.robot.commands.RunWinchDown;
+import org.usfirst.frc.team360.robot.commands.RunWinchUp;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -30,14 +30,16 @@ public class OI {
 	public static Joystick stickL = new Joystick(0);
 	public static Joystick stickR = new Joystick(1);
 	
-	public static Button launcher = new JoystickButton(stickL, 0);
-	
-	DoubleButton doubleButton = new DoubleButton();
-	Button button1 = new JoystickButton(stickL, 3),
-			button2 = new JoystickButton(stickL, 4);
+	public static Button Winch = new JoystickButton(stickL, 1);
+	public static Button Winch1 = new JoystickButton(stickL, 1);
+	Button button1 = new JoystickButton(stickL, 1);
+	Button button2 = new JoystickButton(stickL, 2);
 
 	public OI() {
-	doubleButton.whenActive(new Grasp());
+		button1.whileHeld(new RunWinchUp());
+		button2.whileHeld(new RunWinchDown());
+	
+
 	}
 }
 	// Button button = new JoystickButton(stick, buttonNumber);

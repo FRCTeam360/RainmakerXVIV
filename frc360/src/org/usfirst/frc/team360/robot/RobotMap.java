@@ -23,10 +23,8 @@ public class RobotMap {
 	public static VictorSP motorR1 = new VictorSP(2);
 	public static VictorSP motorR2 = new VictorSP(3);
 	
-	public static DoubleSolenoid grabber = new DoubleSolenoid(2,3);
-	
-
-
+	public static VictorSP motor1 = new VictorSP(4);
+	public static VictorSP motor2 = new VictorSP(5);
 	
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.

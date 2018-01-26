@@ -8,7 +8,8 @@
 package org.usfirst.frc.team360.robot;
 
 import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team360.robot.subsystems.Grabber;
+
+import org.usfirst.frc.team360.robot.subsystems.Winch;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -33,10 +34,11 @@ public class Robot extends TimedRobot {
 	public static OI m_oi;
 
 	public static DriveTrain driveTrain;
-	public static Grabber grabber;
-	Joystick leftJoy = new Joystick(0);
-	Joystick rightJoy = new Joystick(1);
+	public static Winch winch;
+	Joystick leftJoy = new Joystick(1);
 	Joystick OIJoy = new Joystick(2);
+
+	
 
 	
 	/*Command m_autonomousCommand;
@@ -48,8 +50,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		grabber = new Grabber();
 		driveTrain = new DriveTrain();
+		winch = new Winch();
 		m_oi = new OI();
 		
 	}
