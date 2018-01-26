@@ -61,6 +61,6 @@ public class OI {
 			//buttonDriveUp.whenPressed(new ShiftUp());
 			//buttonDriveDown.whenPressed(new ShiftDown());
 			
-			buttonElevMiddle.whenPressed(new MoveElevator(MoveElevator.pos));
+			buttonElevMiddle.whenPressed(new MoveElevator(25));
 	 }
 }
