@@ -1,10 +1,13 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
+import org.usfirst.frc.team360.robot.Robot;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -15,13 +18,26 @@ public class Elevator extends Subsystem {
 	public static final int kSlotIdx = 0;
 	public static final int kPIDLoopIdx = 0;
 	public static final int kTimeoutMs = 10;
+	
+public void Process(){
+		
+		SmartDashboard.putNumber("SensorVel", _talon.getSelectedSensorVelocity(Elevator.kPIDLoopIdx));
+    	SmartDashboard.putNumber("SensorPos",  _talon.getSelectedSensorPosition(Elevator.kPIDLoopIdx));
+    	SmartDashboard.putNumber("MotorOutputPercent", _talon.getMotorOutputPercent());
+    	SmartDashboard.putNumber("ClosedLoopError", Robot.elevator._talon.getClosedLoopError(Elevator.kPIDLoopIdx));
+    	
+    	SmartDashboard.putNumber("ActTrajVelocity", Robot.elevator._talon.getActiveTrajectoryVelocity());
+		SmartDashboard.putNumber("ActTrajPosition", Robot.elevator._talon.getActiveTrajectoryPosition());
+		SmartDashboard.putNumber("ActTrajHeading", Robot.elevator._talon.getActiveTrajectoryHeading());
+		
+	}
 
 	public void motionMagicInit() {
 		System.out.println("Working Subsystem");
 		
 		/* first choose the sensor */
 		_talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
-		_talon.setSensorPhase(true);
+		_talon.setSensorPhase(false);
 		_talon.setInverted(false);
 		
 		/* Set relevant frame periods to be at least as fast as periodic rate*/
