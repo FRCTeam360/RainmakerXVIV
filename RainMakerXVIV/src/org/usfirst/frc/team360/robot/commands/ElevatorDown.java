@@ -23,22 +23,6 @@ public class ElevatorDown extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(OI.joyR.getRawButton(1)) {
-    		
-<<<<<<< HEAD
-    		System.out.println("ElevDown");
-    		
-    		double targetPos = -1 * 4096;
-=======
-    		System.out.println("Working ElevatorDown");
-    		
-    		double targetPos = -10 * 4096;
->>>>>>> ce4eb49561b899ef352e694bde85034aebcb3f6d
-    		
-    		Robot.elevator._talon.set(ControlMode.MotionMagic, targetPos);
-    		
-    	}
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

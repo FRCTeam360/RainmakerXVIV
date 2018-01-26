@@ -29,19 +29,6 @@ public class MoveElevator extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-<<<<<<< HEAD:RainMakerXVIV/src/org/usfirst/frc/team360/robot/commands/MoveElevator.java
-=======
-    	if(OI.joyL.getRawButton(1)) {
-    		
-    		System.out.println("Working ElevatorUp");
-    		
-    		double targetPos = 10 * 4096;
-    		
-    		Robot.elevator._talon.set(ControlMode.MotionMagic, targetPos);
-    		
-    	}
->>>>>>> ce4eb49561b899ef352e694bde85034aebcb3f6d:RainMakerXVIV/src/org/usfirst/frc/team360/robot/commands/ElevatorUp.java
-    	
     	System.out.println("ElevMiddle");	
     		
     }
