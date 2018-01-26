@@ -3,7 +3,7 @@ package org.usfirst.frc.team360.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team360.robot.*;
 import org.usfirst.frc.team360.robot.commands.JoystickTankDrive;
-import org.usfirst.frc.team360.robot.commands.MotionMagic;
+//import org.usfirst.frc.team360.robot.commands.MotionMagic;
 
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -70,7 +70,7 @@ public class DriveTrain extends Subsystem {
 		  motorRMaster.set(ControlMode.PercentOutput, 0, 0);
 	} 
     public void initDefaultCommand() {
-    	setDefaultCommand(new MotionMagic());
+    	//setDefaultCommand(new MotionMagic());
     }
     
     public void checkCurrent() {

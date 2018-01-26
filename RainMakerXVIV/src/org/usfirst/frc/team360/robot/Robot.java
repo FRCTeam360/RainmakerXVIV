@@ -25,13 +25,13 @@ import org.usfirst.frc.team360.robot.commands.*;
  */
 public class Robot extends TimedRobot {
 	public static Shifter shifter;
+	public static Elevator elevator;
 	public static Pneumatics pneumatics;
 	Command Pressurize;
 	public static DriveTrain driveTrain;
-	public static Elevator elevator;
-	Command ElevatorUp;
 	public static OI oi;
-	Command motionMagic;
+	Command moveElevator;
+	//Command motionMagic;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -44,7 +44,8 @@ public class Robot extends TimedRobot {
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
-		motionMagic  = new MotionMagic();
+		elevator = new Elevator();
+		//motionMagic  = new MotionMagic();
 		oi = new OI();
 		
 	}
@@ -94,7 +95,8 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		driveTrain.setControlModeVoltage();
+		
+		//driveTrain.setControlModeVoltage();
 		
 	}
 

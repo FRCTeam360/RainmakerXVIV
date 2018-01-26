@@ -25,9 +25,15 @@ public class ElevatorDown extends Command {
     	
     	if(OI.joyR.getRawButton(1)) {
     		
+<<<<<<< HEAD
+    		System.out.println("ElevDown");
+    		
+    		double targetPos = -1 * 4096;
+=======
     		System.out.println("Working ElevatorDown");
     		
     		double targetPos = -10 * 4096;
+>>>>>>> ce4eb49561b899ef352e694bde85034aebcb3f6d
     		
     		Robot.elevator._talon.set(ControlMode.MotionMagic, targetPos);
     		
@@ -47,5 +53,6 @@ public class ElevatorDown extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

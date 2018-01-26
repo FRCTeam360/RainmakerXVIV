@@ -8,7 +8,7 @@
 package org.usfirst.frc.team360.robot;
 
 import org.usfirst.frc.team360.robot.commands.ElevatorDown;
-import org.usfirst.frc.team360.robot.commands.ElevatorUp;
+import org.usfirst.frc.team360.robot.commands.MoveElevator;
 import org.usfirst.frc.team360.robot.commands.ShiftDown;
 import org.usfirst.frc.team360.robot.commands.ShiftUp;
 
@@ -52,16 +52,15 @@ public class OI {
 	 public static Joystick joyL = new Joystick(1);
 	 public static Joystick joyOI = new Joystick(2); 
 	 
-	 public static Button buttonDriveDown = new JoystickButton(joyL, 1);
-	 public static Button buttonDriveUp = new JoystickButton(joyR, 1);
-	 public static Button buttonElevUp = new JoystickButton(joyR, 2);
-	 public static Button buttonElevDown = new JoystickButton(joyL, 2);
+	 //public static Button buttonDriveDown = new JoystickButton(joyL, 1);
+	 //public static Button buttonDriveUp = new JoystickButton(joyR, 1);
+	 public static Button buttonElevMiddle = new JoystickButton(joyR, 3);
+	 public static Button buttonElevBottom = new JoystickButton(joyL, 3);
 	 
 	 public OI() {
-			buttonDriveUp.whenPressed(new ShiftUp());
-			buttonDriveDown.whenPressed(new ShiftDown());
+			//buttonDriveUp.whenPressed(new ShiftUp());
+			//buttonDriveDown.whenPressed(new ShiftDown());
 			
-			buttonElevUp.whenPressed(new ElevatorUp());
-			buttonElevDown.whenPressed(new ElevatorDown());
+			buttonElevMiddle.whenPressed(new MoveElevator(MoveElevator.pos));
 	 }
 }

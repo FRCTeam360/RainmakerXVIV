@@ -23,7 +23,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class MotionMagic extends Command {
+
+/*public class MotionMagic extends Command {
 	
 	TalonSRX _talon = new TalonSRX(3);
 	Joystick _joy = new Joystick(0);
@@ -163,4 +164,4 @@ public static void Process(TalonSRX tal, StringBuilder sb) {
 	@Override
 	protected void interrupted() {
 	}
-}
+}*/
