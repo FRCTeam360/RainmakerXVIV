@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Winch extends Subsystem {
-	VictorSP Winch = RobotMap.motor1;
-	VictorSP Winch1 = RobotMap.motor2;
+	VictorSP Winch = RobotMap.motorWinch1;
+	VictorSP Winch1 = RobotMap.motorWinch2;
 	
 	
 
