@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
 	Command Pressurize;
 	public static DriveTrain driveTrain;
 	public static OI oi;
+	public static Winch winch;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -42,6 +43,7 @@ public class Robot extends TimedRobot {
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
+		winch = new Winch();
 		oi = new OI();
 	}
 

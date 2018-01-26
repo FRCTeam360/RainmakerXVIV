@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.VictorSP;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -40,4 +41,7 @@ public class RobotMap {
 	public static TalonSRX motorL2 = new TalonSRX(0);
 	public static TalonSRX motorR1 = new TalonSRX(2);
 	public static TalonSRX motorR2 = new TalonSRX(3);
+	
+	public static VictorSP motorWinch1 = new VictorSP(0);
+	public static VictorSP motorWinch2 = new VictorSP(1);
 }
