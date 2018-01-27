@@ -24,30 +24,24 @@ public class Pressurize extends Command {
     }
 
     protected void execute() {
-    	System.out.println(RobotMap.pdp.getVoltage());
-    	System.out.println(shouldRun);
-    	if(shouldRun == true && RobotMap.pdp.getVoltage() > 11.6) {
-    		
-        	Robot.pneumatics.pressurize(); 
-        		
-    	}
-    	
-    	else {
-    		
+    	System.out.println(shouldRun+ " " + RobotMap.pdp.getVoltage());
+//    	System.out.println(RobotMap.pdp.getVoltage());
+//    	System.out.println(((double)Math.round(timer.get()*100))/100);
+    	if(shouldRun == true && RobotMap.pdp.getVoltage() > 10.5) {
+        	Robot.pneumatics.pressurize(); 	
+    	} else if (shouldRun == true && ! (RobotMap.pdp.getVoltage() > 11.5)) {
     		shouldRun = false;
-    		//Robot.pneumatics.stop();
+    		Robot.pneumatics.stop();
+    		timer.reset();
     		timer.start();
-    		
     	}
     	
-    	if (timer.get() > 10.0) {
-    		
+    	if (timer.get() > 0.5) {
     		timer.reset();
     		timer.stop();
     		shouldRun = true;
-    		
     	}
-    	System.out.println(timer.get());
+    	
     }
 
     protected boolean isFinished() {
