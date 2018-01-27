@@ -39,7 +39,6 @@ public class Robot extends TimedRobot {
 		navX = new navXsystem();
 		logger = new Logger();
 		RoboRioTimer = new HardwareTimer();
-		talonLogCommand = new GetTalonSpeed();
 		navXCommandSystem = new navXstart();
 		oi = new OI();
 		

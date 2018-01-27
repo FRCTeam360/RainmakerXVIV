@@ -25,10 +25,7 @@ public class Logger extends Subsystem {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 			Date date = new Date(); 
 			String name = dateFormat.format(date);
-    		Log = new File("u/" + RobotMap.RobotState + name + ".txt");
-			if (!Log.exists()) {
-				Log.createNewFile();
-			}
+			Log.createNewFile();
 			fw = new FileWriter(Log.getAbsoluteFile());
 			bw = new BufferedWriter(fw);
 			String startFile = name + '\n';
@@ -43,6 +40,7 @@ public class Logger extends Subsystem {
 			bw.write("navX Triggered" + '\n');
 			bw.write('\t' + "Accel X: " + RobotMap.accelX + '\n');
 			bw.write('\t' + "Accel Y: " + RobotMap.accelY + '\n');
+			bw.flush();
 		} catch (Exception e) {
 			
 		}
@@ -54,25 +52,14 @@ public class Logger extends Subsystem {
 			bw.write("Talon SRX current data" + '\n');
 			bw.write('\t' + "Right Master: " + masterRight + '\n');
 			bw.write('\t' + "Left Master: " + masterLeft + '\n');
-			
+			bw.flush();
 		} catch (Exception e) {
 			
 		}
 	}
-	public void logGetFPGATime() {
-		try {
-			
-			RobotMap.fpgaTime = Robot.RoboRioTimer.getFPGATimestamp() / 1000;
-			
-		} catch (Exception e) {
-			
-		}
-	}
-
 	public void closeLogger(){
 		try {
 			bw.close();
-			fw.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
