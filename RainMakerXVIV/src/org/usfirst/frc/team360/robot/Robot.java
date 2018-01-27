@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.subsystems.*;
 import org.usfirst.frc.team360.robot.commands.*;
 
@@ -25,13 +26,12 @@ import org.usfirst.frc.team360.robot.commands.*;
  */
 public class Robot extends TimedRobot {
 	public static Shifter shifter;
-	public static Elevator elevator;
 	public static Pneumatics pneumatics;
 	Command Pressurize;
 	public static DriveTrain driveTrain;
 	public static OI oi;
-	Command moveElevator;
-	//Command motionMagic;
+	public static Winch winch;
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	
@@ -44,11 +44,8 @@ public class Robot extends TimedRobot {
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
-		elevator = new Elevator();
-		//motionMagic  = new MotionMagic();
-		elevator.zeroSensor();
+		winch = new Winch();
 		oi = new OI();
-		
 	}
 
 	/**
@@ -79,7 +76,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
+		Command com = new RunThereAndBack();
+		com.start();
 	}
 
 	/**
@@ -87,6 +85,15 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		SmartDashboard.putNumber("right error", driveTrain.getRightVelocity() 
+				- driveTrain.getRightMotionProfileVelocitySetPoint());
+		SmartDashboard.putNumber("left error", driveTrain.getLeftVelocity() 
+				- driveTrain.getLeftMotionProfileVelocitySetPoint());
+
+		SmartDashboard.putNumber("right position error", driveTrain.getRightPosition() 
+				- driveTrain.getRightMotionProfilePositionSetPoint());
+		SmartDashboard.putNumber("left positionerror", driveTrain.getLeftPosition() 
+				- driveTrain.getLeftMotionProfilePositionSetPoint());
 		Scheduler.getInstance().run();
 	}
 
@@ -96,7 +103,6 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		
 		//driveTrain.setControlModeVoltage();
 		
 	}
