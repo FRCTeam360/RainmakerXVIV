@@ -41,6 +41,8 @@ public class RobotMap {
 	
 	public static String RobotState = "Disabled";
 	
+	public static double fpgaTime;
+	
 	public static float accelX;
 	public static float accelY;
 	

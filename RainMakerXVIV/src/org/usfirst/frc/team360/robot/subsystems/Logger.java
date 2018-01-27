@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team360.robot.*;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 public class Logger extends Subsystem {
 	
 	String content;
@@ -38,12 +40,30 @@ public class Logger extends Subsystem {
 	}
 	public void logRobotNavX() {
 		try {
-			DateFormat dateFormat = new SimpleDateFormat("HH_mm_ss");
-			Date time = new Date(); 
-			String occurance = dateFormat.format(time);
-			bw.write("navX Triggered" + occurance + '\n');
+			bw.write("navX Triggered" + '\n');
 			bw.write('\t' + "Accel X: " + RobotMap.accelX + '\n');
 			bw.write('\t' + "Accel Y: " + RobotMap.accelY + '\n');
+		} catch (Exception e) {
+			
+		}
+	}
+	public void logTalonSRX() {
+		try {
+			double masterRight = RobotMap.motorR1.getOutputCurrent();
+			double masterLeft = RobotMap.motorL1.getOutputCurrent();
+			bw.write("Talon SRX current data" + '\n');
+			bw.write('\t' + "Right Master: " + masterRight + '\n');
+			bw.write('\t' + "Left Master: " + masterLeft + '\n');
+			
+		} catch (Exception e) {
+			
+		}
+	}
+	public void logGetFPGATime() {
+		try {
+			
+			RobotMap.fpgaTime = Robot.RoboRioTimer.getFPGATimestamp() / 1000;
+			
 		} catch (Exception e) {
 			
 		}
@@ -52,6 +72,7 @@ public class Logger extends Subsystem {
 	public void closeLogger(){
 		try {
 			bw.close();
+			fw.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

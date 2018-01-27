@@ -4,12 +4,13 @@
 
 package org.usfirst.frc.team360.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import edu.wpi.first.wpilibj.internal.HardwareTimer;
 
 import org.usfirst.frc.team360.commands.*;
 import org.usfirst.frc.team360.robot.subsystems.*;
@@ -20,10 +21,12 @@ public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain;
 	public static navXsystem navX;
 	public static Logger logger;
+	public static HardwareTimer RoboRioTimer;
 	public static OI oi;
 
 	Command Pressurize;
 	Command navXCommandSystem;
+	Command talonLogCommand;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -35,6 +38,8 @@ public class Robot extends TimedRobot {
 		driveTrain = new DriveTrain();
 		navX = new navXsystem();
 		logger = new Logger();
+		RoboRioTimer = new HardwareTimer();
+		talonLogCommand = new GetTalonSpeed();
 		navXCommandSystem = new navXstart();
 		oi = new OI();
 		
