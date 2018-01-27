@@ -3,7 +3,7 @@ package org.usfirst.frc.team360.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team360.robot.*;
 
-public class JoystickTankDrive extends Command {
+/*public class JoystickTankDrive extends Command {
 
     public JoystickTankDrive() {
     	requires(Robot.driveTrain); 
@@ -34,4 +34,4 @@ public class JoystickTankDrive extends Command {
     protected void interrupted() {
     	end();
     }
-}
+}*/

@@ -9,26 +9,45 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Pressurize extends Command {
 
 	Timer timer;
+	boolean shouldRun;
+	
 	
     public Pressurize() {
     	requires (Robot.pneumatics);
     }
 
     protected void initialize() {
+    	timer = new Timer();
+    	shouldRun = true;
     	timer.reset();
+    	timer.stop();
     }
 
     protected void execute() {
-    	
-    	timer.start();
-    	
-    	if(RobotMap.pdp.getVoltage() >= 10.0 && timer.hasPeriodPassed(10.0) == true) {
+    	System.out.println(RobotMap.pdp.getVoltage());
+    	System.out.println(shouldRun);
+    	if(shouldRun == true && RobotMap.pdp.getVoltage() > 11.6) {
     		
-    		Robot.pneumatics.pressurize(); 
+        	Robot.pneumatics.pressurize(); 
+        		
+    	}
+    	
+    	else {
     		
-    		timer.reset();
+    		shouldRun = false;
+    		//Robot.pneumatics.stop();
+    		timer.start();
     		
     	}
+    	
+    	if (timer.get() > 10.0) {
+    		
+    		timer.reset();
+    		timer.stop();
+    		shouldRun = true;
+    		
+    	}
+    	System.out.println(timer.get());
     }
 
     protected boolean isFinished() {
@@ -36,8 +55,9 @@ public class Pressurize extends Command {
     }
 
     protected void end() {
-    	Robot.pneumatics.stop();
     	timer.stop();
+    	timer.reset();
+    	Robot.pneumatics.stop();
     }
 
     protected void interrupted() {

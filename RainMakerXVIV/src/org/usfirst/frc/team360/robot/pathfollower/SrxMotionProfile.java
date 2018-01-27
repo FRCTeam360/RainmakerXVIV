@@ -1,6 +1,6 @@
 package org.usfirst.frc.team360.robot.pathfollower;
 
-import org.json.simple.JSONArray;
+/*import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 //Generic Motion Profile Class
@@ -35,4 +35,4 @@ public class SrxMotionProfile {
 			}
 		}
 	}
-}
+}*/

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team360.robot.pathfollower;
 
-import org.json.simple.JSONObject;
+/*import org.json.simple.JSONObject;
 
 //Combines left and right motion profiles in one object
 public class SrxTrajectory {
@@ -17,4 +17,4 @@ public class SrxTrajectory {
 		rightProfile = new SrxMotionProfile((JSONObject) combinedProfile.get("right"));
 	}
 
-}
+}*/
