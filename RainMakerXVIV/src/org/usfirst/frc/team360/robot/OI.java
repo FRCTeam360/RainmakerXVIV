@@ -53,13 +53,19 @@ public class OI {
 	 
 	 //public static Button buttonDriveDown = new JoystickButton(joyL, 1);
 	 //public static Button buttonDriveUp = new JoystickButton(joyR, 1);
-	 public static Button buttonElevMiddle = new JoystickButton(joyR, 3);
-	 public static Button buttonElevBottom = new JoystickButton(joyL, 3);
+	 public static Button buttonElev25 = new JoystickButton(joyR, 3);
+	 public static Button buttonElev50 = new JoystickButton(joyR, 4);
+	 public static Button buttonElev75 = new JoystickButton(joyR, 5);
+	 public static Button buttonElev100 = new JoystickButton(joyR, 6);
 	 
 	 public OI() {
 			//buttonDriveUp.whenPressed(new ShiftUp());
 			//buttonDriveDown.whenPressed(new ShiftDown());
 			
-			buttonElevMiddle.whenPressed(new MoveElevator(25));
+			buttonElev25.whenPressed(new MoveElevator(25));
+			buttonElev50.whenPressed(new MoveElevator(50));
+			buttonElev75.whenPressed(new MoveElevator(75));
+			buttonElev100.whenPressed(new MoveElevator(100));
+			
 	 }
 }

@@ -46,6 +46,7 @@ public class Robot extends TimedRobot {
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
 		//motionMagic  = new MotionMagic();
+		elevator.zeroSensor();
 		oi = new OI();
 		
 	}

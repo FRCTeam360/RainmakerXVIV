@@ -24,7 +24,7 @@ public class MoveElevator extends Command {
 	// Called just before this Command runs the first time
     protected void initialize() {
     	Robot.elevator.motionMagicInit();
-    	Robot.elevator._talon.set(ControlMode.MotionMagic, pos1*30);
+    	Robot.elevator._talon.set(ControlMode.MotionMagic, pos1 * 30);
     }
 
     // Called repeatedly when this Command is scheduled to run

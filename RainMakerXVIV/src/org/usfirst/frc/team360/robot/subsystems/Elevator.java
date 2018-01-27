@@ -19,7 +19,7 @@ public class Elevator extends Subsystem {
 	public static final int kPIDLoopIdx = 0;
 	public static final int kTimeoutMs = 10;
 	
-public void Process(){
+	public void Process(){
 		
 		SmartDashboard.putNumber("SensorVel", _talon.getSelectedSensorVelocity(Elevator.kPIDLoopIdx));
     	SmartDashboard.putNumber("SensorPos",  _talon.getSelectedSensorPosition(Elevator.kPIDLoopIdx));
@@ -29,6 +29,12 @@ public void Process(){
     	SmartDashboard.putNumber("ActTrajVelocity", Robot.elevator._talon.getActiveTrajectoryVelocity());
 		SmartDashboard.putNumber("ActTrajPosition", Robot.elevator._talon.getActiveTrajectoryPosition());
 		SmartDashboard.putNumber("ActTrajHeading", Robot.elevator._talon.getActiveTrajectoryHeading());
+		
+	}
+	
+	public void zeroSensor() {
+		
+		_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 		
 	}
 
