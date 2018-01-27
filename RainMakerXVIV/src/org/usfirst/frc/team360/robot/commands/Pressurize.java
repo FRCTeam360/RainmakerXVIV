@@ -15,7 +15,7 @@ public class Pressurize extends Command {
 
     }
 
-    protected void execute() {
+    protected void execute( <= 10.0) {
     	Robot.pneumatics.pressurize(); 
     }
 
