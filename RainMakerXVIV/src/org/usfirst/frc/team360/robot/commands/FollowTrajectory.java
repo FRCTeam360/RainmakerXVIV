@@ -55,20 +55,6 @@ public class FollowTrajectory extends Command {
 			pidfSlot = _pidfSlot;
 		}
 
-		private TrajectoryDuration GetTrajectoryDuration(int durationMs)
-		{	 
-			/* create return value */
-			TrajectoryDuration retval = TrajectoryDuration.Trajectory_Duration_0ms;
-			/* convert duration to supported type */
-			retval = retval.valueOf(durationMs);
-			/* check that it is valid */
-			if (retval.value != durationMs) {
-				DriverStation.reportError("Trajectory Duration not supported - use configMotionProfileTrajectoryPeriod instead", false);		
-			}
-			/* pass to caller */
-			return retval;
-		}
-	
 		public void run() {
 			if((!talon.isMotionProfileTopLevelBufferFull()) && (6 < prof.numPoints) && (num < prof.numPoints)){
 				point = new TrajectoryPoint();

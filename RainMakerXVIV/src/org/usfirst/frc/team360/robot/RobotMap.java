@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.VictorSP;
 
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -31,6 +34,8 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	
+	public static AHRS NavX = new AHRS(SPI.Port.kMXP);
+	
 	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 1);
 	 
 	public static Compressor compressor = new Compressor();
@@ -44,4 +49,25 @@ public class RobotMap {
 	
 	public static VictorSP motorWinch1 = new VictorSP(0);
 	public static VictorSP motorWinch2 = new VictorSP(1);
+	
+	public static float accelX;
+	public static float accelY;
+	
+	public static float Yaw;
+	public static float Pitch;
+	public static float Roll;
+	
+	public static double TotalYaw;
+	public static double YawRate;
+	
+	public static boolean Moving;
+	public static boolean Rotating;
+	public static boolean Connected;
+	public static boolean Calibrating;
+	
+	public static float QuaternionW;
+	public static float QuaternionX;
+	public static float QuaternionY;
+	public static float QuaternionZ;
+	
 }
