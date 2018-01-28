@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
 	public static Shifter shifter;
 	public static Pneumatics pneumatics;
 	Command Pressurize;
-	public static DriveTrain driveTrain;
+//	public static DriveTrain driveTrain;
 	public static OI oi;
 	public static Winch winch;
 	public static BufferedReader Buff;
@@ -98,7 +98,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
-		driveTrain = new DriveTrain();
+//		driveTrain = new DriveTrain();
 		winch = new Winch();
 		oi = new OI();
 	}
@@ -140,16 +140,16 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		SmartDashboard.putNumber("right error", driveTrain.getRightVelocity() 
-				- driveTrain.getRightMotionProfileVelocitySetPoint());
-		SmartDashboard.putNumber("left error", driveTrain.getLeftVelocity() 
-				- driveTrain.getLeftMotionProfileVelocitySetPoint());
-
-		SmartDashboard.putNumber("right position error", driveTrain.getRightPosition() 
-				- driveTrain.getRightMotionProfilePositionSetPoint());
-		SmartDashboard.putNumber("left positionerror", driveTrain.getLeftPosition() 
-				- driveTrain.getLeftMotionProfilePositionSetPoint());
-		Scheduler.getInstance().run();
+//		SmartDashboard.putNumber("right error", driveTrain.getRightVelocity() 
+//				- driveTrain.getRightMotionProfileVelocitySetPoint());
+//		SmartDashboard.putNumber("left error", driveTrain.getLeftVelocity() 
+//				- driveTrain.getLeftMotionProfileVelocitySetPoint());
+//
+//		SmartDashboard.putNumber("right position error", driveTrain.getRightPosition() 
+//				- driveTrain.getRightMotionProfilePositionSetPoint());
+//		SmartDashboard.putNumber("left positionerror", driveTrain.getLeftPosition() 
+//				- driveTrain.getLeftMotionProfilePositionSetPoint());
+//		Scheduler.getInstance().run();
 	}
 
 	@Override
