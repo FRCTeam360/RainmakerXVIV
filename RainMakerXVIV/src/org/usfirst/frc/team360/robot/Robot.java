@@ -59,28 +59,28 @@ public class Robot extends TimedRobot {
 			System.out.println("Comp Bot");
 			DriverStation.reportError("Comp Bot", false);
 			
-			F = RobotMap.comp_kF;
-			P = RobotMap.comp_kP;
-			I = RobotMap.comp_kI;
-			D = RobotMap.comp_kD;
+			F = Constants.comp_kF;
+			P = Constants.comp_kP;
+			I = Constants.comp_kI;
+			D = Constants.comp_kD;
 		}
 		else if (RobotMap.robotID == "practice") {
 			System.out.println("Practice Bot");
 			DriverStation.reportError("Practice Bot", false);
 			
-			F = RobotMap.prac_kF;
-			P = RobotMap.prac_kP;
-			I = RobotMap.prac_kI;
-			D = RobotMap.prac_kD;
+			F = Constants.prac_kF;
+			P = Constants.prac_kP;
+			I = Constants.prac_kI;
+			D = Constants.prac_kD;
 		}
 		else {
 			System.out.println("Invalid Robot ID");
 			DriverStation.reportError("Invalid Robot ID", false);
 			
-			F = RobotMap.comp_kF;
-			P = RobotMap.comp_kP;
-			I = RobotMap.comp_kI;
-			D = RobotMap.comp_kD;
+			F = Constants.comp_kF;
+			P = Constants.comp_kP;
+			I = Constants.comp_kI;
+			D = Constants.comp_kD;
 		}
 		
 		

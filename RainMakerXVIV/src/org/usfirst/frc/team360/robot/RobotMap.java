@@ -32,16 +32,6 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	public static String robotID = "comp";
 	
-	public static int comp_kF = 1;
-	public static int comp_kP = 1;
-	public static int comp_kI = 1;
-	public static int comp_kD = 1;
-	
-	public static int prac_kF = 0;
-	public static int prac_kP = 0;
-	public static int prac_kI = 0;
-	public static int prac_kD = 0;
-	
 	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 1);
 	 
 	public static Compressor compressor = new Compressor();
