@@ -35,13 +35,6 @@ public class FollowTrajectory extends Command {
 	 * for both sides.
 	 */
 	private SetValueMotionProfile setValue = SetValueMotionProfile.Disable;
-//
-//	private class TalonBufferProcessor implements java.lang.Runnable {
-//		public void run() {
-//			rightLead.processMotionProfileBuffer();
-//			leftLead.processMotionProfileBuffer();
-//		}
-//	}
 	
 	private class TalonProfileSender implements java.lang.Runnable {
 		TrajectoryPoint point;
@@ -157,9 +150,10 @@ public class FollowTrajectory extends Command {
 	private Notifier leftTalonSender;
 	private Notifier rightTalonSender;
 	// constructor
-	public FollowTrajectory(String trajectoryName) {
+	public FollowTrajectory(String _trajectoryName) {
 		requires(Robot.driveTrain);
-		this.trajectoryToFollow = trajectoryName;
+		trajectoryToFollow = _trajectoryName;
+		traj = importer.importSrxTrajectory(trajectoryToFollow);
 	}
 	double time;
 	// Called just before this Command runs the first time
@@ -174,12 +168,8 @@ public class FollowTrajectory extends Command {
 		leftLead.set(ControlMode.MotionProfile, setValue.value);
 		rightLead.set(ControlMode.MotionProfile, setValue.value);
 
-		//SRXBufferReader.startPeriodic(.005);
-		
-		this.traj = importer.importSrxTrajectory(trajectoryToFollow);
-		
-		leftTalonSender = new Notifier(new TalonProfileSender(leftLead, this.traj.leftProfile, 0));
-		rightTalonSender = new Notifier(new TalonProfileSender(rightLead, this.traj.rightProfile, 0));
+		leftTalonSender = new Notifier(new TalonProfileSender(leftLead, traj.leftProfile, 0));
+		rightTalonSender = new Notifier(new TalonProfileSender(rightLead, traj.rightProfile, 0));
 		
 		leftTalonSender.startPeriodic(.005);
 		rightTalonSender.startPeriodic(.005);
@@ -226,7 +216,6 @@ public class FollowTrajectory extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		//SRXBufferReader.stop();
 		leftTalonSender.stop();
 		rightTalonSender.stop();
 		resetTalon(rightLead, ControlMode.PercentOutput, 0);

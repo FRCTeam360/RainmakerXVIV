@@ -7,7 +7,7 @@ import com.team319.trajectory.SrxTranslatorConfig;
 
 public class PathGeneration {
 
-	SrxTranslatorConfig standardConfig = new SrxTranslatorConfig();
+	public SrxTranslatorConfig standardConfig = new SrxTranslatorConfig();
 	
 	public PathGeneration(){
 		//Standard configs between all trajectories
