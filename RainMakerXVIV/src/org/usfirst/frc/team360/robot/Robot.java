@@ -7,6 +7,12 @@
 
 package org.usfirst.frc.team360.robot;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,9 +37,11 @@ public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain;
 	public static OI oi;
 	public static Winch winch;
+	public static BufferedReader Buff;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -46,6 +54,26 @@ public class Robot extends TimedRobot {
 		driveTrain = new DriveTrain();
 		winch = new Winch();
 		oi = new OI();
+		 
+		try {
+			Buff = new BufferedReader(new FileReader("filename.txt"));
+			RobotMap.robotID = Buff.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (RobotMap.robotID == "comp") {
+			System.out.println("Comp Bot");
+			DriverStation.reportError("Comp Bot", false);
+		}
+		else if (RobotMap.robotID == "practice") {
+			System.out.println("Practice Bot");
+			DriverStation.reportError("Practice Bot", false);
+		}
+		else {
+			System.out.println("Invalid Robot ID");
+			DriverStation.reportError("Invalid Robot ID", false);
+		}
 	}
 
 	/**
