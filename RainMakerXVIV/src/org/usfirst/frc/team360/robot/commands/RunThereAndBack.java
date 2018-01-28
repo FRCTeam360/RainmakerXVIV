@@ -7,7 +7,7 @@ public class RunThereAndBack extends CommandGroup {
     public RunThereAndBack() {
         // Add Commands here:
        // addSequential(new FollowTrajectory("CenterToRightSwitch"));
-        //addSequential(new FollowTrajectory("CenterToLeftSwitch"));
+        addSequential(new FollowTrajectory("CenterToLeftSwitch"));
         // these will run in order.
     	
         // To run multiple commands at the same time,

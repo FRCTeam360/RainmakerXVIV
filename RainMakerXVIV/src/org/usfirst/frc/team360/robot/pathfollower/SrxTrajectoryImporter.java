@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-/*import org.json.simple.JSONObject;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -57,4 +57,4 @@ public class SrxTrajectoryImporter {
 		return file2.getPath();
 	}
 
-}*/
+}
