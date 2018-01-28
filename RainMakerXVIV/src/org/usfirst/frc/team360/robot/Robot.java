@@ -83,10 +83,6 @@ public class Robot extends TimedRobot {
 			D = RobotMap.comp_kD;
 		}
 		
-		System.out.println(F);
-		System.out.println(P);
-		System.out.println(I);
-		System.out.println(D);
 		
 	}
 
@@ -101,6 +97,7 @@ public class Robot extends TimedRobot {
 //		driveTrain = new DriveTrain();
 		winch = new Winch();
 		oi = new OI();
+		
 	}
 
 	/**
@@ -173,5 +170,11 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+
+//		System.out.println("F" + F);
+//		System.out.println("P" + P);
+//		System.out.println("I" + I);
+//		System.out.println("D" + D);
+	
 	}
 }
