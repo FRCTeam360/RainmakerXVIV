@@ -32,6 +32,16 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	public static String robotID = "comp";
 	
+	public static int comp_kF = 1;
+	public static int comp_kP = 1;
+	public static int comp_kI = 1;
+	public static int comp_kD = 1;
+	
+	public static int prac_kF = 0;
+	public static int prac_kP = 0;
+	public static int prac_kI = 0;
+	public static int prac_kD = 0;
+	
 	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 1);
 	 
 	public static Compressor compressor = new Compressor();
@@ -42,6 +52,8 @@ public class RobotMap {
 	public static TalonSRX motorL2 = new TalonSRX(0);
 	public static TalonSRX motorR1 = new TalonSRX(2);
 	public static TalonSRX motorR2 = new TalonSRX(3);
+	
+	public static TalonSRX elevator1 = new TalonSRX(5);
 	
 	public static VictorSP motorWinch1 = new VictorSP(0);
 	public static VictorSP motorWinch2 = new VictorSP(1);

@@ -8,7 +8,6 @@
 package org.usfirst.frc.team360.robot;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -38,10 +37,58 @@ public class Robot extends TimedRobot {
 	public static OI oi;
 	public static Winch winch;
 	public static BufferedReader Buff;
+	
+	public static int F;
+	public static int P;
+	public static int I;
+	public static int D;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	
+	public void RobotID() {
+		
+		try {
+			Buff = new BufferedReader(new FileReader("RobotID.txt"));
+			RobotMap.robotID = Buff.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (RobotMap.robotID == "comp") {
+			System.out.println("Comp Bot");
+			DriverStation.reportError("Comp Bot", false);
+			
+			F = RobotMap.comp_kF;
+			P = RobotMap.comp_kP;
+			I = RobotMap.comp_kI;
+			D = RobotMap.comp_kD;
+		}
+		else if (RobotMap.robotID == "practice") {
+			System.out.println("Practice Bot");
+			DriverStation.reportError("Practice Bot", false);
+			
+			F = RobotMap.prac_kF;
+			P = RobotMap.prac_kP;
+			I = RobotMap.prac_kI;
+			D = RobotMap.prac_kD;
+		}
+		else {
+			System.out.println("Invalid Robot ID");
+			DriverStation.reportError("Invalid Robot ID", false);
+			
+			F = RobotMap.comp_kF;
+			P = RobotMap.comp_kP;
+			I = RobotMap.comp_kI;
+			D = RobotMap.comp_kD;
+		}
+		
+		System.out.println(F);
+		System.out.println(P);
+		System.out.println(I);
+		System.out.println(D);
+		
+	}
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -54,26 +101,6 @@ public class Robot extends TimedRobot {
 		driveTrain = new DriveTrain();
 		winch = new Winch();
 		oi = new OI();
-		 
-		try {
-			Buff = new BufferedReader(new FileReader("RobotID.txt"));
-			RobotMap.robotID = Buff.readLine();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (RobotMap.robotID == "comp") {
-			System.out.println("Comp Bot");
-			DriverStation.reportError("Comp Bot", false);
-		}
-		else if (RobotMap.robotID == "practice") {
-			System.out.println("Practice Bot");
-			DriverStation.reportError("Practice Bot", false);
-		}
-		else {
-			System.out.println("Invalid Robot ID");
-			DriverStation.reportError("Invalid Robot ID", false);
-		}
 	}
 
 	/**
