@@ -1,6 +1,5 @@
 
-// Keep the f word in mind
-// and no, not that one
+//FOCUS
 
 package org.usfirst.frc.team360.robot;
 
@@ -16,6 +15,7 @@ import org.usfirst.frc.team360.commands.*;
 import org.usfirst.frc.team360.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
+	
 	public static Shifter shifter;
 	public static Pneumatics pneumatics;
 	public static DriveTrain driveTrain;

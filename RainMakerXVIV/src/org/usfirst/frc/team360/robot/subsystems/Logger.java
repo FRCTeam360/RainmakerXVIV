@@ -45,18 +45,6 @@ public class Logger extends Subsystem {
 			
 		}
 	}
-	public void logTalonSRX() {
-		try {
-			double masterRight = RobotMap.motorR1.getOutputCurrent();
-			double masterLeft = RobotMap.motorL1.getOutputCurrent();
-			bw.write("Talon SRX current data" + '\n');
-			bw.write('\t' + "Right Master: " + masterRight + '\n');
-			bw.write('\t' + "Left Master: " + masterLeft + '\n');
-			bw.flush();
-		} catch (Exception e) {
-			
-		}
-	}
 	public void closeLogger(){
 		try {
 			bw.close();
