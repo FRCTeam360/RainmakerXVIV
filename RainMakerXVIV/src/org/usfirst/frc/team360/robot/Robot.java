@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		 
 		try {
-			Buff = new BufferedReader(new FileReader("filename.txt"));
+			Buff = new BufferedReader(new FileReader("RobotID.txt"));
 			RobotMap.robotID = Buff.readLine();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
