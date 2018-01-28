@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team360.robot.commands.NavXCommand;
 import org.usfirst.frc.team360.robot.commands.RunThereAndBack;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.subsystems.*;
@@ -27,12 +28,14 @@ import org.usfirst.frc.team360.robot.subsystems.*;
 public class Robot extends TimedRobot {
 	public static Shifter shifter;
 	public static Pneumatics pneumatics;
-	Command Pressurize;
 	public static DriveTrain driveTrain;
+	public static NavXSystem NavX;
 	public static OI oi;
 	public static Winch winch;
 
 	Command m_autonomousCommand;
+	Command navXCommand;
+	Command Pressurize;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
@@ -45,7 +48,9 @@ public class Robot extends TimedRobot {
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		winch = new Winch();
+		NavX = new NavXSystem();
 		oi = new OI();
+		navXCommand = new NavXCommand();
 	}
 
 	/**
@@ -110,6 +115,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		navXCommand.start();
 		Scheduler.getInstance().run();
 	}
 
