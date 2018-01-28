@@ -12,4 +12,9 @@ public class Constants {
 	public static int prac_kI = 0;
 	public static int prac_kD = 0;
 
+
+	public static int real_F;
+	public static int real_P;
+	public static int real_I;
+	public static int real_D;
 }

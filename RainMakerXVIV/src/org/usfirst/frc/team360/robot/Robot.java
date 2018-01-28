@@ -38,53 +38,8 @@ public class Robot extends TimedRobot {
 	public static Winch winch;
 	public static BufferedReader Buff;
 	
-	public static int F;
-	public static int P;
-	public static int I;
-	public static int D;
-
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
-	
-	public void RobotID() {
-		
-		try {
-			Buff = new BufferedReader(new FileReader("RobotID.txt"));
-			RobotMap.robotID = Buff.readLine();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (RobotMap.robotID == "comp") {
-			System.out.println("Comp Bot");
-			DriverStation.reportError("Comp Bot", false);
-			
-			F = Constants.comp_kF;
-			P = Constants.comp_kP;
-			I = Constants.comp_kI;
-			D = Constants.comp_kD;
-		}
-		else if (RobotMap.robotID == "practice") {
-			System.out.println("Practice Bot");
-			DriverStation.reportError("Practice Bot", false);
-			
-			F = Constants.prac_kF;
-			P = Constants.prac_kP;
-			I = Constants.prac_kI;
-			D = Constants.prac_kD;
-		}
-		else {
-			System.out.println("Invalid Robot ID");
-			DriverStation.reportError("Invalid Robot ID", false);
-			
-			F = Constants.comp_kF;
-			P = Constants.comp_kP;
-			I = Constants.comp_kI;
-			D = Constants.comp_kD;
-		}
-		
-		
-	}
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -98,6 +53,40 @@ public class Robot extends TimedRobot {
 		winch = new Winch();
 		oi = new OI();
 		
+		try {
+			Buff = new BufferedReader(new FileReader("RobotID.txt"));
+			RobotMap.robotID = Buff.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if ("comp".equals(RobotMap.robotID)) {
+			System.out.println("Comp Bot");
+			DriverStation.reportError("Comp Bot", false);
+			
+			Constants.real_F = Constants.comp_kF;
+			Constants.real_P = Constants.comp_kP;
+			Constants.real_I = Constants.comp_kI;
+			Constants.real_D = Constants.comp_kD;
+		}
+		else if ("practice".equals(RobotMap.robotID)) {
+			System.out.println("Practice Bot");
+			DriverStation.reportError("Practice Bot", false);
+			
+			Constants.real_F = Constants.prac_kF;
+			Constants.real_P = Constants.prac_kP;
+			Constants.real_I = Constants.prac_kI;
+			Constants.real_D = Constants.prac_kD;
+		}
+		else {
+			System.out.println("Invalid Robot ID");
+			DriverStation.reportError("Invalid Robot ID", false);
+			
+			Constants.real_F = Constants.comp_kF;
+			Constants.real_P = Constants.comp_kP;
+			Constants.real_I = Constants.comp_kI;
+			Constants.real_D = Constants.comp_kD;
+		}
 	}
 
 	/**
@@ -171,10 +160,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void testPeriodic() {
 
-//		System.out.println("F" + F);
-//		System.out.println("P" + P);
-//		System.out.println("I" + I);
-//		System.out.println("D" + D);
+		System.out.println("F" + Constants.real_F);
+		System.out.println("P" + Constants.real_P);
+		System.out.println("I" + Constants.real_I);
+		System.out.println("D" + Constants.real_D);
 	
 	}
 }
