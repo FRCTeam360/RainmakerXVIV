@@ -5,6 +5,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class CrossLineMotionProfiled extends CommandGroup {
     public CrossLineMotionProfiled() {
-    	addSequential(new FollowTrajectory("DriveStraight5Feet"));
+    	addSequential(new FollowTrajectory("CrossLine"));
     }
 }

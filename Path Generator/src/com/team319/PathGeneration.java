@@ -23,10 +23,19 @@ public class PathGeneration {
 	}
 	
 	public void generateAll(){
+		generateCrossLine();
 		generateCenterToRightSwitch();
 		generateCenterToLeftSwitch();
 		generateLeftToLeftSwitch();
 		generateRightToRightSwitch();
+	}
+
+	public void generateCrossLine(){
+		BobPath wantedPath = new BobPath(standardConfig, "CrossLine", 1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 0, 0));
+		//wantedPath.addWaypoint(new WaypointSequence.Waypoint(10, 100.25, Math.toRadians(0)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(140/12, 0, Math.toRadians(0)));
+		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
 	public void generateCenterToRightSwitch(){

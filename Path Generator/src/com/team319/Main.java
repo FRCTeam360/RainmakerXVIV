@@ -1,11 +1,5 @@
 package com.team319;
 
-import com.team254.lib.trajectory.WaypointSequence;
-import com.team254.lib.trajectory.io.VelocityOnlyFileSerializer;
-import com.team319.trajectory.BobPath;
-import com.team319.trajectory.BobPathGenerator;
-import com.team319.trajectory.SrxTranslatorConfig;
-
 /**
  * Forked from 254's 2014 Trajectory library just a comment to make a change
  * 
@@ -22,7 +16,7 @@ public class Main {
 		
 		// CANNOT do turns over 90 degrees
 		
-		generater.generateAll();
+		generater.generateCrossLine();
 		
 		
 	//	BobPathGenerator.exportPath("Paths", FiveFootTurn90reversed);
