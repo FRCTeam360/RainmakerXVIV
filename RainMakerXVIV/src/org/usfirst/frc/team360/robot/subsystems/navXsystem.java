@@ -12,12 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class navXsystem extends Subsystem {
 	
-    final static double kCollisionThreshold_DeltaG = 1.5f;
-	
     public static int timesTriggered = 0;
-    
-    public static double last_world_linear_accel_x;
-    public static double last_world_linear_accel_y;
 
 	@Override
 	protected void initDefaultCommand() {
@@ -79,19 +74,24 @@ public class navXsystem extends Subsystem {
 	
 	public static void navXcrash() {
 		
-	    double curr_world_linear_accel_x = RobotMap.navX.getWorldLinearAccelX();
-	    double currentJerkX = curr_world_linear_accel_x - last_world_linear_accel_x;
-	    last_world_linear_accel_x = curr_world_linear_accel_x;
-	    double curr_world_linear_accel_y = RobotMap.navX.getWorldLinearAccelY();
-	    double currentJerkY = curr_world_linear_accel_y - last_world_linear_accel_y;
-	    last_world_linear_accel_y = curr_world_linear_accel_y;
-		    
-	    if ( ( Math.abs(currentJerkX) > kCollisionThreshold_DeltaG ) ||
-	         ( Math.abs(currentJerkY) > kCollisionThreshold_DeltaG) ) {
+		RobotMap.curr_world_linear_accel_x = RobotMap.navX.getWorldLinearAccelX();
+		RobotMap.curr_world_linear_accel_y = RobotMap.navX.getWorldLinearAccelY();
+		
+		RobotMap.currentJerkX = RobotMap.curr_world_linear_accel_x - RobotMap.last_world_linear_accel_x;
+		RobotMap.currentJerkY = RobotMap.curr_world_linear_accel_y - RobotMap.last_world_linear_accel_y;
+
+		RobotMap.last_world_linear_accel_x = RobotMap.curr_world_linear_accel_x;
+		RobotMap.last_world_linear_accel_y = RobotMap.curr_world_linear_accel_y;
+		
+    	SmartDashboard.putNumber( "Jerk X: ", RobotMap.currentJerkX);
+    	SmartDashboard.putNumber( "Jerk Y: ", RobotMap.currentJerkY);
+		
+	    if (( Math.abs(RobotMap.currentJerkX) > RobotMap.kCollisionThreshold_DeltaG ) ||
+	         ( Math.abs(RobotMap.currentJerkY) > RobotMap.kCollisionThreshold_DeltaG)) {
 	        timesTriggered++;
-	        Robot.logger.logRobotNavX();
+	        RobotMap.crashed = true;
 	        DriverStation.reportError("TRIGGERED!!!, Times Triggered: " + timesTriggered, false);
+	        
 	    }
 	}
-	
 }

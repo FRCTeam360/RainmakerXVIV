@@ -25,9 +25,9 @@ public class Logger extends Subsystem {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 			Date date = new Date(); 
 			String name = dateFormat.format(date);
-			Log.createNewFile();
 			fw = new FileWriter(Log.getAbsoluteFile());
 			bw = new BufferedWriter(fw);
+			Log.createNewFile();
 			String startFile = name + '\n';
 			bw.write(startFile);
 			bw.flush();
@@ -38,8 +38,8 @@ public class Logger extends Subsystem {
 	public void logRobotNavX() {
 		try {
 			bw.write("navX Triggered" + '\n');
-			bw.write('\t' + "Accel X: " + RobotMap.accelX + '\n');
-			bw.write('\t' + "Accel Y: " + RobotMap.accelY + '\n');
+			bw.write('\t' + "Jerk X: " + RobotMap.currentJerkX + '\n');
+			bw.write('\t' + "Jerk Y: " + RobotMap.currentJerkY + '\n');
 			bw.flush();
 		} catch (Exception e) {
 			

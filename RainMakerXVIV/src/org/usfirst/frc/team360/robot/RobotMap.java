@@ -21,8 +21,7 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.SPI;
-
-
+import edu.wpi.first.wpilibj.VictorSP;
 
 public class RobotMap {
 	
@@ -33,14 +32,25 @@ public class RobotMap {
 	public static Compressor compressor = new Compressor();
 	
 	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
-
-	public static TalonSRX motorL1 = new TalonSRX(0);
-	public static TalonSRX motorL2 = new TalonSRX(1);
-	public static TalonSRX motorR1 = new TalonSRX(2);
-	public static TalonSRX motorR2 = new TalonSRX(3);
 	
+	public static VictorSP motorL1 = new VictorSP(3);
+	public static VictorSP motorR1 = new VictorSP(1);
+	
+	//Logger Variables
 	public static String RobotState = "Disabled";
 	
+	//NavX Variables 
+	public final static double kCollisionThreshold_DeltaG = .2f;
+	public static boolean crashed = false;
+	
+    public static double last_world_linear_accel_x;
+    public static double last_world_linear_accel_y;
+	
+    public static double curr_world_linear_accel_y = RobotMap.navX.getWorldLinearAccelY();
+    public static double currentJerkY = curr_world_linear_accel_y - last_world_linear_accel_y;
+    public static double curr_world_linear_accel_x = RobotMap.navX.getWorldLinearAccelX();
+    public static double currentJerkX = curr_world_linear_accel_x - last_world_linear_accel_x;
+
 	public static float accelX;
 	public static float accelY;
 	
@@ -60,5 +70,5 @@ public class RobotMap {
 	public static float QuaternionX;
 	public static float QuaternionY;
 	public static float QuaternionZ;
-	
+
 }
