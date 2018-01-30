@@ -1,15 +1,9 @@
 package org.usfirst.frc.team360.robot.commands;
 
-import java.util.Set;
-
-import org.usfirst.frc.team360.robot.OI;
-import org.usfirst.frc.team360.robot.Robot;
+import org.usfirst.frc.team360.robot.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class RunWinchUp extends Command {
 
     public RunWinchUp() {
@@ -24,7 +18,7 @@ public class RunWinchUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.winch.setMotorspeed(0.5);
+    	Robot.winch.setMotorSpeed(0.5);
    }
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -35,7 +29,7 @@ public class RunWinchUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.winch.setMotorspeed(0);
+    	Robot.winch.stop();
     }
 
     // Called when another command which requires one or more of the same

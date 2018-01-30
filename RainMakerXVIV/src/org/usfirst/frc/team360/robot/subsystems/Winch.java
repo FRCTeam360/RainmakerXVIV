@@ -1,10 +1,6 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
-import java.awt.Robot;
-import java.util.Set;
-
 import org.usfirst.frc.team360.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -12,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Winch extends Subsystem {
-	VictorSP Winch = RobotMap.motorWinch1;
-	VictorSP Winch1 = RobotMap.motorWinch2;
+	VictorSP winch = RobotMap.motorWinch1;
+	VictorSP winch1 = RobotMap.motorWinch2;
 	
 	
 
@@ -25,10 +21,13 @@ public class Winch extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
-	public void setMotorspeed(double speed) {
-		Winch.set(speed);{
-	    Winch1.set(speed);
-	    }
+	public void setMotorSpeed(double speed) {
+		winch.set(speed);
+	    winch1.set(speed);
+	}
+	public void stop() {
+		winch.set(0);
+	    winch1.set(0);
 	}
 }
 

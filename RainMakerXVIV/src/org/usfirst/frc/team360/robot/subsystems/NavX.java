@@ -1,6 +1,5 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
-import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
 import org.usfirst.frc.team360.robot.subsystems.NavX;
 
@@ -19,7 +18,7 @@ public class NavX extends Subsystem {
 		
 	}
 	
-	public static void NavXRead() {
+	public void NavXRead() {
 		
 	    	RobotMap.accelX = RobotMap.navX.getRawAccelX();
 	    	RobotMap.accelY = RobotMap.navX.getRawAccelY();
@@ -72,7 +71,7 @@ public class NavX extends Subsystem {
 	    	
 	}
 	
-	public static void NavXCrash() {
+	public void NavXCrash() {
 		
 		RobotMap.curr_world_linear_accel_x = RobotMap.navX.getWorldLinearAccelX();
 		RobotMap.curr_world_linear_accel_y = RobotMap.navX.getWorldLinearAccelY();
@@ -83,8 +82,8 @@ public class NavX extends Subsystem {
 		RobotMap.last_world_linear_accel_x = RobotMap.curr_world_linear_accel_x;
 		RobotMap.last_world_linear_accel_y = RobotMap.curr_world_linear_accel_y;
 		
-    	SmartDashboard.putNumber( "Jerk X: ", RobotMap.currentJerkX);
-    	SmartDashboard.putNumber( "Jerk Y: ", RobotMap.currentJerkY);
+		SmartDashboard.putNumber( "Jerk X: ", RobotMap.currentJerkX);
+    		SmartDashboard.putNumber( "Jerk Y: ", RobotMap.currentJerkY);
 		
 	    if (( Math.abs(RobotMap.currentJerkX) > RobotMap.kCollisionThreshold_DeltaG ) ||
 	         ( Math.abs(RobotMap.currentJerkY) > RobotMap.kCollisionThreshold_DeltaG)) {

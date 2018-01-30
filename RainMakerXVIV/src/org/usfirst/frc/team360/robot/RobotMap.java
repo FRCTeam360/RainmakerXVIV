@@ -12,7 +12,6 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.VictorSP;
 
@@ -48,6 +47,8 @@ public class RobotMap {
 	
 	public static VictorSP motorWinch1 = new VictorSP(0);
 	public static VictorSP motorWinch2 = new VictorSP(1);
+	public static VictorSP motorIntake1 = new VictorSP(2);
+	public static VictorSP motorIntake2 = new VictorSP(3);
 	
 	//NavX Variables 
 	public final static double kCollisionThreshold_DeltaG = .5f;

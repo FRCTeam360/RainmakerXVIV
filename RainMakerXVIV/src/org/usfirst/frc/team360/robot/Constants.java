@@ -18,4 +18,16 @@ public class Constants {
 	public static int real_P;
 	public static int real_I;
 	public static int real_D;
+	public void writeCompBotVariables() {
+		Constants.real_F = Constants.comp_kF;
+		Constants.real_P = Constants.comp_kP;
+		Constants.real_I = Constants.comp_kI;
+		Constants.real_D = Constants.comp_kD;
+	}
+	public void writePracticeBotVariables() {
+		Constants.real_F = Constants.prac_kF;
+		Constants.real_P = Constants.prac_kP;
+		Constants.real_I = Constants.prac_kI;
+		Constants.real_D = Constants.prac_kD;
+	}
 }

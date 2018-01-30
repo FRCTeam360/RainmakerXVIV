@@ -1,8 +1,6 @@
 package org.usfirst.frc.team360.robot.commands;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Notifier;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.pathfollower.*;
@@ -48,20 +46,6 @@ public class FollowTrajectory extends Command {
 			pidfSlot = _pidfSlot;
 		}
 
-		private TrajectoryDuration GetTrajectoryDuration(int durationMs)
-		{	 
-			/* create return value */
-			TrajectoryDuration retval = TrajectoryDuration.Trajectory_Duration_0ms;
-			/* convert duration to supported type */
-			retval = retval.valueOf(durationMs);
-			/* check that it is valid */
-			if (retval.value != durationMs) {
-				DriverStation.reportError("Trajectory Duration not supported - use configMotionProfileTrajectoryPeriod instead", false);		
-			}
-			/* pass to caller */
-			return retval;
-		}
-	
 		public void run() {
 			if((!talon.isMotionProfileTopLevelBufferFull()) && (6 < prof.numPoints) && (num < prof.numPoints)){
 				point = new TrajectoryPoint();
@@ -146,7 +130,6 @@ public class FollowTrajectory extends Command {
 
 
 	// Runs the runnable
-	//private Notifier SRXBufferReader = new Notifier(new TalonBufferProcessor());
 	private Notifier leftTalonSender;
 	private Notifier rightTalonSender;
 	// constructor
@@ -155,11 +138,8 @@ public class FollowTrajectory extends Command {
 		trajectoryToFollow = _trajectoryName;
 		traj = importer.importSrxTrajectory(trajectoryToFollow);
 	}
-	double time;
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		time = Timer.getFPGATimestamp();
-		System.out.println("started");
 		setUpTalon(leftLead);
 		setUpTalon(rightLead);
 
@@ -173,8 +153,6 @@ public class FollowTrajectory extends Command {
 		
 		leftTalonSender.startPeriodic(.005);
 		rightTalonSender.startPeriodic(.005);
-
-		System.out.println("ended at: " + (Timer.getFPGATimestamp() - time));
 	}
 
 	// Called repeatedly when this Command is scheduled to run

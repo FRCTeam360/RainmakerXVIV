@@ -15,12 +15,18 @@ public class OI {
 	 public static Button buttonDriveUp = new JoystickButton(joyR, 1);
 	 
 	 public static Button buttonWinchUp = new JoystickButton(joyOI, 1);
-	 public static Button buttonWinchDown = new JoystickButton(joyOI, 3);
+	 public static Button buttonWinchDown = new JoystickButton(joyOI, 2);
 	 
+	 public static Button buttonIntake = new JoystickButton(joyOI, 3);
+	 public static Button buttonOutTake = new JoystickButton(joyOI, 4);
 	 public OI() {
 			buttonDriveUp.whenPressed(new ShiftUp());
 			buttonDriveDown.whenPressed(new ShiftDown());
+			
 			buttonWinchUp.whileHeld(new RunWinchUp());
 			buttonWinchDown.whileHeld(new RunWinchDown());
+			
+			buttonIntake.whileHeld(new IntakeIn());
+			buttonOutTake.whileHeld(new IntakeOut());
 	 }
 }

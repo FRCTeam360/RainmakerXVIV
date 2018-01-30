@@ -10,9 +10,9 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class DriveTrain extends Subsystem {
-	public static TalonSRX motorRMaster = RobotMap.motorR1;
+	public TalonSRX motorRMaster = RobotMap.motorR1;
 	static TalonSRX motorRSlave = RobotMap.motorR2;
-	public static TalonSRX motorLMaster = RobotMap.motorL1;
+	public TalonSRX motorLMaster = RobotMap.motorL1;
 	static TalonSRX motorLSlave = RobotMap.motorL2;
     public static int DEFAULT_TIMEOUT_MS = 10;
 
