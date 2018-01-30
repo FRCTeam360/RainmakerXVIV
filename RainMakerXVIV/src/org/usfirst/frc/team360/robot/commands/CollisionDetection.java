@@ -3,7 +3,7 @@ package org.usfirst.frc.team360.robot.commands;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
-import org.usfirst.frc.team360.robot.subsystems.NavXSystem;
+import org.usfirst.frc.team360.robot.subsystems.NavX;
 
 import edu.wpi.first.wpilibj.command.Command;
 

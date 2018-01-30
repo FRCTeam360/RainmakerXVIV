@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain;
 	public static OI oi;
 	public static Winch winch;
-	public static NavXSystem navX;
+	public static NavX navX;
 	public static String selectedStartPosition = "Center";
 	Command autonomousCommand;
 	
@@ -95,7 +95,7 @@ public class Robot extends TimedRobot {
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		winch = new Winch();
-		navX = new NavXSystem();
+		navX = new NavX();
 		oi = new OI();
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");

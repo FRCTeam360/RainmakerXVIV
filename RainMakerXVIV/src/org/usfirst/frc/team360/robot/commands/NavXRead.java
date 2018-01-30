@@ -13,7 +13,7 @@ import org.usfirst.frc.team360.robot.RobotMap;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team360.robot.subsystems.NavXSystem;
+import org.usfirst.frc.team360.robot.subsystems.NavX;
 
 /**
  *

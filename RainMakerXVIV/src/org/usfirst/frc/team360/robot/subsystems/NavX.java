@@ -2,7 +2,7 @@ package org.usfirst.frc.team360.robot.subsystems;
 
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
-import org.usfirst.frc.team360.robot.subsystems.NavXSystem;
+import org.usfirst.frc.team360.robot.subsystems.NavX;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class NavXSystem extends Subsystem {
+public class NavX extends Subsystem {
 	
     public static int timesTriggered = 0;
 
