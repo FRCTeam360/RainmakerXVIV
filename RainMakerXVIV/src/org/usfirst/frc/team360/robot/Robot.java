@@ -32,10 +32,15 @@ public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain;
 	public static OI oi;
 	public static Winch winch;
+	public static NavXSystem navX;
+	Command CollisionDetection;
+	Command NavX;
 	public static String selectedStartPosition = "Center";
 	Command autonomousCommand;
+	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
+	
 	enum ScaleSide {LEFT, RIGHT};
 	ScaleSide scaleSide; 
 	enum SwitchSide {LEFT, RIGHT};
@@ -50,7 +55,10 @@ public class Robot extends TimedRobot {
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		winch = new Winch();
+		navX = new NavXSystem();
 		oi = new OI();
+		CollisionDetection = new CollisionDetection();
+		NavX = new NavXRead();
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
@@ -243,6 +251,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		NavX.start();
+		CollisionDetection.start();
 		Scheduler.getInstance().run();
 	}
 
