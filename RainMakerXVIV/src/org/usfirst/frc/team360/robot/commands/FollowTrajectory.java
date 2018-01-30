@@ -24,7 +24,7 @@ public class FollowTrajectory extends Command {
 	TalonSRX rightLead = Robot.driveTrain.motorRMaster;
 	
 	private SrxTrajectory traj;
-	private SrxTrajectoryImporter importer = new SrxTrajectoryImporter("/home/lvuser");
+	private SrxTrajectoryImporter importer = new SrxTrajectoryImporter("/home/lvuser/AutonomousPaths");
 
 	private MotionProfileStatus rightStatus = new MotionProfileStatus();
 	private MotionProfileStatus leftStatus = new MotionProfileStatus();

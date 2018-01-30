@@ -22,7 +22,7 @@ public class Main {
 		
 		// CANNOT do turns over 90 degrees
 		
-		generater.generateCenterToLeftSwitch();
+		generater.generateAll();
 		
 		
 	//	BobPathGenerator.exportPath("Paths", FiveFootTurn90reversed);

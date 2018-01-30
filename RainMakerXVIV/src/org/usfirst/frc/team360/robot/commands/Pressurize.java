@@ -3,6 +3,7 @@ package org.usfirst.frc.team360.robot.commands;
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -24,12 +25,9 @@ public class Pressurize extends Command {
     }
 
     protected void execute() {
-    	System.out.println(shouldRun+ " " + RobotMap.pdp.getVoltage());
-//    	System.out.println(RobotMap.pdp.getVoltage());
-//    	System.out.println(((double)Math.round(timer.get()*100))/100);
-    	if(shouldRun == true && RobotMap.pdp.getVoltage() > 10.5) {
+    	if(shouldRun == true && RobotController.getInputVoltage() > 10) {
         	Robot.pneumatics.pressurize(); 	
-    	} else if (shouldRun == true && ! (RobotMap.pdp.getVoltage() > 11.5)) {
+    	} else if (shouldRun == true && ! (RobotController.getInputVoltage() > 10)) {
     		shouldRun = false;
     		Robot.pneumatics.stop();
     		timer.reset();

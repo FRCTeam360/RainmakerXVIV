@@ -154,63 +154,65 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		getLightConfiguration();
-		if("Center".equals(startChooser.getSelected())){
-			if("Cross Line".equals(firstPriority.getSelected())){
-				autonomousCommand = new CrossLineMotionProfiled();
-				SmartDashboard.putString("Selected Auto", "Crossing Line");
-			} else if("Either Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
-					autonomousCommand = new StartCenterDropCubeLeftSwitch();
-					SmartDashboard.putString("Selected Auto", "Center to Left auton");
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
-					autonomousCommand = new StartCenterDropCubeRightSwitch();
-					SmartDashboard.putString("Selected Auto", "Center to Right auton");
-				}
-			} else if("Left Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
-					autonomousCommand = new StartCenterDropCubeLeftSwitch();
-					SmartDashboard.putString("Selected Auto", "Center to Left auton");
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
-					autonomousCommand = new DoNothingAuto();
-					SmartDashboard.putString("Selected Auto", "Doing Nothing");
-				}
-			} else if("Right Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
-					autonomousCommand = new DoNothingAuto();
-					SmartDashboard.putString("Selected Auto", "Doing Nothing");
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
-					autonomousCommand = new StartCenterDropCubeRightSwitch();
-					SmartDashboard.putString("Selected Auto", "Center to Right auton");
-				}
-			}
-		} else if("Left".equals(startChooser.getSelected())){
-			if("Cross Line".equals(firstPriority.getSelected())){
-				autonomousCommand = new CrossLineMotionProfiled();
-				SmartDashboard.putString("Selected Auto", "Crossing Line");
-			} else if("Close Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
-					autonomousCommand = new StartLeftDropCubeLeftSwitch();
-					SmartDashboard.putString("Selected Auto", "Left to Left auton");
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
-					autonomousCommand = new DoNothingAuto();
-					SmartDashboard.putString("Selected Auto", "Doing Nothing");
-
-				}
-			}
-		} else if("Right".equals(startChooser.getSelected())){
-			if("Cross Line".equals(firstPriority.getSelected())){
-				autonomousCommand = new CrossLineMotionProfiled();
-				SmartDashboard.putString("Selected Auto", "Crossing Line");
-			} else if("Close Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
-					autonomousCommand = new DoNothingAuto();
-					SmartDashboard.putString("Selected Auto", "Doing Nothing");
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
-					autonomousCommand = new StartRightDropCubeRightSwitch();
-					SmartDashboard.putString("Selected Auto", "Right to Right auton");
-				}
-			}
-		}
+//		if("Center".equals(startChooser.getSelected())){
+//			if("Cross Line".equals(firstPriority.getSelected())){
+//				autonomousCommand = new CrossLineMotionProfiled();
+//				SmartDashboard.putString("Selected Auto", "Crossing Line");
+//			} else if("Either Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new StartCenterDropCubeLeftSwitch();
+//					SmartDashboard.putString("Selected Auto", "Center to Left auton");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new StartCenterDropCubeRightSwitch();
+//					SmartDashboard.putString("Selected Auto", "Center to Right auton");
+//				}
+//			} else if("Left Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new StartCenterDropCubeLeftSwitch();
+//					SmartDashboard.putString("Selected Auto", "Center to Left auton");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new DoNothingAuto();
+//					SmartDashboard.putString("Selected Auto", "Doing Nothing");
+//				}
+//			} else if("Right Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new DoNothingAuto();
+//					SmartDashboard.putString("Selected Auto", "Doing Nothing");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new StartCenterDropCubeRightSwitch();
+//					SmartDashboard.putString("Selected Auto", "Center to Right auton");
+//				}
+//			}
+//		} else if("Left".equals(startChooser.getSelected())){
+//			if("Cross Line".equals(firstPriority.getSelected())){
+//				autonomousCommand = new CrossLineMotionProfiled();
+//				SmartDashboard.putString("Selected Auto", "Crossing Line");
+//			} else if("Close Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new StartLeftDropCubeLeftSwitch();
+//					SmartDashboard.putString("Selected Auto", "Left to Left auton");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new DoNothingAuto();
+//					SmartDashboard.putString("Selected Auto", "Doing Nothing");
+//
+//				}
+//			}
+//		} else if("Right".equals(startChooser.getSelected())){
+//			if("Cross Line".equals(firstPriority.getSelected())){
+//				autonomousCommand = new CrossLineMotionProfiled();
+//				SmartDashboard.putString("Selected Auto", "Crossing Line");
+//			} else if("Close Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new DoNothingAuto();
+//					SmartDashboard.putString("Selected Auto", "Doing Nothing");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new StartRightDropCubeRightSwitch();
+//					SmartDashboard.putString("Selected Auto", "Right to Right auton");
+//				}
+//			}
+//		}
+		autonomousCommand = new StartCenterDropCubeLeftSwitch();
+		autonomousCommand.start();
 	}
 
 	/**
@@ -243,7 +245,13 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+		try {
+			System.out.println(driveTrain.getLeftVelocityRPM() + "LEFT");
+			System.out.println(driveTrain.getRightVelocityRPM() + "RIGHT");
+			Scheduler.getInstance().run();
+		} catch(Exception e) {
+			DriverStation.reportError(e.toString(), true);
+		}
 	}
 
 	/**
