@@ -37,7 +37,7 @@ public class RobotMap {
 
 	public static AHRS navX = new AHRS(SPI.Port.kMXP);
 	
-	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 1);
+	public static String robotID = "comp";
 	 
 	public static Compressor compressor = new Compressor();
 	

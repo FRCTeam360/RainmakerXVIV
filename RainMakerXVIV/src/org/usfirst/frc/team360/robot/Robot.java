@@ -18,6 +18,10 @@ import org.usfirst.frc.team360.robot.commands.autos.*;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.subsystems.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -39,6 +43,9 @@ public class Robot extends TimedRobot {
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
 	
+
+	public static BufferedReader Buff;
+	
 	enum ScaleSide {LEFT, RIGHT};
 	ScaleSide scaleSide; 
 	enum SwitchSide {LEFT, RIGHT};
@@ -49,6 +56,41 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
+		try {
+			Buff = new BufferedReader(new FileReader("RobotID.txt"));
+			RobotMap.robotID = Buff.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if ("comp".equals(RobotMap.robotID)) {
+			System.out.println("Comp Bot");
+			DriverStation.reportError("Comp Bot", false);
+			
+			Constants.real_F = Constants.comp_kF;
+			Constants.real_P = Constants.comp_kP;
+			Constants.real_I = Constants.comp_kI;
+			Constants.real_D = Constants.comp_kD;
+		}
+		else if ("practice".equals(RobotMap.robotID)) {
+			System.out.println("Practice Bot");
+			DriverStation.reportError("Practice Bot", false);
+			
+			Constants.real_F = Constants.prac_kF;
+			Constants.real_P = Constants.prac_kP;
+			Constants.real_I = Constants.prac_kI;
+			Constants.real_D = Constants.prac_kD;
+		}
+		else {
+			System.out.println("Invalid Robot ID");
+			DriverStation.reportError("Invalid Robot ID", false);
+			
+			Constants.real_F = Constants.comp_kF;
+			Constants.real_P = Constants.comp_kP;
+			Constants.real_I = Constants.comp_kI;
+			Constants.real_D = Constants.comp_kD;
+		}
+
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
