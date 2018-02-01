@@ -36,6 +36,7 @@ public class Robot extends TimedRobot {
 	public static NavX navX;
 	public static Intake intake;
 	public static OI oi;
+	public static LED LED;
 	public static String selectedStartPosition = "Center";
 	Command autonomousCommand;
 	
@@ -99,6 +100,7 @@ public class Robot extends TimedRobot {
 		navX = new NavX();
 		intake = new Intake();
 		oi = new OI();
+		LED = new LED();
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
