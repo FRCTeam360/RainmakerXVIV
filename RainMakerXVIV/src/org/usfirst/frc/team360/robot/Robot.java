@@ -83,7 +83,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		constants = new Constants();
 		try {
-			Buff = new BufferedReader(new FileReader("RobotID.txt"));
+			Buff = new BufferedReader(new FileReader("home/lvuser/RobotID.txt"));
 			RobotMap.robotID = Buff.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -305,8 +305,12 @@ public class Robot extends TimedRobot {
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 		}
+<<<<<<< HEAD
 		*/
 		
+=======
+		System.out.println(RobotMap.shiftState);
+>>>>>>> dev
 		Scheduler.getInstance().run();
 	
 	}
