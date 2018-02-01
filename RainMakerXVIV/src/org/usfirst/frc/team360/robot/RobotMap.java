@@ -81,4 +81,9 @@ public class RobotMap {
 	public static float QuaternionX;
 	public static float QuaternionY;
 	public static float QuaternionZ;
+	public static String matchType = "";
+	public static String eventName = "";
+	public static String getAlliance = "";
+	public static int matchNumber = 0;
+	public static int getLocation = 0;
 }

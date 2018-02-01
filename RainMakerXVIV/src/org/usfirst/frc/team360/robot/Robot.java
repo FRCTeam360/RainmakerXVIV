@@ -75,6 +75,11 @@ public class Robot extends TimedRobot {
 }*/
 	@Override
 	public void robotInit() {
+		RobotMap.getLocation = DriverStation.getInstance().getLocation();
+		RobotMap.matchType = DriverStation.getInstance().getMatchType().name();
+		RobotMap.eventName = DriverStation.getInstance().getEventName();
+		RobotMap.matchNumber = DriverStation.getInstance().getMatchNumber();
+		RobotMap.getAlliance = DriverStation.getInstance().getAlliance().name();
 		constants = new Constants();
 		try {
 			Buff = new BufferedReader(new FileReader("RobotID.txt"));
