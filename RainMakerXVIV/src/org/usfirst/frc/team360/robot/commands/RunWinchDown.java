@@ -17,6 +17,7 @@ public class RunWinchDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.logger.logWinchDown();
     }
 
     // Called repeatedly when this Command is scheduled to run

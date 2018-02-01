@@ -12,6 +12,7 @@ public class ShiftDown extends Command {
 
     protected void initialize() {
     	Robot.shifter.close();
+    	Robot.logger.logShiftDown();
     }
 
     protected void execute() {

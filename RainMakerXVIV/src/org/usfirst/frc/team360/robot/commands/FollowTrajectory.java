@@ -140,6 +140,8 @@ public class FollowTrajectory extends Command {
 	}
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		
+		Robot.logger.logFollowTrajectory();
 		setUpTalon(leftLead);
 		setUpTalon(rightLead);
 

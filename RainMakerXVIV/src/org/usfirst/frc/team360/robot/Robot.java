@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team360.robot.commands.LogFMSSideColors;
+import org.usfirst.frc.team360.robot.commands.NavXRead;
 import org.usfirst.frc.team360.robot.commands.autos.*;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.subsystems.*;
@@ -35,14 +38,16 @@ public class Robot extends TimedRobot {
 	public static Winch winch;
 	public static NavX navX;
 	public static Intake intake;
+	public static Logger logger;
 	public static OI oi;
 	public static String selectedStartPosition = "Center";
 	Command autonomousCommand;
+	Command navXRead;
+	Command fmsColorRead;
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
 	
-
 	public static BufferedReader Buff;
 	
 	Constants constants;
@@ -51,6 +56,7 @@ public class Robot extends TimedRobot {
 	ScaleSide scaleSide; 
 	enum SwitchSide {LEFT, RIGHT};
 	SwitchSide switchSide; 
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -98,7 +104,10 @@ public class Robot extends TimedRobot {
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
+		logger = new Logger();
 		oi = new OI();
+		navXRead = new NavXRead();
+		fmsColorRead = new LogFMSSideColors(); 
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
@@ -113,7 +122,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		RobotMap.robotMode = "Disabled";
+		logger.closeLogger();
 	}
 
 	@Override
@@ -187,20 +197,14 @@ public class Robot extends TimedRobot {
 			scaleSide = ScaleSide.RIGHT;
 			//Put right auto code here
 		}
+		RobotMap.FMSSideData = gameData;
+		fmsColorRead .start();
 	}
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * <p>You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
-	 */
+
 	@Override
 	public void autonomousInit() {
+		RobotMap.robotMode = "Auto";
+		logger.initLogger();
 		getLightConfiguration();
 //		if("Center".equals(startChooser.getSelected())){
 //			if("Cross Line".equals(firstPriority.getSelected())){
@@ -282,10 +286,10 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
+		RobotMap.robotMode = "Tele OP";
+		logger.initLogger();
+		getLightConfiguration();
+		navXRead.start();
 	}
 
 	/**
@@ -293,14 +297,18 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		try {
+		
+		/*try {
 			System.out.println(driveTrain.getLeftVelocityRPM() + "LEFT");
 			System.out.println(driveTrain.getRightVelocityRPM() + "RIGHT");
 			Scheduler.getInstance().run();
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 		}
+		*/
+		
 		Scheduler.getInstance().run();
+	
 	}
 
 	/**
