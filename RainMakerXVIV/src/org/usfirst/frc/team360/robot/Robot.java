@@ -7,19 +7,26 @@
 
 package org.usfirst.frc.team360.robot;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.usfirst.frc.team360.robot.commands.LEDcolor;
+import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
+import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team360.robot.subsystems.Intake;
+import org.usfirst.frc.team360.robot.subsystems.LED;
+import org.usfirst.frc.team360.robot.subsystems.NavX;
+import org.usfirst.frc.team360.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team360.robot.subsystems.Shifter;
+import org.usfirst.frc.team360.robot.subsystems.Winch;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team360.robot.commands.autos.*;
-import org.usfirst.frc.team360.robot.OI;
-import org.usfirst.frc.team360.robot.subsystems.*;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,6 +46,7 @@ public class Robot extends TimedRobot {
 	public static LED LED;
 	public static String selectedStartPosition = "Center";
 	Command autonomousCommand;
+	Command LEDcolor;
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
@@ -99,8 +107,10 @@ public class Robot extends TimedRobot {
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
-		oi = new OI();
 		LED = new LED();
+		LEDcolor = new LEDcolor();
+		oi = new OI();
+		
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
@@ -284,10 +294,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
+		LEDcolor.start();
 	}
 
 	/**

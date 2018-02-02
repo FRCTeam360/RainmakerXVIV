@@ -22,6 +22,14 @@ public class LED extends Subsystem {
 		LEDControl(0.61);
 		RobotMap.color = Color.RED;
 	}
+	public void setLEDOrange() {
+		LEDControl(0.65);
+		RobotMap.color = Color.ORANGE;
+	}
+	public void setLEDYellow() {
+		LEDControl(0.69);
+		RobotMap.color = Color.YELLOW;
+	}
 	public void setLEDGreen() {
 		LEDControl(0.77);
 		RobotMap.color = Color.GREEN;
@@ -34,20 +42,10 @@ public class LED extends Subsystem {
 		LEDControl(-0.09);
 		RobotMap.color = Color.PULSING;
 	}
-	public void setLEDOrange() {
-		LEDControl(0.65);
-		RobotMap.color = Color.ORANGE;
+	public void setLEDOff() {
+		LEDControl(0);
+		RobotMap.color = Color.OFF;
 	}
-	public void setLEDYellow() {
-		LEDControl(0.69);
-		RobotMap.color = Color.YELLOW;
-	}
-	public void setLEDRainbow() {
-		//Dont worry about it, its coming later - gavin
-	}
-//	public void setLEDBlack() {
-//		LEDControl(0.99);
-//	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

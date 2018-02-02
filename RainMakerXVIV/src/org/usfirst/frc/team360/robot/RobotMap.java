@@ -85,19 +85,7 @@ public class RobotMap {
 	public static float QuaternionY;
 	public static float QuaternionZ;
 	
-//	public enum Colors{
-//		GREEN(0.77), BLUE(0.87), RED(0.61), ORANGE(0.65), OFF(0);
-//		Colors(double color){
-//			this.color = color;
-//		}
-//		private final double color;
-//		
-//	public double Color() {
-//		return color;
-//		}
-//	}
-	
-	public static enum Color{GREEN, BLUE, RED, ORANGE, YELLOW, PULSING, OFF};
+	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, OFF};
 	public static Color color = Color.OFF;
 	
 

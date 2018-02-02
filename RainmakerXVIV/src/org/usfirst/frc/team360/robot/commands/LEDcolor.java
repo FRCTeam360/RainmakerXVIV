@@ -1,5 +1,6 @@
 package org.usfirst.frc.team360.robot.commands;
 
+import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -10,9 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 public class LEDcolor extends Command {
 
     public LEDcolor() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+
     }
+    
+    
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -20,7 +22,30 @@ public class LEDcolor extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(RobotMap.color)
+    	
+    	switch (RobotMap.color) {
+	    	case RED:
+	    		Robot.LED.setLEDRed();
+	    		break;
+	    	case ORANGE:
+	    		Robot.LED.setLEDOrange();
+	    		break;
+	    	case YELLOW:
+	    		Robot.LED.setLEDYellow();
+	    		break;
+	    	case GREEN:
+	    		Robot.LED.setLEDGreen();
+	    		break;
+	    	case BLUE:
+	    		Robot.LED.setLEDBlue();
+	    		break;
+	    	case PULSING:
+	    		Robot.LED.setLEDPulse();
+	    		break;
+			case OFF:
+				Robot.LED.setLEDOff();
+				break;
+	    }
     }
 
     // Make this return true when this Command no longer needs to run execute()
