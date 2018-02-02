@@ -298,26 +298,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		
-		/*try {
-			System.out.println(driveTrain.getLeftVelocityRPM() + "LEFT");
-			System.out.println(driveTrain.getRightVelocityRPM() + "RIGHT");
-			Scheduler.getInstance().run();
-		} catch(Exception e) {
-			DriverStation.reportError(e.toString(), true);
-		}
-<<<<<<< HEAD
-		*/
-		
-=======
 		System.out.println(RobotMap.shiftState);
->>>>>>> dev
+
 		Scheduler.getInstance().run();
 	
 	}
 
-	/**
-	 * This function is called periodically during test mode.
-	 */
 	@Override
 	public void testPeriodic() {
 	}

@@ -159,6 +159,14 @@ public class Logger extends Subsystem {
 		}
 	}
 	
+	public void logBadShiftValue() {
+		try {
+			bw.write("ENMU VALUE FOR SHIFTER INVALED" + '\n');
+		} catch (Exception e) {
+			
+		}
+	}
+	
 	public void closeLogger() {
 		try {
 			bw.close();

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team360.robot.commands;
 
 import org.usfirst.frc.team360.robot.Robot;
+import org.usfirst.frc.team360.robot.RobotMap;
+import org.usfirst.frc.team360.robot.RobotMap.ShiftState;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,12 +13,10 @@ public class ShiftDown extends Command {
     }
 
     protected void initialize() {
-<<<<<<< HEAD
-    	Robot.shifter.close();
-    	Robot.logger.logShiftDown();
-=======
+
     	Robot.shifter.shiftDown();
->>>>>>> dev
+    	Robot.logger.logShiftDown();
+    	
     }
 
     protected void execute() {
