@@ -1,4 +1,4 @@
-package org.usfirst.frc.team360.robot.commands;
+package org.usfirst.frs.team360.robot.commands.color;
 
 import org.usfirst.frc.team360.robot.Robot;
 
@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LEDRed extends Command {
+public class LEDBlue extends Command {
 
-    public LEDRed() {
+    public LEDBlue() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.LED);
@@ -21,7 +21,7 @@ public class LEDRed extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.LED.setLEDRed();
+    	Robot.LED.setLEDBlue();
     }
 
     // Make this return true when this Command no longer needs to run execute()

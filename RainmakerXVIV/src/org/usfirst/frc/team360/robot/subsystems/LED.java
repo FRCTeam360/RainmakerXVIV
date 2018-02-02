@@ -1,6 +1,7 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
 import org.usfirst.frc.team360.robot.RobotMap;
+import org.usfirst.frc.team360.robot.RobotMap.Color;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,25 +20,34 @@ public class LED extends Subsystem {
 	}
 	public void setLEDRed() {
 		LEDControl(0.61);
+		RobotMap.color = Color.RED;
 	}
 	public void setLEDGreen() {
 		LEDControl(0.77);
+		RobotMap.color = Color.GREEN;
 	}
 	public void setLEDBlue() {
 		LEDControl(0.87);
+		RobotMap.color = Color.BLUE;
 	}
 	public void setLEDPulse() {
 		LEDControl(-0.09);
+		RobotMap.color = Color.PULSING;
 	}
 	public void setLEDOrange() {
 		LEDControl(0.65);
+		RobotMap.color = Color.ORANGE;
 	}
 	public void setLEDYellow() {
 		LEDControl(0.69);
+		RobotMap.color = Color.YELLOW;
 	}
-	public void setLEDBlack() {
-		LEDControl(0.99);
+	public void setLEDRainbow() {
+		//Dont worry about it, its coming later - gavin
 	}
+//	public void setLEDBlack() {
+//		LEDControl(0.99);
+//	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

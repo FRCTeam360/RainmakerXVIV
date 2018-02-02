@@ -1,18 +1,17 @@
 package org.usfirst.frc.team360.robot.commands;
 
-import org.usfirst.frc.team360.robot.Robot;
+import org.usfirst.frc.team360.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LEDGreen extends Command {
+public class LEDcolor extends Command {
 
-    public LEDGreen() {
+    public LEDcolor() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.LED);
     }
 
     // Called just before this Command runs the first time
@@ -21,12 +20,12 @@ public class LEDGreen extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.LED.setLEDGreen();
+    	if(RobotMap.color)
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

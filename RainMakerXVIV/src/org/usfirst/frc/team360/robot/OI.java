@@ -1,6 +1,13 @@
 package org.usfirst.frc.team360.robot;
 
 import org.usfirst.frc.team360.robot.commands.*;
+import org.usfirst.frs.team360.robot.commands.color.LEDBlue;
+import org.usfirst.frs.team360.robot.commands.color.LEDBluePulse;
+import org.usfirst.frs.team360.robot.commands.color.LEDGreen;
+import org.usfirst.frs.team360.robot.commands.color.LEDOrange;
+import org.usfirst.frs.team360.robot.commands.color.LEDPulse;
+import org.usfirst.frs.team360.robot.commands.color.LEDRed;
+import org.usfirst.frs.team360.robot.commands.color.LEDYellow;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
