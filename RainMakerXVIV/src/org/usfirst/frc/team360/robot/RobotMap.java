@@ -60,6 +60,8 @@ public class RobotMap {
 	public static TalonSRX motorR1 = new TalonSRX(2);
 	public static TalonSRX motorR2 = new TalonSRX(3);
 	
+	public static Spark LED_Control = new Spark(4);
+	
 	public static VictorSP motorWinch1 = new VictorSP(0);
 	public static VictorSP motorWinch2 = new VictorSP(1);
 	public static VictorSP motorIntake1 = new VictorSP(2);

@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
 	public static NavX navX;
 	public static Intake intake;
 	public static Logger logger;
+	public static LED LED;
 	public static OI oi;
 	public static String selectedStartPosition = "";
 
@@ -108,6 +109,7 @@ public class Robot extends TimedRobot {
 		navX = new NavX();
 		intake = new Intake();
 		logger = new Logger();
+		LED = new LED();
 		oi = new OI();
 
 		startChooser = new SendableChooser<>();
