@@ -11,8 +11,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class LED extends Subsystem {
-	
-	int x;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -47,10 +45,10 @@ public class LED extends Subsystem {
 	}
 	public void setLEDRainbow() {
 		LEDControl(-0.99);
-		RobotMap.color = Color.RAINBOW;
+		RobotMap.color = Color.PULSING;
 	}
 	public void setLEDOff() {
-		RobotMap.LED_Control.disable();
+		LEDControl(0);
 		RobotMap.color = Color.OFF;
 	}
 	
@@ -58,29 +56,30 @@ public class LED extends Subsystem {
 		
 		switch (color) {
 		case RED:
-			setLEDRed();
-			break;
-		case ORANGE:
-			setLEDOrange();
+			RobotMap.color = Color.RED;
 			break;
 		case YELLOW:
-			setLEDYellow();
+			RobotMap.color = Color.ORANGE;
+			break;
+		case ORANGE:
+			RobotMap.color = Color.YELLOW;
 			break;
 		case GREEN:
-			setLEDGreen();
+			RobotMap.color = Color.GREEN;
 			break;
 		case BLUE:
-			setLEDBlue();
+			RobotMap.color = Color.BLUE;
 			break;
 		case PULSING:
-			setLEDPulse();
+			RobotMap.color = Color.PULSING;
 			break;
 		case RAINBOW:
-			setLEDRainbow();
+			RobotMap.color = Color.RAINBOW;
 			break;
 		case OFF:
-			setLEDOff();
+			RobotMap.color = Color.OFF;
 			break;
+		
 		}
 		
 	}
