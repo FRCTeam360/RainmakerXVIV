@@ -35,9 +35,11 @@ public class Robot extends TimedRobot {
 	public static Winch winch;
 	public static NavX navX;
 	public static Intake intake;
+	public static LED LED;
 	public static OI oi;
 	public static String selectedStartPosition = "Center";
 	Command autonomousCommand;
+	Command LEDcolor;
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
@@ -98,6 +100,7 @@ public class Robot extends TimedRobot {
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
+		LED = new LED();
 		oi = new OI();
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
