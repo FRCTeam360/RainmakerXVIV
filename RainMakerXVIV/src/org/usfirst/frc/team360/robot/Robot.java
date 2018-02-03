@@ -11,24 +11,8 @@ package org.usfirst.frc.team360.robot;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.*;
-=======
-
-import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
-import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team360.robot.subsystems.Intake;
-import org.usfirst.frc.team360.robot.subsystems.NavX;
-import org.usfirst.frc.team360.robot.subsystems.Pneumatics;
-import org.usfirst.frc.team360.robot.subsystems.Shifter;
-import org.usfirst.frc.team360.robot.subsystems.Winch;
-
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
->>>>>>> dev
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team360.robot.commands.*;
@@ -55,11 +39,6 @@ public class Robot extends TimedRobot {
 
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-<<<<<<< HEAD
-	public static LED LED;
-=======
-	public static String selectedStartPosition = "Center";
->>>>>>> dev
 	
 	Command autonomousCommand;
 	Command navXRead;
@@ -291,12 +270,6 @@ public class Robot extends TimedRobot {
 			SmartDashboard.putBoolean("Ready for auto", false);
 			SmartDashboard.putString("Switch/ Scale configuration", "Error, configuration not found");
 		}
-<<<<<<< HEAD
-		fmsColorRead .start();
-=======
-		RobotMap.FMSSideData = gameData;
-		fmsColorRead.start();
->>>>>>> dev
 	}
 
 	@Override
@@ -404,27 +377,16 @@ public class Robot extends TimedRobot {
 		RobotMap.robotMode = "Tele OP";
 		logger.initLogger();
 		getLightConfiguration();
-		navXRead.start();
-<<<<<<< HEAD
-		LEDcolor.start();
-=======
-
->>>>>>> dev
-	}
+		navXRead.start();	}
 
 	@Override
 	public void teleopPeriodic() {
-<<<<<<< HEAD
 		try {
 			System.out.println(driveTrain.getLeftVelocity() + "LEFT");
 			System.out.println(driveTrain.getRightVelocity() + "RIGHT");
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 		}
-=======
-		
-		//System.out.println(RobotMap.shiftState);
->>>>>>> dev
 		Scheduler.getInstance().run();
 	
 	}
