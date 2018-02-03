@@ -11,10 +11,8 @@ public class IntakeIn extends CommandGroup {
 	
     public IntakeIn() {
     	addSequential(new IntakeControl(.5, 25, true));
-<<<<<<< HEAD
-    	Robot.logger.logIntakeIn();
-=======
 
->>>>>>> dev
+    	Robot.logger.logIntakeIn();
+
     }
 }

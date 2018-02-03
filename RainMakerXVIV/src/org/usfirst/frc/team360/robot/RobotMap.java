@@ -13,11 +13,8 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SPI;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.Sendable;
-=======
 import edu.wpi.first.wpilibj.Spark;
->>>>>>> dev
 import edu.wpi.first.wpilibj.VictorSP;
 
 /**

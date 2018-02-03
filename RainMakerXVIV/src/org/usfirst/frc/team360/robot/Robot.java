@@ -40,13 +40,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.properties file in the
- * project.
- */
+
 public class Robot extends TimedRobot {
 	public static Shifter shifter;
 	public static Elevator elevator;
@@ -58,20 +52,19 @@ public class Robot extends TimedRobot {
 	public static Logger logger;
 	public static OI oi;
 
-	Command moveElevator;
-	//Command motionMagic;
-	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	public static LED LED;
 	public static String selectedStartPosition = "Center";
+	
 	Command autonomousCommand;
-<<<<<<< HEAD
 	Command navXRead;
 	Command fmsColorRead;
-=======
 	Command LEDcolor;
->>>>>>> dev
+	Command moveElevator;
+	Command m_autonomousCommand;
+	//Command motionMagic;
+
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
@@ -136,17 +129,13 @@ public class Robot extends TimedRobot {
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
-<<<<<<< HEAD
 		logger = new Logger();
+		LED = new LED();
 		oi = new OI();
 		navXRead = new NavXRead();
 		fmsColorRead = new LogFMSSideColors(); 
-=======
-		LED = new LED();
 		LEDcolor = new LEDcolor();
-		oi = new OI();
-		
->>>>>>> dev
+
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
@@ -325,33 +314,19 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-<<<<<<< HEAD
+
 		RobotMap.robotMode = "Tele OP";
 		logger.initLogger();
 		getLightConfiguration();
 		navXRead.start();
-=======
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-
-		
-		//driveTrain.setControlModeVoltage();
-		
 		LEDcolor.start();
 
->>>>>>> dev
 	}
 
-	/**
-	 * This function is called periodically during operator control.
-	 */
 	@Override
 	public void teleopPeriodic() {
 		
 		System.out.println(RobotMap.shiftState);
-
 		Scheduler.getInstance().run();
 	
 	}
