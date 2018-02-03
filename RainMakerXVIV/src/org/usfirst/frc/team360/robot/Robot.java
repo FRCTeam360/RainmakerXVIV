@@ -107,7 +107,6 @@ public class Robot extends TimedRobot {
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
-		//motionMagic  = new MotionMagic();
 		elevator.zeroSensor();
 		winch = new Winch();
 		navX = new NavX();
@@ -267,13 +266,13 @@ public class Robot extends TimedRobot {
 				scaleSide = ScaleSide.RIGHT;
 			}
 			SmartDashboard.putString("Switch/ Scale configuration", "Switch: " + switchSide.name() + " Scale: " + scaleSide.name());
+			RobotMap.FMSSideData = gameData;
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 			SmartDashboard.putString("Selected Auto", "Error, please select good auto");
 			SmartDashboard.putBoolean("Ready for auto", false);
 			SmartDashboard.putString("Switch/ Scale configuration", "Error, configuration not found");
 		}
-		RobotMap.FMSSideData = gameData;
 		fmsColorRead .start();
 	}
 
