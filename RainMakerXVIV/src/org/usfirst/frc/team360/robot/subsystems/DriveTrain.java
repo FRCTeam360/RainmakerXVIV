@@ -147,6 +147,11 @@ public class DriveTrain extends Subsystem {
 	}
 	public void driveMotionProfileRight(ControlMode mode, SetValueMotionProfile profile) {
 		motorRMaster.set(mode, profile.value);
+<<<<<<< HEAD
+	}
+	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
+		motorLMaster.set(mode, profile.value);
+	}
 	}
 	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
 		motorLMaster.set(mode, profile.value);
@@ -162,7 +167,11 @@ public class DriveTrain extends Subsystem {
 		  motorRMaster.set(ControlMode.PercentOutput, 0, 0);
 	}
     public void initDefaultCommand() {
+<<<<<<< HEAD
     	//setDefaultCommand(new MotionMagic());
+=======
+    	setDefaultCommand(new JoystickTankDrive());
+>>>>>>> dev
     }
 }
 

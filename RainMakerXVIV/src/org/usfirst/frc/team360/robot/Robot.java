@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team360.robot;
 
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,9 +28,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import org.usfirst.frc.team360.robot.commands.autos.*;
+import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.subsystems.*;
 import org.usfirst.frc.team360.robot.commands.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -42,12 +48,12 @@ public class Robot extends TimedRobot {
 	public static Shifter shifter;
 	public static Elevator elevator;
 	public static Pneumatics pneumatics;
-	Command Pressurize;
 	public static DriveTrain driveTrain;
 	public static Winch winch;
 	public static NavX navX;
 	public static Intake intake;
 	public static OI oi;
+<<<<<<< HEAD
 	Command moveElevator;
 	//Command motionMagic;
 	Command m_autonomousCommand;
@@ -57,6 +63,10 @@ public class Robot extends TimedRobot {
 	public static String selectedStartPosition = "Center";
 	Command autonomousCommand;
 	Command LEDcolor;
+=======
+	public static String selectedStartPosition = "Center";
+	Command autonomousCommand;
+>>>>>>> dev
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
@@ -114,6 +124,7 @@ public class Robot extends TimedRobot {
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
+<<<<<<< HEAD
 		elevator = new Elevator();
 		//motionMagic  = new MotionMagic();
 		elevator.zeroSensor();
@@ -126,6 +137,12 @@ public class Robot extends TimedRobot {
 		LEDcolor = new LEDcolor();
 		oi = new OI();
 		
+=======
+		winch = new Winch();
+		navX = new NavX();
+		intake = new Intake();
+		oi = new OI();
+>>>>>>> dev
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
@@ -313,10 +330,13 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+<<<<<<< HEAD
 		
 		//driveTrain.setControlModeVoltage();
 		
 		LEDcolor.start();
+=======
+>>>>>>> dev
 	}
 
 	/**
