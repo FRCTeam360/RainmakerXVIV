@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.VictorSP;
 
 /**
@@ -36,6 +38,9 @@ public class RobotMap {
 	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
 	
 	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 2);
+	
+	public static enum ShiftState {UP, DOWN, UNKNOWN}
+	public static ShiftState shiftState = ShiftState.UNKNOWN;
 
 	public static AHRS navX = new AHRS(SPI.Port.kMXP);
 	
@@ -48,13 +53,22 @@ public class RobotMap {
 	public static TalonSRX motorR1 = new TalonSRX(2);
 	public static TalonSRX motorR2 = new TalonSRX(3);
 	
+	public static Spark LED_Control = new Spark(4);
+	
 	public static VictorSP motorWinch1 = new VictorSP(0);
 	public static VictorSP motorWinch2 = new VictorSP(1);
 	public static VictorSP motorIntake1 = new VictorSP(2);
 	public static VictorSP motorIntake2 = new VictorSP(3);
 	
+	//Logger Variables 
+	public static String robotMode = "Disabled";
+	
+	public static String FMSSideData = "unknown";
+	
 	//NavX Variables 
-	public final static double kCollisionThreshold_DeltaG = .5f;
+	
+	public final static double kCollisionThreshold_DeltaG = 0.7f;
+	
 	public static boolean crashed = false;
 	
     public static double last_world_linear_accel_x;
@@ -84,4 +98,9 @@ public class RobotMap {
 	public static float QuaternionX;
 	public static float QuaternionY;
 	public static float QuaternionZ;
+	
+	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, RAINBOW, OFF};
+	public static Color color = Color.OFF;
+	
+
 }

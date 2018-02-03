@@ -4,16 +4,19 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team360.robot.*;
+import org.usfirst.frc.team360.robot.RobotMap.ShiftState;
 
 public class Shifter extends Subsystem {
     
 //error here
 	public static DoubleSolenoid shifter = RobotMap.shifter;
-	public void open(){ 
+	public void shiftUp(){ 
 		shifter.set(DoubleSolenoid.Value.kForward);
+		RobotMap.shiftState = ShiftState.UP;
 	}
-	public void close() {
+	public void shiftDown() {
 		shifter.set(DoubleSolenoid.Value.kReverse);
+		RobotMap.shiftState = ShiftState.DOWN;
 	}
     public void initDefaultCommand() {
     }

@@ -6,10 +6,16 @@ import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.pathfollower.*;
 import com.ctre.phoenix.motion.MotionProfileStatus;
 import com.ctre.phoenix.motion.SetValueMotionProfile;
+
+import com.ctre.phoenix.motion.*;
+import com.ctre.phoenix.motorcontrol.*;
+import com.ctre.phoenix.motorcontrol.can.*;
+
 import com.ctre.phoenix.motion.TrajectoryPoint;
 import com.ctre.phoenix.motion.TrajectoryPoint.TrajectoryDuration;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 
 public class FollowTrajectory extends Command {
 
@@ -140,6 +146,8 @@ public class FollowTrajectory extends Command {
 	}
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		
+		Robot.logger.logFollowTrajectory();
 		setUpTalon(leftLead);
 		setUpTalon(rightLead);
 

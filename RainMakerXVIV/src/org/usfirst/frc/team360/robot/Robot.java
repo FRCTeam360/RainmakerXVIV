@@ -7,6 +7,21 @@
 
 package org.usfirst.frc.team360.robot;
 
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.usfirst.frc.team360.robot.commands.LEDcolor;
+import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
+import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team360.robot.subsystems.Intake;
+import org.usfirst.frc.team360.robot.subsystems.LED;
+import org.usfirst.frc.team360.robot.subsystems.NavX;
+import org.usfirst.frc.team360.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team360.robot.subsystems.Shifter;
+import org.usfirst.frc.team360.robot.subsystems.Winch;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -14,37 +29,54 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+<<<<<<< HEAD
 import org.usfirst.frc.team360.robot.commands.FollowTrajectory;
+=======
+import org.usfirst.frc.team360.robot.commands.LogFMSSideColors;
+import org.usfirst.frc.team360.robot.commands.NavXRead;
+>>>>>>> dev
 import org.usfirst.frc.team360.robot.commands.autos.*;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.subsystems.*;
+import org.usfirst.frc.team360.robot.commands.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.properties file in the
- * project.
- */
+
 public class Robot extends TimedRobot {
 	public static Shifter shifter;
+	public static Elevator elevator;
 	public static Pneumatics pneumatics;
 	public static DriveTrain driveTrain;
 	public static Winch winch;
 	public static NavX navX;
 	public static Intake intake;
+	public static Logger logger;
 	public static OI oi;
+<<<<<<< HEAD
 	public static String selectedStartPosition = "";
+=======
+
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+	public static LED LED;
+	public static String selectedStartPosition = "Center";
+	
+>>>>>>> dev
 	Command autonomousCommand;
+	Command navXRead;
+	Command fmsColorRead;
+	Command LEDcolor;
+	Command moveElevator;
+	Command m_autonomousCommand;
+	//Command motionMagic;
+
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
 	
-
 	public static BufferedReader Buff;
 	
 	Constants constants;
@@ -53,6 +85,7 @@ public class Robot extends TimedRobot {
 	ScaleSide scaleSide; 
 	enum SwitchSide {LEFT, RIGHT};
 	SwitchSide switchSide; 
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -79,7 +112,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		constants = new Constants();
 		try {
-			Buff = new BufferedReader(new FileReader("RobotID.txt"));
+			Buff = new BufferedReader(new FileReader("home/lvuser/RobotID.txt"));
 			RobotMap.robotID = Buff.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -94,13 +127,23 @@ public class Robot extends TimedRobot {
 			DriverStation.reportError("Invalid Robot ID, defaulting to comp bot variables", false);
 			constants.writeCompBotVariables();
 		}
+		
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
+		elevator = new Elevator();
+		//motionMagic  = new MotionMagic();
+		elevator.zeroSensor();
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
+		logger = new Logger();
+		LED = new LED();
 		oi = new OI();
+		navXRead = new NavXRead();
+		fmsColorRead = new LogFMSSideColors(); 
+		LEDcolor = new LEDcolor();
+
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
@@ -116,7 +159,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		RobotMap.robotMode = "Disabled";
+		logger.closeLogger();
 	}
 
 	@Override
@@ -254,9 +298,17 @@ public class Robot extends TimedRobot {
 			SmartDashboard.putBoolean("Ready for auto", false);
 			SmartDashboard.putString("Switch/ Scale configuration", "Error, configuration not found");
 		}
+		RobotMap.FMSSideData = gameData;
+		fmsColorRead .start();
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
 	@Override
 	public void autonomousInit() {
+		RobotMap.robotMode = "Auto";
+		logger.initLogger();
 		getLightConfiguration();
 		if("Center".equals(startChooser.getSelected())){
 			if("Cross Line".equals(firstPriority.getSelected())){
@@ -353,28 +405,38 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+<<<<<<< HEAD
 		if (autonomousCommand != null){
 			autonomousCommand.cancel();
 		}
+=======
+
+		RobotMap.robotMode = "Tele OP";
+		logger.initLogger();
+		getLightConfiguration();
+		navXRead.start();
+		LEDcolor.start();
+
+>>>>>>> dev
 	}
 
-	/**
-	 * This function is called periodically during operator control.
-	 */
 	@Override
 	public void teleopPeriodic() {
+<<<<<<< HEAD
 		try {
 			System.out.println(driveTrain.getLeftVelocity() + "LEFT");
 			System.out.println(driveTrain.getRightVelocity() + "RIGHT");
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 		}
+=======
+		
+		System.out.println(RobotMap.shiftState);
+>>>>>>> dev
 		Scheduler.getInstance().run();
+	
 	}
 
-	/**
-	 * This function is called periodically during test mode.
-	 */
 	@Override
 	public void testPeriodic() {
 	}
