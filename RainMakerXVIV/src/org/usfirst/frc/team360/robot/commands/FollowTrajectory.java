@@ -55,8 +55,8 @@ public class FollowTrajectory extends Command {
 		public void run() {
 			if((!talon.isMotionProfileTopLevelBufferFull()) && (6 < prof.numPoints) && (num < prof.numPoints)){
 				point = new TrajectoryPoint();
-				if(num < 6){
-					for (num = 0; num <= 6; num++) {
+				if(num < 15){
+					for (num = 0; num <= 15; num++) {
 						if(! talon.isMotionProfileTopLevelBufferFull()){
 							/* for each point, fill our structure and pass it to API */
 							point.position = prof.points[num][0];
