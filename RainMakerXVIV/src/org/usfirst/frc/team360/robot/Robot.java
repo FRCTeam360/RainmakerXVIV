@@ -107,6 +107,8 @@ public class Robot extends TimedRobot {
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
 		elevator.zeroSensor();
+		//motionMagic  = new MotionMagic();
+		//elevator.zeroSensor();
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
 import org.usfirst.frc.team360.robot.Robot;
+import org.usfirst.frc.team360.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
@@ -32,11 +33,11 @@ public class Elevator extends Subsystem {
 		
 	}
 	
-	public void zeroSensor() {
-		
-		_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
-		
-	}
+//	public void zeroSensor() {
+//		
+//		_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
+//		
+//	}
 
 	public void motionMagicInit() {
 		System.out.println("Working Subsystem");
@@ -67,6 +68,10 @@ public class Elevator extends Subsystem {
 		_talon.configMotionAcceleration(100, kTimeoutMs);
 		/* zero the sensor */
 		_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
+	}
+	
+	public void getCurrentPosition() {
+		RobotMap.currentPos = _talon.getSelectedSensorPosition(Elevator.kPIDLoopIdx);
 	}
 	
     public void initDefaultCommand() {

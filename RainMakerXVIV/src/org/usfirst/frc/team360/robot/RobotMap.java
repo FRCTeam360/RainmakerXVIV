@@ -41,6 +41,14 @@ public class RobotMap {
 	
 	public static enum ShiftState {UP, DOWN, UNKNOWN}
 	public static ShiftState shiftState = ShiftState.UNKNOWN;
+	
+	public static int currentPos = 10;
+	
+	public static int topScale = 500;
+	public static int midScale = 300;
+	public static int switchHeight = 50;
+	public static int intakePos = 20;
+
 
 	public static AHRS navX = new AHRS(SPI.Port.kMXP);
 	
