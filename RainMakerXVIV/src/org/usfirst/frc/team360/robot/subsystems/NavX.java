@@ -31,44 +31,21 @@ public class NavX extends Subsystem {
 	    	RobotMap.TotalYaw = RobotMap.navX.getAngle();
 	    	RobotMap.YawRate = RobotMap.navX.getRate();
 	    	
-	    	RobotMap.Moving = RobotMap.navX.isMoving();
-	    	RobotMap.Rotating = RobotMap.navX.isRotating();
-	    	RobotMap.Connected = RobotMap.navX.isConnected();
-	    	RobotMap.Calibrating = RobotMap.navX.isCalibrating();
-
-	    	RobotMap.QuaternionW = RobotMap.navX.getQuaternionW();
-	    	RobotMap.QuaternionX = RobotMap.navX.getQuaternionX();
-	    	RobotMap.QuaternionY = RobotMap.navX.getQuaternionY();
-	    	RobotMap.QuaternionZ = RobotMap.navX.getQuaternionZ();
 
 	    	SmartDashboard.putNumber("accelX: ", RobotMap.accelX);
 	    	SmartDashboard.putNumber("accelY: ", RobotMap.accelY);
 
-	    	SmartDashboard.putBoolean( "Connected", RobotMap.Connected);
-	    	SmartDashboard.putBoolean( "Is_Calibrating", RobotMap.Calibrating);
 	    	SmartDashboard.putNumber( "Yaw",RobotMap.Yaw);
 	    	SmartDashboard.putNumber( "Pitch", RobotMap.Pitch);
 	    	SmartDashboard.putNumber( "Roll", RobotMap.Roll);
 	    
 	    	SmartDashboard.putNumber( "Total_Yaw: ", RobotMap.TotalYaw);
 	    	SmartDashboard.putNumber( "Yaw_Rate: ", RobotMap.YawRate);
-
-	    	SmartDashboard.putBoolean( "Is_Moving: ", RobotMap.Moving);
-	    	SmartDashboard.putBoolean( "Is_Rotating: ", RobotMap.Rotating);
 	    	
 	    	AHRS.BoardYawAxis yaw_axis1 = RobotMap.navX.getBoardYawAxis();
 	    	
 	    	SmartDashboard.putString( "YawAxisDirection: ", yaw_axis1.up ? "Up" : "Down" );
 	    	SmartDashboard.putNumber( "YawAxis: ", yaw_axis1.board_axis.getValue() );
-	    	
-	    	SmartDashboard.putNumber( "QuaternionW: ", RobotMap.QuaternionW);
-	    	SmartDashboard.putNumber( "QuaternionX: ", RobotMap.QuaternionX);
-	    	SmartDashboard.putNumber( "QuaternionY: ", RobotMap.QuaternionY);
-	    	SmartDashboard.putNumber( "QuaternionZ: ", RobotMap.QuaternionZ);
-	    	
-	    	SmartDashboard.putNumber( "Byte_Count: ", RobotMap.navX.getByteCount());
-	    	SmartDashboard.putNumber( "Update_Count: ", RobotMap.navX.getUpdateCount());
-		
 	    	
 	}
 	

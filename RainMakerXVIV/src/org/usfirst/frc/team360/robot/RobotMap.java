@@ -86,16 +86,6 @@ public class RobotMap {
 	public static double TotalYaw;
 	public static double YawRate;
 	
-	public static boolean Moving;
-	public static boolean Rotating;
-	public static boolean Connected;
-	public static boolean Calibrating;
-	
-	public static float QuaternionW;
-	public static float QuaternionX;
-	public static float QuaternionY;
-	public static float QuaternionZ;
-	
 	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, RAINBOW, OFF};
 	public static Color color = Color.OFF;
 	

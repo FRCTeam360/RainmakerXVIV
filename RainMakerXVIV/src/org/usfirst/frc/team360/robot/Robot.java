@@ -12,11 +12,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.usfirst.frc.team360.robot.commands.LEDcolor;
 import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
 import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team360.robot.subsystems.Intake;
-import org.usfirst.frc.team360.robot.subsystems.LED;
 import org.usfirst.frc.team360.robot.subsystems.NavX;
 import org.usfirst.frc.team360.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team360.robot.subsystems.Shifter;
@@ -42,6 +40,7 @@ import java.io.IOException;
 
 
 public class Robot extends TimedRobot {
+	
 	public static Shifter shifter;
 	public static Elevator elevator;
 	public static Pneumatics pneumatics;
@@ -54,13 +53,11 @@ public class Robot extends TimedRobot {
 
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-	public static LED LED;
 	public static String selectedStartPosition = "Center";
 	
 	Command autonomousCommand;
 	Command navXRead;
 	Command fmsColorRead;
-	Command LEDcolor;
 	Command moveElevator;
 	Command m_autonomousCommand;
 	//Command motionMagic;
@@ -130,11 +127,9 @@ public class Robot extends TimedRobot {
 		navX = new NavX();
 		intake = new Intake();
 		logger = new Logger();
-		LED = new LED();
 		oi = new OI();
 		navXRead = new NavXRead();
 		fmsColorRead = new LogFMSSideColors(); 
-		LEDcolor = new LEDcolor();
 
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
@@ -226,7 +221,7 @@ public class Robot extends TimedRobot {
 			//Put right auto code here
 		}
 		RobotMap.FMSSideData = gameData;
-		fmsColorRead .start();
+		fmsColorRead.start();
 	}
 
 	@Override
@@ -304,7 +299,6 @@ public class Robot extends TimedRobot {
 				- driveTrain.getRightMotionProfileVelocitySetPoint());
 		SmartDashboard.putNumber("left error", driveTrain.getLeftVelocity() 
 				- driveTrain.getLeftMotionProfileVelocitySetPoint());
-
 		SmartDashboard.putNumber("right position error", driveTrain.getRightPosition() 
 				- driveTrain.getRightMotionProfilePositionSetPoint());
 		SmartDashboard.putNumber("left positionerror", driveTrain.getLeftPosition() 
@@ -319,19 +313,19 @@ public class Robot extends TimedRobot {
 		logger.initLogger();
 		getLightConfiguration();
 		navXRead.start();
-		LEDcolor.start();
 
 	}
 
 	@Override
 	public void teleopPeriodic() {
 		
-		System.out.println(RobotMap.shiftState);
+		//System.out.println(RobotMap.shiftState);
 		Scheduler.getInstance().run();
 	
 	}
 
 	@Override
 	public void testPeriodic() {
+		
 	}
 }
