@@ -13,6 +13,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.VictorSP;
 
@@ -64,8 +65,15 @@ public class RobotMap {
 	public static VictorSP motorIntake1 = new VictorSP(2);
 	public static VictorSP motorIntake2 = new VictorSP(3);
 	
+	//Logger Variables 
+	public static String robotMode = "Disabled";
+	
+	public static String FMSSideData = "unknown";
+	
 	//NavX Variables 
-	public final static double kCollisionThreshold_DeltaG = .5f;
+	
+	public final static double kCollisionThreshold_DeltaG = 0.7f;
+	
 	public static boolean crashed = false;
 	
     public static double last_world_linear_accel_x;
@@ -85,16 +93,6 @@ public class RobotMap {
 	
 	public static double TotalYaw;
 	public static double YawRate;
-	
-	public static boolean Moving;
-	public static boolean Rotating;
-	public static boolean Connected;
-	public static boolean Calibrating;
-	
-	public static float QuaternionW;
-	public static float QuaternionX;
-	public static float QuaternionY;
-	public static float QuaternionZ;
 	
 	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, RAINBOW, OFF};
 	public static Color color = Color.OFF;

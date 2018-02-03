@@ -12,11 +12,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.usfirst.frc.team360.robot.commands.LEDcolor;
 import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
 import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team360.robot.subsystems.Intake;
-import org.usfirst.frc.team360.robot.subsystems.LED;
 import org.usfirst.frc.team360.robot.subsystems.NavX;
 import org.usfirst.frc.team360.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team360.robot.subsystems.Shifter;
@@ -28,6 +26,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team360.robot.commands.LogFMSSideColors;
+import org.usfirst.frc.team360.robot.commands.NavXRead;
 import org.usfirst.frc.team360.robot.commands.autos.*;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.subsystems.*;
@@ -37,14 +38,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.properties file in the
- * project.
- */
+
 public class Robot extends TimedRobot {
+	
 	public static Shifter shifter;
 	public static Elevator elevator;
 	public static Pneumatics pneumatics;
@@ -52,22 +48,24 @@ public class Robot extends TimedRobot {
 	public static Winch winch;
 	public static NavX navX;
 	public static Intake intake;
+	public static Logger logger;
 	public static OI oi;
 
-	Command moveElevator;
-	//Command motionMagic;
-	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-	public static LED LED;
 	public static String selectedStartPosition = "Center";
+	
 	Command autonomousCommand;
-	Command LEDcolor;
+	Command navXRead;
+	Command fmsColorRead;
+	Command moveElevator;
+	Command m_autonomousCommand;
+	//Command motionMagic;
+
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
 	
-
 	public static BufferedReader Buff;
 	
 	Constants constants;
@@ -76,6 +74,7 @@ public class Robot extends TimedRobot {
 	ScaleSide scaleSide; 
 	enum SwitchSide {LEFT, RIGHT};
 	SwitchSide switchSide; 
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -127,10 +126,11 @@ public class Robot extends TimedRobot {
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
-		LED = new LED();
-		LEDcolor = new LEDcolor();
+		logger = new Logger();
 		oi = new OI();
-		
+		navXRead = new NavXRead();
+		fmsColorRead = new LogFMSSideColors(); 
+
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
@@ -145,7 +145,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		RobotMap.robotMode = "Disabled";
+		logger.closeLogger();
 	}
 
 	@Override
@@ -219,20 +220,14 @@ public class Robot extends TimedRobot {
 			scaleSide = ScaleSide.RIGHT;
 			//Put right auto code here
 		}
+		RobotMap.FMSSideData = gameData;
+		fmsColorRead.start();
 	}
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * <p>You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
-	 */
+
 	@Override
 	public void autonomousInit() {
+		RobotMap.robotMode = "Auto";
+		logger.initLogger();
 		getLightConfiguration();
 //		if("Center".equals(startChooser.getSelected())){
 //			if("Cross Line".equals(firstPriority.getSelected())){
@@ -304,7 +299,6 @@ public class Robot extends TimedRobot {
 				- driveTrain.getRightMotionProfileVelocitySetPoint());
 		SmartDashboard.putNumber("left error", driveTrain.getLeftVelocity() 
 				- driveTrain.getLeftMotionProfileVelocitySetPoint());
-
 		SmartDashboard.putNumber("right position error", driveTrain.getRightPosition() 
 				- driveTrain.getRightMotionProfilePositionSetPoint());
 		SmartDashboard.putNumber("left positionerror", driveTrain.getLeftPosition() 
@@ -314,38 +308,24 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
 
-		
-		//driveTrain.setControlModeVoltage();
-		
-		LEDcolor.start();
+		RobotMap.robotMode = "Tele OP";
+		logger.initLogger();
+		getLightConfiguration();
+		navXRead.start();
 
 	}
 
-	/**
-	 * This function is called periodically during operator control.
-	 */
 	@Override
 	public void teleopPeriodic() {
-		try {
-			System.out.println(driveTrain.getLeftVelocityRPM() + "LEFT");
-			System.out.println(driveTrain.getRightVelocityRPM() + "RIGHT");
-			Scheduler.getInstance().run();
-		} catch(Exception e) {
-			DriverStation.reportError(e.toString(), true);
-		}
-		System.out.println(RobotMap.shiftState);
+		
+		//System.out.println(RobotMap.shiftState);
 		Scheduler.getInstance().run();
+	
 	}
 
-	/**
-	 * This function is called periodically during test mode.
-	 */
 	@Override
 	public void testPeriodic() {
+		
 	}
 }

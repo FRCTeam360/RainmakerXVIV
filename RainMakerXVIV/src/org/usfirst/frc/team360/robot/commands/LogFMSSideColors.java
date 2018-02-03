@@ -1,60 +1,31 @@
 package org.usfirst.frc.team360.robot.commands;
 
 import org.usfirst.frc.team360.robot.Robot;
-import org.usfirst.frc.team360.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LEDcolor extends Command {
+public class LogFMSSideColors extends Command {
 
-    public LEDcolor() {
-
+    public LogFMSSideColors() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
-    
-    
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	switch (RobotMap.color) {
-	    	case RED:
-	    		Robot.LED.setLEDRed();
-	    		break;
-	    	case ORANGE:
-	    		Robot.LED.setLEDOrange();
-	    		break;
-	    	case YELLOW:
-	    		Robot.LED.setLEDYellow();
-	    		break;
-	    	case GREEN:
-	    		Robot.LED.setLEDGreen();
-	    		break;
-	    	case BLUE:
-	    		Robot.LED.setLEDBlue();
-	    		break;
-	    	case PULSING:
-	    		Robot.LED.setLEDPulse();
-	    		break;
-	    	case RAINBOW:
-	    		Robot.LED.setLEDRainbow();
-	    		break;
-			case OFF:
-				Robot.LED.setLEDOff();
-				break;
-	    }
+    	Robot.logger.logFMSSideData();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
