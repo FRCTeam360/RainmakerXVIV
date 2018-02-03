@@ -7,7 +7,7 @@
 
 package org.usfirst.frc.team360.robot;
 
-<<<<<<< HEAD
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
 	public static NavX navX;
 	public static Intake intake;
 	public static OI oi;
-<<<<<<< HEAD
+
 	Command moveElevator;
 	//Command motionMagic;
 	Command m_autonomousCommand;
@@ -63,10 +63,6 @@ public class Robot extends TimedRobot {
 	public static String selectedStartPosition = "Center";
 	Command autonomousCommand;
 	Command LEDcolor;
-=======
-	public static String selectedStartPosition = "Center";
-	Command autonomousCommand;
->>>>>>> dev
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
@@ -121,15 +117,13 @@ public class Robot extends TimedRobot {
 			DriverStation.reportError("Invalid Robot ID, defaulting to comp bot variables", false);
 			constants.writeCompBotVariables();
 		}
+		
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
-<<<<<<< HEAD
 		elevator = new Elevator();
 		//motionMagic  = new MotionMagic();
 		elevator.zeroSensor();
-		oi = new OI();
-		
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
@@ -137,12 +131,6 @@ public class Robot extends TimedRobot {
 		LEDcolor = new LEDcolor();
 		oi = new OI();
 		
-=======
-		winch = new Winch();
-		navX = new NavX();
-		intake = new Intake();
-		oi = new OI();
->>>>>>> dev
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
@@ -330,13 +318,12 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-<<<<<<< HEAD
+
 		
 		//driveTrain.setControlModeVoltage();
 		
 		LEDcolor.start();
-=======
->>>>>>> dev
+
 	}
 
 	/**
