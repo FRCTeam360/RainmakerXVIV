@@ -12,10 +12,13 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class DriveTrain extends Subsystem {
+	
 	public TalonSRX motorRMaster = RobotMap.motorR1;
 	static TalonSRX motorRSlave = RobotMap.motorR2;
+	
 	public TalonSRX motorLMaster = RobotMap.motorL1;
 	static TalonSRX motorLSlave = RobotMap.motorL2;
+	
     public static int DEFAULT_TIMEOUT_MS = 10;
 
 	private MotionProfileStatus rightStatus = new MotionProfileStatus();
@@ -24,34 +27,42 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		motorRMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		motorLMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
-		motorLMaster.setInverted(true);
-		motorLSlave.setInverted(true);
+		
 		motorRSlave.follow(motorRMaster);
 		motorLSlave.follow(motorLMaster);
+		
 		motorLMaster.setInverted(false);
 		motorLSlave.setInverted(false);
+		
 		motorRMaster.setInverted(true);
 		motorRSlave.setInverted(true);
+		
 		motorLMaster.setSensorPhase(false);
 		motorRMaster.setSensorPhase(false);
+		
 		motorLMaster.config_kF(0, .5384, DEFAULT_TIMEOUT_MS);
 		motorRMaster.config_kF(0, .6133, DEFAULT_TIMEOUT_MS);
+		
 //		motorLMaster.config_kP(0, 0.9, DEFAULT_TIMEOUT_MS);
 //		motorRMaster.config_kP(0, 0.835, DEFAULT_TIMEOUT_MS);		
 //		motorLMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
 //		motorRMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
 //		motorLMaster.config_kD(0, 90, DEFAULT_TIMEOUT_MS);
 //		motorRMaster.config_kD(0, 90, DEFAULT_TIMEOUT_MS);
+		
 		motorLMaster.config_kP(0, 0.08, DEFAULT_TIMEOUT_MS);
 		motorRMaster.config_kP(0, 0.1, DEFAULT_TIMEOUT_MS);		
 		motorLMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
 		motorRMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
 		motorLMaster.config_kD(0, 0, DEFAULT_TIMEOUT_MS);
 		motorRMaster.config_kD(0, 0, DEFAULT_TIMEOUT_MS);
+		
 		motorLMaster.selectProfileSlot(0, 0);
 		motorRMaster.selectProfileSlot(0, 0);
+		
 		resetTalons(motorRMaster);
 		resetTalons(motorLMaster);
+		
 		resetTalons(motorRSlave);
 		resetTalons(motorLSlave);
 	}
@@ -153,15 +164,10 @@ public class DriveTrain extends Subsystem {
 	}
 	public void driveMotionProfileRight(ControlMode mode, SetValueMotionProfile profile) {
 		motorRMaster.set(mode, profile.value);
-
 	}
 	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
 		motorLMaster.set(mode, profile.value);
 	}
-	
-//	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
-//		motorLMaster.set(mode, profile.value);
-//	}
 	public void driveR(double RMotor) {
 		motorRMaster.set(ControlMode.PercentOutput, RMotor);
 	}
