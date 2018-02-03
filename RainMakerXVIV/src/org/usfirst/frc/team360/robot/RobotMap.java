@@ -12,6 +12,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.VictorSP;
 
@@ -31,6 +32,8 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
+
+	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
 	
 	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 2);
 
