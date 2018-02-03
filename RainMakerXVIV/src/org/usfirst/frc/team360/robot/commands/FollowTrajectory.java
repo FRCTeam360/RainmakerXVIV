@@ -6,10 +6,16 @@ import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.pathfollower.*;
 import com.ctre.phoenix.motion.MotionProfileStatus;
 import com.ctre.phoenix.motion.SetValueMotionProfile;
+<<<<<<< HEAD
+import com.ctre.phoenix.motion.*;
+import com.ctre.phoenix.motorcontrol.*;
+import com.ctre.phoenix.motorcontrol.can.*;
+=======
 import com.ctre.phoenix.motion.TrajectoryPoint;
 import com.ctre.phoenix.motion.TrajectoryPoint.TrajectoryDuration;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+>>>>>>> dev
 
 public class FollowTrajectory extends Command {
 

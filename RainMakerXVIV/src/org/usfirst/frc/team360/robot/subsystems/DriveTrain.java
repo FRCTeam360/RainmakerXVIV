@@ -3,6 +3,8 @@ package org.usfirst.frc.team360.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team360.robot.*;
 import org.usfirst.frc.team360.robot.commands.JoystickTankDrive;
+//import org.usfirst.frc.team360.robot.commands.MotionMagic;
+
 import com.ctre.phoenix.motion.MotionProfileStatus;
 import com.ctre.phoenix.motion.SetValueMotionProfile;
 import com.ctre.phoenix.motorcontrol.*;
@@ -22,6 +24,8 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		motorRMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		motorLMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		motorLMaster.setInverted(true);
+		motorLSlave.setInverted(true);
 		motorRSlave.follow(motorRMaster);
 		motorLSlave.follow(motorLMaster);
 		motorLMaster.setInverted(false);
@@ -143,6 +147,11 @@ public class DriveTrain extends Subsystem {
 	}
 	public void driveMotionProfileRight(ControlMode mode, SetValueMotionProfile profile) {
 		motorRMaster.set(mode, profile.value);
+<<<<<<< HEAD
+	}
+	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
+		motorLMaster.set(mode, profile.value);
+	}
 	}
 	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
 		motorLMaster.set(mode, profile.value);
@@ -158,7 +167,11 @@ public class DriveTrain extends Subsystem {
 		  motorRMaster.set(ControlMode.PercentOutput, 0, 0);
 	}
     public void initDefaultCommand() {
+<<<<<<< HEAD
+    	//setDefaultCommand(new MotionMagic());
+=======
     	setDefaultCommand(new JoystickTankDrive());
+>>>>>>> dev
     }
 }
 
