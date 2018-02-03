@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Elevator extends Subsystem {
-	public TalonSRX _talon = new TalonSRX(1);
+	public TalonSRX _talon = new TalonSRX(4);
 	
 	public static final int kSlotIdx = 0;
 	public static final int kPIDLoopIdx = 0;
@@ -32,12 +32,6 @@ public class Elevator extends Subsystem {
 		SmartDashboard.putNumber("ActTrajHeading", Robot.elevator._talon.getActiveTrajectoryHeading());
 		
 	}
-	
-//	public void zeroSensor() {
-//		
-//		_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
-//		
-//	}
 
 	public void motionMagicInit() {
 		System.out.println("Working Subsystem");

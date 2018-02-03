@@ -366,22 +366,20 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+		
 		if (autonomousCommand != null){
 			autonomousCommand.cancel();
 		}
+		
 		RobotMap.robotMode = "Tele OP";
 		logger.initLogger();
 		getLightConfiguration();
+		
 		}
 
 	@Override
 	public void teleopPeriodic() {
-		try {
-			System.out.println(driveTrain.getLeftVelocity() + "LEFT");
-			System.out.println(driveTrain.getRightVelocity() + "RIGHT");
-		} catch(Exception e) {
-			DriverStation.reportError(e.toString(), true);
-		}
+		
 		Scheduler.getInstance().run();
 	
 	}
