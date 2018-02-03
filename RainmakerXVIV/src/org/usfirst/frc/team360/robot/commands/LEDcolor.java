@@ -42,6 +42,9 @@ public class LEDcolor extends Command {
 	    	case PULSING:
 	    		Robot.LED.setLEDPulse();
 	    		break;
+	    	case RAINBOW:
+	    		Robot.LED.setLEDRainbow();
+	    		break;
 			case OFF:
 				Robot.LED.setLEDOff();
 				break;

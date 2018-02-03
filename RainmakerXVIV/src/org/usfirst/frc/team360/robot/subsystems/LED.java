@@ -35,16 +35,52 @@ public class LED extends Subsystem {
 		RobotMap.color = Color.GREEN;
 	}
 	public void setLEDBlue() {
-		LEDControl(0.87);
+		LEDControl(0.81);
 		RobotMap.color = Color.BLUE;
 	}
 	public void setLEDPulse() {
 		LEDControl(-0.09);
 		RobotMap.color = Color.PULSING;
 	}
+	public void setLEDRainbow() {
+		LEDControl(-0.99);
+		RobotMap.color = Color.PULSING;
+	}
 	public void setLEDOff() {
 		LEDControl(0);
 		RobotMap.color = Color.OFF;
+	}
+	
+	public void changeColor(RobotMap.Color color) {
+		
+		switch (color) {
+		case RED:
+			RobotMap.color = Color.RED;
+			break;
+		case YELLOW:
+			RobotMap.color = Color.ORANGE;
+			break;
+		case ORANGE:
+			RobotMap.color = Color.YELLOW;
+			break;
+		case GREEN:
+			RobotMap.color = Color.GREEN;
+			break;
+		case BLUE:
+			RobotMap.color = Color.BLUE;
+			break;
+		case PULSING:
+			RobotMap.color = Color.PULSING;
+			break;
+		case RAINBOW:
+			RobotMap.color = Color.RAINBOW;
+			break;
+		case OFF:
+			RobotMap.color = Color.OFF;
+			break;
+		
+		}
+		
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
