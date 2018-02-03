@@ -194,7 +194,6 @@ public class Robot extends TimedRobot {
 		}
 		Scheduler.getInstance().run();
 	}
-
 	public void getLightConfiguration(){
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();

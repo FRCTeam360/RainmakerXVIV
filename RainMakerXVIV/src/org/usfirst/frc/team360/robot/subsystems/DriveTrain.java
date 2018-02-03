@@ -12,10 +12,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class DriveTrain extends Subsystem {
-	static TalonSRX motorRMaster = RobotMap.motorR1;
 	public TalonSRX motorRMaster = RobotMap.motorR1;
 	static TalonSRX motorRSlave = RobotMap.motorR2;
-	static TalonSRX motorLMaster = RobotMap.motorL1;
 	public TalonSRX motorLMaster = RobotMap.motorL1;
 	static TalonSRX motorLSlave = RobotMap.motorL2;
     public static int DEFAULT_TIMEOUT_MS = 10;
@@ -92,17 +90,13 @@ public class DriveTrain extends Subsystem {
 	public void resetRHardEnc(){
 		motorRMaster.getSensorCollection().setQuadraturePosition(0, 0);
 	}
-	public static void resetLHardEnc(){
 	public void resetLHardEnc(){
 		motorLMaster.getSensorCollection().setQuadraturePosition(0, 0);
 	}
-	public static void resetEncs(){
 	public void resetEncs(){
 		motorRMaster.getSensorCollection().setQuadraturePosition(0, 0);
 		motorLMaster.getSensorCollection().setQuadraturePosition(0, 0);
 	}
-	
-	public static void drive(double RMotor, double LMotor) {
 	public MotionProfileStatus getRightMotioProfileStatus(){
 		motorRMaster.getMotionProfileStatus(rightStatus);
 		return rightStatus;
@@ -149,20 +143,17 @@ public class DriveTrain extends Subsystem {
 	}
 	public void drive(double RMotor, double LMotor) {
 		motorRMaster.set(ControlMode.PercentOutput, RMotor);
-		motorLMaster.set(ControlMode.PercentOutput, LMotor);
 		motorLMaster.set(ControlMode.PercentOutput, LMotor);	  
 	}
 	public void driveMotionProfileRight(ControlMode mode, SetValueMotionProfile profile) {
 		motorRMaster.set(mode, profile.value);
 	}
-	public static void DriveR(double RMotor) {
 	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
 		motorLMaster.set(mode, profile.value);
 	}
 	public void driveR(double RMotor) {
 		motorRMaster.set(ControlMode.PercentOutput, RMotor);
 	}
-	public static void DriveL(double LMotor){
 	public void driveL(double LMotor){
 		motorLMaster.set(ControlMode.PercentOutput, LMotor);
 	}
