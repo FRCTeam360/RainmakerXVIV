@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
 	public static NavX navX;
 	public static Intake intake;
 	public static OI oi;
-	public static String selectedStartPosition = "Center";
+	public static String selectedStartPosition = "";
 	Command autonomousCommand;
 	
 	SendableChooser<String> startChooser;
@@ -129,6 +129,7 @@ public class Robot extends TimedRobot {
 					firstPriority.addObject("Either Switch", "Either Switch");
 					firstPriority.addObject("Right Switch", "Right Switch");
 					firstPriority.addObject("Left Switch", "Left Switch");
+					SmartDashboard.clearPersistent("First Priority");
 					SmartDashboard.putData("First Priority", firstPriority);
 					selectedStartPosition = "Center";
 				}
@@ -145,6 +146,7 @@ public class Robot extends TimedRobot {
 					//firstPriority.addObject("Close Scale", "Close Scale");
 					//firstPriority.addObject("Far Switch", "Far Switch");
 					//firstPriority.addObject("Far Scale", "Far Scale");
+					SmartDashboard.clearPersistent("First Priority");
 					SmartDashboard.putData("First Priority", firstPriority);
 					selectedStartPosition = "Left";
 				}
@@ -154,13 +156,14 @@ public class Robot extends TimedRobot {
 		}
 		try {
 			if("Right".equals(startChooser.getSelected())){
-				if(!"Left".equals(selectedStartPosition)){
+				if(!"Right".equals(selectedStartPosition)){
 					firstPriority = new SendableChooser<>();
 					firstPriority.addDefault("Cross Line", "Cross Line");
 					firstPriority.addObject("Close Switch", "Close Switch");
 					//firstPriority.addObject("Close Scale", "Close Scale");
 					//firstPriority.addObject("Far Switch", "Far Switch");
 					//firstPriority.addObject("Far Scale", "Far Scale");
+					SmartDashboard.clearPersistent("First Priority");
 					SmartDashboard.putData("First Priority", firstPriority);
 					selectedStartPosition = "Right";
 				}
@@ -172,28 +175,57 @@ public class Robot extends TimedRobot {
 			if("Center".equals(startChooser.getSelected())){
 				if("Cross Line".equals(firstPriority.getSelected())){
 					SmartDashboard.putString("Selected Auto", "Crossing Line");
+					SmartDashboard.putBoolean("Ready for auto", true);
 				} else if("Either Switch".equals(firstPriority.getSelected())){
-					SmartDashboard.putString("Selected Auto", "Center to Right auton");
+					SmartDashboard.putString("Selected Auto", "Either Switch");
+					SmartDashboard.putBoolean("Ready for auto", true);
 				} else if("Left Switch".equals(firstPriority.getSelected())){
 					SmartDashboard.putString("Selected Auto", "Center to Left auton");
+					SmartDashboard.putBoolean("Ready for auto", true);
 				} else if("Right Switch".equals(firstPriority.getSelected())){
 					SmartDashboard.putString("Selected Auto", "Center to Right auton");
+					SmartDashboard.putBoolean("Ready for auto", true);
+				} else {
+					SmartDashboard.putString("Selected Auto", "Error, please select good auto");
+					SmartDashboard.putBoolean("Ready for auto", false);
 				}
 			} else if("Left".equals(startChooser.getSelected())){
 				if("Cross Line".equals(firstPriority.getSelected())){
 					SmartDashboard.putString("Selected Auto", "Crossing Line");
+					SmartDashboard.putBoolean("Ready for auto", true);
 				} else if("Close Switch".equals(firstPriority.getSelected())){
 					SmartDashboard.putString("Selected Auto", "Left to Left Switch");
+					SmartDashboard.putBoolean("Ready for auto", true);
+				} else {
+					SmartDashboard.putString("Selected Auto", "Error, please select good auto");
+					SmartDashboard.putBoolean("Ready for auto", false);
 				}
 			} else if("Right".equals(startChooser.getSelected())){
 				if("Cross Line".equals(firstPriority.getSelected())){
 					SmartDashboard.putString("Selected Auto", "Crossing Line");
+					SmartDashboard.putBoolean("Ready for auto", true);
 				} else if("Close Switch".equals(firstPriority.getSelected())){
 					SmartDashboard.putString("Selected Auto", "Right to Right auton");
+					SmartDashboard.putBoolean("Ready for auto", true);
+				} else {
+					SmartDashboard.putString("Selected Auto", "Error, please select good auto");
+					SmartDashboard.putBoolean("Ready for auto", false);
 				}
+			} else {
+				SmartDashboard.putString("Selected Auto", "Error, please select good auto");
+				SmartDashboard.putBoolean("Ready for auto", false);
 			}
-		}catch(Exception e) {
-			
+		} catch(Exception e) {
+			DriverStation.reportError(e.toString(), true);
+			SmartDashboard.putString("Selected Auto", "Error, please select good auto");
+			SmartDashboard.putBoolean("Ready for auto", false);
+		}
+		try {
+			getLightConfiguration();
+		} catch(Exception e) {
+			DriverStation.reportError(e.toString(), true);
+			SmartDashboard.putString("Selected Auto", "Error, please select good auto");
+			SmartDashboard.putBoolean("Ready for auto", false);
 		}
 		Scheduler.getInstance().run();
 	}
@@ -202,24 +234,25 @@ public class Robot extends TimedRobot {
 			String gameData;
 			gameData = DriverStation.getInstance().getGameSpecificMessage();
 			if("L".equals((String.valueOf(gameData.charAt(0))))) {
-				DriverStation.reportWarning("L alliance switch", false);
+				//DriverStation.reportWarning("L alliance switch", false);
 				switchSide = SwitchSide.LEFT;
-				//Put left auto code here
 			} else {
-				DriverStation.reportWarning("R alliance switch", false);
+				//DriverStation.reportWarning("R alliance switch", false);
 				switchSide = SwitchSide.RIGHT;
 			}
 			if("L".equals((String.valueOf(gameData.charAt(1))))) {
-				DriverStation.reportWarning("L scale", false);
+				//DriverStation.reportWarning("L scale", false);
 				scaleSide = ScaleSide.LEFT;
-				//Put left auto code here
 			} else {
-				DriverStation.reportWarning("R scale", false);
+				//DriverStation.reportWarning("R scale", false);
 				scaleSide = ScaleSide.RIGHT;
-				//Put right auto code here
 			}
+			SmartDashboard.putString("Switch/ Scale configuration", "Switch: " + switchSide.name() + " Scale: " + scaleSide.name());
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
+			SmartDashboard.putString("Selected Auto", "Error, please select good auto");
+			SmartDashboard.putBoolean("Ready for auto", false);
+			SmartDashboard.putString("Switch/ Scale configuration", "Error, configuration not found");
 		}
 	}
 	@Override
