@@ -7,6 +7,21 @@
 
 package org.usfirst.frc.team360.robot;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.usfirst.frc.team360.robot.commands.LEDcolor;
+import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
+import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team360.robot.subsystems.Intake;
+import org.usfirst.frc.team360.robot.subsystems.LED;
+import org.usfirst.frc.team360.robot.subsystems.NavX;
+import org.usfirst.frc.team360.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team360.robot.subsystems.Shifter;
+import org.usfirst.frc.team360.robot.subsystems.Winch;
+
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -29,18 +44,73 @@ public class Robot extends TimedRobot {
 	public static Pneumatics pneumatics;
 	Command Pressurize;
 	public static DriveTrain driveTrain;
+	public static Winch winch;
+	public static NavX navX;
+	public static Intake intake;
 	public static OI oi;
 	Command moveElevator;
 	//Command motionMagic;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+	public static LED LED;
+	public static String selectedStartPosition = "Center";
+	Command autonomousCommand;
+	Command LEDcolor;
+	
+	SendableChooser<String> startChooser;
+	SendableChooser<String> firstPriority;
+	
+
+	public static BufferedReader Buff;
+	
+	Constants constants;
+	
+	enum ScaleSide {LEFT, RIGHT};
+	ScaleSide scaleSide; 
+	enum SwitchSide {LEFT, RIGHT};
+	SwitchSide switchSide; 
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
+	/*	public static void Camera(){
+	new Thread(() -> {
+        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+        camera.setResolution(640, 480);
+        
+        CvSink cvSink = CameraServer.getInstance().getVideo();
+        CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
+        
+        Mat source = new Mat();
+        Mat output = new Mat();
+        
+        while(!Thread.interrupted()) {
+            cvSink.grabFrame(source);
+            Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+            outputStream.putFrame(output);
+        }
+    }).start();
+}*/
 	@Override
 	public void robotInit() {
+		constants = new Constants();
+		try {
+			Buff = new BufferedReader(new FileReader("home/lvuser/RobotID.txt"));
+			RobotMap.robotID = Buff.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if ("comp".equals(RobotMap.robotID)) {
+			DriverStation.reportError("Comp Bot", false);
+			constants.writeCompBotVariables();
+		} else if ("practice".equals(RobotMap.robotID)) {
+			DriverStation.reportError("Practice Bot", false);
+			constants.writePracticeBotVariables();
+		} else {
+			DriverStation.reportError("Invalid Robot ID, defaulting to comp bot variables", false);
+			constants.writeCompBotVariables();
+		}
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
@@ -49,6 +119,18 @@ public class Robot extends TimedRobot {
 		elevator.zeroSensor();
 		oi = new OI();
 		
+		winch = new Winch();
+		navX = new NavX();
+		intake = new Intake();
+		LED = new LED();
+		LEDcolor = new LEDcolor();
+		oi = new OI();
+		
+		startChooser = new SendableChooser<>();
+		startChooser.addDefault("Center", "Center");
+		startChooser.addObject("Left", "Left");
+		startChooser.addObject("Right", "Right");
+		SmartDashboard.putData("Start Location", startChooser);
 	}
 
 	/**
@@ -63,9 +145,76 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void disabledPeriodic() {
+		try {
+			if("Center".equals(startChooser.getSelected())){
+				if(!"Center".equals(selectedStartPosition)){
+					firstPriority = new SendableChooser<>();
+					firstPriority.addDefault("Cross Line", "Cross Line");
+					firstPriority.addObject("Either Switch", "Either Switch");
+					firstPriority.addObject("Right Switch", "Right Switch");
+					firstPriority.addObject("Left Switch", "Left Switch");
+					SmartDashboard.putData("First Priority", firstPriority);
+					selectedStartPosition = "Center";
+				}
+			}
+		}catch(Exception e) {
+			DriverStation.reportError(e.toString(), true);
+		}
+		try {
+			if("Left".equals(startChooser.getSelected())){
+				if(!"Left".equals(selectedStartPosition)){
+					firstPriority = new SendableChooser<>();
+					firstPriority.addDefault("Cross Line", "Cross Line");
+					firstPriority.addObject("Close Switch", "Close Switch");
+					//firstPriority.addObject("Close Scale", "Close Scale");
+					//firstPriority.addObject("Far Switch", "Far Switch");
+					//firstPriority.addObject("Far Scale", "Far Scale");
+					SmartDashboard.putData("First Priority", firstPriority);
+					selectedStartPosition = "Left";
+				}
+			}	
+		}catch(Exception e) {
+			DriverStation.reportError(e.toString(), true);
+		}
+		try {
+			if("Right".equals(startChooser.getSelected())){
+				if(!"Left".equals(selectedStartPosition)){
+					firstPriority = new SendableChooser<>();
+					firstPriority.addDefault("Cross Line", "Cross Line");
+					firstPriority.addObject("Close Switch", "Close Switch");
+					//firstPriority.addObject("Close Scale", "Close Scale");
+					//firstPriority.addObject("Far Switch", "Far Switch");
+					//firstPriority.addObject("Far Scale", "Far Scale");
+					SmartDashboard.putData("First Priority", firstPriority);
+					selectedStartPosition = "Right";
+				}
+			}
+		}catch(Exception e) {
+			DriverStation.reportError(e.toString(), true);
+		}
 		Scheduler.getInstance().run();
 	}
-
+	public void getLightConfiguration(){
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		if(gameData.charAt(0) == 'L') {
+			DriverStation.reportWarning("L alliance switch", false);
+			switchSide = SwitchSide.LEFT;
+			//Put left auto code here
+		} else {
+			DriverStation.reportWarning("R alliance switch", false);
+			switchSide = SwitchSide.RIGHT;
+		}
+		if(gameData.charAt(1) == 'L') {
+			DriverStation.reportWarning("L scale", false);
+			scaleSide = ScaleSide.LEFT;
+			//Put left auto code here
+		} else {
+			DriverStation.reportWarning("R scale", false);
+			scaleSide = ScaleSide.RIGHT;
+			//Put right auto code here
+		}
+	}
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
 	 * between different autonomous modes using the dashboard. The sendable
@@ -79,7 +228,66 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
+		getLightConfiguration();
+//		if("Center".equals(startChooser.getSelected())){
+//			if("Cross Line".equals(firstPriority.getSelected())){
+//				autonomousCommand = new CrossLineMotionProfiled();
+//				SmartDashboard.putString("Selected Auto", "Crossing Line");
+//			} else if("Either Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new StartCenterDropCubeLeftSwitch();
+//					SmartDashboard.putString("Selected Auto", "Center to Left auton");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new StartCenterDropCubeRightSwitch();
+//					SmartDashboard.putString("Selected Auto", "Center to Right auton");
+//				}
+//			} else if("Left Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new StartCenterDropCubeLeftSwitch();
+//					SmartDashboard.putString("Selected Auto", "Center to Left auton");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new DoNothingAuto();
+//					SmartDashboard.putString("Selected Auto", "Doing Nothing");
+//				}
+//			} else if("Right Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new DoNothingAuto();
+//					SmartDashboard.putString("Selected Auto", "Doing Nothing");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new StartCenterDropCubeRightSwitch();
+//					SmartDashboard.putString("Selected Auto", "Center to Right auton");
+//				}
+//			}
+//		} else if("Left".equals(startChooser.getSelected())){
+//			if("Cross Line".equals(firstPriority.getSelected())){
+//				autonomousCommand = new CrossLineMotionProfiled();
+//				SmartDashboard.putString("Selected Auto", "Crossing Line");
+//			} else if("Close Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new StartLeftDropCubeLeftSwitch();
+//					SmartDashboard.putString("Selected Auto", "Left to Left auton");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new DoNothingAuto();
+//					SmartDashboard.putString("Selected Auto", "Doing Nothing");
+//
+//				}
+//			}
+//		} else if("Right".equals(startChooser.getSelected())){
+//			if("Cross Line".equals(firstPriority.getSelected())){
+//				autonomousCommand = new CrossLineMotionProfiled();
+//				SmartDashboard.putString("Selected Auto", "Crossing Line");
+//			} else if("Close Switch".equals(firstPriority.getSelected())){
+//				if(switchSide.equals(SwitchSide.LEFT)){
+//					autonomousCommand = new DoNothingAuto();
+//					SmartDashboard.putString("Selected Auto", "Doing Nothing");
+//				} else if(switchSide.equals(SwitchSide.RIGHT)){
+//					autonomousCommand = new StartRightDropCubeRightSwitch();
+//					SmartDashboard.putString("Selected Auto", "Right to Right auton");
+//				}
+//			}
+//		}
+		autonomousCommand = new StartCenterDropCubeLeftSwitch();
+		autonomousCommand.start();
 	}
 
 	/**
@@ -87,6 +295,15 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		SmartDashboard.putNumber("right error", driveTrain.getRightVelocity() 
+				- driveTrain.getRightMotionProfileVelocitySetPoint());
+		SmartDashboard.putNumber("left error", driveTrain.getLeftVelocity() 
+				- driveTrain.getLeftMotionProfileVelocitySetPoint());
+
+		SmartDashboard.putNumber("right position error", driveTrain.getRightPosition() 
+				- driveTrain.getRightMotionProfilePositionSetPoint());
+		SmartDashboard.putNumber("left positionerror", driveTrain.getLeftPosition() 
+				- driveTrain.getLeftMotionProfilePositionSetPoint());
 		Scheduler.getInstance().run();
 	}
 
@@ -99,6 +316,7 @@ public class Robot extends TimedRobot {
 		
 		//driveTrain.setControlModeVoltage();
 		
+		LEDcolor.start();
 	}
 
 	/**
@@ -106,6 +324,14 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		try {
+			System.out.println(driveTrain.getLeftVelocityRPM() + "LEFT");
+			System.out.println(driveTrain.getRightVelocityRPM() + "RIGHT");
+			Scheduler.getInstance().run();
+		} catch(Exception e) {
+			DriverStation.reportError(e.toString(), true);
+		}
+		System.out.println(RobotMap.shiftState);
 		Scheduler.getInstance().run();
 	}
 

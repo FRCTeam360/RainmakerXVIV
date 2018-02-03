@@ -1,7 +1,6 @@
 package org.usfirst.frc.team360.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team360.robot.*;
 /**
  *
@@ -21,6 +20,9 @@ public class JoystickTankDrive extends Command {
     	
     	Robot.driveTrain.DriveR(OI.joyR.getRawAxis(-1));
     	Robot.driveTrain.DriveL(OI.joyL.getRawAxis(1));
+    	Robot.driveTrain.driveR(-1 * OI.joyR.getRawAxis(1));
+    	Robot.driveTrain.driveL(-1 * OI.joyL.getRawAxis(1));
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
