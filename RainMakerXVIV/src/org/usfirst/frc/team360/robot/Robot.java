@@ -11,35 +11,14 @@ package org.usfirst.frc.team360.robot;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
-import org.usfirst.frc.team360.robot.commands.LEDcolor;
-import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
-import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team360.robot.subsystems.Intake;
-import org.usfirst.frc.team360.robot.subsystems.LED;
-import org.usfirst.frc.team360.robot.subsystems.NavX;
-import org.usfirst.frc.team360.robot.subsystems.Pneumatics;
-import org.usfirst.frc.team360.robot.subsystems.Shifter;
-import org.usfirst.frc.team360.robot.subsystems.Winch;
-
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-<<<<<<< HEAD
-import org.usfirst.frc.team360.robot.commands.FollowTrajectory;
-=======
-import org.usfirst.frc.team360.robot.commands.LogFMSSideColors;
-import org.usfirst.frc.team360.robot.commands.NavXRead;
->>>>>>> dev
+import org.usfirst.frc.team360.robot.commands.*;
 import org.usfirst.frc.team360.robot.commands.autos.*;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.subsystems.*;
-import org.usfirst.frc.team360.robot.commands.*;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -55,16 +34,12 @@ public class Robot extends TimedRobot {
 	public static Intake intake;
 	public static Logger logger;
 	public static OI oi;
-<<<<<<< HEAD
 	public static String selectedStartPosition = "";
-=======
 
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	public static LED LED;
-	public static String selectedStartPosition = "Center";
 	
->>>>>>> dev
 	Command autonomousCommand;
 	Command navXRead;
 	Command fmsColorRead;
@@ -301,10 +276,7 @@ public class Robot extends TimedRobot {
 		RobotMap.FMSSideData = gameData;
 		fmsColorRead .start();
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> dev
 	@Override
 	public void autonomousInit() {
 		RobotMap.robotMode = "Auto";
@@ -370,7 +342,7 @@ public class Robot extends TimedRobot {
 		
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
-	}
+		}
 	}
 
 	/**
@@ -405,34 +377,24 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-<<<<<<< HEAD
 		if (autonomousCommand != null){
 			autonomousCommand.cancel();
 		}
-=======
-
 		RobotMap.robotMode = "Tele OP";
 		logger.initLogger();
 		getLightConfiguration();
 		navXRead.start();
 		LEDcolor.start();
-
->>>>>>> dev
 	}
 
 	@Override
 	public void teleopPeriodic() {
-<<<<<<< HEAD
 		try {
 			System.out.println(driveTrain.getLeftVelocity() + "LEFT");
 			System.out.println(driveTrain.getRightVelocity() + "RIGHT");
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 		}
-=======
-		
-		System.out.println(RobotMap.shiftState);
->>>>>>> dev
 		Scheduler.getInstance().run();
 	
 	}
