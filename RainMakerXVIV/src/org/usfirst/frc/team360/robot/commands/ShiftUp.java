@@ -11,7 +11,7 @@ public class ShiftUp extends Command {
     }
 
     protected void initialize() {
-    	Robot.shifter.open();
+    	Robot.shifter.shiftUp();
     }
 
     protected void execute() {
