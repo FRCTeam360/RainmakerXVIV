@@ -1,12 +1,13 @@
 package org.usfirst.frc.team360.robot.commands;
 
+import org.usfirst.frc.team360.robot.Robot;
+import org.usfirst.frc.team360.robot.RobotMap;
+
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class TippingDetection extends Command {
-	
-	  AHRS ahrs;
 	  
     public TippingDetection() {
     	
@@ -14,18 +15,15 @@ public class TippingDetection extends Command {
     
 	// Called just before this Command runs the first time
     protected void initialize() {
+    
     	
-    	ahrs = new AHRS(SPI.Port.kMXP); 
-    	ahrs.reset();
-    	ahrs.zeroYaw();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		if (-70 < ahrs.getPitch() || ahrs.getPitch() > 20) {
+    		if (-70 < RobotMap.Pitch || RobotMap.Pitch > 20) {
     			System.out.println("Warning TIPPING");
     		}
-	      
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
+import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
 import org.usfirst.frc.team360.robot.subsystems.NavX;
 
@@ -88,6 +89,7 @@ public class NavX extends Subsystem {
 	    if (( Math.abs(RobotMap.currentJerkX) > RobotMap.kCollisionThreshold_DeltaG ) ||
 	         ( Math.abs(RobotMap.currentJerkY) > RobotMap.kCollisionThreshold_DeltaG)) {
 	        timesTriggered++;
+	        Robot.logger.logNavX();
 	        RobotMap.crashed = true;
 	        DriverStation.reportError("TRIGGERED!!!, Times Triggered: " + timesTriggered, false);
 	        

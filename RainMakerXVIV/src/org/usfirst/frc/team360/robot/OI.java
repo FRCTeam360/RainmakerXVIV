@@ -27,12 +27,6 @@ public class OI {
 	 public static Button buttonIntake = new JoystickButton(joyOI, 3);
 	 public static Button buttonOutTake = new JoystickButton(joyOI, 4);
 	 
-	 
-	 public static Button buttonWinchUp = new JoystickButton(joyOI, 1);
-	 public static Button buttonWinchDown = new JoystickButton(joyOI, 2);
-	 
-	 public static Button buttonIntake = new JoystickButton(joyOI, 3);
-	 public static Button buttonOutTake = new JoystickButton(joyOI, 4);
 	 public OI() {
 			//buttonDriveUp.whenPressed(new ShiftUp());
 			//buttonDriveDown.whenPressed(new ShiftDown());
@@ -41,9 +35,7 @@ public class OI {
 			buttonElev50.whenPressed(new MoveElevator(50));
 			buttonElev75.whenPressed(new MoveElevator(75));
 			buttonElev100.whenPressed(new MoveElevator(100));
-			
-			buttonDriveUp.whenPressed(new ShiftUp());
-			buttonDriveDown.whenPressed(new ShiftDown());
+		
 			
 			buttonWinchUp.whileHeld(new RunWinchUp());
 			buttonWinchDown.whileHeld(new RunWinchDown());

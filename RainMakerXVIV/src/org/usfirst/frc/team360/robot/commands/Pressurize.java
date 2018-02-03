@@ -22,6 +22,7 @@ public class Pressurize extends Command {
     	shouldRun = true;
     	timer.reset();
     	timer.stop();
+    	Robot.logger.logPressurize();
     }
 
     protected void execute() {
