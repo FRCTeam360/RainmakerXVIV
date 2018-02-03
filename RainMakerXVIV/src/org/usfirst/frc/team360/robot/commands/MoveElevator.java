@@ -1,30 +1,27 @@
 package org.usfirst.frc.team360.robot.commands;
 
 import org.usfirst.frc.team360.robot.Robot;
-import org.usfirst.frc.team360.robot.subsystems.Elevator;
+import org.usfirst.frc.team360.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class MoveElevator extends Command {
 	
-	public int pos1;
+	public int pos;
 	
-    public MoveElevator(int pos) {
-       requires(Robot.elevator);
-       
-       pos1 = pos;
-    }
+	public MoveElevator(int pos) {
+		requires(Robot.elevator);
+	    this.pos = pos - RobotMap.currentPos;
+	}
 
 	// Called just before this Command runs the first time
     protected void initialize() {
     	Robot.elevator.motionMagicInit();
-    	Robot.elevator._talon.set(ControlMode.MotionMagic, pos1 * 30);
+    	Robot.elevator._talon.set(ControlMode.MotionMagic, pos);
     }
 
     // Called repeatedly when this Command is scheduled to run

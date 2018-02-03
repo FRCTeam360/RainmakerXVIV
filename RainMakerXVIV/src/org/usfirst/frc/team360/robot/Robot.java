@@ -123,7 +123,7 @@ public class Robot extends TimedRobot {
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
 		//motionMagic  = new MotionMagic();
-		elevator.zeroSensor();
+		//elevator.zeroSensor();
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
