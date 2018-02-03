@@ -18,6 +18,7 @@ public class JoystickTankDrive extends Command {
     	
     	Robot.driveTrain.driveR(-1 * OI.joyR.getRawAxis(1));
     	Robot.driveTrain.driveL(-1 * OI.joyL.getRawAxis(1));
+    	Robot.logger.logDriveTrainVelocity();
     	
     }
 

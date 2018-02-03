@@ -3,6 +3,8 @@ package org.usfirst.frc.team360.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team360.robot.*;
 import org.usfirst.frc.team360.robot.commands.JoystickTankDrive;
+//import org.usfirst.frc.team360.robot.commands.MotionMagic;
+
 import com.ctre.phoenix.motion.MotionProfileStatus;
 import com.ctre.phoenix.motion.SetValueMotionProfile;
 import com.ctre.phoenix.motorcontrol.*;
@@ -22,6 +24,8 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		motorRMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		motorLMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		motorLMaster.setInverted(true);
+		motorLSlave.setInverted(true);
 		motorRSlave.follow(motorRMaster);
 		motorLSlave.follow(motorLMaster);
 		motorLMaster.setInverted(false);
@@ -30,14 +34,20 @@ public class DriveTrain extends Subsystem {
 		motorRSlave.setInverted(true);
 		motorLMaster.setSensorPhase(false);
 		motorRMaster.setSensorPhase(false);
-		motorLMaster.config_kF(0, 2.305, DEFAULT_TIMEOUT_MS);
-		motorRMaster.config_kF(0, 2.5, DEFAULT_TIMEOUT_MS);
-		motorLMaster.config_kP(0, .1, DEFAULT_TIMEOUT_MS);
-		motorRMaster.config_kP(0, .0725, DEFAULT_TIMEOUT_MS);		
-		motorLMaster.config_kI(0, 00, DEFAULT_TIMEOUT_MS);
+		motorLMaster.config_kF(0, .5384, DEFAULT_TIMEOUT_MS);
+		motorRMaster.config_kF(0, .6133, DEFAULT_TIMEOUT_MS);
+//		motorLMaster.config_kP(0, 0.9, DEFAULT_TIMEOUT_MS);
+//		motorRMaster.config_kP(0, 0.835, DEFAULT_TIMEOUT_MS);		
+//		motorLMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
+//		motorRMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
+//		motorLMaster.config_kD(0, 90, DEFAULT_TIMEOUT_MS);
+//		motorRMaster.config_kD(0, 90, DEFAULT_TIMEOUT_MS);
+		motorLMaster.config_kP(0, 0.08, DEFAULT_TIMEOUT_MS);
+		motorRMaster.config_kP(0, 0.1, DEFAULT_TIMEOUT_MS);		
+		motorLMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
 		motorRMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
-		motorLMaster.config_kD(0, 10, DEFAULT_TIMEOUT_MS);
-		motorRMaster.config_kD(0, 10, DEFAULT_TIMEOUT_MS);
+		motorLMaster.config_kD(0, 0, DEFAULT_TIMEOUT_MS);
+		motorRMaster.config_kD(0, 0, DEFAULT_TIMEOUT_MS);
 		motorLMaster.selectProfileSlot(0, 0);
 		motorRMaster.selectProfileSlot(0, 0);
 		resetTalons(motorRMaster);
@@ -143,10 +153,15 @@ public class DriveTrain extends Subsystem {
 	}
 	public void driveMotionProfileRight(ControlMode mode, SetValueMotionProfile profile) {
 		motorRMaster.set(mode, profile.value);
+
 	}
 	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
 		motorLMaster.set(mode, profile.value);
 	}
+	
+//	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
+//		motorLMaster.set(mode, profile.value);
+//	}
 	public void driveR(double RMotor) {
 		motorRMaster.set(ControlMode.PercentOutput, RMotor);
 	}
@@ -158,7 +173,9 @@ public class DriveTrain extends Subsystem {
 		  motorRMaster.set(ControlMode.PercentOutput, 0, 0);
 	}
     public void initDefaultCommand() {
+
     	setDefaultCommand(new JoystickTankDrive());
+
     }
 }
 

@@ -6,10 +6,16 @@ import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.pathfollower.*;
 import com.ctre.phoenix.motion.MotionProfileStatus;
 import com.ctre.phoenix.motion.SetValueMotionProfile;
+
+import com.ctre.phoenix.motion.*;
+import com.ctre.phoenix.motorcontrol.*;
+import com.ctre.phoenix.motorcontrol.can.*;
+
 import com.ctre.phoenix.motion.TrajectoryPoint;
 import com.ctre.phoenix.motion.TrajectoryPoint.TrajectoryDuration;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 
 public class FollowTrajectory extends Command {
 
@@ -49,8 +55,8 @@ public class FollowTrajectory extends Command {
 		public void run() {
 			if((!talon.isMotionProfileTopLevelBufferFull()) && (6 < prof.numPoints) && (num < prof.numPoints)){
 				point = new TrajectoryPoint();
-				if(num < 6){
-					for (num = 0; num <= 6; num++) {
+				if(num < 15){
+					for (num = 0; num <= 15; num++) {
 						if(! talon.isMotionProfileTopLevelBufferFull()){
 							/* for each point, fill our structure and pass it to API */
 							point.position = prof.points[num][0];
@@ -140,6 +146,8 @@ public class FollowTrajectory extends Command {
 	}
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		
+		Robot.logger.logFollowTrajectory();
 		setUpTalon(leftLead);
 		setUpTalon(rightLead);
 
