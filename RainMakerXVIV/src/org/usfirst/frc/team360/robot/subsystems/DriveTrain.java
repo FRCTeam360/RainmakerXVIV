@@ -152,10 +152,16 @@ public class DriveTrain extends Subsystem {
 	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
 		motorLMaster.set(mode, profile.value);
 	}
+
 	}
+//	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
+//		motorLMaster.set(mode, profile.value);
+//	}
+
 	public void driveMotionProfileLeft(ControlMode mode, SetValueMotionProfile profile) {
 		motorLMaster.set(mode, profile.value);
 	}
+
 	public void driveR(double RMotor) {
 		motorRMaster.set(ControlMode.PercentOutput, RMotor);
 	}

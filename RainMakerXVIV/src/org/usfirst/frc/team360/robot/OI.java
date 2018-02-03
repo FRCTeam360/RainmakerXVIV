@@ -1,8 +1,11 @@
 package org.usfirst.frc.team360.robot;
 
+<<<<<<< HEAD
 import org.usfirst.frc.team360.robot.commands.MoveElevator;
 //import org.usfirst.frc.team360.robot.commands.ShiftDown;
 //import org.usfirst.frc.team360.robot.commands.ShiftUp;
+=======
+>>>>>>> dev
 import org.usfirst.frc.team360.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -50,6 +53,7 @@ public class OI {
 			
 			buttonIntake.whileHeld(new IntakeIn());
 			buttonOutTake.whileHeld(new IntakeOut());
+<<<<<<< HEAD
 			
 	 }
 }
