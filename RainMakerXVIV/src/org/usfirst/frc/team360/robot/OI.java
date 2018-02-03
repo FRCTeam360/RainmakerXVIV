@@ -35,7 +35,6 @@ public class OI {
 			buttonElev50.whenPressed(new MoveElevator(50));
 			buttonElev75.whenPressed(new MoveElevator(75));
 			buttonElev100.whenPressed(new MoveElevator(100));
-		
 			
 			buttonWinchUp.whileHeld(new RunWinchUp());
 			buttonWinchDown.whileHeld(new RunWinchDown());

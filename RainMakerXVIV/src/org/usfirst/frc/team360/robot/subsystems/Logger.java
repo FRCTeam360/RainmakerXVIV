@@ -118,6 +118,22 @@ public class Logger extends Subsystem {
 		}
 	}
 	
+	public void logElevatorUp(){
+		try{
+			bw.write("Command Run: Elevator Up" + '\n');
+		}catch (Exception e){
+			
+		}
+	}
+	
+	public void logElevatorDown(){
+		try{
+			bw.write("Command Run: Elevator Down" + '\n');
+		}catch (Exception e){
+			
+		}
+	}
+	
 	public void logPressurize(){
 		try{
 			bw.write("Command Run: Pressurizing" + '\n');

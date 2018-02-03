@@ -11,8 +11,24 @@ package org.usfirst.frc.team360.robot;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.*;
+=======
+
+import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
+import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team360.robot.subsystems.Intake;
+import org.usfirst.frc.team360.robot.subsystems.NavX;
+import org.usfirst.frc.team360.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team360.robot.subsystems.Shifter;
+import org.usfirst.frc.team360.robot.subsystems.Winch;
+
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
+>>>>>>> dev
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team360.robot.commands.*;
@@ -25,6 +41,7 @@ import java.io.IOException;
 
 
 public class Robot extends TimedRobot {
+	
 	public static Shifter shifter;
 	public static Elevator elevator;
 	public static Pneumatics pneumatics;
@@ -38,12 +55,15 @@ public class Robot extends TimedRobot {
 
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+<<<<<<< HEAD
 	public static LED LED;
+=======
+	public static String selectedStartPosition = "Center";
+>>>>>>> dev
 	
 	Command autonomousCommand;
 	Command navXRead;
 	Command fmsColorRead;
-	Command LEDcolor;
 	Command moveElevator;
 	Command m_autonomousCommand;
 	//Command motionMagic;
@@ -112,11 +132,9 @@ public class Robot extends TimedRobot {
 		navX = new NavX();
 		intake = new Intake();
 		logger = new Logger();
-		LED = new LED();
 		oi = new OI();
 		navXRead = new NavXRead();
 		fmsColorRead = new LogFMSSideColors(); 
-		LEDcolor = new LEDcolor();
 
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
@@ -273,7 +291,12 @@ public class Robot extends TimedRobot {
 			SmartDashboard.putBoolean("Ready for auto", false);
 			SmartDashboard.putString("Switch/ Scale configuration", "Error, configuration not found");
 		}
+<<<<<<< HEAD
 		fmsColorRead .start();
+=======
+		RobotMap.FMSSideData = gameData;
+		fmsColorRead.start();
+>>>>>>> dev
 	}
 
 	@Override
@@ -366,7 +389,6 @@ public class Robot extends TimedRobot {
 				- driveTrain.getRightMotionProfileVelocitySetPoint());
 		SmartDashboard.putNumber("left error", driveTrain.getLeftVelocity() 
 				- driveTrain.getLeftMotionProfileVelocitySetPoint());
-
 		SmartDashboard.putNumber("right position error", driveTrain.getRightPosition() 
 				- driveTrain.getRightMotionProfilePositionSetPoint());
 		SmartDashboard.putNumber("left position error", driveTrain.getLeftPosition() 
@@ -383,22 +405,32 @@ public class Robot extends TimedRobot {
 		logger.initLogger();
 		getLightConfiguration();
 		navXRead.start();
+<<<<<<< HEAD
 		LEDcolor.start();
+=======
+
+>>>>>>> dev
 	}
 
 	@Override
 	public void teleopPeriodic() {
+<<<<<<< HEAD
 		try {
 			System.out.println(driveTrain.getLeftVelocity() + "LEFT");
 			System.out.println(driveTrain.getRightVelocity() + "RIGHT");
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 		}
+=======
+		
+		//System.out.println(RobotMap.shiftState);
+>>>>>>> dev
 		Scheduler.getInstance().run();
 	
 	}
 
 	@Override
 	public void testPeriodic() {
+		
 	}
 }
