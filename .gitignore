@@ -7,3 +7,4 @@ dist/
 *.lock
 *.DS_Store
 *.class
+*.json
