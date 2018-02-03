@@ -33,11 +33,8 @@ public class Robot extends TimedRobot {
 	public static Winch winch;
 	public static NavX navX;
 	public static Intake intake;
-<<<<<<< HEAD
 	public static LED LED;
 	public static Logger logger;
-=======
->>>>>>> parent of a7f1903... Added Led Stuff
 	public static OI oi;
 	public static String selectedStartPosition = "";
 
@@ -45,16 +42,10 @@ public class Robot extends TimedRobot {
 
 	
 	Command autonomousCommand;
-<<<<<<< HEAD
 	Command LEDcolor;
-	Command navXRead;
-	Command fmsColorRead;
 	Command moveElevator;
 	Command m_autonomousCommand;
-	//Command motionMagic;
-
-=======
->>>>>>> parent of a7f1903... Added Led Stuff
+	//Command motionMagic
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
@@ -114,20 +105,12 @@ public class Robot extends TimedRobot {
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
-		elevator.zeroSensor();
-		//motionMagic  = new MotionMagic();
-		//elevator.zeroSensor();
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
-<<<<<<< HEAD
 		LED = new LED();
 		logger = new Logger();
-=======
->>>>>>> parent of a7f1903... Added Led Stuff
 		oi = new OI();
-		navXRead = new NavXRead();
-		fmsColorRead = new LogFMSSideColors(); 
 
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");

@@ -52,7 +52,6 @@ public class RobotMap {
 	public static int switchHeight = 50;
 	public static int intakePos = 20;
 
-
 	public static AHRS navX = new AHRS(SPI.Port.kMXP);
 	
 	public static String robotID = "comp";
@@ -101,8 +100,4 @@ public class RobotMap {
 	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, RAINBOW, OFF};
 	public static Color color = Color.OFF;
 	
-	public static float QuaternionW;
-	public static float QuaternionX;
-	public static float QuaternionY;
-	public static float QuaternionZ;
 }
