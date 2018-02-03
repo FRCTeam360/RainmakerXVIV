@@ -13,7 +13,11 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SPI;
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj.Sendable;
+=======
+import edu.wpi.first.wpilibj.Spark;
+>>>>>>> dev
 import edu.wpi.first.wpilibj.VictorSP;
 
 /**
@@ -48,6 +52,8 @@ public class RobotMap {
 	public static TalonSRX motorL2 = new TalonSRX(1);
 	public static TalonSRX motorR1 = new TalonSRX(2);
 	public static TalonSRX motorR2 = new TalonSRX(3);
+	
+	public static Spark LED_Control = new Spark(4);
 	
 	public static VictorSP motorWinch1 = new VictorSP(0);
 	public static VictorSP motorWinch2 = new VictorSP(1);
@@ -92,4 +98,9 @@ public class RobotMap {
 	public static float QuaternionX;
 	public static float QuaternionY;
 	public static float QuaternionZ;
+	
+	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, RAINBOW, OFF};
+	public static Color color = Color.OFF;
+	
+
 }

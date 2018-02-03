@@ -7,6 +7,21 @@
 
 package org.usfirst.frc.team360.robot;
 
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.usfirst.frc.team360.robot.commands.LEDcolor;
+import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
+import org.usfirst.frc.team360.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team360.robot.subsystems.Intake;
+import org.usfirst.frc.team360.robot.subsystems.LED;
+import org.usfirst.frc.team360.robot.subsystems.NavX;
+import org.usfirst.frc.team360.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team360.robot.subsystems.Shifter;
+import org.usfirst.frc.team360.robot.subsystems.Winch;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -19,6 +34,7 @@ import org.usfirst.frc.team360.robot.commands.NavXRead;
 import org.usfirst.frc.team360.robot.commands.autos.*;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.subsystems.*;
+import org.usfirst.frc.team360.robot.commands.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -33,6 +49,7 @@ import java.io.IOException;
  */
 public class Robot extends TimedRobot {
 	public static Shifter shifter;
+	public static Elevator elevator;
 	public static Pneumatics pneumatics;
 	public static DriveTrain driveTrain;
 	public static Winch winch;
@@ -40,10 +57,21 @@ public class Robot extends TimedRobot {
 	public static Intake intake;
 	public static Logger logger;
 	public static OI oi;
+
+	Command moveElevator;
+	//Command motionMagic;
+	Command m_autonomousCommand;
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+	public static LED LED;
 	public static String selectedStartPosition = "Center";
 	Command autonomousCommand;
+<<<<<<< HEAD
 	Command navXRead;
 	Command fmsColorRead;
+=======
+	Command LEDcolor;
+>>>>>>> dev
 	
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
@@ -98,16 +126,27 @@ public class Robot extends TimedRobot {
 			DriverStation.reportError("Invalid Robot ID, defaulting to comp bot variables", false);
 			constants.writeCompBotVariables();
 		}
+		
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
+		elevator = new Elevator();
+		//motionMagic  = new MotionMagic();
+		elevator.zeroSensor();
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
+<<<<<<< HEAD
 		logger = new Logger();
 		oi = new OI();
 		navXRead = new NavXRead();
 		fmsColorRead = new LogFMSSideColors(); 
+=======
+		LED = new LED();
+		LEDcolor = new LEDcolor();
+		oi = new OI();
+		
+>>>>>>> dev
 		startChooser = new SendableChooser<>();
 		startChooser.addDefault("Center", "Center");
 		startChooser.addObject("Left", "Left");
@@ -286,10 +325,23 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+<<<<<<< HEAD
 		RobotMap.robotMode = "Tele OP";
 		logger.initLogger();
 		getLightConfiguration();
 		navXRead.start();
+=======
+		// This makes sure that the autonomous stops running when
+		// teleop starts running. If you want the autonomous to
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+
+		
+		//driveTrain.setControlModeVoltage();
+		
+		LEDcolor.start();
+
+>>>>>>> dev
 	}
 
 	/**
