@@ -33,7 +33,6 @@ public class Robot extends TimedRobot {
 	public static Winch winch;
 	public static NavX navX;
 	public static Intake intake;
-	public static LED LED;
 	public static Logger logger;
 	public static OI oi;
 	public static String selectedStartPosition = "";
@@ -108,7 +107,6 @@ public class Robot extends TimedRobot {
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
-		LED = new LED();
 		logger = new Logger();
 		oi = new OI();
 
@@ -374,7 +372,7 @@ public class Robot extends TimedRobot {
 		RobotMap.robotMode = "Tele OP";
 		logger.initLogger();
 		getLightConfiguration();
-		navXRead.start();	}
+		}
 
 	@Override
 	public void teleopPeriodic() {

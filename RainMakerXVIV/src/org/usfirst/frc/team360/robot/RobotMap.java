@@ -14,11 +14,8 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Spark;
-=======
->>>>>>> parent of a7f1903... Added Led Stuff
 import edu.wpi.first.wpilibj.VictorSP;
 
 /**
