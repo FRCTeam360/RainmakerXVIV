@@ -331,7 +331,7 @@ public class Robot extends TimedRobot {
 				}
 			}
 		}
-		
+		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
 		}

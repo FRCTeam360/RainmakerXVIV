@@ -14,10 +14,10 @@ public class PathGeneration {
 		//Standard configs between all trajectories
 		highGearConfig.name = "highGearConfig";
 		highGearConfig.dt = .01;
-		highGearConfig.max_acc = 2.5;
+		highGearConfig.max_acc = 5;
 		highGearConfig.max_jerk = 35.0;
 		//highGearConfig.max_vel = 17;
-		highGearConfig.max_vel = 10;
+		highGearConfig.max_vel = 3.5;
 		highGearConfig.wheelbase_width_feet = 27/12.0;
 		highGearConfig.wheel_dia_inches = 6;
 		highGearConfig.scale_factor = .349;
@@ -116,6 +116,13 @@ public class PathGeneration {
 		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight200Feet", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(200, 0, Math.toRadians(0)));
+		BobPathGenerator.exportPath("Paths", wantedPath);
+	}
+	
+	public void generateDriveStraight10Feet(){
+		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight10Feet", 1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(15, 0, Math.toRadians(0)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	

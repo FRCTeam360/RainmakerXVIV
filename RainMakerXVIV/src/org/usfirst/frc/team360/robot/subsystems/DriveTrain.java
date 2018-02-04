@@ -50,12 +50,12 @@ public class DriveTrain extends Subsystem {
 //		motorLMaster.config_kD(0, 90, DEFAULT_TIMEOUT_MS);
 //		motorRMaster.config_kD(0, 90, DEFAULT_TIMEOUT_MS);
 		
-		motorLMaster.config_kP(0, 0.08, DEFAULT_TIMEOUT_MS);
-		motorRMaster.config_kP(0, 0.1, DEFAULT_TIMEOUT_MS);		
+		motorLMaster.config_kP(0, 0.035, DEFAULT_TIMEOUT_MS);
+		motorRMaster.config_kP(0, 0.035, DEFAULT_TIMEOUT_MS);		
 		motorLMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
 		motorRMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
-		motorLMaster.config_kD(0, 0, DEFAULT_TIMEOUT_MS);
-		motorRMaster.config_kD(0, 0, DEFAULT_TIMEOUT_MS);
+		motorLMaster.config_kD(0, 3.5, DEFAULT_TIMEOUT_MS);
+		motorRMaster.config_kD(0, 3.5, DEFAULT_TIMEOUT_MS);
 		
 		motorLMaster.selectProfileSlot(0, 0);
 		motorRMaster.selectProfileSlot(0, 0);
