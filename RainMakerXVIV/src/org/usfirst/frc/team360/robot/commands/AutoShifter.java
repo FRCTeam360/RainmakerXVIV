@@ -30,9 +30,7 @@ public class AutoShifter extends Command {
     protected void execute() {
     	
     	if(RobotMap.shiftState == ShiftState.UP) {
-    		Robot.shifter.shiftDown();
-    		Robot.logger.logShiftDown();
-    		timer.start();
+    		Robot.logger.logShiftUp();
     	} else if (RobotMap.shiftState == ShiftState.DOWN) {
         	Robot.shifter.shiftUp();
         	Robot.logger.logShiftUp();
