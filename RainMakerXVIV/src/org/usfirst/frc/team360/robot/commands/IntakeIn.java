@@ -15,6 +15,7 @@ public class IntakeIn extends CommandGroup {
     	addSequential(new IntakeControl(.5, 25, true));
     	Robot.logger.logIntakeIn();
     	addSequential(new LEDcolor(RobotMap.Color.GREEN, 1/3, 2, true));
+    	addSequential(new IntakePulse(1, 5, 2, true));
 
     }
 }
