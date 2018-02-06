@@ -16,8 +16,8 @@ public class PathGeneration {
 		highGearConfig.dt = .01;
 		highGearConfig.max_acc = 5;
 		highGearConfig.max_jerk = 35.0;
-		//highGearConfig.max_vel = 17;
-		highGearConfig.max_vel = 3.5;
+		highGearConfig.max_vel = 17;
+		//highGearConfig.max_vel = 3.5;
 		highGearConfig.wheelbase_width_feet = 27/12.0;
 		highGearConfig.wheel_dia_inches = 6;
 		highGearConfig.scale_factor = .349;
@@ -110,8 +110,6 @@ public class PathGeneration {
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
-	
-	
 	public void generateDriveStraight200Feet(){
 		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight200Feet", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
@@ -140,6 +138,14 @@ public class PathGeneration {
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(2.5, 2.5, Math.toRadians(89.99)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
+	
+	public void generateDriveStraightWith90DegreeTurn(){
+		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraightWith90DegreeTurn", 1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(5, 5, Math.toRadians(89.99)));
+		BobPathGenerator.exportPath("Paths", wantedPath);
+	}
+	
 	
 	public void generateAroundTheBasketBallKey(){
 		BobPath wantedPath = new BobPath(highGearConfig, "AroundBasketballKey", 1);

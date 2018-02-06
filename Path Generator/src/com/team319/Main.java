@@ -16,8 +16,9 @@ public class Main {
 		
 		// CANNOT do turns over 90 degrees
 		
-		generater.generateDriveStraight10Feet();
-		
+		//generater.generateDriveStraight10Feet();
+		generater.generateAll();
+		generater.generateDriveStraightWith90DegreeTurn();
 		
 	//	BobPathGenerator.exportPath("Paths", FiveFootTurn90reversed);
 		//BobPathGenerator.appendAndExportPaths("Paths", "thereAndBack", false, FiveFootTurn90, FiveFootTurn90reversed);
