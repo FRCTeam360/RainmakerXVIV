@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
@@ -72,6 +73,10 @@ public class RobotMap {
 	
 	public static String FMSSideData = "unknown";
 	
+	//Limit Switch Variables
+	public static DigitalInput limitSwitch = new DigitalInput(0);
+	public static boolean wasZeroActive = false;
+	public static boolean ZeroActive = true;
 	//NavX Variables 
 	
 	public final static double kCollisionThreshold_DeltaG = 0.7f;
