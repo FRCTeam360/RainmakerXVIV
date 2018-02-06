@@ -195,7 +195,13 @@ public class Logger extends Subsystem {
 		}
 	}
 	
-
+	public void logTipping() {
+		try {
+			bw.write("Robot Tipping, Pitch: " + RobotMap.Pitch + '\n');
+		} catch (Exception e) {
+			
+		}
+	}
 	
 	public void closeLogger() {
 		try {
