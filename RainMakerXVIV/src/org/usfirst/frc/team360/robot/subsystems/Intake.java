@@ -21,6 +21,12 @@ public class Intake extends Subsystem {
 		motorIntake1.set(speed);
 		motorIntake2.set(-speed);
 	}
+	public void controlRightMotor(double speed) {
+		motorIntake1.set(speed);
+	}
+	public void controlLeftMotor(double speed) {
+		motorIntake2.set(-speed);
+	}
 	public void stop() {
 		motorIntake1.set(0);
 		motorIntake2.set(0);
