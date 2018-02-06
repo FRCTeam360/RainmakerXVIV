@@ -27,6 +27,7 @@ public class Logger extends Subsystem {
 	//Old Variables
 	double driveBaseLVelocityOLD;
 	double driveBaseRVelocityOLD;
+	boolean driverStationIsAttachedOld = true;
 	
 	public void initLogger(){
 		try {
@@ -182,6 +183,19 @@ public class Logger extends Subsystem {
 			
 		}
 	}
+	
+	public void logDriverStationConnection() {
+		if(!RobotMap.driverStationIsAttached == driverStationIsAttachedOld) {
+			try {
+				bw.write("Driver Station Connection Status: " + RobotMap.driverStationIsAttached + '\n');
+			} catch (Exception e) {
+				
+			}
+			driverStationIsAttachedOld = RobotMap.driverStationIsAttached;
+		}
+	}
+	
+
 	
 	public void closeLogger() {
 		try {

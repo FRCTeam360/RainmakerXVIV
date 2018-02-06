@@ -23,6 +23,7 @@ public class TippingDetection extends Command {
     protected void execute() {
     		if (-70 < RobotMap.Pitch || RobotMap.Pitch > 20) {
     			System.out.println("Warning TIPPING");
+    			Robot.logger.logTipping();
     		}
     }
 
