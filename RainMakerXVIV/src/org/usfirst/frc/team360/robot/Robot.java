@@ -23,7 +23,7 @@ public class Robot extends TimedRobot {
 	public static NavX navX;
 	public static Intake intake;
 	public static Logger logger;
-	public static LED LED;
+	public static LED led;
 	
 	public static OI oi;
 	public static Constants constants;
@@ -64,7 +64,7 @@ public class Robot extends TimedRobot {
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
-		LED = new LED();
+		led = new LED();
 		logger = new Logger();
 		oi = new OI();
 		autoController = new AutoController();
