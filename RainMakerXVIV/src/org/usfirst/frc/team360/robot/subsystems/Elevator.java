@@ -7,7 +7,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
-
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Elevator extends Subsystem {
 	public TalonSRX _talon = new TalonSRX(4);
+
+	private int zeroSensor;
 	
 	public static final int kSlotIdx = 0;
 	public static final int kPIDLoopIdx = 0;
@@ -78,9 +80,9 @@ public class Elevator extends Subsystem {
         // Set the default command for a subsystem here.
     }
 
-	public boolean zeroSensor() {
-		return Robot.elevator.zeroSensor();
-		
+	public void zeroSensor() {
+		int ZeroSensor = 50;
+		_talon.setSelectedSensorPosition(ZeroSensor, 0, 10);
 	}
 
     
