@@ -67,7 +67,6 @@ public class Robot extends TimedRobot {
 		logger = new Logger();
 		oi = new OI();
 		autoController = new AutoController();
-		//autonomousCommand = new FollowTrajectory("DriveStraight200Feet");
 	}
 
 	@Override

@@ -7,6 +7,9 @@
 
 package org.usfirst.frc.team360.robot;
 
+import org.usfirst.frc.team360.robot.AutoController.ScaleSide;
+import org.usfirst.frc.team360.robot.AutoController.SwitchSide;
+
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -98,5 +101,11 @@ public class RobotMap {
 	
 	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, RAINBOW, OFF};
 	public static Color color = Color.OFF;
+	
+
+	public enum ScaleSide {LEFT, RIGHT};
+	public static ScaleSide scaleSide; 
+	public enum SwitchSide {LEFT, RIGHT};
+	public static SwitchSide switchSide; 
 	
 }
