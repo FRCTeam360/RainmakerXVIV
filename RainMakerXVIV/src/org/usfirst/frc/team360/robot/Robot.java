@@ -54,6 +54,7 @@ public class Robot extends TimedRobot {
         }
     }).start();
 }*/
+	
 	@Override
 	public void robotInit() {
 		constants = new Constants();
@@ -79,8 +80,7 @@ public class Robot extends TimedRobot {
 			RobotMap.wasZeroActive = true;
 		} else if (!elevator.zeroActive() && RobotMap.wasZeroActive) {
 			RobotMap.wasZeroActive = false;
-		
-	}
+		}
 	}
 
 	@Override
