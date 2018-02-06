@@ -10,19 +10,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class RunWinchDown extends Command {
 
     public RunWinchDown() {
-    	requires(Robot.winch);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    		requires(Robot.winch);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.logger.logWinchDown();
+    		Robot.logger.logWinchDown();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.winch.setMotorSpeed(-0.5);
+    		Robot.winch.setMotorSpeed(-0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,12 +30,12 @@ public class RunWinchDown extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.winch.stop();
+    		Robot.winch.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    		end();
     }
 }

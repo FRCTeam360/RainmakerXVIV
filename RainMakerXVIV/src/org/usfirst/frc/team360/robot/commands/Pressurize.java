@@ -14,15 +14,15 @@ public class Pressurize extends Command {
 	
 	
     public Pressurize() {
-    	requires (Robot.pneumatics);
+    		requires (Robot.pneumatics);
     }
 
     protected void initialize() {
-    	timer = new Timer();
-    	shouldRun = true;
-    	timer.reset();
-    	timer.stop();
-    	Robot.logger.logPressurize();
+	    	timer = new Timer();
+	    	shouldRun = true;
+	    	timer.reset();
+	    	timer.stop();
+	    	Robot.logger.logPressurize();
     }
 
     protected void execute() {

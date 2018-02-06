@@ -9,14 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ShiftUp extends Command {
 
     public ShiftUp() {
-    	requires(Robot.shifter);
+    		requires(Robot.shifter);
     }
 
     protected void initialize() {
-
-    	Robot.shifter.shiftUp();
-    	Robot.logger.logShiftUp();
-
+	    	Robot.shifter.shiftUp();
+	    	Robot.logger.logShiftUp();
     }
 
     protected void execute() {

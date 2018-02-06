@@ -7,11 +7,16 @@
 
 package org.usfirst.frc.team360.robot;
 
+import org.usfirst.frc.team360.robot.AutoController.ScaleSide;
+import org.usfirst.frc.team360.robot.AutoController.SwitchSide;
+
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Sendable;
@@ -72,6 +77,13 @@ public class RobotMap {
 	
 	public static String FMSSideData = "unknown";
 	
+	public static boolean driverStationIsAttached = DriverStation.getInstance().isDSAttached();
+	
+	//Limit Switch Variables
+	public static DigitalInput elevatorLimitSwitch = new DigitalInput(0);
+	public static boolean wasZeroActive = false;
+	public static boolean ZeroActive = true;
+
 	//NavX Variables 
 	
 	public final static double kCollisionThreshold_DeltaG = 0.7f;
@@ -98,5 +110,11 @@ public class RobotMap {
 	
 	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, RAINBOW, OFF};
 	public static Color color = Color.OFF;
+	
+
+	public enum ScaleSide {LEFT, RIGHT};
+	public static ScaleSide scaleSide; 
+	public enum SwitchSide {LEFT, RIGHT};
+	public static SwitchSide switchSide; 
 	
 }

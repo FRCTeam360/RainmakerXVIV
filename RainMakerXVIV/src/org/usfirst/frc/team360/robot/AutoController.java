@@ -12,11 +12,6 @@ public class AutoController {
 	SendableChooser<String> startChooser;
 	SendableChooser<String> firstPriority;
 	
-	enum ScaleSide {LEFT, RIGHT};
-	ScaleSide scaleSide; 
-	enum SwitchSide {LEFT, RIGHT};
-	SwitchSide switchSide; 
-	
 	public static String selectedStartPosition = "";
 
 	Command doNothingAuto;
@@ -45,20 +40,21 @@ public class AutoController {
 			gameData = DriverStation.getInstance().getGameSpecificMessage();
 			if("L".equals((String.valueOf(gameData.charAt(0))))) {
 				//DriverStation.reportWarning("L alliance switch", false);
-				switchSide = SwitchSide.LEFT;
+				RobotMap.switchSide = RobotMap.SwitchSide.LEFT;
 			} else {
 				//DriverStation.reportWarning("R alliance switch", false);
-				switchSide = SwitchSide.RIGHT;
+				RobotMap.switchSide = RobotMap.SwitchSide.RIGHT;
 			}
 			if("L".equals((String.valueOf(gameData.charAt(1))))) {
 				//DriverStation.reportWarning("L scale", false);
-				scaleSide = ScaleSide.LEFT;
+				RobotMap.scaleSide = RobotMap.ScaleSide.LEFT;
 			} else {
 				//DriverStation.reportWarning("R scale", false);
-				scaleSide = ScaleSide.RIGHT;
+				RobotMap.scaleSide = RobotMap.ScaleSide.RIGHT;
 			}
-			SmartDashboard.putString("Switch/ Scale configuration", "Switch: " + switchSide.name() + " Scale: " + scaleSide.name());
+			SmartDashboard.putString("Switch/ Scale configuration", "Switch: " + RobotMap.switchSide.name() + " Scale: " + RobotMap.scaleSide.name());
 			RobotMap.FMSSideData = gameData;
+			Robot.logger.logFMSSideData();
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 			SmartDashboard.putString("Selected Auto", "Error, please select good auto");
@@ -183,26 +179,26 @@ public class AutoController {
 				SmartDashboard.putString("Selected Auto", "Crossing Line");
 				return crossLineMotionProfiled;
 			} else if("Either Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
+				if(RobotMap.switchSide.equals(RobotMap.SwitchSide.LEFT)){
 					SmartDashboard.putString("Selected Auto", "Center to Left auton");
 					return startCenterDropCubeLeftSwitch;
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
+				} else if(RobotMap.switchSide.equals(RobotMap.SwitchSide.RIGHT)){
 					SmartDashboard.putString("Selected Auto", "Center to Right auton");
 					return startCenterDropCubeRightSwitch;
 				}
 			} else if("Left Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
+				if(RobotMap.switchSide.equals(RobotMap.SwitchSide.LEFT)){
 					SmartDashboard.putString("Selected Auto", "Center to Left auton");
 					return startCenterDropCubeLeftSwitch;
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
+				} else if(RobotMap.switchSide.equals(RobotMap.SwitchSide.RIGHT)){
 					SmartDashboard.putString("Selected Auto", "Doing Nothing");
 					return doNothingAuto;
 				}
 			} else if("Right Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
+				if(RobotMap.switchSide.equals(RobotMap.SwitchSide.LEFT)){
 					SmartDashboard.putString("Selected Auto", "Doing Nothing");
 					return doNothingAuto;
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
+				} else if(RobotMap.switchSide.equals(RobotMap.SwitchSide.RIGHT)){
 					SmartDashboard.putString("Selected Auto", "Center to Right auton");
 					return startCenterDropCubeRightSwitch;
 				}
@@ -212,10 +208,10 @@ public class AutoController {
 				SmartDashboard.putString("Selected Auto", "Crossing Line");
 				return crossLineMotionProfiled;
 			} else if("Close Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
+				if(RobotMap.switchSide.equals(RobotMap.SwitchSide.LEFT)){
 					SmartDashboard.putString("Selected Auto", "Left to Left auton");
 					return startLeftDropCubeLeftSwitch;
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
+				} else if(RobotMap.switchSide.equals(RobotMap.SwitchSide.RIGHT)){
 					SmartDashboard.putString("Selected Auto", "Doing Nothing");
 					return doNothingAuto;
 
@@ -226,10 +222,10 @@ public class AutoController {
 				SmartDashboard.putString("Selected Auto", "Crossing Line");
 				return crossLineMotionProfiled;
 			} else if("Close Switch".equals(firstPriority.getSelected())){
-				if(switchSide.equals(SwitchSide.LEFT)){
+				if(RobotMap.switchSide.equals(RobotMap.SwitchSide.LEFT)){
 					SmartDashboard.putString("Selected Auto", "Doing Nothing");
 					return doNothingAuto;
-				} else if(switchSide.equals(SwitchSide.RIGHT)){
+				} else if(RobotMap.switchSide.equals(RobotMap.SwitchSide.RIGHT)){
 					SmartDashboard.putString("Selected Auto", "Right to Right auton");
 					return startRightDropCubeRightSwitch;
 				}

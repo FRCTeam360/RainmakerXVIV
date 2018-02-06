@@ -9,14 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ShiftDown extends Command {
 
     public ShiftDown() {
-    	requires(Robot.shifter);
+    		requires(Robot.shifter);
     }
 
     protected void initialize() {
-
-    	Robot.shifter.shiftDown();
-    	Robot.logger.logShiftDown();
-    	
+	    	Robot.shifter.shiftDown();
+	    	Robot.logger.logShiftDown();
     }
 
     protected void execute() {

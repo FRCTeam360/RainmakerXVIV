@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
 	public static AutoController autoController;
 	
 	Command autonomousCommand;
+	boolean wasZeroActive = false;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -67,7 +68,18 @@ public class Robot extends TimedRobot {
 		logger = new Logger();
 		oi = new OI();
 		autoController = new AutoController();
-		//autonomousCommand = new FollowTrajectory("DriveStraight200Feet");
+	}
+	
+	@Override 
+	public void robotPeriodic() {
+		logger.logDriverStationConnection();
+		if (elevator.zeroActive() && !RobotMap.wasZeroActive) {
+			elevator.zeroSensor();
+			RobotMap.wasZeroActive = true;
+		} else if (!elevator.zeroActive() && RobotMap.wasZeroActive) {
+			RobotMap.wasZeroActive = false;
+		
+	}
 	}
 
 	@Override
@@ -127,8 +139,11 @@ public class Robot extends TimedRobot {
 		}
 		
 		RobotMap.robotMode = "Teleop";
-		logger.initLogger();		
-		}
+		logger.initLogger();
+		
+
+		
+}
 
 	@Override
 	public void teleopPeriodic() {
