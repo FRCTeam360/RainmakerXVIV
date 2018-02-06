@@ -6,6 +6,7 @@ import org.usfirst.frc.team360.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -68,9 +69,20 @@ public class Elevator extends Subsystem {
 		RobotMap.currentPos = _talon.getSelectedSensorPosition(Elevator.kPIDLoopIdx);
 	}
 	
+	public boolean zeroActive() {
+		return RobotMap.limitSwitch.get();
+		
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
     }
+
+	public boolean zeroSensor() {
+		return Robot.elevator.zeroSensor();
+		
+	}
+
     
 }
 
