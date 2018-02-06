@@ -71,7 +71,7 @@ public class Robot extends TimedRobot {
 	}
 	
 	@Override 
-	public void robotPeriodic() {
+	public void robotPeriodic() {	
 		logger.logDriverStationConnection();
 		if (elevator.zeroActive() && !RobotMap.wasZeroActive) {
 			elevator.zeroSensor();
@@ -80,6 +80,7 @@ public class Robot extends TimedRobot {
 			RobotMap.wasZeroActive = false;
 		
 	}
+		
 	}
 
 	@Override
