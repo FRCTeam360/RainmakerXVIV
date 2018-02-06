@@ -1,13 +1,16 @@
 package org.usfirst.frc.team360.robot.commands;
 
+import org.usfirst.frc.team360.robot.Robot;
+import org.usfirst.frc.team360.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class PulsingMotor extends CommandGroup {
+public class IntakeWithPulsingMotor extends CommandGroup {
 
-    public PulsingMotor() {
+    public IntakeWithPulsingMotor() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,6 +27,9 @@ public class PulsingMotor extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new IntakePulse(1, 5, 2, true));
+	    	addSequential(new LEDColor(RobotMap.Color.RED, 1.5, 100, true));
+	    	addSequential(new IntakePulse(1, 5, 2, true));
+	    	addSequential(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true));
+	    	Robot.logger.logIntakeIn();
     }
 }
