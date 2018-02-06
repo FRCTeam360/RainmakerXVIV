@@ -59,6 +59,7 @@ public class AutoController {
 			}
 			SmartDashboard.putString("Switch/ Scale configuration", "Switch: " + switchSide.name() + " Scale: " + scaleSide.name());
 			RobotMap.FMSSideData = gameData;
+			Robot.logger.logFMSSideData();
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 			SmartDashboard.putString("Selected Auto", "Error, please select good auto");
