@@ -70,7 +70,7 @@ public class Elevator extends Subsystem {
 	}
 	
 	public boolean zeroActive() {
-		return RobotMap.limitSwitch.get();
+		return RobotMap.elevatorLimitSwitch.get();
 		
 	}
 	

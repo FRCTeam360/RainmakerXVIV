@@ -77,7 +77,7 @@ public class RobotMap {
 	public static boolean driverStationIsAttached = DriverStation.getInstance().isDSAttached();
 	
 	//Limit Switch Variables
-	public static DigitalInput limitSwitch = new DigitalInput(0);
+	public static DigitalInput elevatorLimitSwitch = new DigitalInput(0);
 	public static boolean wasZeroActive = false;
 	public static boolean ZeroActive = true;
 
