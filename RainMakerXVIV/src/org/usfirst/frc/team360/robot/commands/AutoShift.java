@@ -9,9 +9,9 @@ public class AutoShift extends Command {
 	Timer timer;
 	RobotMap.ShiftState wantedShiftState;
 	boolean done;
-    public AutoShift(RobotMap.ShiftState shifterState) {
+    public AutoShift(RobotMap.ShiftState wantedShiftState) {
     		requires(Robot.shifter);
-    		wantedShiftState = shifterState;
+    		this.wantedShiftState = wantedShiftState;
     		done = false;
     }
 
@@ -23,7 +23,7 @@ public class AutoShift extends Command {
 	    	if(RobotMap.shiftState == wantedShiftState) {
 	    		done = true;
 	    } else {
-		    	if(RobotMap.shiftState == RobotMap.ShiftState.UP) {
+		    	if(wantedShiftState == RobotMap.ShiftState.UP) {
 		    		Robot.shifter.shiftUp();
 		    		Robot.logger.logShiftUp();
 		        	timer.start();

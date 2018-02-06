@@ -175,12 +175,12 @@ public class DriveTrain extends Subsystem {
 		motorLMaster.set(ControlMode.PercentOutput, LMotor);
 	}
 	public void stop(){
-		  motorLMaster.set(ControlMode.PercentOutput, 0, 0);
-		  motorRMaster.set(ControlMode.PercentOutput, 0, 0);
+		motorLMaster.set(ControlMode.PercentOutput, 0, 0);
+		motorRMaster.set(ControlMode.PercentOutput, 0, 0);
 	}
     public void initDefaultCommand() {
 
-    	setDefaultCommand(new JoystickTankDrive());
+    		setDefaultCommand(new JoystickTankDrive());
 
     }
 }
