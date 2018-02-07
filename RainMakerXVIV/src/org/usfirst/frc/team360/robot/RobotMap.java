@@ -42,12 +42,12 @@ public class RobotMap {
 	public static enum ShiftState {UP, DOWN, UNKNOWN}
 	public static ShiftState shiftState = ShiftState.UNKNOWN;
 	
-	public static int currentPos = 10;
+	public static int currentPos;
 	
-	public static int topScale = 500;
-	public static int midScale = 300;
-	public static int switchHeight = 50;
-	public static int intakePos = 20;
+	public static int topScale = 2500;
+	public static int midScale = 1000;
+	public static int switchHeight = 500;
+	public static int intakePos = 0;
 
 
 	public static AHRS navX = new AHRS(SPI.Port.kMXP);
@@ -58,8 +58,12 @@ public class RobotMap {
 	
 	public static TalonSRX motorL1 = new TalonSRX(0);
 	public static TalonSRX motorL2 = new TalonSRX(1);
+//	public static TalonSRX motorR1 = new TalonSRX(2);
+//	public static TalonSRX motorR2 = new TalonSRX(3);
 	public static TalonSRX motorR1 = new TalonSRX(2);
 	public static TalonSRX motorR2 = new TalonSRX(3);
+//	public static TalonSRX elevMaster = new TalonSRX(4);
+//	public static TalonSRX elevSlave = new TalonSRX(5);
 	
 	public static Spark LED_Control = new Spark(4);
 	

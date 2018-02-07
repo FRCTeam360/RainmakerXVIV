@@ -102,6 +102,8 @@ public class Robot extends TimedRobot {
 			constants.writeCompBotVariables();
 		}
 		
+		RobotMap.currentPos = 0;
+		
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
@@ -109,6 +111,7 @@ public class Robot extends TimedRobot {
 		elevator.zeroSensor();
 		//motionMagic  = new MotionMagic();
 		//elevator.zeroSensor();
+		elevator.zeroSensor();
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
@@ -390,7 +393,6 @@ public class Robot extends TimedRobot {
 			DriverStation.reportError(e.toString(), true);
 		}
 		Scheduler.getInstance().run();
-	
 	}
 
 	@Override
