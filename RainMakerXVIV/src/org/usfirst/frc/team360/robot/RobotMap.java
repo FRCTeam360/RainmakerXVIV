@@ -10,15 +10,7 @@ package org.usfirst.frc.team360.robot;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.Sendable;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.*;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -53,7 +45,8 @@ public class RobotMap {
 
 	public static AHRS navX = new AHRS(SPI.Port.kMXP);
 	
-	public static String robotID = "comp";
+	public static enum RobotID {COMP, PRACTICE, UNKNOWN};
+	public static RobotID robotID = RobotID.UNKNOWN;
 	 
 	public static Compressor compressor = new Compressor();
 	
