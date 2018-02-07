@@ -15,11 +15,13 @@ public class JoystickTankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	Robot.driveTrain.driveR(-1 * OI.joyR.getRawAxis(1));
-    	Robot.driveTrain.driveL(-1 * OI.joyL.getRawAxis(1));
-    	Robot.logger.logDriveTrainVelocity();
-    	
+    		if(Math.abs(OI.joyR.getRawAxis(1)) > .05) {
+    			Robot.driveTrain.driveR(-1 * OI.joyR.getRawAxis(1));
+    		}
+    		if(Math.abs(OI.joyL.getRawAxis(1)) > .05) {
+    			Robot.driveTrain.driveL(-1 * OI.joyL.getRawAxis(1));
+    		}
+    		Robot.logger.logDriveTrainVelocity();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -34,6 +36,6 @@ public class JoystickTankDrive extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    		end();
     }
 }

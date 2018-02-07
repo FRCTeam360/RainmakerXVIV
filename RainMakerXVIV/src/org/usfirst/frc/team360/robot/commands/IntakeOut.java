@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class IntakeOut extends CommandGroup {
 	
     public IntakeOut() {
-    	addSequential(new IntakeControl(-.75, 25, false));
-    	Robot.logger.logIntakeOut();
+    		addSequential(new IntakeControl(-.75, 25, false));
     }
 }
