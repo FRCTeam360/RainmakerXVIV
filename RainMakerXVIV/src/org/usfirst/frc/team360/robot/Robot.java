@@ -140,16 +140,12 @@ public class Robot extends TimedRobot {
 		
 		RobotMap.robotMode = "Teleop";
 		logger.initLogger();
-		
-
-		
 }
 
 	@Override
 	public void teleopPeriodic() {
 		
 		Scheduler.getInstance().run();
-	
 	}
 
 	@Override
