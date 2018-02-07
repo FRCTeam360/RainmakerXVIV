@@ -97,7 +97,7 @@ public class RobotMap {
 	public static double TotalYaw;
 	public static double YawRate;
 	
-	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, RAINBOW, OFF};
+	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, PULSING, RAINBOW, OFF};
 	public static Color color = Color.OFF;
 	
 
