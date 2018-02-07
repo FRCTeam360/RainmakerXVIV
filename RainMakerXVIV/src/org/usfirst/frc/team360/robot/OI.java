@@ -44,7 +44,7 @@ public class OI {
 			
 			buttonIntake.whileHeld(new IntakeIn());
 			buttonOutTake.whileHeld(new IntakeOut());
-			pulsingIntake.whileHeld(new PulsingMotor());
+			pulsingIntake.whileHeld(new IntakeWithPulsingMotor());
 			
 	 }
 }
