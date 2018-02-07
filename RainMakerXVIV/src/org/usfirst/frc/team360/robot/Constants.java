@@ -45,6 +45,13 @@ public class Constants {
 	public static int realElevatorP;
 	public static int realElevatorI;
 	public static int realElevatorD;
+  
+	public String buffLine;
+	
+	public static int real_elevatorF;
+	public static int real_elevatorP;
+	public static int real_elevatorI;
+	public static int real_elevatorD;
 	
 	public static int realLeftDriveTrainF;
 	public static int realLeftDriveTrainP;
@@ -59,17 +66,20 @@ public class Constants {
 	public Constants() {
 		try {
 			buff = new BufferedReader(new FileReader("home/lvuser/RobotID.txt"));
-			RobotMap.robotID = buff.readLine();
+			buffLine = buff.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if ("comp".equals(RobotMap.robotID)) {
+		if ("comp".equals(buffLine)) {
+			RobotMap.robotID = RobotMap.RobotID.COMP;
 			DriverStation.reportError("Comp Bot", false);
 			writeCompBotVariables();
-		} else if ("practice".equals(RobotMap.robotID)) {
+		} else if ("practice".equals(buffLine)) {
+			RobotMap.robotID = RobotMap.RobotID.PRACTICE;
 			DriverStation.reportError("Practice Bot", false);
 			writePracticeBotVariables();
 		} else {
+			RobotMap.robotID = RobotMap.RobotID.COMP;
 			DriverStation.reportError("Invalid Robot ID, defaulting to comp bot variables", false);
 			writeCompBotVariables();
 		}
