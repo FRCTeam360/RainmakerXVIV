@@ -46,9 +46,9 @@ public class Elevator extends Subsystem {
 		//elevatorMaster.config_kF(0, 0.755539, kTimeoutMs);
 		//elevatorMaster.config_kP(0, 0.005963, kTimeoutMs);
 		elevatorMaster.config_kF(0, 0.756, kTimeoutMs);
-		elevatorMaster.config_kP(0, 0.006, kTimeoutMs);
+		elevatorMaster.config_kP(0, 4, kTimeoutMs);
 		elevatorMaster.config_kI(0, 0, kTimeoutMs);
-		elevatorMaster.config_kD(0, 0, kTimeoutMs);
+		elevatorMaster.config_kD(0, 40, kTimeoutMs);
 		
 	}
 	
@@ -75,7 +75,7 @@ public class Elevator extends Subsystem {
 		
 		/* set acceleration and vcruise velocity - see documentation */
 		elevatorMaster.configMotionCruiseVelocity(1340, kTimeoutMs);
-		elevatorMaster.configMotionAcceleration(1072, kTimeoutMs);
+		elevatorMaster.configMotionAcceleration(800, kTimeoutMs);
 		/* zero the sensor */
 		//_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 	}

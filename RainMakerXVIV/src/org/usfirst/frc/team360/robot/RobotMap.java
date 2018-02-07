@@ -44,9 +44,9 @@ public class RobotMap {
 	
 	public static int currentPos;
 	
-	public static int topScale = 2500;
-	public static int midScale = 1000;
-	public static int switchHeight = 500;
+	public static int topScale = 10000;
+	public static int midScale = 8000;
+	public static int switchHeight = 1500;
 	public static int intakePos = 0;
 
 
