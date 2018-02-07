@@ -26,21 +26,24 @@ public class Constants {
 	public static int real_P;
 	public static int real_I;
 	public static int real_D;
-	
+	public String buffLine;
 	public Constants() {
 		try {
 			buff = new BufferedReader(new FileReader("home/lvuser/RobotID.txt"));
-			RobotMap.robotID = buff.readLine();
+			buffLine = buff.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if ("comp".equals(RobotMap.robotID)) {
+		if ("comp".equals(buffLine)) {
+			RobotMap.robotID = RobotMap.RobotID.COMP;
 			DriverStation.reportError("Comp Bot", false);
 			writeCompBotVariables();
-		} else if ("practice".equals(RobotMap.robotID)) {
+		} else if ("practice".equals(buffLine)) {
+			RobotMap.robotID = RobotMap.RobotID.PRACTICE;
 			DriverStation.reportError("Practice Bot", false);
 			writePracticeBotVariables();
 		} else {
+			RobotMap.robotID = RobotMap.RobotID.COMP;
 			DriverStation.reportError("Invalid Robot ID, defaulting to comp bot variables", false);
 			writeCompBotVariables();
 		}
