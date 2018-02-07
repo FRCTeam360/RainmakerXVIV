@@ -41,6 +41,10 @@ public class LED extends Subsystem {
 		LEDControl(0.81);
 		RobotMap.color = Color.BLUE;
 	}
+	public void setLEDViolet() {
+		LEDControl(0.91);
+		RobotMap.color = Color.VIOLET;
+	}
 	public void setLEDPulse() {
 		LEDControl(-0.09);
 		RobotMap.color = Color.PULSING;
@@ -72,6 +76,8 @@ public class LED extends Subsystem {
 		case BLUE:
 			setLEDBlue();
 			break;
+		case VIOLET:
+			setLEDViolet();
 		case PULSING:
 			setLEDPulse();
 			break;
