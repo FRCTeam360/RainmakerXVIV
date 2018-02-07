@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team360.robot.*;
 import org.usfirst.frc.team360.robot.RobotMap.ShiftState;
+import org.usfirst.frc.team360.robot.commands.LEDShiftState;
 
 public class Shifter extends Subsystem {
     
@@ -19,5 +20,6 @@ public class Shifter extends Subsystem {
 		RobotMap.shiftState = ShiftState.DOWN;
 	}
     public void initDefaultCommand() {
+    	setDefaultCommand(new LEDShiftState());
     }
 }
