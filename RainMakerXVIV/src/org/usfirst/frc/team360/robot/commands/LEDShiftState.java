@@ -1,20 +1,19 @@
 package org.usfirst.frc.team360.robot.commands;
 
 import org.usfirst.frc.team360.robot.Robot;
+import org.usfirst.frc.team360.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class IntakeControl extends Command {
-    
-    double speed;
-	double amps;
-	boolean currentStop;
-	
-    public IntakeControl(double speed, double amps, boolean currentStop) {
-	    	this.speed = speed;
-	    	this.amps = amps;
-	    	this.currentStop = currentStop;
-	    	requires(Robot.intake);
+/**
+ *
+ */
+public class LEDShiftState extends Command {
+
+    public LEDShiftState() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.LED);
     }
 
     // Called just before this Command runs the first time
@@ -23,23 +22,26 @@ public class IntakeControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.controlMotor(speed);
+    	if(RobotMap.ShiftState.UP == RobotMap.shiftState) {
+    		Robot.LED.setLEDOrange();
+    	}else if(RobotMap.ShiftState.DOWN == RobotMap.shiftState) {
+    		Robot.LED.setLEDBlue();
+    	}else {
+    		RobotMap.LED_Control.disable();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    		return Robot.intake.currentDraw() > amps && currentStop;
+        return false;
     }
-    
 
     // Called once after isFinished returns true
     protected void end() {
-    		Robot.intake.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    		end();
     }
 }
