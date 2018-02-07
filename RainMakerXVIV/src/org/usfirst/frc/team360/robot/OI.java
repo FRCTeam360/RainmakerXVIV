@@ -24,6 +24,7 @@ public class OI {
 	 
 	 public static Button buttonIntake = new JoystickButton(joyOI, 3);
 	 public static Button buttonOutTake = new JoystickButton(joyOI, 4);
+	 public static Button pulsingIntake = new JoystickButton(joyOI, 5);
 	 
 	 public static Button buttonWinchUp = new JoystickButton(joyOI, 1);
 	 public static Button buttonWinchDown = new JoystickButton(joyOI, 2);
@@ -43,6 +44,7 @@ public class OI {
 			
 			buttonIntake.whileHeld(new IntakeIn());
 			buttonOutTake.whileHeld(new IntakeOut());
+			pulsingIntake.whileHeld(new IntakeWithPulsingMotor());
 			
 	 }
 }
