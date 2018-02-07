@@ -10,67 +10,51 @@ import edu.wpi.first.wpilibj.DriverStation;
 public class Constants {
 	
 	public static BufferedReader buff;
-	
-	public static int comp_kF = 1;
-	public static int comp_kP = 1;
-	public static int comp_kI = 1;
-	public static int comp_kD = 1;
-	
-	public static int comp_kelevatorF = 1;
-	public static int comp_kelevatorP = 1;
-	public static int comp_kelevatorI = 1;
-	public static int comp_kelevatorD = 1;
-	
-	public static int comp_kleftDriveTrainF = 1;
-	public static int comp_kleftDriveTrainP = 1;
-	public static int comp_kleftDriveTrainI = 1;
-	public static int comp_kleftDriveTrainD = 1;
-	
-	public static int comp_krightDriveTrainF = 1;
-	public static int comp_krightDriveTrainP = 1;
-	public static int comp_krightDriveTrainI = 1;
-	public static int comp_krightDriveTrainD = 1;
-	
-	
-	public static int prac_kF = 0;
-	public static int prac_kP = 0;
-	public static int prac_kI = 0;
-	public static int prac_kD = 0;
-	
-	public static int prac_kelevatorF = 0;
-	public static int prac_kelevatorP = 0;
-	public static int prac_kelevatorI = 0;
-	public static int prac_kelevatorD = 0;
-	
-	public static int prac_kleftDrivetrainF = 0;
-	public static int prac_kleftDrivetrainP = 0;
-	public static int prac_kleftDrivetrainI = 0;
-	public static int prac_kleftDrivetrainD = 0;
-	
-	public static int prac_krightDriveTrainF = 0;
-	public static int prac_krightDriveTrainP = 0;
-	public static int prac_krightDriveTrainI = 0;
-	public static int prac_krightDriveTrainD = 0;
 
-	public static int real_F;
-	public static int real_P;
-	public static int real_I;
-	public static int real_D;
+	public static int compElevatorF = 1;
+	public static int compElevatorP = 1;
+	public static int compElevatorI = 1;
+	public static int compElevatorD = 1;
 	
-	public static int real_elevatorF;
-	public static int real_elevatorP;
-	public static int real_elevatorI;
-	public static int real_elevatorD;
+	public static int compLeftDriveTrainF = 1;
+	public static int compLeftDriveTrainP = 1;
+	public static int compLeftDriveTrainI = 1;
+	public static int compleftDriveTrainD = 1;
 	
-	public static int real_leftDriveTrainF;
-	public static int real_leftDriveTrainP;
-	public static int real_leftDriveTrainI;
-	public static int real_leftDriveTrainD;
+	public static int compRightDriveTrainF = 1;
+	public static int compRightDriveTrainP = 1;
+	public static int compRightDriveTrainI = 1;
+	public static int compRightDriveTrainD = 1;
 	
-	public static int real_rightDriveTrainF;
-	public static int real_rightDriveTrainP;
-	public static int real_rightDriveTrainI;
-	public static int real_rightDriveTrainD;
+	public static int pracElevatorF = 0;
+	public static int pracElevatorP = 0;
+	public static int pracElevatorI = 0;
+	public static int pracElevatorD = 0;
+	
+	public static int pracleftDrivetrainF = 0;
+	public static int pracLeftDrivetrainP = 0;
+	public static int pracleftDrivetrainI = 0;
+	public static int pracLeftDrivetrainD = 0;
+	
+	public static int pracRightDriveTrainF = 0;
+	public static int pracRightDriveTrainP = 0;
+	public static int pracRightDriveTrainI = 0;
+	public static int pracRightDriveTrainD = 0;
+
+	public static int realElevatorF;
+	public static int realElevatorP;
+	public static int realElevatorI;
+	public static int realElevatorD;
+	
+	public static int realLeftDriveTrainF;
+	public static int realLeftDriveTrainP;
+	public static int realLeftDriveTrainI;
+	public static int realLeftDriveTrainD;
+	
+	public static int realRightDriveTrainF;
+	public static int realRightDriveTrainP;
+	public static int realRightDriveTrainI;
+	public static int realRightDriveTrainD;
 	
 	public Constants() {
 		try {
@@ -92,45 +76,35 @@ public class Constants {
 		
 	}
 	public void writeCompBotVariables() {
-		Constants.real_F = Constants.comp_kF;
-		Constants.real_P = Constants.comp_kP;
-		Constants.real_I = Constants.comp_kI;
-		Constants.real_D = Constants.comp_kD;
+		Constants.realElevatorF = Constants.compElevatorF;
+		Constants.realElevatorP = Constants.compElevatorP;
+		Constants.realElevatorI = Constants.compElevatorI;
+		Constants.realElevatorD = Constants.compElevatorD;
 		
-		Constants.real_elevatorF = Constants.comp_kelevatorF;
-		Constants.real_elevatorP = Constants.comp_kelevatorP;
-		Constants.real_elevatorI = Constants.comp_kelevatorI;
-		Constants.real_elevatorD = Constants.comp_kelevatorD;
+		Constants.realLeftDriveTrainF = Constants.compLeftDriveTrainF;
+		Constants.realLeftDriveTrainP = Constants.compLeftDriveTrainP;
+		Constants.realLeftDriveTrainI = Constants.compLeftDriveTrainI;
+		Constants.realLeftDriveTrainD = Constants.compleftDriveTrainD;
 		
-		Constants.real_leftDriveTrainF = Constants.comp_kleftDriveTrainF;
-		Constants.real_leftDriveTrainP = Constants.comp_kleftDriveTrainP;
-		Constants.real_leftDriveTrainI = Constants.comp_kleftDriveTrainI;
-		Constants.real_leftDriveTrainD = Constants.comp_kleftDriveTrainD;
-		
-		Constants.real_rightDriveTrainF = Constants.comp_krightDriveTrainF;
-		Constants.real_rightDriveTrainP = Constants.comp_krightDriveTrainP;
-		Constants.real_rightDriveTrainI = Constants.comp_krightDriveTrainI;
-		Constants.real_rightDriveTrainD = Constants.comp_krightDriveTrainD;
+		Constants.realRightDriveTrainF = Constants.compRightDriveTrainF;
+		Constants.realRightDriveTrainP = Constants.compRightDriveTrainP;
+		Constants.realRightDriveTrainI = Constants.compRightDriveTrainI;
+		Constants.realRightDriveTrainD = Constants.compRightDriveTrainD;
 	}
 	public void writePracticeBotVariables() {
-		Constants.real_F = Constants.prac_kF;
-		Constants.real_P = Constants.prac_kP;
-		Constants.real_I = Constants.prac_kI;
-		Constants.real_D = Constants.prac_kD;
+		Constants.realElevatorF = Constants.pracElevatorF;
+		Constants.realElevatorP = Constants.pracElevatorP;
+		Constants.realElevatorI = Constants.pracElevatorI;
+		Constants.realElevatorD = Constants.pracElevatorD;
 		
-		Constants.real_elevatorF = Constants.prac_kelevatorF;
-		Constants.real_elevatorP = Constants.prac_kelevatorP;
-		Constants.real_elevatorI = Constants.prac_kelevatorI;
-		Constants.real_elevatorD = Constants.prac_kelevatorD;
+		Constants.realLeftDriveTrainF = Constants.pracleftDrivetrainF;
+		Constants.realLeftDriveTrainP = Constants.pracLeftDrivetrainP;
+		Constants.realLeftDriveTrainI = Constants.pracleftDrivetrainI;
+		Constants.realLeftDriveTrainD = Constants.pracLeftDrivetrainD;
 		
-		Constants.real_leftDriveTrainF = Constants.prac_kleftDrivetrainF;
-		Constants.real_leftDriveTrainP = Constants.prac_kleftDrivetrainP;
-		Constants.real_leftDriveTrainI = Constants.prac_kleftDrivetrainI;
-		Constants.real_leftDriveTrainD = Constants.prac_kleftDrivetrainD;
-		
-		Constants.real_rightDriveTrainF = Constants.prac_krightDriveTrainF;
-		Constants.real_rightDriveTrainP = Constants.prac_krightDriveTrainP;
-		Constants.real_rightDriveTrainI = Constants.prac_krightDriveTrainI;
-		Constants.real_rightDriveTrainD = Constants.prac_krightDriveTrainD;
+		Constants.realRightDriveTrainF = Constants.pracRightDriveTrainF;
+		Constants.realRightDriveTrainP = Constants.pracRightDriveTrainP;
+		Constants.realRightDriveTrainI = Constants.pracRightDriveTrainI;
+		Constants.realRightDriveTrainD = Constants.pracRightDriveTrainD;
 	}
 }
