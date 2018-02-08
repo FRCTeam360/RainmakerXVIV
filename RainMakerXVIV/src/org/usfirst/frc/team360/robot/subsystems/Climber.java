@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Winch extends Subsystem {
-	VictorSP winch = RobotMap.motorWinch1;
-	VictorSP winch1 = RobotMap.motorWinch2;
+public class Climber extends Subsystem {
+	VictorSP climber = RobotMap.motorClimber1;
+	VictorSP climber1 = RobotMap.motorClimber2;
 	
 	
 
@@ -22,12 +22,12 @@ public class Winch extends Subsystem {
     }
 
 	public void setMotorSpeed(double speed) {
-		winch.set(speed);
-	    winch1.set(speed);
+		climber.set(speed);
+	    climber1.set(speed);
 	}
 	public void stop() {
-		winch.set(0);
-	    winch1.set(0);
+		climber.set(0);
+	    climber1.set(0);
 	}
 }
 

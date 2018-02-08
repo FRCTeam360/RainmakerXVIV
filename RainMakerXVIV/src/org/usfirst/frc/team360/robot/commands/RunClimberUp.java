@@ -4,20 +4,20 @@ import org.usfirst.frc.team360.robot.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RunWinchUp extends Command {
+public class RunClimberUp extends Command {
 
-    public RunWinchUp() {
-    		requires(Robot.winch);
+    public RunClimberUp() {
+    		requires(Robot.climber);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    		Robot.logger.logWinchUp();
+    		Robot.logger.logClimbUp();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Robot.winch.setMotorSpeed(0.5);
+    		Robot.climber.setMotorSpeed(0.5);
     }
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -27,7 +27,7 @@ public class RunWinchUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    		Robot.winch.stop();
+    		Robot.climber.stop();
     }
 
     // Called when another command which requires one or more of the same

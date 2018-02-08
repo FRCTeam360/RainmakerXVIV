@@ -103,17 +103,17 @@ public class Logger extends Subsystem {
 		}
 	}
 	
-	public void logWinchUp(){
+	public void logClimbUp(){
 		try{
-			bw.write("Command Run: Winch Up" + '\n');
+			bw.write("Command Run: Climb Up" + '\n');
 		}catch (Exception e){
 			
 		}
 	}
 	
-	public void logWinchDown(){
+	public void logClimbDown(){
 		try{
-			bw.write("Command Run: Winch Down" + '\n');
+			bw.write("Command Run: Climb Down" + '\n');
 		}catch (Exception e){
 			
 		}

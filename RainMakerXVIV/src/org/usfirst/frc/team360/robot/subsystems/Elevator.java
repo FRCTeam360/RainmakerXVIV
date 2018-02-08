@@ -68,8 +68,6 @@ public class Elevator extends Subsystem {
 //		SmartDashboard.putNumber("ActTrajHeading", elevatorMaster.getActiveTrajectoryHeading());
 		
 	}
-	
-	public void zeroSensor() {
 
 	public void motionMagicInit() {
 		System.out.println("Working Subsystem");
