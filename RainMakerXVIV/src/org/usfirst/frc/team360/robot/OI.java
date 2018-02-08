@@ -36,7 +36,6 @@ public class OI {
 	 public static Button buttonWinchDown = new JoystickButton(joyOI, 2);
 	 
 	 public OI() {
-			buttonDriveUp.whenPressed(new ShiftUp());
 		 
 		 	buttonDriveUp.whenPressed(new ShiftUp());
 			buttonDriveDown.whenPressed(new ShiftDown());
