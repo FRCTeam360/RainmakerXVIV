@@ -1,36 +1,40 @@
-package org.usfirst.frc.team360.robot.commands;
+package org.usfirst.frc.team360.robot.commands.tests;
 
 import org.usfirst.frc.team360.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class IntakeControl extends Command {
-    
-    double speed;
-	double amps;
-	boolean currentStop;
-	
-    public IntakeControl(double speed, double amps, boolean currentStop) {
-	    	this.speed = speed;
-	    	this.amps = amps;
-	    	this.currentStop = currentStop;
-	    	requires(Robot.intake);
+/**
+ *
+ */
+public class TestShifter extends Command {
+	Timer time;
+    public TestShifter() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    		requires(Robot.shifter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    		time = new Timer();
+    		time.reset();
+    		time.start();
     }
-
-    // Called repeatedly when this Command is scheduled to run
+ // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.controlMotor(speed);
+    		if(time.get() < 1) {
+    			Robot.shifter.shiftUp();
+    		} else {
+    			Robot.shifter.shiftDown();
+    		}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    		return Robot.intake.currentDraw() > amps && currentStop;
+        return time.get() > 2;
     }
-    
 
     // Called once after isFinished returns true
     protected void end() {

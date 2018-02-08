@@ -27,6 +27,7 @@ public class Logger extends Subsystem {
 	//Old Variables
 	double driveBaseLVelocityOLD;
 	double driveBaseRVelocityOLD;
+	boolean driverStationIsAttachedOld = true;
 	
 	public void initLogger(){
 		try {
@@ -178,6 +179,25 @@ public class Logger extends Subsystem {
 	public void logBadShiftValue() {
 		try {
 			bw.write("ENMU VALUE FOR SHIFTER INVALED" + '\n');
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	public void logDriverStationConnection() {
+		if(!RobotMap.driverStationIsAttached == driverStationIsAttachedOld) {
+			try {
+				bw.write("Driver Station Connection Status: " + RobotMap.driverStationIsAttached + '\n');
+			} catch (Exception e) {
+				
+			}
+			driverStationIsAttachedOld = RobotMap.driverStationIsAttached;
+		}
+	}
+	
+	public void logTipping() {
+		try {
+			bw.write("Robot Tipping, Pitch: " + RobotMap.Pitch + '\n');
 		} catch (Exception e) {
 			
 		}

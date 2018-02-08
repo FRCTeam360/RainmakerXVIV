@@ -9,14 +9,7 @@ package org.usfirst.frc.team360.robot;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
-
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.Sendable;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.*;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -37,7 +30,7 @@ public class RobotMap {
 
 	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
 	
-	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 2);
+	public static DoubleSolenoid shifter = new DoubleSolenoid(2, 3);
 	
 	public static enum ShiftState {UP, DOWN, UNKNOWN}
 	public static ShiftState shiftState = ShiftState.UNKNOWN;
@@ -49,10 +42,10 @@ public class RobotMap {
 	public static int switchHeight = 1500;
 	public static int intakePos = 0;
 
-
 	public static AHRS navX = new AHRS(SPI.Port.kMXP);
 	
-	public static String robotID = "comp";
+	public static enum RobotID {COMP, PRACTICE, UNKNOWN};
+	public static RobotID robotID = RobotID.UNKNOWN;
 	 
 	public static Compressor compressor = new Compressor();
 	
@@ -77,6 +70,13 @@ public class RobotMap {
 	
 	public static String FMSSideData = "unknown";
 	
+	public static boolean driverStationIsAttached = DriverStation.getInstance().isDSAttached();
+	
+	//Limit Switch Variables
+	public static DigitalInput elevatorLimitSwitch = new DigitalInput(0);
+	public static boolean wasZeroActive = false;
+	public static boolean ZeroActive = true;
+
 	//NavX Variables 
 	
 	public final static double kCollisionThreshold_DeltaG = 0.7f;
@@ -101,8 +101,13 @@ public class RobotMap {
 	public static double TotalYaw;
 	public static double YawRate;
 	
-	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, PULSING, RAINBOW, OFF};
+	public static enum Color{RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, PULSING, RAINBOW, OFF};
 	public static Color color = Color.OFF;
 	
 
+	public enum ScaleSide {LEFT, RIGHT};
+	public static ScaleSide scaleSide; 
+	public enum SwitchSide {LEFT, RIGHT};
+	public static SwitchSide switchSide; 
+	
 }

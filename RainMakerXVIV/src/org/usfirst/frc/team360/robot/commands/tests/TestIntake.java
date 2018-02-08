@@ -1,36 +1,41 @@
-package org.usfirst.frc.team360.robot.commands;
+package org.usfirst.frc.team360.robot.commands.tests;
 
+import org.usfirst.frc.team360.robot.Robot;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team360.robot.*;
 
-public class JoystickTankDrive extends Command {
-
-    public JoystickTankDrive() {
-    	requires(Robot.driveTrain); 
+/**
+ *
+ */
+public class TestIntake extends Command {
+	Timer time;
+    public TestIntake() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    		requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    		time = new Timer();
+    		time.reset();
+    		time.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		if(Math.abs(OI.joyR.getRawAxis(1)) > .05) {
-    			Robot.driveTrain.driveR(-1 * OI.joyR.getRawAxis(1));
-    		}
-    		if(Math.abs(OI.joyL.getRawAxis(1)) > .05) {
-    			Robot.driveTrain.driveL(-1 * OI.joyL.getRawAxis(1));
-    		}
-    		Robot.logger.logDriveTrainVelocity();
+    		Robot.intake.controlMotor(.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return time.get() > 1;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    		Robot.intake.stop();
     }
 
     // Called when another command which requires one or more of the same
