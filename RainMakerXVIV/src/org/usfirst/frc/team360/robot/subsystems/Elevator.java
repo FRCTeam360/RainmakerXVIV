@@ -16,9 +16,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Elevator extends Subsystem {
-	public TalonSRX elevatorMaster = RobotMap.motorR1;
-	static TalonSRX elevatorSlave = RobotMap.motorR2;
-	public TalonSRX _talon = new TalonSRX(4);
+	public TalonSRX elevatorMaster = RobotMap.elevM;
+	static TalonSRX elevatorSlave = RobotMap.elevS;
 
 	private int zeroSensor;
 	
@@ -101,7 +100,7 @@ public class Elevator extends Subsystem {
 
 	public void zeroSensor() {
 		int ZeroSensor = 50;
-		_talon.setSelectedSensorPosition(ZeroSensor, 0, 10);
+		elevatorMaster.setSelectedSensorPosition(ZeroSensor, 0, 10);
 	}
 
     
