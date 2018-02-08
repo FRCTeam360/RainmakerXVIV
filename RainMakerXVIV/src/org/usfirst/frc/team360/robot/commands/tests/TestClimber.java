@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TestWinch extends Command {
+public class TestClimber extends Command {
 	Timer time;
-    public TestWinch() {
+    public TestClimber() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     		requires(Robot.driveTrain);
