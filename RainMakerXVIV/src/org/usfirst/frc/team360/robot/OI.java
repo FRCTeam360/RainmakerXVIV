@@ -20,10 +20,6 @@ public class OI {
 	 public static Button buttonElevSwitch = new JoystickButton(joyR, 4);
 	 public static Button buttonElevMidSc = new JoystickButton(joyR, 5);
 	 public static Button buttonElevTopSc = new JoystickButton(joyR, 6);
-	 public static Button buttonElev25 = new JoystickButton(joyR, 3);
-	 public static Button buttonElev50 = new JoystickButton(joyR, 4);
-	 public static Button buttonElev75 = new JoystickButton(joyR, 5);
-	 public static Button buttonElev100 = new JoystickButton(joyR, 6);
 	 
 	 public static Button buttonDriveUp = new JoystickButton(joyR, 1);
 	 public static Button buttonDriveDown = new JoystickButton(joyL, 1);
@@ -40,10 +36,10 @@ public class OI {
 		 	buttonDriveUp.whenPressed(new ShiftUp());
 			buttonDriveDown.whenPressed(new ShiftDown());
 			
-			buttonElevIntake.whenPressed(new MoveElevator(RobotMap.intakePos));
-			buttonElevSwitch.whenPressed(new MoveElevator(RobotMap.switchHeight));
-			buttonElevMidSc.whenPressed(new MoveElevator(RobotMap.midScale));
-			buttonElevTopSc.whenPressed(new MoveElevator(RobotMap.topScale));
+			buttonElevIntake.whenPressed(new IntakePos());
+			buttonElevSwitch.whenPressed(new SwitchHeight());
+			buttonElevMidSc.whenPressed(new MidScale());
+			buttonElevTopSc.whenPressed(new TopScale());
 			
 			buttonWinchUp.whileHeld(new RunWinchUp());
 			buttonWinchDown.whileHeld(new RunWinchDown());
