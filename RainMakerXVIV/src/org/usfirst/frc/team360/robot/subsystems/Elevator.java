@@ -68,7 +68,14 @@ public class Elevator extends Subsystem {
 //		SmartDashboard.putNumber("ActTrajHeading", elevatorMaster.getActiveTrajectoryHeading());
 		
 	}
-	
+
+	public void motionMagicInit() {
+		System.out.println("Working Subsystem");
+		
+		elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
+		
+	}
+
 	public void motionMagicInit() {
 		
 		/* set acceleration and vcruise velocity - see documentation */

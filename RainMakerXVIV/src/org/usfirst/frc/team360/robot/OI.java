@@ -45,8 +45,8 @@ public class OI {
 			buttonElevMidSc.whenPressed(new MoveElevator(RobotMap.midScale));
 			buttonElevTopSc.whenPressed(new MoveElevator(RobotMap.topScale));
 			
-			buttonWinchUp.whileHeld(new RunWinchUp());
-			buttonWinchDown.whileHeld(new RunWinchDown());
+			buttonWinchUp.whileHeld(new RunClimberUp());
+			buttonWinchDown.whileHeld(new RunClimberDown());
 			
 			buttonIntake.whileHeld(new IntakeIn());
 			buttonOutTake.whileHeld(new IntakeOut());
