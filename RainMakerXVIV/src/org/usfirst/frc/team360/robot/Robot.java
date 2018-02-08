@@ -19,7 +19,7 @@ public class Robot extends TimedRobot {
 	public static Elevator elevator;
 	public static Pneumatics pneumatics;
 	public static DriveTrain driveTrain;
-	public static Winch winch;
+	public static Climber winch;
 	public static NavX navX;
 	public static Intake intake;
 	public static Logger logger;
@@ -81,7 +81,10 @@ public class Robot extends TimedRobot {
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
 		//motionMagic  = new MotionMagic();
-		winch = new Winch();
+
+		//elevator.zeroSensor();
+		elevator.zeroSensor();
+		winch = new Climber()
 		navX = new NavX();
 		intake = new Intake();
 		led = new LED();
