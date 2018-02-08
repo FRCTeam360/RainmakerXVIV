@@ -57,10 +57,33 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		constants = new Constants();
+		try {
+			Buff = new BufferedReader(new FileReader("home/lvuser/RobotID.txt"));
+			RobotMap.robotID = Buff.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if ("comp".equals(RobotMap.robotID)) {
+			DriverStation.reportError("Comp Bot", false);
+			constants.writeCompBotVariables();
+		} else if ("practice".equals(RobotMap.robotID)) {
+			DriverStation.reportError("Practice Bot", false);
+			constants.writePracticeBotVariables();
+		} else {
+			DriverStation.reportError("Invalid Robot ID, defaulting to comp bot variables", false);
+			constants.writeCompBotVariables();
+		}
+		
+		RobotMap.currentPos = 0;
+		
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
+		elevator.zeroSensor();
+		//motionMagic  = new MotionMagic();
+		//elevator.zeroSensor();
+		elevator.zeroSensor();
 		winch = new Winch();
 		navX = new NavX();
 		intake = new Intake();
