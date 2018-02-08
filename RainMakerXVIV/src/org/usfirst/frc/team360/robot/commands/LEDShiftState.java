@@ -23,9 +23,9 @@ public class LEDShiftState extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(RobotMap.ShiftState.UP == RobotMap.shiftState) {
-    		Robot.led.setLEDOrange();
-    	}else if(RobotMap.ShiftState.DOWN == RobotMap.shiftState) {
     		Robot.led.setLEDBlue();
+    	}else if(RobotMap.ShiftState.DOWN == RobotMap.shiftState) {
+    		Robot.led.setLEDOrange();
     	}else {
     		RobotMap.LED_Control.disable();
     	}
