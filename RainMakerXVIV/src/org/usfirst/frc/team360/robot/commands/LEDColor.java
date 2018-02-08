@@ -29,7 +29,11 @@ public class LEDColor extends Command {
     	this.duration = duration; // finds variable time of how long the pulse goes for
     	this.cycle = 0; // initializes cycle to zero 
     	requires(Robot.led); // class requires the LED subsystem
-    	totalCycles = period * duration; // takes period and duration to find the total amount of cycles in the amount of time
+    	
+    	totalCycles = 0;
+    	if((period > 0 && period < 1) || period >= 1) {
+    		totalCycles = duration/period;
+    	}
     }
     
     // Called just before this Command runs the first time

@@ -13,7 +13,7 @@ public class LEDShiftState extends Command {
     public LEDShiftState() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.LED);
+    	requires(Robot.led);
     }
 
     // Called just before this Command runs the first time
@@ -23,9 +23,9 @@ public class LEDShiftState extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(RobotMap.ShiftState.UP == RobotMap.shiftState) {
-    		Robot.LED.setLEDOrange();
+    		Robot.led.setLEDBlue();
     	}else if(RobotMap.ShiftState.DOWN == RobotMap.shiftState) {
-    		Robot.LED.setLEDBlue();
+    		Robot.led.setLEDOrange();
     	}else {
     		RobotMap.LED_Control.disable();
     	}

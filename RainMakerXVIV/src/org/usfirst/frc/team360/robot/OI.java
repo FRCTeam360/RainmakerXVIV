@@ -20,7 +20,7 @@ public class OI {
 	 public static Button buttonElevSwitch = new JoystickButton(joyR, 4);
 	 public static Button buttonElevMidSc = new JoystickButton(joyR, 5);
 	 public static Button buttonElevTopSc = new JoystickButton(joyR, 6);
-	 
+	
 	 public static Button buttonDriveUp = new JoystickButton(joyR, 1);
 	 public static Button buttonDriveDown = new JoystickButton(joyL, 1);
 	 
@@ -35,7 +35,6 @@ public class OI {
 		 
 		 	buttonDriveUp.whenPressed(new ShiftUp());
 			buttonDriveDown.whenPressed(new ShiftDown());
-			
 			buttonElevIntake.whenPressed(new IntakePos());
 			buttonElevSwitch.whenPressed(new SwitchHeight());
 			buttonElevMidSc.whenPressed(new MidScale());

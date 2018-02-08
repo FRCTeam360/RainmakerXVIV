@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Elevator extends Subsystem {
+
 	public TalonSRX elevatorMaster = RobotMap.elevM;
 	static TalonSRX elevatorSlave = RobotMap.elevS;
 
