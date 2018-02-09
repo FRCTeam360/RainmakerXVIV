@@ -27,6 +27,6 @@ public class TestSubsystems extends CommandGroup {
     		addSequential(new TestDriveTrain());
     		addSequential(new TestIntake());
     		addSequential(new TestShifter());
-    		addSequential(new TestWhich());
+    		//addSequential(new TestWhich());
     }
 }
