@@ -19,7 +19,7 @@ public class Robot extends TimedRobot {
 	public static Elevator elevator;
 	public static Pneumatics pneumatics;
 	public static DriveTrain driveTrain;
-	public static Climber winch;
+	public static Climber climber;
 	public static NavX navX;
 	public static Intake intake;
 	public static Logger logger;
@@ -56,24 +56,6 @@ public class Robot extends TimedRobot {
 }*/
 	@Override
 	public void robotInit() {
-		constants = new Constants();
-		try {
-			Buff = new BufferedReader(new FileReader("home/lvuser/RobotID.txt"));
-			RobotMap.robotID = Buff.readLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		if ("comp".equals(RobotMap.robotID)) {
-			DriverStation.reportError("Comp Bot", false);
-			constants.writeCompBotVariables();
-		} else if ("practice".equals(RobotMap.robotID)) {
-			DriverStation.reportError("Practice Bot", false);
-			constants.writePracticeBotVariables();
-		} else {
-			DriverStation.reportError("Invalid Robot ID, defaulting to comp bot variables", false);
-			constants.writeCompBotVariables();
-		}
-		
 		RobotMap.currentPos = 0;
 		
 		shifter = new Shifter();
@@ -84,7 +66,7 @@ public class Robot extends TimedRobot {
 
 		//elevator.zeroSensor();
 		elevator.zeroSensor();
-		winch = new Climber()
+		climber = new Climber();
 		navX = new NavX();
 		intake = new Intake();
 		led = new LED();

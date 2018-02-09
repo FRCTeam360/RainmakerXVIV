@@ -70,13 +70,6 @@ public class Elevator extends Subsystem {
 	}
 
 	public void motionMagicInit() {
-		System.out.println("Working Subsystem");
-		
-		elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
-		
-	}
-
-	public void motionMagicInit() {
 		
 		/* set acceleration and vcruise velocity - see documentation */
 		elevatorMaster.configMotionCruiseVelocity(1340, kTimeoutMs);
