@@ -1,6 +1,8 @@
 package org.usfirst.frc.team360.robot;
 
 import org.usfirst.frc.team360.robot.commands.*;
+import org.usfirst.frc.team360.robot.commands.triggers.JoystickAxisButton;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -23,18 +25,18 @@ public class OI {
 //	 public static Button buttonIntake = new JoystickButton(joyOI, 3);
 	 public static Button buttonOutTake = new JoystickButton(joyOI, 4);
 	 public static Button pulsingIntake = new JoystickButton(joyOI, 5);
-	 
+	 public static JoystickAxisButton joyBut = new JoystickAxisButton(OI.joyOI, 7, 0.8);
 	 public static Button buttonWinchUp = new JoystickButton(joyOI, 1);
 	 public static Button buttonWinchDown = new JoystickButton(joyOI, 2);
 	 
 	 public OI() {
-		 
+		 	
 		 	buttonDriveUp.whenPressed(new ShiftUp());
 			buttonDriveDown.whenPressed(new ShiftDown());
-			buttonElevIntake.whenPressed(new IntakePos());
-			buttonElevSwitch.whenPressed(new SwitchHeight());
-			buttonElevMidSc.whenPressed(new MidScale());
-			buttonElevTopSc.whenPressed(new TopScale());
+			buttonElevIntake.whenPressed(new MoveElevatorToIntakePos());
+			buttonElevSwitch.whenPressed(new MoveElevetorToSwitchHeight());
+			buttonElevMidSc.whenPressed(new MoveElevatorToMidScale());
+			buttonElevTopSc.whenPressed(new MoveElevatorToTopScale());
 			
 			buttonWinchUp.whileHeld(new RunClimberUp());
 			buttonWinchDown.whileHeld(new RunClimberDown());
