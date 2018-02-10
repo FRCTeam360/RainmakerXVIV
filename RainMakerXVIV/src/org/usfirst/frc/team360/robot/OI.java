@@ -1,10 +1,6 @@
 package org.usfirst.frc.team360.robot;
 
-//import org.usfirst.frc.team360.robot.commands.MoveElevator;
-//import org.usfirst.frc.team360.robot.commands.ShiftDown;
-//import org.usfirst.frc.team360.robot.commands.ShiftUp;
 import org.usfirst.frc.team360.robot.commands.*;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -24,7 +20,7 @@ public class OI {
 	 public static Button buttonDriveUp = new JoystickButton(joyR, 1);
 	 public static Button buttonDriveDown = new JoystickButton(joyL, 1);
 	 
-	 public static Button buttonIntake = new JoystickButton(joyOI, 3);
+//	 public static Button buttonIntake = new JoystickButton(joyOI, 3);
 	 public static Button buttonOutTake = new JoystickButton(joyOI, 4);
 	 public static Button pulsingIntake = new JoystickButton(joyOI, 5);
 	 
@@ -43,7 +39,7 @@ public class OI {
 			buttonWinchUp.whileHeld(new RunClimberUp());
 			buttonWinchDown.whileHeld(new RunClimberDown());
 			
-			buttonIntake.whileHeld(new IntakeIn());
+//			buttonIntake.whileHeld(new IntakeIn());
 			buttonOutTake.whileHeld(new IntakeOut());
 			pulsingIntake.whileHeld(new IntakeWithPulsingMotor());
 			

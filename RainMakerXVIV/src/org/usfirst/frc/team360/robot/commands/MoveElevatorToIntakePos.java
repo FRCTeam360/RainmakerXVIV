@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class MoveElevatorLED extends CommandGroup {
+public class MoveElevatorToIntakePos extends CommandGroup {
 
-    public MoveElevatorLED() {
-    		addSequential(new LEDColor(RobotMap.Color.VIOLET, 1/3, 3, true));
+    public MoveElevatorToIntakePos() {
+    		addSequential(new MoveElevator(RobotMap.intakePos));
     }
 }

@@ -2,6 +2,7 @@ package org.usfirst.frc.team360.robot.subsystems;
 
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
+import org.usfirst.frc.team360.robot.commands.ManualElevator;
 import org.usfirst.frc.team360.robot.commands.MoveElevator;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -89,7 +90,7 @@ public class Elevator extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-    	//setDefaultCommand(new MoveElevator(0));
+    		setDefaultCommand(new ManualElevator());
     }
 
 	public void zeroSensor() {
