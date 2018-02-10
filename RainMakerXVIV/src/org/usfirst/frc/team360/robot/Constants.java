@@ -9,59 +9,54 @@ import edu.wpi.first.wpilibj.DriverStation;
 
 public class Constants {
 	
-	public static BufferedReader buff;
+	private BufferedReader buff;
+	private String buffLine;
+	
 
-	public static int compElevatorF = 1;
-	public static int compElevatorP = 1;
-	public static int compElevatorI = 1;
-	public static int compElevatorD = 1;
+	private final double compElevatorF = 0;
+	private final double compElevatorP = 0;
+	private final double compElevatorI = 0;
+	private final double compElevatorD = 0;
 	
-	public static int compLeftDriveTrainF = 1;
-	public static int compLeftDriveTrainP = 1;
-	public static int compLeftDriveTrainI = 1;
-	public static int compleftDriveTrainD = 1;
+	private final double compLeftDriveTrainPathPlanningF = 0;
+	private final double compLeftDriveTrainPathPlanningP = 0;
+	private final double compLeftDriveTrainPathPlanningI = 0;
+	private final double compleftDriveTrainPathPlanningD = 0;
 	
-	public static int compRightDriveTrainF = 1;
-	public static int compRightDriveTrainP = 1;
-	public static int compRightDriveTrainI = 1;
-	public static int compRightDriveTrainD = 1;
+	private final double compRightDriveTrainPathPlanningF = 0;
+	private final double compRightDriveTrainPathPlanningP = 0;
+	private final double compRightDriveTrainPathPlanningI = 0;
+	private final double compRightDriveTrainPathPlanningD = 0;
 	
-	public static int pracElevatorF = 0;
-	public static int pracElevatorP = 0;
-	public static int pracElevatorI = 0;
-	public static int pracElevatorD = 0;
+	private final double pracElevatorF = 0.756;
+	private final double pracElevatorP = 4;
+	private final double pracElevatorI = 0;
+	private final double pracElevatorD = 40;
 	
-	public static int pracleftDrivetrainF = 0;
-	public static int pracLeftDrivetrainP = 0;
-	public static int pracleftDrivetrainI = 0;
-	public static int pracLeftDrivetrainD = 0;
+	private final double pracleftDrivetrainPathPlanningF = 0.5384;
+	private final double pracLeftDrivetrainPathPlanningP = 0.035;
+	private final double pracleftDrivetrainPathPlanningI = 0.0;
+	private final double pracLeftDrivetrainPathPlanningD = 3.5;
 	
-	public static int pracRightDriveTrainF = 0;
-	public static int pracRightDriveTrainP = 0;
-	public static int pracRightDriveTrainI = 0;
-	public static int pracRightDriveTrainD = 0;
+	private final double pracRightDriveTrainPathPlanningF = 0.6133;
+	private final double pracRightDriveTrainPathPlanningP = 0.035;
+	private final double pracRightDriveTrainPathPlanningI = 0.0;
+	private final double pracRightDriveTrainPathPlanningD = 3.5;
 
-	public static int realElevatorF;
-	public static int realElevatorP;
-	public static int realElevatorI;
-	public static int realElevatorD;
+	public static double realElevatorF;
+	public static double realElevatorP;
+	public static double realElevatorI;
+	public static double realElevatorD;
   
-	public String buffLine;
+	public static double realLeftDriveTrainPathPlanningF;
+	public static double realLeftDriveTrainPathPlanningP;
+	public static double realLeftDriveTrainPathPlanningI;
+	public static double realLeftDriveTrainPathPlanningD;
 	
-	public static int real_elevatorF;
-	public static int real_elevatorP;
-	public static int real_elevatorI;
-	public static int real_elevatorD;
-	
-	public static int realLeftDriveTrainF;
-	public static int realLeftDriveTrainP;
-	public static int realLeftDriveTrainI;
-	public static int realLeftDriveTrainD;
-	
-	public static int realRightDriveTrainF;
-	public static int realRightDriveTrainP;
-	public static int realRightDriveTrainI;
-	public static int realRightDriveTrainD;
+	public static double realRightDriveTrainPathPlanningF;
+	public static double realRightDriveTrainPathPlanningP;
+	public static double realRightDriveTrainPathPlanningI;
+	public static double realRightDriveTrainPathPlanningD;
 	
 	public Constants() {
 		try {
@@ -86,35 +81,35 @@ public class Constants {
 		
 	}
 	public void writeCompBotVariables() {
-		Constants.realElevatorF = Constants.compElevatorF;
-		Constants.realElevatorP = Constants.compElevatorP;
-		Constants.realElevatorI = Constants.compElevatorI;
-		Constants.realElevatorD = Constants.compElevatorD;
+		realElevatorF = compElevatorF;
+		realElevatorP = compElevatorP;
+		realElevatorI = compElevatorI;
+		realElevatorD = compElevatorD;
 		
-		Constants.realLeftDriveTrainF = Constants.compLeftDriveTrainF;
-		Constants.realLeftDriveTrainP = Constants.compLeftDriveTrainP;
-		Constants.realLeftDriveTrainI = Constants.compLeftDriveTrainI;
-		Constants.realLeftDriveTrainD = Constants.compleftDriveTrainD;
+		realLeftDriveTrainPathPlanningF = compLeftDriveTrainPathPlanningF;
+		realLeftDriveTrainPathPlanningP = compLeftDriveTrainPathPlanningP;
+		realLeftDriveTrainPathPlanningI = compLeftDriveTrainPathPlanningI;
+		realLeftDriveTrainPathPlanningD = compleftDriveTrainPathPlanningD;
 		
-		Constants.realRightDriveTrainF = Constants.compRightDriveTrainF;
-		Constants.realRightDriveTrainP = Constants.compRightDriveTrainP;
-		Constants.realRightDriveTrainI = Constants.compRightDriveTrainI;
-		Constants.realRightDriveTrainD = Constants.compRightDriveTrainD;
+		realRightDriveTrainPathPlanningF = compRightDriveTrainPathPlanningF;
+		realRightDriveTrainPathPlanningP = compRightDriveTrainPathPlanningP;
+		realRightDriveTrainPathPlanningI = compRightDriveTrainPathPlanningI;
+		realRightDriveTrainPathPlanningD = compRightDriveTrainPathPlanningD;
 	}
 	public void writePracticeBotVariables() {
-		Constants.realElevatorF = Constants.pracElevatorF;
-		Constants.realElevatorP = Constants.pracElevatorP;
-		Constants.realElevatorI = Constants.pracElevatorI;
-		Constants.realElevatorD = Constants.pracElevatorD;
+		realElevatorF = pracElevatorF;
+		realElevatorP = pracElevatorP;
+		realElevatorI = pracElevatorI;
+		realElevatorD = pracElevatorD;
 		
-		Constants.realLeftDriveTrainF = Constants.pracleftDrivetrainF;
-		Constants.realLeftDriveTrainP = Constants.pracLeftDrivetrainP;
-		Constants.realLeftDriveTrainI = Constants.pracleftDrivetrainI;
-		Constants.realLeftDriveTrainD = Constants.pracLeftDrivetrainD;
+		realLeftDriveTrainPathPlanningF = pracleftDrivetrainPathPlanningF;
+		realLeftDriveTrainPathPlanningP = pracLeftDrivetrainPathPlanningP;
+		realLeftDriveTrainPathPlanningI = pracleftDrivetrainPathPlanningI;
+		realLeftDriveTrainPathPlanningD = pracLeftDrivetrainPathPlanningD;
 		
-		Constants.realRightDriveTrainF = Constants.pracRightDriveTrainF;
-		Constants.realRightDriveTrainP = Constants.pracRightDriveTrainP;
-		Constants.realRightDriveTrainI = Constants.pracRightDriveTrainI;
-		Constants.realRightDriveTrainD = Constants.pracRightDriveTrainD;
+		realRightDriveTrainPathPlanningF = pracRightDriveTrainPathPlanningF;
+		realRightDriveTrainPathPlanningP = pracRightDriveTrainPathPlanningP;
+		realRightDriveTrainPathPlanningI = pracRightDriveTrainPathPlanningI;
+		realRightDriveTrainPathPlanningD = pracRightDriveTrainPathPlanningD;
 	}
 }

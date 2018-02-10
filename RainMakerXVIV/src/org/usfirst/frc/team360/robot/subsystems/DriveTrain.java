@@ -45,22 +45,14 @@ public class DriveTrain extends Subsystem {
 		motorLMaster.setSensorPhase(false);
 		motorRMaster.setSensorPhase(false);
 		
-		motorLMaster.config_kF(0, .5384, DEFAULT_TIMEOUT_MS);
-		motorRMaster.config_kF(0, .6133, DEFAULT_TIMEOUT_MS);
-		
-//		motorLMaster.config_kP(0, 0.9, DEFAULT_TIMEOUT_MS);
-//		motorRMaster.config_kP(0, 0.835, DEFAULT_TIMEOUT_MS);		
-//		motorLMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
-//		motorRMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
-//		motorLMaster.config_kD(0, 90, DEFAULT_TIMEOUT_MS);
-//		motorRMaster.config_kD(0, 90, DEFAULT_TIMEOUT_MS);
-		
-		motorLMaster.config_kP(0, 0.035, DEFAULT_TIMEOUT_MS);
-		motorRMaster.config_kP(0, 0.035, DEFAULT_TIMEOUT_MS);		
-		motorLMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
-		motorRMaster.config_kI(0, 0, DEFAULT_TIMEOUT_MS);
-		motorLMaster.config_kD(0, 3.5, DEFAULT_TIMEOUT_MS);
-		motorRMaster.config_kD(0, 3.5, DEFAULT_TIMEOUT_MS);
+		motorLMaster.config_kF(0, Constants.realLeftDriveTrainPathPlanningF, DEFAULT_TIMEOUT_MS);
+		motorLMaster.config_kP(0, Constants.realLeftDriveTrainPathPlanningP, DEFAULT_TIMEOUT_MS);		
+		motorLMaster.config_kI(0, Constants.realLeftDriveTrainPathPlanningI, DEFAULT_TIMEOUT_MS);
+		motorLMaster.config_kD(0, Constants.realLeftDriveTrainPathPlanningD, DEFAULT_TIMEOUT_MS);
+		motorRMaster.config_kF(0, Constants.realRightDriveTrainPathPlanningF, DEFAULT_TIMEOUT_MS);
+		motorRMaster.config_kP(0, Constants.realRightDriveTrainPathPlanningP, DEFAULT_TIMEOUT_MS);
+		motorRMaster.config_kI(0, Constants.realRightDriveTrainPathPlanningI, DEFAULT_TIMEOUT_MS);
+		motorRMaster.config_kD(0, Constants.realRightDriveTrainPathPlanningD, DEFAULT_TIMEOUT_MS);
 		
 		motorLMaster.selectProfileSlot(0, 0);
 		motorRMaster.selectProfileSlot(0, 0);

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
+import org.usfirst.frc.team360.robot.Constants;
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
 import org.usfirst.frc.team360.robot.commands.MoveElevator;
@@ -48,12 +49,10 @@ public class Elevator extends Subsystem {
 		
 		/* set closed loop gains in slot0 - see documentation */
 		elevatorMaster.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
-		//elevatorMaster.config_kF(0, 0.755539, kTimeoutMs);
-		//elevatorMaster.config_kP(0, 0.005963, kTimeoutMs);
-		elevatorMaster.config_kF(0, 0.756, kTimeoutMs);
-		elevatorMaster.config_kP(0, 4, kTimeoutMs);
-		elevatorMaster.config_kI(0, 0, kTimeoutMs);
-		elevatorMaster.config_kD(0, 40, kTimeoutMs);
+		elevatorMaster.config_kF(0, Constants.realElevatorF, kTimeoutMs);
+		elevatorMaster.config_kP(0, Constants.realElevatorP, kTimeoutMs);
+		elevatorMaster.config_kI(0, Constants.realElevatorI, kTimeoutMs);
+		elevatorMaster.config_kD(0, Constants.realElevatorD, kTimeoutMs);
 		
 		zeroSensor = 50;
 	}

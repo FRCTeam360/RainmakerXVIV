@@ -49,22 +49,20 @@ public class RobotMap {
 	 
 	public static Compressor compressor = new Compressor();
 	
-	public static TalonSRX motorL1 = new TalonSRX(0);
-	public static TalonSRX motorL2 = new TalonSRX(1);
-//	public static TalonSRX motorR1 = new TalonSRX(2);
-//	public static TalonSRX motorR2 = new TalonSRX(3);
-	public static TalonSRX motorR1 = new TalonSRX(2);
-	public static TalonSRX motorR2 = new TalonSRX(3);
+	public static TalonSRX motorLeftMaster = new TalonSRX(0);
+	public static TalonSRX motorLeftSlave = new TalonSRX(1);
+	public static TalonSRX motorRightMaster = new TalonSRX(2);
+	public static TalonSRX motorRightSlave = new TalonSRX(3);
 
 	public static TalonSRX motorElevatorMaster = new TalonSRX(4);
 	public static TalonSRX motorElevatorSlave = new TalonSRX(5);
-	
-	public static Spark LED_Control = new Spark(4);
 	
 	public static VictorSP motorClimber1 = new VictorSP(0);
 	public static VictorSP motorClimber2 = new VictorSP(1);
 	public static VictorSP motorIntake1 = new VictorSP(2);
 	public static VictorSP motorIntake2 = new VictorSP(3);
+	
+	public static Spark LED_Control = new Spark(4);
 	
 	//Logger Variables 
 	public static String robotMode = "Disabled";
