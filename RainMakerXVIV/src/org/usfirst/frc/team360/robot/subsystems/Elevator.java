@@ -18,14 +18,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Elevator extends Subsystem {
 
-	TalonSRX elevatorMaster = RobotMap.elevM;
-	TalonSRX elevatorSlave = RobotMap.elevS;
+	private TalonSRX elevatorMaster = RobotMap.motorElevatorMaster;
+	private TalonSRX elevatorSlave = RobotMap.motorElevatorSlave;
 
 	private int zeroSensor;
 	
-	public static final int kSlotIdx = 0;
-	public static final int kPIDLoopIdx = 0;
-	public static final int kTimeoutMs = 10;
+	private final int kSlotIdx = 0;
+	private final int kPIDLoopIdx = 0;
+	private final int kTimeoutMs = 10;
 	
 	public Elevator(){
 		
@@ -60,10 +60,10 @@ public class Elevator extends Subsystem {
 	
 	public void Process(){
 		
-		SmartDashboard.putNumber("ElevatorVel", elevatorMaster.getSelectedSensorVelocity(Elevator.kPIDLoopIdx));
-	    	SmartDashboard.putNumber("ElevatorPos",  elevatorMaster.getSelectedSensorPosition(Elevator.kPIDLoopIdx));
+		SmartDashboard.putNumber("ElevatorVel", elevatorMaster.getSelectedSensorVelocity(kPIDLoopIdx));
+	    	SmartDashboard.putNumber("ElevatorPos",  elevatorMaster.getSelectedSensorPosition(kPIDLoopIdx));
 	    	SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
-	    	SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(Elevator.kPIDLoopIdx));
+	    	SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(kPIDLoopIdx));
     	
 //    	SmartDashboard.putNumber("ActTrajVelocity", elevatorMaster.getActiveTrajectoryVelocity());
 		SmartDashboard.putNumber("ActTrajPosition", elevatorMaster.getActiveTrajectoryPosition());
@@ -91,7 +91,7 @@ public class Elevator extends Subsystem {
 	}
 	
 	public void getCurrentPosition() {
-		RobotMap.currentPos = elevatorMaster.getSelectedSensorPosition(Elevator.kPIDLoopIdx);
+		RobotMap.currentPos = elevatorMaster.getSelectedSensorPosition(kPIDLoopIdx);
 	}
 	
 	public boolean zeroActive() {

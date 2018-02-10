@@ -56,8 +56,8 @@ public class RobotMap {
 	public static TalonSRX motorR1 = new TalonSRX(2);
 	public static TalonSRX motorR2 = new TalonSRX(3);
 
-	public static TalonSRX elevM = new TalonSRX(4);
-	public static TalonSRX elevS = new TalonSRX(5);
+	public static TalonSRX motorElevatorMaster = new TalonSRX(4);
+	public static TalonSRX motorElevatorSlave = new TalonSRX(5);
 	
 	public static Spark LED_Control = new Spark(4);
 	

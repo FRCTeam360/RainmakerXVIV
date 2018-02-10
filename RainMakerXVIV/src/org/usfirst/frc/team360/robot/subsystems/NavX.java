@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class NavX extends Subsystem {
 	
-    public static int timesTriggered = 0;
-
+    private static int timesTriggered = 0;
+    private AHRS navX = RobotMap.navX;
 	@Override
 	protected void initDefaultCommand() {
 		
@@ -21,15 +21,15 @@ public class NavX extends Subsystem {
 	
 	public void NavXRead() {
 		
-	    	RobotMap.accelX = RobotMap.navX.getRawAccelX();
-	    	RobotMap.accelY = RobotMap.navX.getRawAccelY();
+	    	RobotMap.accelX = navX.getRawAccelX();
+	    	RobotMap.accelY = navX.getRawAccelY();
 	    	
-	    	RobotMap.Yaw = RobotMap.navX.getYaw();
-	    	RobotMap.Pitch = RobotMap.navX.getPitch();
-	    	RobotMap.Roll = RobotMap.navX.getRoll();
+	    	RobotMap.Yaw = navX.getYaw();
+	    	RobotMap.Pitch = navX.getPitch();
+	    	RobotMap.Roll = navX.getRoll();
 
-	    	RobotMap.TotalYaw = RobotMap.navX.getAngle();
-	    	RobotMap.YawRate = RobotMap.navX.getRate();
+	    	RobotMap.TotalYaw = navX.getAngle();
+	    	RobotMap.YawRate = navX.getRate();
 	    	
 
 	    	SmartDashboard.putNumber("accelX: ", RobotMap.accelX);
@@ -42,7 +42,7 @@ public class NavX extends Subsystem {
 	    	SmartDashboard.putNumber( "Total_Yaw: ", RobotMap.TotalYaw);
 	    	SmartDashboard.putNumber( "Yaw_Rate: ", RobotMap.YawRate);
 	    	
-	    	AHRS.BoardYawAxis yaw_axis1 = RobotMap.navX.getBoardYawAxis();
+	    	AHRS.BoardYawAxis yaw_axis1 = navX.getBoardYawAxis();
 	    	
 	    	SmartDashboard.putString( "YawAxisDirection: ", yaw_axis1.up ? "Up" : "Down" );
 	    	SmartDashboard.putNumber( "YawAxis: ", yaw_axis1.board_axis.getValue() );
@@ -51,8 +51,8 @@ public class NavX extends Subsystem {
 	
 	public void NavXCrash() {
 		
-		RobotMap.curr_world_linear_accel_x = RobotMap.navX.getWorldLinearAccelX();
-		RobotMap.curr_world_linear_accel_y = RobotMap.navX.getWorldLinearAccelY();
+		RobotMap.curr_world_linear_accel_x = navX.getWorldLinearAccelX();
+		RobotMap.curr_world_linear_accel_y = navX.getWorldLinearAccelY();
 		
 		RobotMap.currentJerkX = RobotMap.curr_world_linear_accel_x - RobotMap.last_world_linear_accel_x;
 		RobotMap.currentJerkY = RobotMap.curr_world_linear_accel_y - RobotMap.last_world_linear_accel_y;

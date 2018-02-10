@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LED extends Subsystem {
 	
-	int x;
+	private int x;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	Spark controlLED = RobotMap.LED_Control;
+	private Spark controlLED = RobotMap.LED_Control;
 	
 	public void LEDControl(double color) {
 		controlLED.set(color);

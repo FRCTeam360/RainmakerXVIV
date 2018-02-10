@@ -8,10 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Climber extends Subsystem {
-	VictorSP climber = RobotMap.motorClimber1;
-	VictorSP climber1 = RobotMap.motorClimber2;
-	
-	
+	private VictorSP climber = RobotMap.motorClimber1;
+	private VictorSP climber1 = RobotMap.motorClimber2;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

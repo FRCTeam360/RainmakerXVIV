@@ -19,12 +19,12 @@ public class OI {
 	public static JoystickButton buttonElevSwitch = new JoystickButton(joyOI, 6);
 	public static JoystickAxisButton buttonElevMidSc = new JoystickAxisButton(joyOI, 2, 0.8);
 	public static JoystickButton buttonElevTopSc = new JoystickButton(joyOI, 5);
-	public static Button buttonManualElevator = new JoystickButton(joyOI, 10);
+	public static Button buttonManualElevator = new JoystickButton(joyOI, 7);
 	 
 
-	public static Button buttonOutTake = new JoystickButton(joyOI, 3);
-	public static Button pulsingIntake = new JoystickButton(joyOI, 1);
-	public static Button buttonManualIntake = new JoystickButton(joyOI, 9);
+	public static Button buttonOutTake = new JoystickButton(joyOI, 2);
+	public static Button pulsingIntake = new JoystickButton(joyOI, 3);
+	public static Button buttonManualIntake = new JoystickButton(joyOI, 8);
 	 
 	public static Button buttonWinchUp = new JoystickButton(joyOI, 4);
 	 

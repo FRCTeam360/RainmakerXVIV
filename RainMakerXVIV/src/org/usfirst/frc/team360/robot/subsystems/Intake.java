@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Intake extends Subsystem {
 
-	PowerDistributionPanel pdp = RobotMap.pdp;
+	private PowerDistributionPanel pdp = RobotMap.pdp;
 	
-	VictorSP motorIntake1 = RobotMap.motorIntake1;
-	VictorSP motorIntake2 = RobotMap.motorIntake2;
+	private VictorSP motorIntake1 = RobotMap.motorIntake1;
+	private VictorSP motorIntake2 = RobotMap.motorIntake2;
 	
 	public void controlMotor(double speed) {
 		motorIntake1.set(speed);

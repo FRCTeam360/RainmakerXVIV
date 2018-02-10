@@ -14,20 +14,20 @@ import org.usfirst.frc.team360.robot.*;
 
 public class Logger extends Subsystem {
     
-    FileWriter fw;
-    BufferedWriter bw;
-	File Log;
+    private FileWriter fw;
+    private BufferedWriter bw;
+    private File Log;
 	
-	double matchTime;
+    private double matchTime;
 	
 	//Current Variables
-	double driveBaseLVelocity;
-	double driveBaseRVelocity;
+    private double driveBaseLVelocity;
+    private double driveBaseRVelocity;
 	
 	//Old Variables
-	double driveBaseLVelocityOLD;
-	double driveBaseRVelocityOLD;
-	boolean driverStationIsAttachedOld = true;
+    private double driveBaseLVelocityOLD;
+    private double driveBaseRVelocityOLD;
+    private boolean driverStationIsAttachedOld = true;
 	
 	public void initLogger(){
 		try {
