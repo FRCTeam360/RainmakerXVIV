@@ -16,7 +16,7 @@ public class PathGeneration {
 		highGearConfig.dt = .01;
 		highGearConfig.max_acc = 5;
 		highGearConfig.max_jerk = 35.0;
-		highGearConfig.max_vel = 17;
+		highGearConfig.max_vel = 4;
 		//highGearConfig.max_vel = 3.5;
 		highGearConfig.wheelbase_width_feet = 27/12.0;
 		highGearConfig.wheel_dia_inches = 6;
@@ -33,11 +33,22 @@ public class PathGeneration {
 		lowGearConfig.encoder_ticks_per_rev = 4096;
 	}
 	public void generateAll(){
-		generateCrossLine();
-		generateCenterToRightSwitch();
-		generateCenterToLeftSwitch();
-		generateLeftToLeftSwitch();
-		generateRightToRightSwitch();
+		
+		//generateCrossLine();
+		//generateCenterToRightSwitch();
+		//generateCenterToLeftSwitch();
+		//generateLeftToLeftSwitch();
+		//generateRightToRightSwitch(); 
+		generateAroundFeild();
+	}
+	
+	public void generateAroundFeild() {
+		BobPath wantedPath = new BobPath(highGearConfig, "AroundFeild", 1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75 / 12, 22 , 0));
+		//wantedPath.addWaypoint(new WaypointSequence.Waypoint(8, 22 , 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(14, 15.5, Math.toRadians(89.99)));
+	
+		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 
 	public void generateCrossLine(){
