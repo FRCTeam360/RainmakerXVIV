@@ -28,6 +28,11 @@ public class Constants {
 	private final double compRightDriveTrainPathPlanningI = 0;
 	private final double compRightDriveTrainPathPlanningD = 0;
 	
+	public static double compElevatorTopScale = 10000;
+	public static double compElevatorMidScale = 8000;
+	public static double compElevatorSwitchHeight = 1500;
+	public static double compElevatorIntakePos = 0;
+	
 	private final double pracElevatorF = 0.756;
 	private final double pracElevatorP = 4;
 	private final double pracElevatorI = 0;
@@ -43,6 +48,11 @@ public class Constants {
 	private final double pracRightDriveTrainPathPlanningI = 0.0;
 	private final double pracRightDriveTrainPathPlanningD = 3.5;
 
+	public static double pracElevatorTopScale = 10000;
+	public static double pracElevatorMidScale = 8000;
+	public static double pracElevatorSwitchHeight = 1500;
+	public static double pracElevatorIntakePos = 0;
+	
 	public static double realElevatorF;
 	public static double realElevatorP;
 	public static double realElevatorI;
@@ -57,6 +67,11 @@ public class Constants {
 	public static double realRightDriveTrainPathPlanningP;
 	public static double realRightDriveTrainPathPlanningI;
 	public static double realRightDriveTrainPathPlanningD;
+	
+	public static double realElevatorTopScale;
+	public static double realElevatorMidScale;
+	public static double realElevatorSwitchHeight;
+	public static double realElevatorIntakePos;
 	
 	public Constants() {
 		try {
@@ -95,6 +110,11 @@ public class Constants {
 		realRightDriveTrainPathPlanningP = compRightDriveTrainPathPlanningP;
 		realRightDriveTrainPathPlanningI = compRightDriveTrainPathPlanningI;
 		realRightDriveTrainPathPlanningD = compRightDriveTrainPathPlanningD;
+		
+		realElevatorTopScale = 	compElevatorTopScale;
+		realElevatorMidScale = compElevatorMidScale;
+		realElevatorSwitchHeight = compElevatorSwitchHeight;
+		realElevatorIntakePos = compElevatorIntakePos;
 	}
 	public void writePracticeBotVariables() {
 		realElevatorF = pracElevatorF;
@@ -111,5 +131,10 @@ public class Constants {
 		realRightDriveTrainPathPlanningP = pracRightDriveTrainPathPlanningP;
 		realRightDriveTrainPathPlanningI = pracRightDriveTrainPathPlanningI;
 		realRightDriveTrainPathPlanningD = pracRightDriveTrainPathPlanningD;
+
+		realElevatorTopScale = 	pracElevatorTopScale;
+		realElevatorMidScale = pracElevatorMidScale;
+		realElevatorSwitchHeight = pracElevatorSwitchHeight;
+		realElevatorIntakePos = pracElevatorIntakePos;
 	}
 }

@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class MoveElevator extends Command {
 	
-	public int pos;
+	public double pos;
 	
-	public MoveElevator(int pos) {
+	public MoveElevator(double realElevatorTopScale) {
 		requires(Robot.elevator);
-	    this.pos = pos - RobotMap.currentPos;
+	    this.pos = realElevatorTopScale - RobotMap.currentPos;
 	}
 
 	// Called just before this Command runs the first time
