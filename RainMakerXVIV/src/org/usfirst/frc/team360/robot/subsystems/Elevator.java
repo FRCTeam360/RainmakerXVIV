@@ -2,9 +2,9 @@ package org.usfirst.frc.team360.robot.subsystems;
 
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
-import org.usfirst.frc.team360.robot.commands.ManualElevator;
 import org.usfirst.frc.team360.robot.commands.MoveElevator;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Elevator extends Subsystem {
 
-	public TalonSRX elevatorMaster = RobotMap.elevM;
-	static TalonSRX elevatorSlave = RobotMap.elevS;
+	TalonSRX elevatorMaster = RobotMap.elevM;
+	TalonSRX elevatorSlave = RobotMap.elevS;
 
 	private int zeroSensor;
 	
@@ -55,23 +55,34 @@ public class Elevator extends Subsystem {
 		elevatorMaster.config_kI(0, 0, kTimeoutMs);
 		elevatorMaster.config_kD(0, 40, kTimeoutMs);
 		
+		zeroSensor = 50;
 	}
 	
 	public void Process(){
 		
 		SmartDashboard.putNumber("ElevatorVel", elevatorMaster.getSelectedSensorVelocity(Elevator.kPIDLoopIdx));
-    	SmartDashboard.putNumber("ElevatorPos",  elevatorMaster.getSelectedSensorPosition(Elevator.kPIDLoopIdx));
-    	SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
-    	SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(Elevator.kPIDLoopIdx));
+	    	SmartDashboard.putNumber("ElevatorPos",  elevatorMaster.getSelectedSensorPosition(Elevator.kPIDLoopIdx));
+	    	SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
+	    	SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(Elevator.kPIDLoopIdx));
     	
 //    	SmartDashboard.putNumber("ActTrajVelocity", elevatorMaster.getActiveTrajectoryVelocity());
 		SmartDashboard.putNumber("ActTrajPosition", elevatorMaster.getActiveTrajectoryPosition());
 //		SmartDashboard.putNumber("ActTrajHeading", elevatorMaster.getActiveTrajectoryHeading());
 		
 	}
-
+	public void setMotor(double speed) {
+		elevatorMaster.set(ControlMode.PercentOutput, speed);
+	}
+	public void setMotorPosition(double distance) {
+		elevatorMaster.set(ControlMode.MotionMagic, distance);
+	}
+	public void stop() {
+		elevatorMaster.set(ControlMode.PercentOutput, 0);
+	}
+	public double getPosition() {
+		return elevatorMaster.getSelectedSensorPosition(Robot.elevator.kPIDLoopIdx);
+	}
 	public void motionMagicInit() {
-		
 		/* set acceleration and vcruise velocity - see documentation */
 		elevatorMaster.configMotionCruiseVelocity(1340, kTimeoutMs);
 		elevatorMaster.configMotionAcceleration(800, kTimeoutMs);
@@ -89,13 +100,10 @@ public class Elevator extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-    		setDefaultCommand(new ManualElevator());
     }
 
 	public void zeroSensor() {
-		int ZeroSensor = 50;
-		elevatorMaster.setSelectedSensorPosition(ZeroSensor, 0, 10);
+		elevatorMaster.setSelectedSensorPosition(zeroSensor, 0, 10);
 	}
 
     

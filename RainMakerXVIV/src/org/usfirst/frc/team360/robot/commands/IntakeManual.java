@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ManualElevator extends Command {
+public class IntakeManual extends Command {
 
-    public ManualElevator() {
-    		requires(Robot.elevator);
+    public IntakeManual() {
+    		requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time
@@ -22,10 +22,10 @@ public class ManualElevator extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		if(Math.abs(OI.joyOI.getRawAxis(5)) > .1) {
-    			Robot.elevator.elevatorMaster.set(ControlMode.PercentOutput, -OI.joyOI.getRawAxis(5));
+    		if(Math.abs(OI.joyOI.getRawAxis(4)) > .1) {
+    			Robot.intake.controlMotor(OI.joyOI.getRawAxis(4));
     		} else {
-    			Robot.elevator.elevatorMaster.set(ControlMode.PercentOutput, 0);
+    			Robot.intake.stop();
     		}
     }
 
@@ -36,11 +36,12 @@ public class ManualElevator extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    		Robot.elevator.elevatorMaster.set(ControlMode.PercentOutput, 0);
+    		Robot.intake.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    		end();
     }
 }

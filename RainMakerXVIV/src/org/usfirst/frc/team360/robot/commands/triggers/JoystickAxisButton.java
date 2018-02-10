@@ -19,6 +19,6 @@ public class JoystickAxisButton extends Trigger {
 	}
 	
     public boolean get() {
-    	return joy.getRawAxis(axis) > completionCritera;
+    		return joy.getRawAxis(axis) > completionCritera;
     }
 }
