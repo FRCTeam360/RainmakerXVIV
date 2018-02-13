@@ -103,23 +103,36 @@ public class Elevator extends Subsystem {
 		return RobotMap.elevatorLimitSwitch.get();
 	}
 	
-	public double getElevatorOutput() {
-		return elevatorMaster.getMotorOutputPercent();
-	}
-	
-	public double getElevatorVelocity() {
-		return elevatorMaster.getSelectedSensorVelocity(kPIDLoopIdx);
+	public int elevatorIsFine() {
+		return elevatorMaster.getSensorCollection().getPulseWidthRiseToRiseUs();
 	}
 	
 	public void elevatorOutputIsFine() {
-		if(getElevatorVelocity() > 600 && getElevatorOutput() > 10) {
-			elevatorMaster.set(ControlMode.PercentOutput, 0);
-			DriverStation.reportWarning("EleVaTOr BRoKeN!!!!", false);
+		if(elevatorIsFine() == 0) {
+			DriverStation.reportWarning("EleVaTOr iS BRoKeN!", false);
 			Command stopElevator;
 			stopElevator = new StopElevator();
 			stopElevator.start();
 		}
 	}
+	
+//	public double getElevatorOutput() {
+//		return elevatorMaster.getMotorOutputPercent();
+//	}
+//	
+//	public double getElevatorVelocity() {
+//		return elevatorMaster.getSelectedSensorVelocity(kPIDLoopIdx);
+//	}
+//	
+//	public void elevatorOutputIsFine() {
+//		if(getElevatorVelocity() > 600 && getElevatorOutput() > 10) {
+//			elevatorMaster.set(ControlMode.PercentOutput, 0);
+//			DriverStation.reportWarning("EleVaTOr BRoKeN!!!!", false);
+//			Command stopElevator;
+//			stopElevator = new StopElevator();
+//			stopElevator.start();
+//		}
+//	}
 	
     public void initDefaultCommand() {
     }
