@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team360.robot.OI;
+import org.usfirst.frc.team360.robot.RobotMap.IntakeState;
 import org.usfirst.frc.team360.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -24,6 +25,7 @@ public class Robot extends TimedRobot {
 	public static Intake intake;
 	public static Logger logger;
 	public static LED led;
+	public static IntakePneumatics intakePeumatics;
 	
 	public static OI oi;
 	public static Constants constants;
@@ -71,6 +73,7 @@ public class Robot extends TimedRobot {
 		intake = new Intake();
 		led = new LED();
 		logger = new Logger();
+		intakePeumatics = new IntakePneumatics();
 		oi = new OI();
 		autoController = new AutoController();
 	}
