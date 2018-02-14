@@ -33,37 +33,37 @@ public class IntakePulse extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	time = new Timer();
-    	time.start();
+	    	time = new Timer();
+	    	time.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(time.get() < period/2) {
-    		Robot.intake.controlRightMotor(speed);
-    	}else if(time.get() > period/2 && time.get() < period) {
-    		Robot.intake.controlRightMotor(0);
-    	}else {
-    		time.stop();
-    		time.reset();
-    		time.start();
-    	}
-    	Robot.intake.controlLeftMotor(speed);
+	    	if(time.get() < period/2) {
+	    		Robot.intake.controlRightMotor(speed);
+	    	}else if(time.get() > period/2 && time.get() < period) {
+	    		Robot.intake.controlRightMotor(0);
+	    	}else {
+	    		time.stop();
+	    		time.reset();
+	    		time.start();
+	    	}
+	    	Robot.intake.controlLeftMotor(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.intake.currentDraw() > amps && currentStop;
+    		return Robot.intake.currentDraw() > amps && currentStop;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intake.stop();
+    		Robot.intake.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    		end();
     }
 }
