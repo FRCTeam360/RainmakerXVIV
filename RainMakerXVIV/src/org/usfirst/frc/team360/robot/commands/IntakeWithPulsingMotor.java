@@ -29,6 +29,7 @@ public class IntakeWithPulsingMotor extends CommandGroup {
         // arm.
 	    	addSequential(new LEDColor(RobotMap.Color.RED, 1.5, 100, true));
 	    	addSequential(new IntakePulse(1, 5, 2, true));
+	    	addSequential(new IntakeClose());
 	    	addSequential(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true));
 	    	Robot.logger.logIntakeIn();
     }
