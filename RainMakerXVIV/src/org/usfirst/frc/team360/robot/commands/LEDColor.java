@@ -14,6 +14,8 @@ public class LEDColor extends Command {
 	RobotMap.Color color; // sets color from RobotMap to color in LEDcolor
 	
 	boolean pulse; // checks if pulsing is wanted
+	boolean shouldPulse;
+	boolean infinity;
 	
 	int cycle;			// the current cycle
 	double period;		// how many times per second
@@ -22,11 +24,13 @@ public class LEDColor extends Command {
 	
 	Timer time; // initialize timer as time
 
-    public LEDColor(RobotMap.Color color, double period, double duration, boolean pulse) {
+    public LEDColor(RobotMap.Color color, double period, double duration, boolean pulse, boolean infinity) {
     	this.color = color; // finds variable color(ex.RobotMap.Color.GREEN)
     	this.pulse = pulse; // finds if pulse is on or not
     	this.period = period; // finds variable period to find how frequently per time
     	this.duration = duration; // finds variable time of how long the pulse goes for
+    	this.shouldPulse = shouldPulse;
+    	this.infinity = infinity;
     	this.cycle = 0; // initializes cycle to zero 
     	requires(Robot.led); // class requires the LED subsystem
     	
@@ -54,6 +58,23 @@ public class LEDColor extends Command {
         		time.reset(); // reset timer to 0
         		time.start(); // start timer again
         		cycle++; // add 1 to variable cycle
+        	}
+    	}else if(!pulse) {
+    		if(time.get() < duration) {
+    			Robot.led.changeColor(color);
+    		}else {
+    			RobotMap.LED_Control.disable();
+    		}
+    		
+    	}else if(infinity) {
+    		if(time.get() < ((period)/2)) { // if the time is less than half the period, activates this code
+        		Robot.led.changeColor(color); // changes color to set color(ex.green)
+    		}else if(time.get() > (period/2) && time.get() < period) { // if the time is between half the period and one period, activate this code
+    			RobotMap.LED_Control.disable(); // turns off LEDs
+    		}else{ // if the time is greater than one period, activates this code
+        		time.stop(); // stops timer
+        		time.reset(); // reset timer to 0
+        		time.start(); // start timer again
         	}
     	}else{ // if pulse is false, activate this code
     		Robot.led.changeColor(color); // set color(ex.green)
