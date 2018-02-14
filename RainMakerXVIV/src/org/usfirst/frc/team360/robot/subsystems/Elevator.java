@@ -4,13 +4,16 @@ import org.usfirst.frc.team360.robot.Constants;
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
 import org.usfirst.frc.team360.robot.commands.MoveElevator;
+import org.usfirst.frc.team360.robot.commands.StopElevator;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -23,6 +26,9 @@ public class Elevator extends Subsystem {
 	private TalonSRX elevatorSlave = RobotMap.motorElevatorSlave;
 
 	private int zeroSensor;
+	
+	private double elevatorOutput;
+	private double elevatorVeloCity;
 	
 	private final int kSlotIdx = 0;
 	private final int kPIDLoopIdx = 0;
@@ -60,9 +66,9 @@ public class Elevator extends Subsystem {
 	public void Process(){
 		
 		SmartDashboard.putNumber("ElevatorVel", elevatorMaster.getSelectedSensorVelocity(kPIDLoopIdx));
-	    	SmartDashboard.putNumber("ElevatorPos",  elevatorMaster.getSelectedSensorPosition(kPIDLoopIdx));
-	    	SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
-	    	SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(kPIDLoopIdx));
+	    SmartDashboard.putNumber("ElevatorPos",  elevatorMaster.getSelectedSensorPosition(kPIDLoopIdx));
+	    SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
+	    SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(kPIDLoopIdx));
     	
 //    	SmartDashboard.putNumber("ActTrajVelocity", elevatorMaster.getActiveTrajectoryVelocity());
 		SmartDashboard.putNumber("ActTrajPosition", elevatorMaster.getActiveTrajectoryPosition());
@@ -95,8 +101,38 @@ public class Elevator extends Subsystem {
 	
 	public boolean zeroActive() {
 		return RobotMap.elevatorLimitSwitch.get();
-		
 	}
+	
+	public int elevatorIsFine() {
+		return elevatorMaster.getSensorCollection().getPulseWidthRiseToRiseUs();
+	}
+	
+	public void elevatorOutputIsFine() {
+		if(elevatorIsFine() == 0) {
+			DriverStation.reportWarning("EleVaTOr iS BRoKeN!", false);
+			Command stopElevator;
+			stopElevator = new StopElevator();
+			stopElevator.start();
+		}
+	}
+	
+//	public double getElevatorOutput() {
+//		return elevatorMaster.getMotorOutputPercent();
+//	}
+//	
+//	public double getElevatorVelocity() {
+//		return elevatorMaster.getSelectedSensorVelocity(kPIDLoopIdx);
+//	}
+//	
+//	public void elevatorOutputIsFine() {
+//		if(getElevatorVelocity() > 600 && getElevatorOutput() > 10) {
+//			elevatorMaster.set(ControlMode.PercentOutput, 0);
+//			DriverStation.reportWarning("EleVaTOr BRoKeN!!!!", false);
+//			Command stopElevator;
+//			stopElevator = new StopElevator();
+//			stopElevator.start();
+//		}
+//	}
 	
     public void initDefaultCommand() {
     }
