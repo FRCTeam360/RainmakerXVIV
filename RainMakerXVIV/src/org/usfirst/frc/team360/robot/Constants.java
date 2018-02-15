@@ -28,10 +28,10 @@ public class Constants {
 	private final double compRightDriveTrainPathPlanningI = 0;
 	private final double compRightDriveTrainPathPlanningD = 0;
 	
-	public static double compElevatorTopScale = 10000;
-	public static double compElevatorMidScale = 8000;
-	public static double compElevatorSwitchHeight = 1500;
-	public static double compElevatorIntakePos = 0;
+	public final double compElevatorTopScale = 10000;
+	public final double compElevatorMidScale = 8000;
+	public final double compElevatorSwitchHeight = 1500;
+	public final double compElevatorIntakePos = 0;
 	
 	private final double pracElevatorF = 0.756;
 	private final double pracElevatorP = 4;
@@ -48,10 +48,10 @@ public class Constants {
 	private final double pracRightDriveTrainPathPlanningI = 0.0;
 	private final double pracRightDriveTrainPathPlanningD = 3.5;
 
-	public static double pracElevatorTopScale = 10000;
-	public static double pracElevatorMidScale = 8000;
-	public static double pracElevatorSwitchHeight = 1500;
-	public static double pracElevatorIntakePos = 0;
+	public final double pracElevatorTopScale = 10000;
+	public final double pracElevatorMidScale = 8000;
+	public final double pracElevatorSwitchHeight = 1500;
+	public final double pracElevatorIntakePos = 0;
 	
 	public static double realElevatorF;
 	public static double realElevatorP;
@@ -80,7 +80,7 @@ public class Constants {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if ("comp".equals(buffLine)) {
+		if ("competition".equals(buffLine)) {
 			RobotMap.robotID = RobotMap.RobotID.COMP;
 			DriverStation.reportError("Comp Bot", false);
 			writeCompBotVariables();

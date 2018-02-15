@@ -27,11 +27,11 @@ public class IntakePulse extends Command {
 	boolean hasStarted = false;
 
     public IntakePulse(double speed, double amps, double period, boolean currentStop) {
-    	this.speed = speed;
-    	this.amps = amps;
-    	this.period = period;
-    	this.currentStop = currentStop;
-    	requires(Robot.intake);
+    		requires(Robot.intake);
+	    	this.speed = speed;
+	    	this.amps = amps;
+	    	this.period = period;
+	    	this.currentStop = currentStop;
     }
 
     // Called just before this Command runs the first time
