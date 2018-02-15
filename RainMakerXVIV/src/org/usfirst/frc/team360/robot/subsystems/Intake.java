@@ -18,24 +18,24 @@ public class Intake extends Subsystem {
 	private VictorSP motorIntake2 = RobotMap.motorIntake2;
 	
 	public void controlMotor(double speed) {
-		motorIntake1.set(speed);
-		motorIntake2.set(-speed);
+		motorIntake1.set(-speed);
+		motorIntake2.set(speed);
 	}
 	public void controlRightMotor(double speed) {
-		motorIntake1.set(speed);
+		motorIntake1.set(-speed);
 	}
 	public void controlLeftMotor(double speed) {
-		motorIntake2.set(-speed);
+		motorIntake2.set(speed);
 	}
 	public void stop() {
 		motorIntake1.set(0);
 		motorIntake2.set(0);
 	}
 	public double currentDraw() {
-		return pdp.getCurrent(12);
+		return pdp.getCurrent(5);
 	}
 	public void displayCurrent() {
-		SmartDashboard.putNumber("Amps: ", pdp.getCurrent(12));
+		SmartDashboard.putNumber("Amps: ", pdp.getCurrent(5));
 	}
 
     // Put methods for controlling this subsystem

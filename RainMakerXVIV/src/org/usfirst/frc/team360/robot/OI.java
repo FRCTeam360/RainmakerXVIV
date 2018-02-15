@@ -20,7 +20,10 @@ public class OI {
 	public static JoystickAxisButton buttonElevMidSc = new JoystickAxisButton(joyOI, 2, 0.8);
 	public static Button buttonElevTopSc = new JoystickButton(joyOI, 5);
 	public static Button buttonManualElevator = new JoystickButton(joyOI, 7);
-	 
+	
+	public static Button button = new JoystickButton(joyOI, 	10);
+	public static Button button2 = new JoystickButton(joyOI, 	9);
+	  	 
 
 	public static Button buttonOutTake = new JoystickButton(joyOI, 3);
 	public static Button pulsingIntake = new JoystickButton(joyOI, 1);
@@ -39,9 +42,11 @@ public class OI {
 		buttonManualElevator.whileHeld(new MoveManualElevator());
 			
 		buttonOutTake.whileHeld(new IntakeOut());
-		pulsingIntake.whileHeld(new IntakePulseAndFlashLEDs());
+		pulsingIntake.whenPressed(new IntakePulseAndFlashLEDs());
 		buttonManualIntake.whileHeld(new IntakeManual());
 
 		buttonWinchUp.whileHeld(new RunClimberUp());
+		button.whenPressed(new IntakeOpen());
+		button2.whenPressed(new IntakeClose());
 	 }
 }

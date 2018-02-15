@@ -153,7 +153,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		System.out.println("Amps: " + RobotMap.pdp.getCurrent(2));
+		System.out.println("Amps: " + intake.currentDraw());
 		Scheduler.getInstance().run();
 	}
 
