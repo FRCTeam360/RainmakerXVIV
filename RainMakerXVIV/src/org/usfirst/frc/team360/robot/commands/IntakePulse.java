@@ -22,19 +22,25 @@ public class IntakePulse extends Command {
 	double oldCurrent = 0;
 	
 	Timer time;
+	Timer timerStop;
+	Timer time3;
+	boolean hasStarted = false;
 
     public IntakePulse(double speed, double amps, double period, boolean currentStop) {
-    	this.speed = speed;
-    	this.amps = amps;
-    	this.period = period;
-    	this.currentStop = currentStop;
-    	requires(Robot.intake);
+    		requires(Robot.intake);
+	    	this.speed = speed;
+	    	this.amps = amps;
+	    	this.period = period;
+	    	this.currentStop = currentStop;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
 	    	time = new Timer();
 	    	time.start();
+	    	timerStop = new Timer();
+	    	timerStop.start();
+	    	time3 = new Timer();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -48,12 +54,17 @@ public class IntakePulse extends Command {
 	    		time.reset();
 	    		time.start();
 	    	}
+	    	if(Robot.intake.currentDraw() > amps && !hasStarted) {
+	    		time3.start();
+	    		hasStarted = true;
+	    		
+	    	}
 	    	Robot.intake.controlLeftMotor(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    		return Robot.intake.currentDraw() > amps && currentStop;
+    		return Robot.intake.currentDraw() > amps && timerStop.get() > .5  && time3.get() > .5; // && currentStop;
     }
 
     // Called once after isFinished returns true

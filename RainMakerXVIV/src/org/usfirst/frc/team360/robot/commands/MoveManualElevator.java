@@ -23,7 +23,7 @@ public class MoveManualElevator extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     		if(Math.abs(OI.joyOI.getRawAxis(5)) > .1) {
-    			Robot.elevator.setMotor(OI.joyOI.getRawAxis(5)*.6);
+    			Robot.elevator.setMotor(-OI.joyOI.getRawAxis(5));
     		} else {
     			Robot.elevator.stop();
     		}

@@ -90,7 +90,6 @@ public class FollowTrajectory_Test extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		Robot.driveTrain.stopThreadedProfileSenders();
-		
 		Robot.driveTrain.endMotionProfilingLeft();
 		Robot.driveTrain.endMotionProfilingRight();
 	}
