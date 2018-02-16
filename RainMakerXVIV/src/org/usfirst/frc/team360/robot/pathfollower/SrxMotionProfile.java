@@ -14,7 +14,6 @@ public class SrxMotionProfile {
 
 	}
 
-
 	public SrxMotionProfile(int numPoints, double[][] points) {
 		this.numPoints = numPoints;
 		this.points = points;

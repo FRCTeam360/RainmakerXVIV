@@ -82,7 +82,6 @@ public class RobotMap {
 	public static boolean ZeroActive = true;
 
 	//NavX Variables 
-	
 	public final static double kCollisionThreshold_DeltaG = 0.7f;
 	
 	public static boolean crashed = false;

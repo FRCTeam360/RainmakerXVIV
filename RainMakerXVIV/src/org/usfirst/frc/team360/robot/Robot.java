@@ -24,7 +24,6 @@ public class Robot extends TimedRobot {
 	public static Intake intake;
 	public static Logger logger;
 	public static LED LED;
-	
 	public static OI oi;
 	public static Constants constants;
 	public static AutoController autoController;
@@ -69,7 +68,7 @@ public class Robot extends TimedRobot {
 		logger = new Logger();
 		oi = new OI();
 		autoController = new AutoController();
-		//autonomousCommand = new FollowTrajectory("DriveStraight200Feet");
+		// autonomousCommand = new FollowTrajectory("DriveStraight200Feet");
 	}
 	
 	@Override 
@@ -142,9 +141,7 @@ public class Robot extends TimedRobot {
 		RobotMap.robotMode = "Teleop";
 		logger.initLogger();
 		
-
-		
-}
+	}
 
 	@Override
 	public void teleopPeriodic() {
