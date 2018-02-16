@@ -59,15 +59,11 @@ public class Robot extends TimedRobot {
 }*/
 	@Override
 	public void robotInit() {
-		RobotMap.currentPos = 0;
-		
+		constants = new Constants();
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
-		//motionMagic  = new MotionMagic();
-
-		//elevator.zeroSensor();
 		elevator.zeroSensor();
 		climber = new Climber();
 		navX = new NavX();

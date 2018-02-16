@@ -27,9 +27,6 @@ public class Elevator extends Subsystem {
 
 	private int zeroSensor;
 	
-	private double elevatorOutput;
-	private double elevatorVeloCity;
-	
 	private final int kSlotIdx = 0;
 	private final int kPIDLoopIdx = 0;
 	private final int kTimeoutMs = 10;
@@ -122,7 +119,7 @@ public class Elevator extends Subsystem {
 	
 	public void elevatorOutputIsFine() {
 		if(elevatorIsFine() == 0) {
-			DriverStation.reportWarning("EleVaTOr iS BRoKeN!", false);
+			DriverStation.reportWarning("Elevator encoder is NOT working, automatic control disabled", false);
 			Command stopElevator;
 			stopElevator = new StopElevator();
 			stopElevator.start();

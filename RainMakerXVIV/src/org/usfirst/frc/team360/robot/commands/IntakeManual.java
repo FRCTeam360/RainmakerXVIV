@@ -22,7 +22,7 @@ public class IntakeManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		if(Math.abs(OI.joyOI.getRawAxis(4)) > .1) {
+    		if(Math.abs(OI.joyOI.getRawAxis(3)) > .1) {
     			Robot.intake.controlMotor(OI.joyOI.getRawAxis(3));
     		} else {
     			Robot.intake.stop();
