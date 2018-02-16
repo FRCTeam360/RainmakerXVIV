@@ -33,10 +33,10 @@ public class Constants {
 	public static double compElevatorSwitchHeight = 1500;
 	public static double compElevatorIntakePos = 0;
 	
-	private final double pracElevatorF = 0.756;
+	private final double pracElevatorF = 0.2407;
 	private final double pracElevatorP = 4;
 	private final double pracElevatorI = 0;
-	private final double pracElevatorD = 40;
+	private final double pracElevatorD = 60;
 	
 	private final double pracleftDrivetrainPathPlanningF = 0.5384;
 	private final double pracLeftDrivetrainPathPlanningP = 0.035;
@@ -48,7 +48,7 @@ public class Constants {
 	private final double pracRightDriveTrainPathPlanningI = 0.0;
 	private final double pracRightDriveTrainPathPlanningD = 3.5;
 
-	public static double pracElevatorTopScale = 10000;
+	public static double pracElevatorTopScale = 5000;
 	public static double pracElevatorMidScale = 8000;
 	public static double pracElevatorSwitchHeight = 1500;
 	public static double pracElevatorIntakePos = 0;

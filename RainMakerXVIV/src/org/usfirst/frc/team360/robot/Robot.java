@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.RobotMap.IntakeState;
+import org.usfirst.frc.team360.robot.commands.StopElevator;
 import org.usfirst.frc.team360.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -112,6 +113,8 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
 		}
+		Command stopElevator = new StopElevator();
+		stopElevator.start();
 	}
 
 	@Override
@@ -149,16 +152,19 @@ public class Robot extends TimedRobot {
 		
 		RobotMap.robotMode = "Teleop";
 		logger.initLogger();
+		Command stopElevator = new StopElevator();
+		stopElevator.start();
 }
 
 	@Override
 	public void teleopPeriodic() {
-		System.out.println("Amps: " + intake.currentDraw());
+		//System.out.println("Amps: " + intake.currentDraw());
+		System.out.println("Elevator Output Voltage:" + elevator.getMotorOutputVoltage());
+		elevator.Process();
 		Scheduler.getInstance().run();
 	}
 
 	@Override
 	public void testPeriodic() {
-		
 	}
 }

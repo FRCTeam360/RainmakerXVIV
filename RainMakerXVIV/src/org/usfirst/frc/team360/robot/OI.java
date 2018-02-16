@@ -35,10 +35,10 @@ public class OI {
 		buttonDriveUp.whenPressed(new ShiftUp());
 		buttonDriveDown.whenPressed(new ShiftDown());
 			
-		buttonElevTopSc.whenPressed(new MoveElevatorToIntakePos());
+		buttonElevIntake.whenActive(new MoveElevatorToIntakePos());
 		buttonElevMidSc.whenActive(new MoveElevatorToMidScale());
 		buttonElevSwitch.whenPressed(new MoveElevetorToSwitchHeight());
-		buttonElevIntake.whenActive(new MoveElevatorToTopScale());
+		buttonElevTopSc.whenPressed(new MoveElevatorToTopScale());
 		buttonManualElevator.whileHeld(new MoveManualElevator());
 			
 		buttonOutTake.whileHeld(new IntakeOut());
