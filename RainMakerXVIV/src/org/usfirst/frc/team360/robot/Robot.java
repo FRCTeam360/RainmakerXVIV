@@ -154,8 +154,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		//System.out.println("Amps: " + intake.currentDraw());
-		System.out.println("Elevator Output Voltage:" + elevator.getMotorOutputVoltage());
+		System.out.println("Amps: " + intake.currentDraw());
+		//System.out.println("Elevator Output Voltage:" + elevator.getMotorOutputVoltage());
 		elevator.Process();
 		Scheduler.getInstance().run();
 	}

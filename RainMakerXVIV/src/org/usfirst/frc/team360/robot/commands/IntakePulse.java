@@ -64,7 +64,7 @@ public class IntakePulse extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    		return Robot.intake.currentDraw() > amps && timerStop.get() > .5  && time3.get() > .5; // && currentStop;
+    		return Robot.intake.currentDraw() > amps; // && currentStop;
     }
 
     // Called once after isFinished returns true

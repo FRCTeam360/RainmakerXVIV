@@ -12,6 +12,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MoveElevatorToMidScale extends CommandGroup {
 
     public MoveElevatorToMidScale() {
-    		addSequential(new MoveElevator(Constants.pracElevatorMidScale));
+    		addSequential(new MoveElevator(Constants.realElevatorMidScale));
     }
 }

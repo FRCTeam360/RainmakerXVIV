@@ -48,7 +48,7 @@ public class Constants {
 	private final double pracRightDriveTrainPathPlanningI = 0.0;
 	private final double pracRightDriveTrainPathPlanningD = 3.5;
 
-	public final double pracElevatorTopScale = 10000;
+	public final double pracElevatorTopScale = 20000;
 	public final double pracElevatorMidScale = 8000;
 	public final double pracElevatorSwitchHeight = 1500;
 	public final double pracElevatorIntakePos = 0;

@@ -6,6 +6,6 @@ public class IntakeOut extends CommandGroup {
 	
     public IntakeOut() {
 		addSequential(new IntakeOpen());
-    		addSequential(new IntakeControl(-.5, false));
+		addSequential(new IntakeControl(-.5, false));
     }
 }

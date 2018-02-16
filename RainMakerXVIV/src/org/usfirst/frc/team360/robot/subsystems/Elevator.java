@@ -95,8 +95,8 @@ public class Elevator extends Subsystem {
 	}
 	public void motionMagicInit() {
 		/* set acceleration and vcruise velocity - see documentation */
-		elevatorMaster.configMotionCruiseVelocity(3187, kTimeoutMs);
-		elevatorMaster.configMotionAcceleration(3187, kTimeoutMs);
+		elevatorMaster.configMotionCruiseVelocity(4250, kTimeoutMs);
+		elevatorMaster.configMotionAcceleration(2250, kTimeoutMs);
 		/* zero the sensor */
 		//elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 	}
