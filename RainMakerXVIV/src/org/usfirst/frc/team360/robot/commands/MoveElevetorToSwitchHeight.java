@@ -11,6 +11,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MoveElevetorToSwitchHeight extends CommandGroup {
 
     public MoveElevetorToSwitchHeight() {
-        	addSequential(new MoveElevator(Constants.realElevatorSwitchHeight));
+        	addSequential(new MoveElevator(Constants.pracElevatorSwitchHeight));
     }
 }

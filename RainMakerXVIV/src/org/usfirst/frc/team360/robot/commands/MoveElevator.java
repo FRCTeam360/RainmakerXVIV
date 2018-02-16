@@ -18,7 +18,8 @@ public class MoveElevator extends Command {
 	
 	public MoveElevator(double realElevatorTopScale) {
 		requires(Robot.elevator);
-	    this.pos = realElevatorTopScale - RobotMap.currentPos;
+	    pos = realElevatorTopScale - RobotMap.currentPos;
+		
 	}
 
 	// Called just before this Command runs the first time
