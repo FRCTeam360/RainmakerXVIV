@@ -9,5 +9,6 @@ public class StartLeftDropCubeRightScale extends CommandGroup {
 		addSequential(new AutoShift(RobotMap.ShiftState.UP));
     	addSequential(new FollowTrajectory("LeftToRightScale"));
     	addParallel(new MoveElevatorToTopScale());
+    	addSequential(new IntakeOut());
     }
 }

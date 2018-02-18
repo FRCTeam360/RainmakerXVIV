@@ -9,5 +9,6 @@ public class StartCenterDropCubeLeftSwitch extends CommandGroup {
 		addSequential(new AutoShift(RobotMap.ShiftState.UP));
         addSequential(new FollowTrajectory("CenterToLeftSwitch"));
         addParallel(new MoveElevatorToSwitchHeight());
+        addSequential(new IntakeOut());
     }
 }
