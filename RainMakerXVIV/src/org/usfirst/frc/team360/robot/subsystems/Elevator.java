@@ -35,8 +35,8 @@ public class Elevator extends Subsystem {
 		
 		elevatorSlave.follow(elevatorMaster);
 		
-		elevatorMaster.setInverted(true);
-		elevatorSlave.setInverted(true);
+		elevatorMaster.setInverted(false);
+		elevatorSlave.setInverted(false);
 		
 		/* first choose the sensor */
 		elevatorMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
@@ -96,7 +96,7 @@ public class Elevator extends Subsystem {
 	public void motionMagicInit() {
 		/* set acceleration and vcruise velocity - see documentation */
 		elevatorMaster.configMotionCruiseVelocity(4250, kTimeoutMs);
-		elevatorMaster.configMotionAcceleration(2250, kTimeoutMs);
+		elevatorMaster.configMotionAcceleration(1500, kTimeoutMs);
 		/* zero the sensor */
 		//elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 	}
