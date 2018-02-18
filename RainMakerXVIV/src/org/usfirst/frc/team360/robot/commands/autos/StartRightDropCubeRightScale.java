@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class StartRightDropCubeRightScale extends CommandGroup {
     public StartRightDropCubeRightScale() {
 		addSequential(new AutoShift(RobotMap.ShiftState.UP));
-    	 	addSequential(new FollowTrajectory("RightToRightScale"));
+    	addSequential(new FollowTrajectory("RightToRightScale"));
+    	addParallel(new MoveElevatorToTopScale());
     }
 }
