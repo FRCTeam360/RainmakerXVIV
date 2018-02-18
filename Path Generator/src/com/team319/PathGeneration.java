@@ -39,7 +39,7 @@ public class PathGeneration {
 //		generateCenterToLeftSwitch();
 //		generateLeftToLeftSwitch();
 //		generateRightToRightSwitch();
-		generateRightToRightScale();
+//		generateRightToRightScale();
 		generateLeftToLeftScale();
 	}
 	
@@ -87,9 +87,9 @@ public class PathGeneration {
 	
 	public void generateLeftToLeftScale(){
 		BobPath wantedPath = new BobPath(highGearConfig, "LeftToLeftScale", 1);
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 280/12, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(143.125/12, 296/12, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(300/12, 234/12, Math.toRadians(0)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 280.5/12, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(133.125/12, 293/12, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(260/12, 215/12, Math.toRadians(0)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
