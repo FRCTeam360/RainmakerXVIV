@@ -43,12 +43,12 @@ public class Constants {
 	private final double pracleftDrivetrainPathPlanningF = 0.7307;
 	private final double pracLeftDrivetrainPathPlanningP = 1;//4.092
 	private final double pracleftDrivetrainPathPlanningI = 0;
-	private final double pracLeftDrivetrainPathPlanningD = 160;
+	private final double pracLeftDrivetrainPathPlanningD = 160;//160;
 	
 	private final double pracRightDriveTrainPathPlanningF = 0.7307;
 	private final double pracRightDriveTrainPathPlanningP = 1;//2.379
 	private final double pracRightDriveTrainPathPlanningI = 0;
-	private final double pracRightDriveTrainPathPlanningD = 160;
+	private final double pracRightDriveTrainPathPlanningD = 160;//160;
 
 	public final double pracElevatorTopScale = 60;
 	public final double pracElevatorMidScale = 50;

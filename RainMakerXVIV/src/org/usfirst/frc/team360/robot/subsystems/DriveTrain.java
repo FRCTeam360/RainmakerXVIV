@@ -2,6 +2,8 @@ package org.usfirst.frc.team360.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team360.robot.*;
 import org.usfirst.frc.team360.robot.commands.*;
 import org.usfirst.frc.team360.robot.pathfollower.*;
@@ -22,12 +24,12 @@ public class DriveTrain extends Subsystem {
 	
     public static int DEFAULT_TIMEOUT_MS = 10;
 
-	private MotionProfileStatus rightStatus = new MotionProfileStatus();
-	private MotionProfileStatus leftStatus = new MotionProfileStatus();
+	private static MotionProfileStatus rightStatus = new MotionProfileStatus();
+	private static MotionProfileStatus leftStatus = new MotionProfileStatus();
 	
 
-	private Notifier leftTalonSender;
-	private Notifier rightTalonSender;
+	private static Notifier leftTalonSender;
+	private static Notifier rightTalonSender;
 	
 	public DriveTrain() {
 		motorRMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
@@ -65,6 +67,22 @@ public class DriveTrain extends Subsystem {
 		
 		resetTalons(motorRSlave);
 		resetTalons(motorLSlave);
+	}
+	public void debugMotionProfiling() {
+		SmartDashboard.putNumber("right percent", motorLMaster.getMotorOutputPercent());
+		SmartDashboard.putNumber("left percent", motorRMaster.getMotorOutputPercent());
+		
+		SmartDashboard.putNumber("right velocity", getRightVelocity());
+		SmartDashboard.putNumber("left velocity", getLeftVelocity());
+
+		SmartDashboard.putNumber("right error", getRightVelocity() 
+				- getRightMotionProfileVelocitySetPoint());
+		SmartDashboard.putNumber("left error", getLeftVelocity() 
+				- getLeftMotionProfileVelocitySetPoint());
+		SmartDashboard.putNumber("right position error", getRightPosition() 
+				- getRightMotionProfilePositionSetPoint());
+		SmartDashboard.putNumber("left position error", getLeftPosition() 
+				- getLeftMotionProfilePositionSetPoint());
 	}
 	public void setUpRightTalonForMotionControl() {
 		motorRMaster.clearMotionProfileTrajectories();
@@ -186,8 +204,11 @@ public class DriveTrain extends Subsystem {
 		rightTalonSender.startPeriodic(.005);
 	}
 	public void stopThreadedProfileSenders() {
+		System.out.println("profiling done");
+		System.out.println("1 done");
 		leftTalonSender.stop();
 		rightTalonSender.stop();
+		System.out.println("done");
 	}
 	private class TalonProfileSender implements java.lang.Runnable {
 		TrajectoryPoint point;

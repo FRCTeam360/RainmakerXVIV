@@ -127,28 +127,17 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousPeriodic() {
-		SmartDashboard.putNumber("right percent", driveTrain.motorLMaster.getMotorOutputPercent());
-		SmartDashboard.putNumber("left percent", driveTrain.motorRMaster.getMotorOutputPercent());
+
+//		System.out.println("right velocity" + driveTrain.motorLMaster.getMotorOutputPercent() + "velocity" + driveTrain.getRightVelocity()
+//		 + "velocity" + driveTrain.getRightVelocity() + "Vel error"  + ( driveTrain.getRightVelocity() 
+//					- driveTrain.getRightMotionProfileVelocitySetPoint()));
+//		System.out.println("left velocity" + driveTrain.motorRMaster.getMotorOutputPercent() + "velocity" + driveTrain.getLeftVelocity()
+//		 + "velocity" + driveTrain.getLeftVelocity() + "Vel error" + ( driveTrain.getLeftVelocity() 
+//			- driveTrain.getLeftMotionProfileVelocitySetPoint()));
+//		
 		
-		SmartDashboard.putNumber("right velocity", driveTrain.getRightVelocity());
-		SmartDashboard.putNumber("left velocity", driveTrain.getLeftVelocity());
-		System.out.println("right velocity" + driveTrain.motorLMaster.getMotorOutputPercent() + "velocity" + driveTrain.getRightVelocity()
-		 + "velocity" + driveTrain.getRightVelocity() + "Vel error"  + ( driveTrain.getRightVelocity() 
-					- driveTrain.getRightMotionProfileVelocitySetPoint()));
-		System.out.println("left velocity" + driveTrain.motorRMaster.getMotorOutputPercent() + "velocity" + driveTrain.getLeftVelocity()
-		 + "velocity" + driveTrain.getLeftVelocity() + "Vel error" + ( driveTrain.getLeftVelocity() 
-			- driveTrain.getLeftMotionProfileVelocitySetPoint()));
-		
-		
-		SmartDashboard.putNumber("right error", driveTrain.getRightVelocity() 
-				- driveTrain.getRightMotionProfileVelocitySetPoint());
-		SmartDashboard.putNumber("left error", driveTrain.getLeftVelocity() 
-				- driveTrain.getLeftMotionProfileVelocitySetPoint());
-		SmartDashboard.putNumber("right position error", driveTrain.getRightPosition() 
-				- driveTrain.getRightMotionProfilePositionSetPoint());
-		SmartDashboard.putNumber("left position error", driveTrain.getLeftPosition() 
-				- driveTrain.getLeftMotionProfilePositionSetPoint());
 		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
