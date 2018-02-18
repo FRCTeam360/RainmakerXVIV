@@ -37,7 +37,7 @@ public class OI {
 			
 		buttonElevIntake.whenActive(new MoveElevatorToIntakePos());
 		buttonElevMidSc.whenActive(new MoveElevatorToMidScale());
-		buttonElevSwitch.whenPressed(new MoveElevetorToSwitchHeight());
+		buttonElevSwitch.whenPressed(new MoveElevatorToSwitchHeight());
 		buttonElevTopSc.whenPressed(new MoveElevatorToTopScale());
 		buttonManualElevator.whileHeld(new MoveManualElevator());
 			
