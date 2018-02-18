@@ -34,7 +34,7 @@ public class Logger extends Subsystem {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 			Date date = new Date(); 
 			String name = dateFormat.format(date) + "_" + RobotMap.robotMode + ".txt";
-    		Log = new File("home/lvuser/" + name);
+    		Log = new File("home/lvuser/logs/" + name);
 			if (!Log.exists()) {
 				Log.createNewFile();
 			}

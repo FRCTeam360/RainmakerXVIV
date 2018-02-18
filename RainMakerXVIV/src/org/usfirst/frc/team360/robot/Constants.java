@@ -33,25 +33,29 @@ public class Constants {
 	public final double compElevatorSwitchHeight = 1500;
 	public final double compElevatorIntakePos = 0;
 	
+	public final double compEncoderCountsToInches = 0;
+	
 	private final double pracElevatorF = 0.2407;
 	private final double pracElevatorP = 4;
 	private final double pracElevatorI = 0;
 	private final double pracElevatorD = 60;
 	
-	private final double pracleftDrivetrainPathPlanningF = 0.5384;
-	private final double pracLeftDrivetrainPathPlanningP = 0.035;
-	private final double pracleftDrivetrainPathPlanningI = 0.0;
-	private final double pracLeftDrivetrainPathPlanningD = 3.5;
+	private final double pracleftDrivetrainPathPlanningF = 0.7307;
+	private final double pracLeftDrivetrainPathPlanningP = 1;//4.092
+	private final double pracleftDrivetrainPathPlanningI = 0;
+	private final double pracLeftDrivetrainPathPlanningD = 160;
 	
-	private final double pracRightDriveTrainPathPlanningF = 0.6133;
-	private final double pracRightDriveTrainPathPlanningP = 0.035;
-	private final double pracRightDriveTrainPathPlanningI = 0.0;
-	private final double pracRightDriveTrainPathPlanningD = 3.5;
+	private final double pracRightDriveTrainPathPlanningF = 0.7307;
+	private final double pracRightDriveTrainPathPlanningP = 1;//2.379
+	private final double pracRightDriveTrainPathPlanningI = 0;
+	private final double pracRightDriveTrainPathPlanningD = 160;
 
-	public final double pracElevatorTopScale = 20000;
-	public final double pracElevatorMidScale = 8000;
-	public final double pracElevatorSwitchHeight = 1500;
-	public final double pracElevatorIntakePos = 0;
+	public final double pracElevatorTopScale = 60;
+	public final double pracElevatorMidScale = 50;
+	public final double pracElevatorSwitchHeight = 35;
+	public final double pracElevatorIntakePos = 5;
+	
+	public final double pracEncoderCountsToInches = 607.42;
 	
 	public static double realElevatorF;
 	public static double realElevatorP;
@@ -72,6 +76,8 @@ public class Constants {
 	public static double realElevatorMidScale;
 	public static double realElevatorSwitchHeight;
 	public static double realElevatorIntakePos;
+	
+	public static double realEncoderCountsToInches;
 	
 	public Constants() {
 		try {
@@ -115,6 +121,8 @@ public class Constants {
 		realElevatorMidScale = compElevatorMidScale;
 		realElevatorSwitchHeight = compElevatorSwitchHeight;
 		realElevatorIntakePos = compElevatorIntakePos;
+		
+		realEncoderCountsToInches = compEncoderCountsToInches;
 	}
 	public void writePracticeBotVariables() {
 		realElevatorF = pracElevatorF;
@@ -136,5 +144,7 @@ public class Constants {
 		realElevatorMidScale = pracElevatorMidScale;
 		realElevatorSwitchHeight = pracElevatorSwitchHeight;
 		realElevatorIntakePos = pracElevatorIntakePos;
+		
+		realEncoderCountsToInches = pracEncoderCountsToInches;
 	}
 }

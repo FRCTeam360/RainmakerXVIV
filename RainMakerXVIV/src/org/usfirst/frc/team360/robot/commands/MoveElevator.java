@@ -1,5 +1,6 @@
 package org.usfirst.frc.team360.robot.commands;
 
+import org.usfirst.frc.team360.robot.Constants;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
@@ -16,9 +17,9 @@ public class MoveElevator extends Command {
 	
 	public double pos;
 	
-	public MoveElevator(double realElevatorTopScale) {
+	public MoveElevator(double wantedPosition) {
 		requires(Robot.elevator);
-	    pos = realElevatorTopScale - RobotMap.currentPos;
+	    pos = (wantedPosition * Constants.realEncoderCountsToInches) - Robot.elevator.getPosition();
 		
 	}
 

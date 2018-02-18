@@ -35,6 +35,9 @@ public class DriveTrain extends Subsystem {
 		
 		motorRSlave.follow(motorRMaster);
 		motorLSlave.follow(motorLMaster);
+
+		motorRMaster.configVelocityMeasurementPeriod(VelocityMeasPeriod.Period_25Ms, 10);
+		motorLMaster.configVelocityMeasurementPeriod(VelocityMeasPeriod.Period_25Ms, 10);
 		
 		motorLMaster.setInverted(false);
 		motorLSlave.setInverted(false);
