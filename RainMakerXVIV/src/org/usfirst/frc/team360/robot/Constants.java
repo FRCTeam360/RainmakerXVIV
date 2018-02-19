@@ -13,6 +13,9 @@ public class Constants {
 	private String buffLine;
 	
 
+	public static double realEncoderCountsToInches;
+	public final double pracEncoderCountsToInches = 607.42;
+	
 	private final double compElevatorF = 0;
 	private final double compElevatorP = 0;
 	private final double compElevatorI = 0;
@@ -161,5 +164,7 @@ public class Constants {
 		realPIDNavxTurnP = pracPIDNavxTurnP;
 		realPIDNavxTurnI = pracPIDNavxTurnI;
 		realPIDNavxTurnD = pracPIDNavxTurnD;
+		
+		realEncoderCountsToInches = pracEncoderCountsToInches;
 	}
 }
