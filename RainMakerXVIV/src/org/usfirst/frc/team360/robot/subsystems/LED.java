@@ -76,6 +76,7 @@ public class LED extends Subsystem {
 			break;
 		case VIOLET:
 			setLEDViolet();
+			break;
 		case PULSING:
 			setLEDPulse();
 			break;
