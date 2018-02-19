@@ -84,6 +84,9 @@ public class DriveTrain extends Subsystem {
 		SmartDashboard.putNumber("left position error", getLeftPosition() 
 				- getLeftMotionProfilePositionSetPoint());
 	}
+	public void brakeMode() {
+		motorRMaster.setNeutralMode(NeutralMode.Brake);
+	}
 	public void setUpRightTalonForMotionControl() {
 		motorRMaster.clearMotionProfileTrajectories();
 		motorRMaster.changeMotionControlFramePeriod(5);
