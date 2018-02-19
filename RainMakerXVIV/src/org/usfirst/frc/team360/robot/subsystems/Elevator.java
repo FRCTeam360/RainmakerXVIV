@@ -118,7 +118,7 @@ public class Elevator extends Subsystem {
 	}
 	
 	public double getMasterVelocity(){
-		return elevator.getSelectedSensorVelocity(0);
+		return elevatorMaster.getSelectedSensorVelocity(0);
 	}
 	
 	public void elevatorOutputIsFine() {
