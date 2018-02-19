@@ -28,34 +28,30 @@ public class Constants {
 	private final double compRightDriveTrainPathPlanningI = 0;
 	private final double compRightDriveTrainPathPlanningD = 0;
 	
-	public final double compElevatorTopScale = 10000;
-	public final double compElevatorMidScale = 8000;
-	public final double compElevatorSwitchHeight = 1500;
-	public final double compElevatorIntakePos = 0;
+	public static double compElevatorTopScale = 10000;
+	public static double compElevatorMidScale = 8000;
+	public static double compElevatorSwitchHeight = 1500;
+	public static double compElevatorIntakePos = 0;
 	
-	public final double compEncoderCountsToInches = 0;
-	
-	private final double pracElevatorF = 0.2407;
+	private final double pracElevatorF = 0.756;
 	private final double pracElevatorP = 4;
 	private final double pracElevatorI = 0;
-	private final double pracElevatorD = 60;
+	private final double pracElevatorD = 40;
 	
-	private final double pracleftDrivetrainPathPlanningF = 0.7307;
-	private final double pracLeftDrivetrainPathPlanningP = 1;//4.092
-	private final double pracleftDrivetrainPathPlanningI = 0;
-	private final double pracLeftDrivetrainPathPlanningD = 160;//160;
+	private final double pracleftDrivetrainPathPlanningF = 0.5384;
+	private final double pracLeftDrivetrainPathPlanningP = 0.035;
+	private final double pracleftDrivetrainPathPlanningI = 0.0;
+	private final double pracLeftDrivetrainPathPlanningD = 3.5;
 	
-	private final double pracRightDriveTrainPathPlanningF = 0.7307;
-	private final double pracRightDriveTrainPathPlanningP = 1;//2.379
-	private final double pracRightDriveTrainPathPlanningI = 0;
-	private final double pracRightDriveTrainPathPlanningD = 160;//160;
+	private final double pracRightDriveTrainPathPlanningF = 0.6133;
+	private final double pracRightDriveTrainPathPlanningP = 0.035;
+	private final double pracRightDriveTrainPathPlanningI = 0.0;
+	private final double pracRightDriveTrainPathPlanningD = 3.5;
 
-	public final double pracElevatorTopScale = 60;
-	public final double pracElevatorMidScale = 50;
-	public final double pracElevatorSwitchHeight = 35;
-	public final double pracElevatorIntakePos = 5;
-	
-	public final double pracEncoderCountsToInches = 607.42;
+	public static double pracElevatorTopScale = 10000;
+	public static double pracElevatorMidScale = 8000;
+	public static double pracElevatorSwitchHeight = 1500;
+	public static double pracElevatorIntakePos = 0;
 	
 	public static double realElevatorF;
 	public static double realElevatorP;
@@ -77,7 +73,20 @@ public class Constants {
 	public static double realElevatorSwitchHeight;
 	public static double realElevatorIntakePos;
 	
-	public static double realEncoderCountsToInches;
+	public static double compPIDNavxTurnGainMultiplier = 0;
+	public static double compPIDNavxTurnP = 0;
+	public static double compPIDNavxTurnI = 0;
+	public static double compPIDNavxTurnD = 0;
+	
+	public static double realPIDNavxTurnGainMultiplier = 0;
+	public static double realPIDNavxTurnP = 0;
+	public static double realPIDNavxTurnI = 0;
+	public static double realPIDNavxTurnD = 0;
+	
+	public static double pracPIDNavxTurnGainMultiplier = 0;
+	public static double pracPIDNavxTurnP = 0;
+	public static double pracPIDNavxTurnI = 0;
+	public static double pracPIDNavxTurnD = 0;
 	
 	public Constants() {
 		try {
@@ -86,7 +95,7 @@ public class Constants {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if ("competition".equals(buffLine)) {
+		if ("comp".equals(buffLine)) {
 			RobotMap.robotID = RobotMap.RobotID.COMP;
 			DriverStation.reportError("Comp Bot", false);
 			writeCompBotVariables();
@@ -122,7 +131,10 @@ public class Constants {
 		realElevatorSwitchHeight = compElevatorSwitchHeight;
 		realElevatorIntakePos = compElevatorIntakePos;
 		
-		realEncoderCountsToInches = compEncoderCountsToInches;
+		realPIDNavxTurnGainMultiplier = compPIDNavxTurnGainMultiplier;
+		realPIDNavxTurnP = compPIDNavxTurnP;
+		realPIDNavxTurnI = compPIDNavxTurnI;
+		realPIDNavxTurnD = compPIDNavxTurnD;
 	}
 	public void writePracticeBotVariables() {
 		realElevatorF = pracElevatorF;
@@ -145,6 +157,9 @@ public class Constants {
 		realElevatorSwitchHeight = pracElevatorSwitchHeight;
 		realElevatorIntakePos = pracElevatorIntakePos;
 		
-		realEncoderCountsToInches = pracEncoderCountsToInches;
+		realPIDNavxTurnGainMultiplier = pracPIDNavxTurnGainMultiplier;
+		realPIDNavxTurnP = pracPIDNavxTurnP;
+		realPIDNavxTurnI = pracPIDNavxTurnI;
+		realPIDNavxTurnD = pracPIDNavxTurnD;
 	}
 }
