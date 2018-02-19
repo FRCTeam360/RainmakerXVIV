@@ -73,6 +73,11 @@ public class Constants {
 	public static double realElevatorSwitchHeight;
 	public static double realElevatorIntakePos;
 	
+	public static final double PIDNavxTurnGainMultiplier = 0.1; //2017 robot value
+	public static final double PIDNavxTurnP = 0.5; //2017 robot value
+	public static final double PIDNavxTurnI = 0.03; //2017 robot value
+	public static final double PIDNavxTurnD = 0.5; //2017 robot value
+	
 	public Constants() {
 		try {
 			buff = new BufferedReader(new FileReader("home/lvuser/RobotID.txt"));
