@@ -50,24 +50,24 @@ public class PIDNavXTurn extends Command {
 
     protected void execute() {
 
-    	SmartDashboard.putNumber("angle: ", Robot.navX.getNavXAngle());
-      	SmartDashboard.putNumber("angle target: ", direction);
+//    	SmartDashboard.putNumber("angle: ", Robot.navX.getNavXAngle());
+//      	SmartDashboard.putNumber("angle target: ", direction);
     	currentAngle = Robot.navX.getNavXAngle();
     	error = direction - currentAngle;
-    	pAdjustment = error * Constants.PIDNavxTurnP * Constants.PIDNavxTurnGainMultiplier;
-    	iAdjustment = iAdjustment + (error * Constants.PIDNavxTurnI * Constants.PIDNavxTurnGainMultiplier);
-    	dAdjustment = (error - lastError) * Constants.PIDNavxTurnD * Constants.PIDNavxTurnGainMultiplier;
+    	pAdjustment = error * Constants.realPIDNavxTurnP * Constants.realPIDNavxTurnGainMultiplier;
+    	iAdjustment = iAdjustment + (error * Constants.realPIDNavxTurnI * Constants.realPIDNavxTurnGainMultiplier);
+    	dAdjustment = (error - lastError) * Constants.realPIDNavxTurnD * Constants.realPIDNavxTurnGainMultiplier;
     	lastError = error;
-    	SmartDashboard.putNumber("error: ", error);
-    	SmartDashboard.putNumber("prop:  ", pAdjustment);
-      	SmartDashboard.putNumber("inte: ", iAdjustment);
+//    	SmartDashboard.putNumber("error: ", error);
+//    	SmartDashboard.putNumber("prop:  ", pAdjustment);
+//      	SmartDashboard.putNumber("inte: ", iAdjustment);
     	PIDAdjustment = pAdjustment + iAdjustment + dAdjustment;
-    	SmartDashboard.putNumber("deriv: ", dAdjustment);
-    	SmartDashboard.putNumber("prop: ", motorSpeed);
-      	SmartDashboard.putNumber("inte: ", iAdjustment);
-      	SmartDashboard.putBoolean("pid stat", pid);
-      	SmartDashboard.putNumber("right: ", motorSpeed);
-      	SmartDashboard.putNumber("left: ", motorSpeed + PIDAdjustment);
+//    	SmartDashboard.putNumber("deriv: ", dAdjustment);
+//    	SmartDashboard.putNumber("prop: ", motorSpeed);
+//      	SmartDashboard.putNumber("inte: ", iAdjustment);
+//      	SmartDashboard.putBoolean("pid stat", pid);
+//      	SmartDashboard.putNumber("right: ", motorSpeed);
+//      	SmartDashboard.putNumber("left: ", motorSpeed + PIDAdjustment);
       	if(Robot.navX.getNavXAngle() < 10 + direction && Robot.navX.getNavXAngle() > direction - 10){
       		if(pid == false){
       			iAdjustment = 0;

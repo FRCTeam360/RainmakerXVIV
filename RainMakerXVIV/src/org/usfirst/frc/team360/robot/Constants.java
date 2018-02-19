@@ -73,10 +73,20 @@ public class Constants {
 	public static double realElevatorSwitchHeight;
 	public static double realElevatorIntakePos;
 	
-	public static final double PIDNavxTurnGainMultiplier = 0.1; //2017 robot value
-	public static final double PIDNavxTurnP = 0.5; //2017 robot value
-	public static final double PIDNavxTurnI = 0.03; //2017 robot value
-	public static final double PIDNavxTurnD = 0.5; //2017 robot value
+	public static double compPIDNavxTurnGainMultiplier = 0;
+	public static double compPIDNavxTurnP = 0;
+	public static double compPIDNavxTurnI = 0;
+	public static double compPIDNavxTurnD = 0;
+	
+	public static double realPIDNavxTurnGainMultiplier = 0;
+	public static double realPIDNavxTurnP = 0;
+	public static double realPIDNavxTurnI = 0;
+	public static double realPIDNavxTurnD = 0;
+	
+	public static double pracPIDNavxTurnGainMultiplier = 0;
+	public static double pracPIDNavxTurnP = 0;
+	public static double pracPIDNavxTurnI = 0;
+	public static double pracPIDNavxTurnD = 0;
 	
 	public Constants() {
 		try {
@@ -120,6 +130,11 @@ public class Constants {
 		realElevatorMidScale = compElevatorMidScale;
 		realElevatorSwitchHeight = compElevatorSwitchHeight;
 		realElevatorIntakePos = compElevatorIntakePos;
+		
+		realPIDNavxTurnGainMultiplier = compPIDNavxTurnGainMultiplier;
+		realPIDNavxTurnP = compPIDNavxTurnP;
+		realPIDNavxTurnI = compPIDNavxTurnI;
+		realPIDNavxTurnD = compPIDNavxTurnD;
 	}
 	public void writePracticeBotVariables() {
 		realElevatorF = pracElevatorF;
@@ -141,5 +156,10 @@ public class Constants {
 		realElevatorMidScale = pracElevatorMidScale;
 		realElevatorSwitchHeight = pracElevatorSwitchHeight;
 		realElevatorIntakePos = pracElevatorIntakePos;
+		
+		realPIDNavxTurnGainMultiplier = pracPIDNavxTurnGainMultiplier;
+		realPIDNavxTurnP = pracPIDNavxTurnP;
+		realPIDNavxTurnI = pracPIDNavxTurnI;
+		realPIDNavxTurnD = pracPIDNavxTurnD;
 	}
 }
