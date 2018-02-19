@@ -12,6 +12,16 @@ import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.RobotMap.IntakeState;
+import org.usfirst.frc.team360.robot.commands.FollowTrajectory;
+import org.usfirst.frc.team360.robot.commands.FollowTrajectory;
+import org.usfirst.frc.team360.robot.commands.StopElevator;
+import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
+import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeRightSwitch;
+import org.usfirst.frc.team360.robot.commands.autos.StartLeftDropCubeLeftScale;
+import org.usfirst.frc.team360.robot.commands.autos.StartLeftDropCubeLeftSwitch;
+import org.usfirst.frc.team360.robot.commands.autos.StartLeftDropCubeRightScale;
+import org.usfirst.frc.team360.robot.commands.autos.StartRightDropCubeRightScale;
+import org.usfirst.frc.team360.robot.commands.autos.StartRightDropCubeRightSwitch;
 import org.usfirst.frc.team360.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -29,7 +39,7 @@ public class Robot extends TimedRobot {
 	
 	public static OI oi;
 	public static Constants constants;
-	public static AutoController autoController;
+	//public static AutoController autoController;
 	
 	Command autonomousCommand;
 	boolean wasZeroActive = false;
@@ -58,15 +68,11 @@ public class Robot extends TimedRobot {
 }*/
 	@Override
 	public void robotInit() {
-		RobotMap.currentPos = 0;
-		
+		constants = new Constants();
 		shifter = new Shifter();
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
-		//motionMagic  = new MotionMagic();
-
-		//elevator.zeroSensor();
 		elevator.zeroSensor();
 		climber = new Climber();
 		navX = new NavX();
@@ -75,7 +81,7 @@ public class Robot extends TimedRobot {
 		logger = new Logger();
 		intakePeumatics = new IntakePneumatics();
 		oi = new OI();
-		autoController = new AutoController();
+	//	autoController = new AutoController();
 	}
 	
 	@Override 
@@ -99,7 +105,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		autoController.smartDashboardAutoController();
+	//	autoController.smartDashboardAutoController();
 		Scheduler.getInstance().run();
 	}
 	
@@ -107,37 +113,31 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		RobotMap.robotMode = "Auto";
 		logger.initLogger();	
-//		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
-		autonomousCommand = autoController.chooseAutoMode();
+//		autonomousCommand = new StartLeftDropCubeRightScale();
+		autonomousCommand = new StartRightDropCubeRightSwitch();
+//		autonomousCommand = autoController.chooseAutoMode();
+//		autonomousCommand = new StartCenterDropCubeLeftSwitch();
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
 		}
+		Command stopElevator = new StopElevator();
+		stopElevator.start();
+		
 	}
 
 	@Override
 	public void autonomousPeriodic() {
-		SmartDashboard.putNumber("right percent", driveTrain.motorLMaster.getMotorOutputPercent());
-		SmartDashboard.putNumber("left percent", driveTrain.motorRMaster.getMotorOutputPercent());
+
+//		System.out.println("right velocity" + driveTrain.motorLMaster.getMotorOutputPercent() + "velocity" + driveTrain.getRightVelocity()
+//		 + "velocity" + driveTrain.getRightVelocity() + "Vel error"  + ( driveTrain.getRightVelocity() 
+//					- driveTrain.getRightMotionProfileVelocitySetPoint()));
+//		System.out.println("left velocity" + driveTrain.motorRMaster.getMotorOutputPercent() + "velocity" + driveTrain.getLeftVelocity()
+//		 + "velocity" + driveTrain.getLeftVelocity() + "Vel error" + ( driveTrain.getLeftVelocity() 
+//			- driveTrain.getLeftMotionProfileVelocitySetPoint()));
+//		
 		
-		SmartDashboard.putNumber("right velocity", driveTrain.getRightVelocity());
-		SmartDashboard.putNumber("left velocity", driveTrain.getLeftVelocity());
-		System.out.println("right velocity" + driveTrain.motorLMaster.getMotorOutputPercent() + "velocity" + driveTrain.getRightVelocity()
-		 + "velocity" + driveTrain.getRightVelocity() + "Vel error"  + ( driveTrain.getRightVelocity() 
-					- driveTrain.getRightMotionProfileVelocitySetPoint()));
-		System.out.println("left velocity" + driveTrain.motorRMaster.getMotorOutputPercent() + "velocity" + driveTrain.getLeftVelocity()
-		 + "velocity" + driveTrain.getLeftVelocity() + "Vel error" + ( driveTrain.getLeftVelocity() 
-			- driveTrain.getLeftMotionProfileVelocitySetPoint()));
-		
-		
-		SmartDashboard.putNumber("right error", driveTrain.getRightVelocity() 
-				- driveTrain.getRightMotionProfileVelocitySetPoint());
-		SmartDashboard.putNumber("left error", driveTrain.getLeftVelocity() 
-				- driveTrain.getLeftMotionProfileVelocitySetPoint());
-		SmartDashboard.putNumber("right position error", driveTrain.getRightPosition() 
-				- driveTrain.getRightMotionProfilePositionSetPoint());
-		SmartDashboard.putNumber("left position error", driveTrain.getLeftPosition() 
-				- driveTrain.getLeftMotionProfilePositionSetPoint());
 		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
@@ -149,16 +149,24 @@ public class Robot extends TimedRobot {
 		
 		RobotMap.robotMode = "Teleop";
 		logger.initLogger();
+		Command stopElevator = new StopElevator();
+		stopElevator.start();
 }
 
 	@Override
 	public void teleopPeriodic() {
-		System.out.println("Amps: " + RobotMap.pdp.getCurrent(2));
+		SmartDashboard.putNumber("Left Velocity",  driveTrain.getLeftVelocity());
+		SmartDashboard.putNumber("Right Velocity", driveTrain.getRightVelocity());
+//		System.out.println("Left Velocity" + driveTrain.getLeftVelocity());
+//		System.out.println("Right Velocity" + driveTrain.getRightVelocity());
+		//System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
+		System.out.println("Amps: " + intake.currentDraw());
+		//System.out.println("Elevator Output Voltage:" + elevator.getMotorOutputVoltage());
+		//elevator.Process();
 		Scheduler.getInstance().run();
 	}
 
 	@Override
 	public void testPeriodic() {
-		
 	}
 }

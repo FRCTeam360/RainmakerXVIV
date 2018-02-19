@@ -52,6 +52,7 @@ public class LED extends Subsystem {
 		RobotMap.color = Color.RAINBOW;
 	}
 	public void setLEDOff() {
+		LEDControl(0.99);
 		RobotMap.LED_Control.disable();
 		RobotMap.color = Color.OFF;
 	}

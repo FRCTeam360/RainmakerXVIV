@@ -27,9 +27,6 @@ public class Elevator extends Subsystem {
 
 	private int zeroSensor;
 	
-	private double elevatorOutput;
-	private double elevatorVeloCity;
-	
 	private final int kSlotIdx = 0;
 	private final int kPIDLoopIdx = 0;
 	private final int kTimeoutMs = 10;
@@ -38,10 +35,12 @@ public class Elevator extends Subsystem {
 		
 		elevatorSlave.follow(elevatorMaster);
 		
+		elevatorMaster.setInverted(false);
+		elevatorSlave.setInverted(false);
+		
 		/* first choose the sensor */
 		elevatorMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
-		elevatorMaster.setSensorPhase(false);
-		elevatorMaster.setInverted(false);
+		elevatorMaster.setSensorPhase(true);
 		
 		/* Set relevant frame periods to be at least as fast as periodic rate*/
 		elevatorMaster.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, kTimeoutMs);
@@ -55,10 +54,17 @@ public class Elevator extends Subsystem {
 		
 		/* set closed loop gains in slot0 - see documentation */
 		elevatorMaster.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
-		elevatorMaster.config_kF(0, Constants.realElevatorF, kTimeoutMs);
-		elevatorMaster.config_kP(0, Constants.realElevatorP, kTimeoutMs);
-		elevatorMaster.config_kI(0, Constants.realElevatorI, kTimeoutMs);
-		elevatorMaster.config_kD(0, Constants.realElevatorD, kTimeoutMs);
+//		elevatorMaster.config_kF(0, Constants.realElevatorF, kTimeoutMs);
+//		elevatorMaster.config_kP(0, Constants.realElevatorP, kTimeoutMs);
+//		elevatorMaster.config_kI(0, Constants.realElevatorI, kTimeoutMs);
+//		elevatorMaster.config_kD(0, Constants.realElevatorD, kTimeoutMs);
+		
+		elevatorMaster.config_kF(0, 0.2407, kTimeoutMs);
+		elevatorMaster.config_kP(0, 4, kTimeoutMs);
+		elevatorMaster.config_kI(0, 0, kTimeoutMs);
+		elevatorMaster.config_kD(0, 60, kTimeoutMs);
+		
+		elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 		
 		zeroSensor = 50;
 	}
@@ -89,10 +95,14 @@ public class Elevator extends Subsystem {
 	}
 	public void motionMagicInit() {
 		/* set acceleration and vcruise velocity - see documentation */
-		elevatorMaster.configMotionCruiseVelocity(1340, kTimeoutMs);
-		elevatorMaster.configMotionAcceleration(800, kTimeoutMs);
+		elevatorMaster.configMotionCruiseVelocity(4250, kTimeoutMs);
+		elevatorMaster.configMotionAcceleration(1500, kTimeoutMs);
 		/* zero the sensor */
-		//_talon.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
+		//elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
+	}
+	
+	public double getMotorOutputVoltage() {
+		return elevatorMaster.getMotorOutputVoltage();
 	}
 	
 	public void getCurrentPosition() {
@@ -109,7 +119,7 @@ public class Elevator extends Subsystem {
 	
 	public void elevatorOutputIsFine() {
 		if(elevatorIsFine() == 0) {
-			DriverStation.reportWarning("EleVaTOr iS BRoKeN!", false);
+			DriverStation.reportWarning("Elevator encoder is NOT working, automatic control disabled", false);
 			Command stopElevator;
 			stopElevator = new StopElevator();
 			stopElevator.start();

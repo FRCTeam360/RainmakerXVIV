@@ -11,6 +11,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MoveElevatorToIntakePos extends CommandGroup {
 
     public MoveElevatorToIntakePos() {
-    		addSequential(new MoveElevator(Constants.realElevatorSwitchHeight));
+    		addSequential(new MoveElevator(Constants.realElevatorIntakePos));
     }
 }
