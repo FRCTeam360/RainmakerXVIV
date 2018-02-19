@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class MoveElevetorToSwitchHeight extends CommandGroup {
+public class MoveElevatorToSwitchHeight extends CommandGroup {
 
-    public MoveElevetorToSwitchHeight() {
+    public MoveElevatorToSwitchHeight() {
         	addSequential(new MoveElevator(Constants.realElevatorSwitchHeight));
     }
 }
