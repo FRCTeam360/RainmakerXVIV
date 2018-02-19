@@ -23,10 +23,12 @@ public class Logger extends Subsystem {
 	//Current Variables
     private double driveBaseLVelocity;
     private double driveBaseRVelocity;
+    private double elevatorMasterVelocity;
 	
 	//Old Variables
     private double driveBaseLVelocityOLD;
     private double driveBaseRVelocityOLD;
+    private double elevatorMasterVelocityOLD;
     private boolean driverStationIsAttachedOld = true;
 	
 	public void initLogger(){
@@ -203,6 +205,21 @@ public class Logger extends Subsystem {
 		}
 	}
 	
+	public void logElevatorVelocity() {
+		
+		elevatorMasterVelocity = Robot.driveTrain.getLeftVelocity();
+		
+		if(elevatorMasterVelocity != elevatorMasterVelocityOLD) {
+			try {
+				bw.write("Elevator Velocity: Master: " + elevatorMasterVelocity + '\n');
+			} catch (Exception e){
+			}
+		}
+		
+		elevatorMasterVelocityOLD = elevatorMasterVelocity;
+		
+	}
+	
 	public void closeLogger() {
 		try {
 			bw.close();
@@ -210,6 +227,7 @@ public class Logger extends Subsystem {
 			
 		}
 	}
+	
 
 	@Override
 	protected void initDefaultCommand() {

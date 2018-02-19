@@ -117,6 +117,10 @@ public class Elevator extends Subsystem {
 		return elevatorMaster.getSensorCollection().getPulseWidthRiseToRiseUs();
 	}
 	
+	public double getMasterVelocity(){
+		return elevator.getSelectedSensorVelocity(0);
+	}
+	
 	public void elevatorOutputIsFine() {
 		if(elevatorIsFine() == 0) {
 			DriverStation.reportWarning("Elevator encoder is NOT working, automatic control disabled", false);

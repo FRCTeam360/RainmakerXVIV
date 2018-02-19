@@ -2,6 +2,7 @@ package org.usfirst.frc.team360.robot.commands;
 
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
+import org.usfirst.frc.team360.robot.RobotMap.Color;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -27,7 +28,7 @@ public class LEDShiftState extends Command {
     	}else if(RobotMap.ShiftState.DOWN == RobotMap.shiftState) {
     		Robot.led.setLEDOrange();
     	}else {
-    		RobotMap.LED_Control.disable();
+    		RobotMap.color = Color.OFF;
     	}
     }
 

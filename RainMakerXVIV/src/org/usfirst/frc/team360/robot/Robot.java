@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.RobotMap.IntakeState;
 import org.usfirst.frc.team360.robot.commands.FollowTrajectory;
+import org.usfirst.frc.team360.robot.commands.LEDColor;
 import org.usfirst.frc.team360.robot.commands.FollowTrajectory;
 import org.usfirst.frc.team360.robot.commands.StopElevator;
 import org.usfirst.frc.team360.robot.commands.autos.StartCenterDropCubeLeftSwitch;
@@ -36,7 +37,6 @@ public class Robot extends TimedRobot {
 	public static Logger logger;
 	public static LED led;
 	public static IntakePneumatics intakePeumatics;
-	
 	public static OI oi;
 	public static Constants constants;
 	//public static AutoController autoController;

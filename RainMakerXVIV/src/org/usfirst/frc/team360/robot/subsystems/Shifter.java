@@ -8,8 +8,8 @@ import org.usfirst.frc.team360.robot.RobotMap.ShiftState;
 import org.usfirst.frc.team360.robot.commands.LEDShiftState;
 
 public class Shifter extends Subsystem {
+	
     
-//error here
 	private DoubleSolenoid shifter = RobotMap.shifter;
 	public void shiftUp(){ 
 		shifter.set(DoubleSolenoid.Value.kForward);
@@ -20,6 +20,5 @@ public class Shifter extends Subsystem {
 		RobotMap.shiftState = ShiftState.DOWN;
 	}
     public void initDefaultCommand() {
-    	setDefaultCommand(new LEDShiftState());
     }
 }

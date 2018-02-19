@@ -24,6 +24,7 @@ public class MoveManualElevator extends Command {
     protected void execute() {
     		if(Math.abs(OI.joyOI.getRawAxis(5)) > .1) {
     			Robot.elevator.setMotor(-OI.joyOI.getRawAxis(5)*.5);
+    			Robot.logger.logElevatorVelocity();
     		} else {
     			Robot.elevator.stop();
     		}

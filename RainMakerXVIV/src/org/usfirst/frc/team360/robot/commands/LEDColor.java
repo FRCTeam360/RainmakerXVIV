@@ -2,6 +2,7 @@ package org.usfirst.frc.team360.robot.commands;
 
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
+import org.usfirst.frc.team360.robot.RobotMap.Color;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -50,7 +51,7 @@ public class LEDColor extends Command {
         	if(time.get() < ((period)/2)) { // if the time is less than half the period, activates this code
         		Robot.led.changeColor(color); // changes color to set color(ex.green)
     		}else if(time.get() > (period/2) && time.get() < period) { // if the time is between half the period and one period, activate this code
-    			RobotMap.LED_Control.disable(); // turns off LEDs
+    			RobotMap.color = Color.OFF; // turns off LEDs
     		}else{ // if the time is greater than one period, activates this code
         		time.stop(); // stops timer
         		time.reset(); // reset timer to 0
@@ -61,14 +62,14 @@ public class LEDColor extends Command {
     		if(time.get() < duration) {
     			Robot.led.changeColor(color);
     		}else {
-    			RobotMap.LED_Control.disable();
+    			RobotMap.color = Color.OFF;
     		}
     		
     	}else if(infinity) {
     		if(time.get() < ((period)/2)) { // if the time is less than half the period, activates this code
         		Robot.led.changeColor(color); // changes color to set color(ex.green)
     		}else if(time.get() > (period/2) && time.get() < period) { // if the time is between half the period and one period, activate this code
-    			RobotMap.LED_Control.disable(); // turns off LEDs
+    			RobotMap.color = Color.OFF; // turns off LEDs
     		}else{ // if the time is greater than one period, activates this code
         		time.stop(); // stops timer
         		time.reset(); // reset timer to 0
