@@ -54,15 +54,15 @@ public class Elevator extends Subsystem {
 		
 		/* set closed loop gains in slot0 - see documentation */
 		elevatorMaster.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
-//		elevatorMaster.config_kF(0, Constants.realElevatorF, kTimeoutMs);
-//		elevatorMaster.config_kP(0, Constants.realElevatorP, kTimeoutMs);
-//		elevatorMaster.config_kI(0, Constants.realElevatorI, kTimeoutMs);
-//		elevatorMaster.config_kD(0, Constants.realElevatorD, kTimeoutMs);
+		elevatorMaster.config_kF(0, Constants.realElevatorF, kTimeoutMs);
+		elevatorMaster.config_kP(0, Constants.realElevatorP, kTimeoutMs);
+		elevatorMaster.config_kI(0, Constants.realElevatorI, kTimeoutMs);
+		elevatorMaster.config_kD(0, Constants.realElevatorD, kTimeoutMs);
 		
-		elevatorMaster.config_kF(0, 0.2407, kTimeoutMs);
-		elevatorMaster.config_kP(0, 4, kTimeoutMs);
-		elevatorMaster.config_kI(0, 0, kTimeoutMs);
-		elevatorMaster.config_kD(0, 60, kTimeoutMs);
+//		elevatorMaster.config_kF(0, 0.2407, kTimeoutMs);
+//		elevatorMaster.config_kP(0, 4, kTimeoutMs);
+//		elevatorMaster.config_kI(0, 0, kTimeoutMs);
+//		elevatorMaster.config_kD(0, 60, kTimeoutMs);
 		
 		elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 		
@@ -95,8 +95,10 @@ public class Elevator extends Subsystem {
 	}
 	public void motionMagicInit() {
 		/* set acceleration and vcruise velocity - see documentation */
-		elevatorMaster.configMotionCruiseVelocity(4250, kTimeoutMs);
-		elevatorMaster.configMotionAcceleration(2250, kTimeoutMs);
+//		elevatorMaster.configMotionCruiseVelocity(4250, kTimeoutMs);
+//		elevatorMaster.configMotionAcceleration(2250, kTimeoutMs);
+		elevatorMaster.configMotionCruiseVelocity(0, kTimeoutMs);
+		elevatorMaster.configMotionAcceleration(0, kTimeoutMs);
 		/* zero the sensor */
 		//elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 	}
