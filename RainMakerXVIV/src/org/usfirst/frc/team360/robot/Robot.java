@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.RobotMap.IntakeState;
+import org.usfirst.frc.team360.robot.commands.ElevatorHold;
+import org.usfirst.frc.team360.robot.commands.ElevatorRelease;
 import org.usfirst.frc.team360.robot.commands.FollowTrajectory;
 import org.usfirst.frc.team360.robot.commands.FollowTrajectory;
 import org.usfirst.frc.team360.robot.commands.StopElevator;
@@ -36,6 +38,7 @@ public class Robot extends TimedRobot {
 	public static Logger logger;
 	public static LED led;
 	public static IntakePneumatics intakePeumatics;
+	public static ReleaseElevator releaseElevator;
 	
 	public static OI oi;
 	public static Constants constants;
@@ -80,6 +83,7 @@ public class Robot extends TimedRobot {
 		led = new LED();
 		logger = new Logger();
 		intakePeumatics = new IntakePneumatics();
+		releaseElevator = new ReleaseElevator();
 		oi = new OI();
 	//	autoController = new AutoController();
 	}
@@ -120,6 +124,8 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
 		}
+		Command elevatorRelease = new ElevatorRelease();
+		elevatorRelease.start();
 		Command stopElevator = new StopElevator();
 		stopElevator.start();
 		
@@ -149,6 +155,8 @@ public class Robot extends TimedRobot {
 		
 		RobotMap.robotMode = "Teleop";
 		logger.initLogger();
+		Command elevatorHold = new ElevatorHold();
+		elevatorHold.start();
 		Command stopElevator = new StopElevator();
 		stopElevator.start();
 }

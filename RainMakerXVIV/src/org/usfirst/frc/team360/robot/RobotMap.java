@@ -33,6 +33,8 @@ public class RobotMap {
 	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 2);
 	
 	public static DoubleSolenoid intakePneumatics = new DoubleSolenoid(4, 5);
+	
+	public static DoubleSolenoid elevatorReleasePneumatic = new DoubleSolenoid(6, 7);
 
 	
 	public static enum ShiftState {UP, DOWN, UNKNOWN}
