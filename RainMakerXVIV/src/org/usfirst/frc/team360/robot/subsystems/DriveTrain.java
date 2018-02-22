@@ -9,7 +9,7 @@ import org.usfirst.frc.team360.robot.commands.*;
 import org.usfirst.frc.team360.robot.pathfollower.*;
 
 import com.ctre.phoenix.motion.*;
-import com.ctre.phoenix.motion.TrajectoryPoint.TrajectoryDuration;
+//import com.ctre.phoenix.motion.TrajectoryPoint.TrajectoryDuration;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -83,6 +83,9 @@ public class DriveTrain extends Subsystem {
 				- getRightMotionProfilePositionSetPoint());
 		SmartDashboard.putNumber("left position error", getLeftPosition() 
 				- getLeftMotionProfilePositionSetPoint());
+	}
+	public void brakeMode() {
+		motorRMaster.setNeutralMode(NeutralMode.Brake);
 	}
 	public void setUpRightTalonForMotionControl() {
 		motorRMaster.clearMotionProfileTrajectories();
@@ -231,9 +234,9 @@ public class DriveTrain extends Subsystem {
 							/* for each point, fill our structure and pass it to API */
 							point.position = prof.points[num][0];
 							point.velocity = prof.points[num][1];
-							point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
-							point.profileSlotSelect0 = pidfSlot; 
-							point.profileSlotSelect1 = 0;
+//							point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
+//							point.profileSlotSelect0 = pidfSlot; 
+//							point.profileSlotSelect1 = 0;
 							point.zeroPos = false;
 							if (num == 0){
 								point.zeroPos = true; /* set this to true on the first point */
@@ -256,9 +259,9 @@ public class DriveTrain extends Subsystem {
 				} else {
 					point.position = prof.points[num][0];
 					point.velocity = prof.points[num][1];
-					point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
-					point.profileSlotSelect0 = pidfSlot; 
-					point.profileSlotSelect1 = 0;
+//					point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
+//					point.profileSlotSelect0 = pidfSlot; 
+//					point.profileSlotSelect1 = 0;
 					point.zeroPos = false;
 					if (num == 0){
 						point.zeroPos = true; /* set this to true on the first point */
@@ -277,9 +280,9 @@ public class DriveTrain extends Subsystem {
 						/* for each point, fill our structure and pass it to API */
 						point.position = prof.points[i][0];
 						point.velocity = prof.points[i][1];
-						point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
-						point.profileSlotSelect0 = pidfSlot; 
-						point.profileSlotSelect1 = 0;
+//						point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
+//						point.profileSlotSelect0 = pidfSlot; 
+//						point.profileSlotSelect1 = 0;
 						point.zeroPos = false;
 						if (i == 0){
 							point.zeroPos = true; /* set this to true on the first point */

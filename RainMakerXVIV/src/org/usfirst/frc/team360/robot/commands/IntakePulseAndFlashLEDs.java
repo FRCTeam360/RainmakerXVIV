@@ -2,6 +2,7 @@ package org.usfirst.frc.team360.robot.commands;
 
 import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -25,11 +26,29 @@ public class IntakePulseAndFlashLEDs extends CommandGroup {
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
+<<<<<<< HEAD
+//        // arm.
+//    		addParallel(new LEDColor(RobotMap.Color.RED, 1.5, 100, true, false));
+//	    	addSequential(new IntakeClose());
+//	    	addSequential(new IntakePulse(.75, 18, .25, true));
+//	    	addSequential(new IntakeClose());
+//	    	addSequential(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true, false));
+		addParallel(new LEDColor(RobotMap.Color.RED, 1.5, 100, true, false));
+    	addSequential(new IntakeClose());
+    	addSequential(new IntakePulse(.75, 18, .25, true));
+    	addSequential(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true, false));
+    	addSequential(new MoveElevatorOffGround());
+=======
         // arm.
-    		addParallel(new LEDColor(RobotMap.Color.RED, 1.5, 100, true, false));
-	    	addSequential(new IntakeOpen());
-	    	addSequential(new IntakePulse(.75, 13, .25, true));
+	    	addSequential(new LEDColor(RobotMap.Color.RED, 1.5, 100, true, false));
+	    	addSequential(new IntakePulse(1, 5, 2, true));
 	    	addSequential(new IntakeClose());
 	    	addSequential(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true, false));
+	    	Robot.logger.logIntakeIn();
+    		addParallel(new LEDColor(RobotMap.Color.RED, 1.5, 100, true, false));
+	    	addSequential(new IntakePulse(1, 5, 2, true));
+	    	addSequential(new IntakeClose());
+	    	addSequential(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true, false));
+>>>>>>> 9fad9439ef149ce6b759eafe626a6f51c7005c38
     }
 }

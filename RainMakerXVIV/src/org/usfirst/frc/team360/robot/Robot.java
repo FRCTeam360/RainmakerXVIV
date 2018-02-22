@@ -73,7 +73,7 @@ public class Robot extends TimedRobot {
 		pneumatics = new Pneumatics();
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
-		elevator.zeroSensor();
+	//	elevator.zeroSensor();
 		climber = new Climber();
 		navX = new NavX();
 		intake = new Intake();
@@ -87,13 +87,13 @@ public class Robot extends TimedRobot {
 	@Override 
 	public void robotPeriodic() {	
 		logger.logDriverStationConnection();
-		if (elevator.zeroActive() && !RobotMap.wasZeroActive) {
-			elevator.zeroSensor();
-			RobotMap.wasZeroActive = true;
-		} else if (!elevator.zeroActive() && RobotMap.wasZeroActive) {
-			RobotMap.wasZeroActive = false;
-		
-	}
+//		if (elevator.zeroActive() && !RobotMap.wasZeroActive) {
+//			elevator.zeroSensor();
+//			RobotMap.wasZeroActive = true;
+//		} else if (!elevator.zeroActive() && RobotMap.wasZeroActive) {
+//			RobotMap.wasZeroActive = false;
+//		
+//	}
 		
 	}
 
@@ -111,17 +111,18 @@ public class Robot extends TimedRobot {
 	
 	@Override
 	public void autonomousInit() {
+		Command stopElevator = new StopElevator();
+		stopElevator.start();
 		RobotMap.robotMode = "Auto";
 		logger.initLogger();	
 //		autonomousCommand = new StartLeftDropCubeRightScale();
-		autonomousCommand = new StartRightDropCubeRightSwitch();
+//		autonomousCommand = new StartRightDropCubeRightSwitch();
 //		autonomousCommand = autoController.chooseAutoMode();
-//		autonomousCommand = new StartCenterDropCubeLeftSwitch();
+		autonomousCommand = new StartRightDropCubeRightScale();
+//		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
 		}
-		Command stopElevator = new StopElevator();
-		stopElevator.start();
 		
 	}
 
@@ -134,7 +135,7 @@ public class Robot extends TimedRobot {
 //		System.out.println("left velocity" + driveTrain.motorRMaster.getMotorOutputPercent() + "velocity" + driveTrain.getLeftVelocity()
 //		 + "velocity" + driveTrain.getLeftVelocity() + "Vel error" + ( driveTrain.getLeftVelocity() 
 //			- driveTrain.getLeftMotionProfileVelocitySetPoint()));
-//		
+		driveTrain.debugMotionProfiling();
 		
 		Scheduler.getInstance().run();
 		
@@ -142,7 +143,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		
+	
 		if (autonomousCommand != null){
 			autonomousCommand.cancel();
 		}
@@ -157,12 +158,13 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		SmartDashboard.putNumber("Left Velocity",  driveTrain.getLeftVelocity());
 		SmartDashboard.putNumber("Right Velocity", driveTrain.getRightVelocity());
+		
 //		System.out.println("Left Velocity" + driveTrain.getLeftVelocity());
 //		System.out.println("Right Velocity" + driveTrain.getRightVelocity());
 		//System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
 		System.out.println("Amps: " + intake.currentDraw());
 		//System.out.println("Elevator Output Voltage:" + elevator.getMotorOutputVoltage());
-		//elevator.Process();
+		elevator.Process();
 		Scheduler.getInstance().run();
 	}
 
