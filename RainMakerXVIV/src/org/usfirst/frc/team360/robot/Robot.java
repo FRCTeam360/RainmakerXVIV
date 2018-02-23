@@ -113,6 +113,8 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		Command stopElevator = new StopElevator();
 		stopElevator.start();
+		Command elevatorRelease = new ElevatorRelease();
+		elevatorRelease.start();
 		RobotMap.robotMode = "Auto";
 		logger.initLogger();	
 //		autonomousCommand = new StartLeftDropCubeRightScale();
@@ -152,6 +154,9 @@ public class Robot extends TimedRobot {
 		logger.initLogger();
 		Command stopElevator = new StopElevator();
 		stopElevator.start();
+		
+		Command elevatorRelease = new ElevatorRelease();
+		elevatorRelease.start();
 }
 
 	@Override
@@ -167,7 +172,12 @@ public class Robot extends TimedRobot {
 		elevator.Process();
 		Scheduler.getInstance().run();
 	}
-
+	@Override
+	public void testInit() {
+		
+		Command elevatorRelease = new ElevatorRelease();
+		elevatorRelease.start();
+	}
 	@Override
 	public void testPeriodic() {
 	}
