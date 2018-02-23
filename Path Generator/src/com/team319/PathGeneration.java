@@ -1,3 +1,4 @@
+
 package com.team319;
 
 import com.team254.lib.trajectory.WaypointSequence;
@@ -39,15 +40,23 @@ public class PathGeneration {
 //		generateCenterToLeftSwitch();
 //		generateLeftToLeftSwitch();
 //		generateRightToRightSwitch();
+		generateRightToRightScale();
 //		generateRightToRightScale();
 		generateLeftToLeftScale();
+//		generateBackTwoFeet();
 	}
 	
 
+	public void generateBackTwoFeet() {
+		BobPath wantedPath = new BobPath(highGearConfig, "MoveTwoFeetBack", -1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(2, 0, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, Math.toRadians(0)));
+		BobPathGenerator.exportPath("Paths", wantedPath);
+	}
+	
 	public void generateCrossLine(){
 		BobPath wantedPath = new BobPath(highGearConfig, "CrossLine", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 0, 0));
-		//wantedPath.addWaypoint(new WaypointSequence.Waypoint(10, 100.25, Math.toRadians(0)));
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(140/12, 0, Math.toRadians(0)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
@@ -55,16 +64,14 @@ public class PathGeneration {
 	public void generateCenterToRightSwitch(){
 		BobPath wantedPath = new BobPath(highGearConfig, "CenterToRightSwitch", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 160.25/12, 0));
-		//wantedPath.addWaypoint(new WaypointSequence.Waypoint(10, 100.25, Math.toRadians(0)));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(126.25/12, 120.25/12, Math.toRadians(15)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(126.25/12, 120.25/12, Math.toRadians(15)));//	wantedPath.addWaypoint(new WaypointSequence.Waypoint(117.25/12, 115.25/12, Math.toRadians(0)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
 	public void generateCenterToLeftSwitch(){
 		BobPath wantedPath = new BobPath(highGearConfig, "CenterToLeftSwitch", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 160.25/12, 0));
-		//wantedPath.addWaypoint(new WaypointSequence.Waypoint(10, 100.25, Math.toRadians(0)));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(118.25/12, 218/12, Math.toRadians(-10)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(118.25/12, 218/12, Math.toRadians(-10)));//wantedPath.addWaypoint(new WaypointSequence.Waypoint(125.25/12, 210/12, Math.toRadians(-10)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
@@ -80,16 +87,15 @@ public class PathGeneration {
 		BobPath wantedPath = new BobPath(highGearConfig, "RightToRightSwitch", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 43.75/12, 0));
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(132/12, 38/12, Math.toRadians(22.01)));
-		//wantedPath.addWaypoint(new WaypointSequence.Waypoint(150/12, 70/12, Math.toRadians(89.99)));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(153/12, 71.5/12, Math.toRadians(112)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(153/12, 70.5/12, Math.toRadians(97)));//wantedPath.addWaypoint(new WaypointSequence.Waypoint(153/12, 71.5/12, Math.toRadians(112)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
 	public void generateLeftToLeftScale(){
 		BobPath wantedPath = new BobPath(highGearConfig, "LeftToLeftScale", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 280.5/12, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(133.125/12, 293/12, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(260/12, 215/12, Math.toRadians(0)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(133.125/12, 287/12, 0));//wantedPath.addWaypoint(new WaypointSequence.Waypoint(133.125/12, 293/12, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(261/12, 218/12, Math.toRadians(0)));//wantedPath.addWaypoint(new WaypointSequence.Waypoint(260/12, 215/12, Math.toRadians(0)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
@@ -97,7 +103,7 @@ public class PathGeneration {
 		BobPath wantedPath = new BobPath(highGearConfig, "RightToRightScale", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 43.75/12, 0));
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(133.125/12, 26/12, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(280/12, 62/12, Math.toRadians(0)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(280/12, 62/12, Math.toRadians(0)));//wantedPath.addWaypoint(new WaypointSequence.Waypoint(280/12, 57/12, Math.toRadians(0)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
@@ -108,26 +114,24 @@ public class PathGeneration {
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
+	public void generateDriveStraight10Feet(){
+		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight10Feet", 1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(10, 0, Math.toRadians(0)));
+		BobPathGenerator.exportPath("Paths", wantedPath);
+	}
+	
 	public void generateDriveStraight20Feet(){
 		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight20Feet", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(20, 0, Math.toRadians(0)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
-
-	public void generateDriveStraight5FeetTurn5Feet(){
-		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight5Feet", 1);
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(10, 10, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(10.001, 10.001, Math.toRadians(89.99)));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(10.002, 10.002, Math.toRadians(179.98)));
-
-		BobPathGenerator.exportPath("Paths", wantedPath);
-	}
 	
-	public void generateDriveStraight5FeetReversed(){
-		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight5FeetReversed", -1);
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, Math.toRadians(0)));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(5, 0, Math.toRadians(0)));
+	public void generateDriveStraight5FeetWith90DegreeTurn(){
+		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight5FeetWith90DegreeTurn", 1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(5, 5, Math.toRadians(89.99)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
@@ -145,35 +149,28 @@ public class PathGeneration {
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
-	public void generateDriveStraight10Feet(){
-		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight10Feet", 1);
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(20, 0, Math.toRadians(0)));
-		BobPathGenerator.exportPath("Paths", wantedPath);
-	}
-	
-	public void generateDriveStraight5FeetWith90DegreeTurn(){
-		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight5FeetWith90DegreeTurn", 1);
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(5, 5, Math.toRadians(89.99)));
-		BobPathGenerator.exportPath("Paths", wantedPath);
-	}
-	
+	public void generateDriveStraight5FeetTurn5Feet(){
+		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight5Feet", 1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(10, 10, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(10.001, 10.001, Math.toRadians(89.99)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(10.002, 10.002, Math.toRadians(179.98)));
 
+		BobPathGenerator.exportPath("Paths", wantedPath);
+	}
+	
+	public void generateDriveStraight5FeetReversed(){
+		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight5FeetReversed", -1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, Math.toRadians(0)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(5, 0, Math.toRadians(0)));
+		BobPathGenerator.exportPath("Paths", wantedPath);
+	}
+	
 	public void generateDriveStraight2AndHalfFeetWith90DegreeTurn(){
 		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraight2AndHalfFeetWith90DegreeTurn", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(2.5, 2.5, Math.toRadians(89.99)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
-	
-	public void generateDriveStraightWith90DegreeTurn(){
-		BobPath wantedPath = new BobPath(highGearConfig, "DriveStraightWith90DegreeTurn", 1);
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(5, 5, Math.toRadians(89.99)));
-		BobPathGenerator.exportPath("Paths", wantedPath);
-	}
-	
 	
 	public void generateAroundTheBasketBallKey(){
 		BobPath wantedPath = new BobPath(highGearConfig, "AroundBasketballKey", 1);

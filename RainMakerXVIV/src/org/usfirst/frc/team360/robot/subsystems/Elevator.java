@@ -38,12 +38,9 @@ public class Elevator extends Subsystem {
 		
 		elevatorMaster.setInverted(true);
 		elevatorSlave.setInverted(true);
-<<<<<<< HEAD
-=======
-		
+
 		elevatorMaster.setNeutralMode(NeutralMode.Brake);
 		elevatorSlave.setNeutralMode(NeutralMode.Brake);
->>>>>>> 9fad9439ef149ce6b759eafe626a6f51c7005c38
 		
 		/* first choose the sensor */
 		elevatorMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
@@ -61,15 +58,15 @@ public class Elevator extends Subsystem {
 		
 		/* set closed loop gains in slot0 - see documentation */
 		elevatorMaster.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
-//		elevatorMaster.config_kF(0, Constants.realElevatorF, kTimeoutMs);
-//		elevatorMaster.config_kP(0, Constants.realElevatorP, kTimeoutMs);
-//		elevatorMaster.config_kI(0, Constants.realElevatorI, kTimeoutMs);
-//		elevatorMaster.config_kD(0, Constants.realElevatorD, kTimeoutMs);
-		
 		elevatorMaster.config_kF(0, Constants.realElevatorF, kTimeoutMs);
 		elevatorMaster.config_kP(0, Constants.realElevatorP, kTimeoutMs);
 		elevatorMaster.config_kI(0, Constants.realElevatorI, kTimeoutMs);
 		elevatorMaster.config_kD(0, Constants.realElevatorD, kTimeoutMs);
+		
+//		elevatorMaster.config_kF(0, 0.2407, kTimeoutMs);
+//		elevatorMaster.config_kP(0, 4, kTimeoutMs);
+//		elevatorMaster.config_kI(0, 0, kTimeoutMs);
+//		elevatorMaster.config_kD(0, 60, kTimeoutMs);
 		
 		elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
 		
