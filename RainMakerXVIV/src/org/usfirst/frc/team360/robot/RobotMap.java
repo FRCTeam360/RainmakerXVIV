@@ -29,6 +29,8 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 
 	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
+
+	public static DoubleSolenoid elevatorReleasePneumatic = new DoubleSolenoid(0, 1);
 	
 	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 2);
 	

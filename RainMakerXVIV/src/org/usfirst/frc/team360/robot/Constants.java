@@ -13,8 +13,6 @@ public class Constants {
 	private String buffLine;
 	
 
-	public static double realEncoderCountsToInches;
-	public final double pracEncoderCountsToInches = 607.42;
 	
 	private final double compElevatorF = .216;
 	private final double compElevatorP = 0.2;
@@ -82,6 +80,8 @@ public class Constants {
 	public static double realElevatorSwitchHeight;
 	public static double realElevatorIntakePos;
 	public static double realElevatorOffGround;
+	
+	public static double realEncoderCountsToInches;
 	
 	public static double compPIDNavxTurnGainMultiplier = 0;
 	public static double compPIDNavxTurnP = 0;
