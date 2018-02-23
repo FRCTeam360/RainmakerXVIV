@@ -40,11 +40,20 @@ public class PathGeneration {
 //		generateCenterToLeftSwitch();
 //		generateLeftToLeftSwitch();
 //		generateRightToRightSwitch();
-		generateRightToRightScale();
+//		generateRightToRightScale();
 		generateLeftToLeftScale();
+//		generateBackTwoFeet();
 	}
 	
 
+	public void generateBackTwoFeet() {
+		BobPath wantedPath = new BobPath(highGearConfig, "MoveTwoFeetBack", -1);
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(2, 0, 0));
+		//wantedPath.addWaypoint(new WaypointSequence.Waypoint(10, 100.25, Math.toRadians(0)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, Math.toRadians(0)));
+		BobPathGenerator.exportPath("Paths", wantedPath);
+	}
+	
 	public void generateCrossLine(){
 		BobPath wantedPath = new BobPath(highGearConfig, "CrossLine", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 0, 0));
@@ -89,8 +98,8 @@ public class PathGeneration {
 	public void generateLeftToLeftScale(){
 		BobPath wantedPath = new BobPath(highGearConfig, "LeftToLeftScale", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 280.5/12, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(133.125/12, 293/12, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(260/12, 215/12, Math.toRadians(0)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(133.125/12, 287/12, 0));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(261/12, 218/12, Math.toRadians(0)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
@@ -98,7 +107,7 @@ public class PathGeneration {
 		BobPath wantedPath = new BobPath(highGearConfig, "RightToRightScale", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(13.75/12, 43.75/12, 0));
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(133.125/12, 26/12, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(280/12, 62/12, Math.toRadians(0)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(280/12, 57/12, Math.toRadians(0)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	
