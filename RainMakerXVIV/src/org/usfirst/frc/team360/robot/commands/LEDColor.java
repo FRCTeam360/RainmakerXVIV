@@ -14,7 +14,6 @@ public class LEDColor extends Command {
 	RobotMap.Color color; // sets color from RobotMap to color in LEDcolor
 	
 	boolean pulse; // checks if pulsing is wanted
-	boolean shouldPulse;
 	boolean infinity;
 	
 	int cycle;			// the current cycle
@@ -29,7 +28,6 @@ public class LEDColor extends Command {
     	this.pulse = pulse; // finds if pulse is on or not
     	this.period = period; // finds variable period to find how frequently per time
     	this.duration = duration; // finds variable time of how long the pulse goes for
-    	this.shouldPulse = shouldPulse;
     	this.infinity = infinity;
     	this.cycle = 0; // initializes cycle to zero 
     	requires(Robot.led); // class requires the LED subsystem

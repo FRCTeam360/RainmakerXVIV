@@ -20,6 +20,6 @@ public class Shifter extends Subsystem {
 		RobotMap.shiftState = ShiftState.DOWN;
 	}
     public void initDefaultCommand() {
-    //	setDefaultCommand(new LEDShiftState());
+    	setDefaultCommand(new LEDShiftState());
     }
 }

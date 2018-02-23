@@ -2,12 +2,14 @@ package org.usfirst.frc.team360.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team360.robot.*;
 import org.usfirst.frc.team360.robot.commands.*;
 import org.usfirst.frc.team360.robot.pathfollower.*;
 
 import com.ctre.phoenix.motion.*;
-import com.ctre.phoenix.motion.TrajectoryPoint.TrajectoryDuration;
+//import com.ctre.phoenix.motion.TrajectoryPoint.TrajectoryDuration;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -22,12 +24,12 @@ public class DriveTrain extends Subsystem {
 	
     public static int DEFAULT_TIMEOUT_MS = 10;
 
-	private MotionProfileStatus rightStatus = new MotionProfileStatus();
-	private MotionProfileStatus leftStatus = new MotionProfileStatus();
+	private static MotionProfileStatus rightStatus = new MotionProfileStatus();
+	private static MotionProfileStatus leftStatus = new MotionProfileStatus();
 	
 
-	private Notifier leftTalonSender;
-	private Notifier rightTalonSender;
+	private static Notifier leftTalonSender;
+	private static Notifier rightTalonSender;
 	
 	public DriveTrain() {
 		motorRMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
@@ -35,6 +37,9 @@ public class DriveTrain extends Subsystem {
 		
 		motorRSlave.follow(motorRMaster);
 		motorLSlave.follow(motorLMaster);
+
+		motorRMaster.configVelocityMeasurementPeriod(VelocityMeasPeriod.Period_25Ms, 10);
+		motorLMaster.configVelocityMeasurementPeriod(VelocityMeasPeriod.Period_25Ms, 10);
 		
 		motorLMaster.setInverted(false);
 		motorLSlave.setInverted(false);
@@ -62,6 +67,25 @@ public class DriveTrain extends Subsystem {
 		
 		resetTalons(motorRSlave);
 		resetTalons(motorLSlave);
+	}
+	public void debugMotionProfiling() {
+		SmartDashboard.putNumber("right percent", motorLMaster.getMotorOutputPercent());
+		SmartDashboard.putNumber("left percent", motorRMaster.getMotorOutputPercent());
+		
+		SmartDashboard.putNumber("right velocity", getRightVelocity());
+		SmartDashboard.putNumber("left velocity", getLeftVelocity());
+
+		SmartDashboard.putNumber("right error", getRightVelocity() 
+				- getRightMotionProfileVelocitySetPoint());
+		SmartDashboard.putNumber("left error", getLeftVelocity() 
+				- getLeftMotionProfileVelocitySetPoint());
+		SmartDashboard.putNumber("right position error", getRightPosition() 
+				- getRightMotionProfilePositionSetPoint());
+		SmartDashboard.putNumber("left position error", getLeftPosition() 
+				- getLeftMotionProfilePositionSetPoint());
+	}
+	public void brakeMode() {
+		motorRMaster.setNeutralMode(NeutralMode.Brake);
 	}
 	public void setUpRightTalonForMotionControl() {
 		motorRMaster.clearMotionProfileTrajectories();
@@ -183,8 +207,11 @@ public class DriveTrain extends Subsystem {
 		rightTalonSender.startPeriodic(.005);
 	}
 	public void stopThreadedProfileSenders() {
+		System.out.println("profiling done");
+		System.out.println("1 done");
 		leftTalonSender.stop();
 		rightTalonSender.stop();
+		System.out.println("done");
 	}
 	private class TalonProfileSender implements java.lang.Runnable {
 		TrajectoryPoint point;
@@ -207,9 +234,9 @@ public class DriveTrain extends Subsystem {
 							/* for each point, fill our structure and pass it to API */
 							point.position = prof.points[num][0];
 							point.velocity = prof.points[num][1];
-							point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
-							point.profileSlotSelect0 = pidfSlot; 
-							point.profileSlotSelect1 = 0;
+//							point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
+//							point.profileSlotSelect0 = pidfSlot; 
+//							point.profileSlotSelect1 = 0;
 							point.zeroPos = false;
 							if (num == 0){
 								point.zeroPos = true; /* set this to true on the first point */
@@ -232,9 +259,9 @@ public class DriveTrain extends Subsystem {
 				} else {
 					point.position = prof.points[num][0];
 					point.velocity = prof.points[num][1];
-					point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
-					point.profileSlotSelect0 = pidfSlot; 
-					point.profileSlotSelect1 = 0;
+//					point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
+//					point.profileSlotSelect0 = pidfSlot; 
+//					point.profileSlotSelect1 = 0;
 					point.zeroPos = false;
 					if (num == 0){
 						point.zeroPos = true; /* set this to true on the first point */
@@ -253,9 +280,9 @@ public class DriveTrain extends Subsystem {
 						/* for each point, fill our structure and pass it to API */
 						point.position = prof.points[i][0];
 						point.velocity = prof.points[i][1];
-						point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
-						point.profileSlotSelect0 = pidfSlot; 
-						point.profileSlotSelect1 = 0;
+//						point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
+//						point.profileSlotSelect0 = pidfSlot; 
+//						point.profileSlotSelect1 = 0;
 						point.zeroPos = false;
 						if (i == 0){
 							point.zeroPos = true; /* set this to true on the first point */

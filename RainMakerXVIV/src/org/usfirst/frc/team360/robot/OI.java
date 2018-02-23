@@ -21,8 +21,8 @@ public class OI {
 	public static Button buttonElevTopSc = new JoystickButton(joyOI, 5);
 	public static Button buttonManualElevator = new JoystickButton(joyOI, 7);
 	
-	public static Button button = new JoystickButton(joyOI, 	10);
-	public static Button button2 = new JoystickButton(joyOI, 	9);
+	public static Button button = new JoystickButton(joyOI,	10);
+	public static Button button2 = new JoystickButton(joyOI, 9);
 	  	 
 
 	public static Button buttonOutTake = new JoystickButton(joyOI, 3);
@@ -37,7 +37,7 @@ public class OI {
 			
 		buttonElevIntake.whenActive(new MoveElevatorToIntakePos());
 		buttonElevMidSc.whenActive(new MoveElevatorToMidScale());
-		buttonElevSwitch.whenPressed(new MoveElevetorToSwitchHeight());
+		buttonElevSwitch.whenPressed(new MoveElevatorToSwitchHeight());
 		buttonElevTopSc.whenPressed(new MoveElevatorToTopScale());
 		buttonManualElevator.whileHeld(new MoveManualElevator());
 			

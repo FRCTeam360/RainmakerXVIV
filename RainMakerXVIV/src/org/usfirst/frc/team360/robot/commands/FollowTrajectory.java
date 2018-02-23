@@ -1,20 +1,19 @@
 package org.usfirst.frc.team360.robot.commands;
 
-import edu.wpi.first.wpilibj.Notifier;
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team360.robot.Robot;
-import org.usfirst.frc.team360.robot.pathfollower.*;
+import org.usfirst.frc.team360.robot.pathfollower.SrxMotionProfile;
+import org.usfirst.frc.team360.robot.pathfollower.SrxTrajectory;
+import org.usfirst.frc.team360.robot.pathfollower.SrxTrajectoryImporter;
+
 import com.ctre.phoenix.motion.MotionProfileStatus;
 import com.ctre.phoenix.motion.SetValueMotionProfile;
-
-import com.ctre.phoenix.motion.*;
-import com.ctre.phoenix.motorcontrol.*;
-import com.ctre.phoenix.motorcontrol.can.*;
-
 import com.ctre.phoenix.motion.TrajectoryPoint;
-import com.ctre.phoenix.motion.TrajectoryPoint.TrajectoryDuration;
+//import com.ctre.phoenix.motion.TrajectoryPoint.TrajectoryDuration;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
+import edu.wpi.first.wpilibj.Notifier;
+import edu.wpi.first.wpilibj.command.Command;
 
 
 public class FollowTrajectory extends Command {
@@ -61,9 +60,9 @@ public class FollowTrajectory extends Command {
 							/* for each point, fill our structure and pass it to API */
 							point.position = prof.points[num][0];
 							point.velocity = prof.points[num][1];
-							point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
-							point.profileSlotSelect0 = pidfSlot; 
-							point.profileSlotSelect1 = 0;
+//							point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
+//							point.profileSlotSelect0 = pidfSlot; 
+//							point.profileSlotSelect1 = 0;
 							point.zeroPos = false;
 							if (num == 0){
 								point.zeroPos = true; /* set this to true on the first point */
@@ -86,9 +85,9 @@ public class FollowTrajectory extends Command {
 				} else {
 					point.position = prof.points[num][0];
 					point.velocity = prof.points[num][1];
-					point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
-					point.profileSlotSelect0 = pidfSlot; 
-					point.profileSlotSelect1 = 0;
+//					point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
+//					point.profileSlotSelect0 = pidfSlot; 
+//					point.profileSlotSelect1 = 0;
 					point.zeroPos = false;
 					if (num == 0){
 						point.zeroPos = true; /* set this to true on the first point */
@@ -107,9 +106,9 @@ public class FollowTrajectory extends Command {
 						/* for each point, fill our structure and pass it to API */
 						point.position = prof.points[i][0];
 						point.velocity = prof.points[i][1];
-						point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
-						point.profileSlotSelect0 = pidfSlot; 
-						point.profileSlotSelect1 = 0;
+//						point.timeDur = TrajectoryDuration.Trajectory_Duration_10ms;
+//						point.profileSlotSelect0 = pidfSlot; 
+//						point.profileSlotSelect1 = 0;
 						point.zeroPos = false;
 						if (i == 0){
 							point.zeroPos = true; /* set this to true on the first point */

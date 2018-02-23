@@ -72,4 +72,7 @@ public class NavX extends Subsystem {
 	        
 	    }
 	}
+	public double getNavXAngle() {
+		return navX.getAngle();
+	}
 }

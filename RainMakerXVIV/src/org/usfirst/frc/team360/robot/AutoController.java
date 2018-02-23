@@ -36,7 +36,8 @@ public class AutoController {
 	}
 	public void getLightConfiguration(){
 		try {
-			String gameData;
+			String gameData = null  ;
+			while(gameData.length() < 2) {
 			gameData = DriverStation.getInstance().getGameSpecificMessage();
 			if("L".equals((String.valueOf(gameData.charAt(0))))) {
 				//DriverStation.reportWarning("L alliance switch", false);
@@ -54,7 +55,9 @@ public class AutoController {
 			}
 			SmartDashboard.putString("Switch/ Scale configuration", "Switch: " + RobotMap.switchSide.name() + " Scale: " + RobotMap.scaleSide.name());
 			RobotMap.FMSSideData = gameData;
+			}
 			Robot.logger.logFMSSideData();
+			
 		} catch(Exception e) {
 			DriverStation.reportError(e.toString(), true);
 			SmartDashboard.putString("Selected Auto", "Error, please select good auto");
