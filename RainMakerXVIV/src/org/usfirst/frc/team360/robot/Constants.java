@@ -13,16 +13,11 @@ public class Constants {
 	private String buffLine;
 	
 
-<<<<<<< HEAD
-	private final double compElevatorF = .216;
-	private final double compElevatorP = 0.2;
-=======
 	public static double realEncoderCountsToInches;
 	public final double pracEncoderCountsToInches = 607.42;
 	
-	private final double compElevatorF = 0;
-	private final double compElevatorP = 0;
->>>>>>> 9fad9439ef149ce6b759eafe626a6f51c7005c38
+	private final double compElevatorF = .216;
+	private final double compElevatorP = 0.2;
 	private final double compElevatorI = 0;
 	private final double compElevatorD = 0;
 	
@@ -36,7 +31,6 @@ public class Constants {
 	private final double compRightDriveTrainPathPlanningI = 0;
 	private final double compRightDriveTrainPathPlanningD = 100;
 	
-<<<<<<< HEAD
 	public final double compElevatorTopScale = 86;
 	public final double compElevatorMidScale = 75;
 	public final double compElevatorSwitchHeight = 36;
@@ -46,14 +40,6 @@ public class Constants {
 	public final double compEncoderCountsToInches = 643.05;
 	
 	private final double pracElevatorF = 0.2407;
-=======
-	public static double compElevatorTopScale = 10000;
-	public static double compElevatorMidScale = 8000;
-	public static double compElevatorSwitchHeight = 1500;
-	public static double compElevatorIntakePos = 0;
-	
-	private final double pracElevatorF = 0.756;
->>>>>>> 9fad9439ef149ce6b759eafe626a6f51c7005c38
 	private final double pracElevatorP = 4;
 	private final double pracElevatorI = 0;
 	private final double pracElevatorD = 40;
@@ -68,7 +54,6 @@ public class Constants {
 	private final double pracRightDriveTrainPathPlanningI = 0.0;
 	private final double pracRightDriveTrainPathPlanningD = 3.5;
 
-<<<<<<< HEAD
 	public final double pracElevatorTopScale = 60;
 	public final double pracElevatorMidScale = 50;
 	public final double pracElevatorSwitchHeight = 35;
@@ -76,12 +61,6 @@ public class Constants {
 	public final double pracElevatorOffGround = 10;
 	
 	public final double pracEncoderCountsToInches = 607.42;
-=======
-	public static double pracElevatorTopScale = 10000;
-	public static double pracElevatorMidScale = 8000;
-	public static double pracElevatorSwitchHeight = 1500;
-	public static double pracElevatorIntakePos = 0;
->>>>>>> 9fad9439ef149ce6b759eafe626a6f51c7005c38
 	
 	public static double realElevatorF;
 	public static double realElevatorP;
@@ -167,6 +146,8 @@ public class Constants {
 		realPIDNavxTurnP = compPIDNavxTurnP;
 		realPIDNavxTurnI = compPIDNavxTurnI;
 		realPIDNavxTurnD = compPIDNavxTurnD;
+		
+		realEncoderCountsToInches = compEncoderCountsToInches;
 	}
 	public void writePracticeBotVariables() {
 		realElevatorF = pracElevatorF;
