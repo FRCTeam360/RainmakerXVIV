@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
 	public static ReleaseElevator releaseElevator;
 	public static OI oi;
 	public static Constants constants;
-	//public static AutoController autoController;
+	public static AutoController autoController;
 	
 	Command autonomousCommand;
 	boolean wasZeroActive = false;
@@ -74,7 +74,7 @@ public class Robot extends TimedRobot {
 		intakePeumatics = new IntakePneumatics();
 		releaseElevator = new ReleaseElevator();
 		oi = new OI();
-	//	autoController = new AutoController();
+		autoController = new AutoController();
 	}
 	
 	@Override 
@@ -112,8 +112,8 @@ public class Robot extends TimedRobot {
 		logger.initLogger();	
 //		autonomousCommand = new StartLeftDropCubeRightScale();
 //		autonomousCommand = new StartRightDropCubeRightSwitch();
-//		autonomousCommand = autoController.chooseAutoMode();
-		autonomousCommand = new StartRightDropCubeRightScale();
+		autonomousCommand = autoController.chooseAutoMode();
+//		autonomousCommand = new StartRightDropCubeRightScale();
 //		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
