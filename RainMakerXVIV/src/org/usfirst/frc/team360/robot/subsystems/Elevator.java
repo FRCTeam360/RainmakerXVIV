@@ -44,7 +44,7 @@ public class Elevator extends Subsystem {
 		
 		/* first choose the sensor */
 		elevatorMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
-		elevatorMaster.setSensorPhase(false);
+		elevatorMaster.setSensorPhase(true);
 		
 		/* Set relevant frame periods to be at least as fast as periodic rate*/
 		elevatorMaster.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, kTimeoutMs);
@@ -67,10 +67,8 @@ public class Elevator extends Subsystem {
 //		elevatorMaster.config_kP(0, 4, kTimeoutMs);
 //		elevatorMaster.config_kI(0, 0, kTimeoutMs);
 //		elevatorMaster.config_kD(0, 60, kTimeoutMs);
+
 		
-		elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
-		
-		zeroSensor = 50;
 	}
 	
 	public void Process(){
@@ -147,6 +145,10 @@ public class Elevator extends Subsystem {
 //			stopElevator.start();
 //		}
 //	}
+	public void zeroElevator() {
+		elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
+		
+	}
 	
     public void initDefaultCommand() {
     }

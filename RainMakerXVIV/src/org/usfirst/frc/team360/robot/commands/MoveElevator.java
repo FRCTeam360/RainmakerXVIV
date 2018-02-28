@@ -25,8 +25,11 @@ public class MoveElevator extends Command {
 
 	// Called just before this Command runs the first time
     protected void initialize() {
-	    //	Robot.elevator.motionMagicInit();
-	    //	Robot.elevator.setMotorPosition(pos);
+    		if(pos == 0) {
+    			RobotMap.shouldElevatorStop = true;
+    		}
+	    	Robot.elevator.motionMagicInit();
+	    	Robot.elevator.setMotorPosition(pos);
 	    	System.out.println("Elev Position" + Robot.elevator.getPosition());
 	    	System.out.println("Future Position" + pos);
     }

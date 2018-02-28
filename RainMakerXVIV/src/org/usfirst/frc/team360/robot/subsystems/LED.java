@@ -2,6 +2,7 @@ package org.usfirst.frc.team360.robot.subsystems;
 
 import org.usfirst.frc.team360.robot.RobotMap;
 import org.usfirst.frc.team360.robot.RobotMap.Color;
+import org.usfirst.frc.team360.robot.commands.LEDShiftState;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -92,7 +93,7 @@ public class LED extends Subsystem {
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new LEDShiftState());
     }
 }
 

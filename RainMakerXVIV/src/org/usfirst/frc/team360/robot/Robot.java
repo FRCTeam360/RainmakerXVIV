@@ -7,9 +7,15 @@
 
 package org.usfirst.frc.team360.robot;
 
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.RobotMap.IntakeState;
 import org.usfirst.frc.team360.robot.commands.*;
@@ -40,7 +46,7 @@ public class Robot extends TimedRobot {
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-	/*	public static void Camera(){
+		public static void camera(){
 	new Thread(() -> {
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(640, 480);
@@ -57,7 +63,7 @@ public class Robot extends TimedRobot {
             outputStream.putFrame(output);
         }
     }).start();
-}*/
+}
 	@Override
 	public void robotInit() {
 		constants = new Constants();
@@ -75,11 +81,23 @@ public class Robot extends TimedRobot {
 		releaseElevator = new ReleaseElevator();
 		oi = new OI();
 	//	autoController = new AutoController();
+		camera();
 	}
-	
+	Command manualElevator;
 	@Override 
 	public void robotPeriodic() {	
 		logger.logDriverStationConnection();
+		if(! RobotMap.elevatorLimitSwitch.get()) {
+			elevator.zeroElevator();
+			RobotMap.currentPos = 0;
+			
+		}
+		if(RobotMap.shouldElevatorStop && elevator.getPosition() == 0) {
+			manualElevator = new MoveManualElevator();
+			manualElevator.start();
+			
+		}
+		
 //		if (elevator.zeroActive() && !RobotMap.wasZeroActive) {
 //			elevator.zeroSensor();
 //			RobotMap.wasZeroActive = true;
@@ -111,9 +129,11 @@ public class Robot extends TimedRobot {
 		RobotMap.robotMode = "Auto";
 		logger.initLogger();	
 //		autonomousCommand = new StartLeftDropCubeRightScale();
-//		autonomousCommand = new StartRightDropCubeRightSwitch();
+		//autonomousCommand = new StartRightDropCubeRightSwitch();
 //		autonomousCommand = autoController.chooseAutoMode();
-		autonomousCommand = new StartRightDropCubeRightScale();
+//		autonomousCommand = new StartRightDropCubeRightScale();
+
+		autonomousCommand = new StartCenterDropCubeRightSwitch();
 //		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
@@ -134,6 +154,8 @@ public class Robot extends TimedRobot {
 		
 		Scheduler.getInstance().run();
 		
+		
+				
 	}
 
 	@Override
@@ -156,7 +178,6 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		SmartDashboard.putNumber("Left Velocity",  driveTrain.getLeftVelocity());
 		SmartDashboard.putNumber("Right Velocity", driveTrain.getRightVelocity());
-		
 //		System.out.println("Left Velocity" + driveTrain.getLeftVelocity());
 //		System.out.println("Right Velocity" + driveTrain.getRightVelocity());
 		//System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
@@ -167,11 +188,11 @@ public class Robot extends TimedRobot {
 	}
 	@Override
 	public void testInit() {
-		
 		Command elevatorHold = new ElevatorHold();
 		elevatorHold.start();
 	}
 	@Override
 	public void testPeriodic() {
+		Scheduler.getInstance().run();
 	}
 }

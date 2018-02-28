@@ -12,8 +12,6 @@ public class Constants {
 	private BufferedReader buff;
 	private String buffLine;
 	
-
-	
 	private final double compElevatorF = .216;
 	private final double compElevatorP = 0.2;
 	private final double compElevatorI = 0;
@@ -52,11 +50,11 @@ public class Constants {
 	private final double pracRightDriveTrainPathPlanningI = 0.0;
 	private final double pracRightDriveTrainPathPlanningD = 3.5;
 
-	public final double pracElevatorTopScale = 60;
-	public final double pracElevatorMidScale = 50;
+	public final double pracElevatorTopScale = 84;
+	public final double pracElevatorMidScale = 74;
 	public final double pracElevatorSwitchHeight = 35;
-	public final double pracElevatorIntakePos = 5;
-	public final double pracElevatorOffGround = 10;
+	public final double pracElevatorIntakePos = 0;
+	public final double pracElevatorOffGround = 7;
 	
 	public final double pracEncoderCountsToInches = 607.42;
 	
