@@ -11,7 +11,7 @@ public class StartRightDropCubeRightScale extends CommandGroup {
 	   	addParallel(new MoveElevatorOffGround());
 	   	addSequential(new WaitCommand(.75));
 		addParallel(new StartRightDropCubeRightScaleDropTimed());
-		addParallel(new StartRightDropCubeRightScaleRaiseTimed());
+	//	addParallel(new StartRightDropCubeRightScaleRaiseTimed());
     	addSequential(new FollowTrajectory("RightToRightScale"));
     	addSequential(new FollowTrajectory("MoveTwoFeetBack"));
     }

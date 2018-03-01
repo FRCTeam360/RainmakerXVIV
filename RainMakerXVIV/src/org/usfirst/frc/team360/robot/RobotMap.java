@@ -64,8 +64,8 @@ public class RobotMap {
 	
 	public static VictorSP motorClimber1 = new VictorSP(0);
 	public static VictorSP motorClimber2 = new VictorSP(1);
-	public static VictorSP motorIntake1 = new VictorSP(2);
-	public static VictorSP motorIntake2 = new VictorSP(3);
+	public static VictorSP motorIntake1 = new VictorSP(3);
+	public static VictorSP motorIntake2 = new VictorSP(2);
 	
 	public static Spark LED_Control = new Spark(4);
 	

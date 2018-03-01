@@ -35,6 +35,7 @@ public class OI {
 //	public static Button buttonOutTake = new JoystickButton(joyOI, 2);
 //	public static Button pulsingIntake = new JoystickButton(joyOI, 3);
 	public static Button buttonManualIntake = new JoystickButton(joyOI, 8);
+	public static Button buttonLockElevator = new JoystickButton(joyR, 10);
 	
 	public static Button buttonOutTake = new JoystickButton(joyOI, 5);
 	public static Button pulsingIntake = new JoystickButton(joyOI, 6);
@@ -65,5 +66,6 @@ public class OI {
 //		buttonWinchUp.whileHeld(new RunClimberUp());
 		button.whenPressed(new IntakeOpen());
 		button2.whenPressed(new IntakeClose());
+		buttonLockElevator.whenPressed(new ElevatorHold());
 	 }
 }

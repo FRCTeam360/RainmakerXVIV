@@ -27,10 +27,10 @@ public class Constants {
 	private final double compRightDriveTrainPathPlanningI = 0;
 	private final double compRightDriveTrainPathPlanningD = 100;
 	
-	public final double compElevatorTopScale = 86;
-	public final double compElevatorMidScale = 75;
+	public final double compElevatorTopScale = 78;
+	public final double compElevatorMidScale = 70;
 	public final double compElevatorSwitchHeight = 36;
-	public final double compElevatorIntakePos = 4.25;
+	public final double compElevatorIntakePos = 0;
 	public final double compElevatorOffGround = 10;
 	
 	public final double compEncoderCountsToInches = 643.05;
@@ -40,15 +40,15 @@ public class Constants {
 	private final double pracElevatorI = 0;
 	private final double pracElevatorD = 40;
 	
-	private final double pracleftDrivetrainPathPlanningF = 0.5384;
-	private final double pracLeftDrivetrainPathPlanningP = 0.035;
-	private final double pracleftDrivetrainPathPlanningI = 0.0;
-	private final double pracLeftDrivetrainPathPlanningD = 3.5;
+	private final double pracleftDrivetrainPathPlanningF = 0.7307;
+	private final double pracLeftDrivetrainPathPlanningP = 1;//4.092
+	private final double pracleftDrivetrainPathPlanningI = 0;
+	private final double pracLeftDrivetrainPathPlanningD = 80;//160;
 	
-	private final double pracRightDriveTrainPathPlanningF = 0.6133;
-	private final double pracRightDriveTrainPathPlanningP = 0.035;
-	private final double pracRightDriveTrainPathPlanningI = 0.0;
-	private final double pracRightDriveTrainPathPlanningD = 3.5;
+	private final double pracRightDriveTrainPathPlanningF = 0.7307;
+	private final double pracRightDriveTrainPathPlanningP = 1;//2.379
+	private final double pracRightDriveTrainPathPlanningI = 0;
+	private final double pracRightDriveTrainPathPlanningD = 80;//160;
 
 	public final double pracElevatorTopScale = 84;
 	public final double pracElevatorMidScale = 74;

@@ -36,15 +36,15 @@ public class Elevator extends Subsystem {
 		
 		elevatorSlave.follow(elevatorMaster);
 		
-		elevatorMaster.setInverted(true);
-		elevatorSlave.setInverted(true);
+		elevatorMaster.setInverted(false);
+		elevatorSlave.setInverted(false);
 
 		elevatorMaster.setNeutralMode(NeutralMode.Brake);
 		elevatorSlave.setNeutralMode(NeutralMode.Brake);
 		
 		/* first choose the sensor */
 		elevatorMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
-		elevatorMaster.setSensorPhase(true);
+		elevatorMaster.setSensorPhase(false);
 		
 		/* Set relevant frame periods to be at least as fast as periodic rate*/
 		elevatorMaster.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, kTimeoutMs);
@@ -74,7 +74,7 @@ public class Elevator extends Subsystem {
 	public void Process(){
 		
 		SmartDashboard.putNumber("ElevatorVel", elevatorMaster.getSelectedSensorVelocity(0));
-	    SmartDashboard.putNumber("ElevatorPos",  elevatorMaster.getSelectedSensorPosition(0));
+	    SmartDashboard.putNumber("ElevatorPos",  getPosition());
 	    SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
 	    SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(0));
     	
@@ -93,7 +93,7 @@ public class Elevator extends Subsystem {
 		elevatorMaster.set(ControlMode.PercentOutput, 0);
 	}
 	public double getPosition() {
-		return elevatorMaster.getSelectedSensorPosition(Robot.elevator.kPIDLoopIdx);
+		return elevatorMaster.getSelectedSensorPosition(0);
 	}
 	public void motionMagicInit() {
 		/* set acceleration and vcruise velocity - see documentation */
@@ -128,25 +128,8 @@ public class Elevator extends Subsystem {
 		}
 	}
 	
-//	public double getElevatorOutput() {
-//		return elevatorMaster.getMotorOutputPercent();
-//	}
-//	
-//	public double getElevatorVelocity() {
-//		return elevatorMaster.getSelectedSensorVelocity(kPIDLoopIdx);
-//	}
-//	
-//	public void elevatorOutputIsFine() {
-//		if(getElevatorVelocity() > 600 && getElevatorOutput() > 10) {
-//			elevatorMaster.set(ControlMode.PercentOutput, 0);
-//			DriverStation.reportWarning("EleVaTOr BRoKeN!!!!", false);
-//			Command stopElevator;
-//			stopElevator = new StopElevator();
-//			stopElevator.start();
-//		}
-//	}
 	public void zeroElevator() {
-		elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
+		elevatorMaster.setSelectedSensorPosition(0, 0, kTimeoutMs);
 		
 	}
 	

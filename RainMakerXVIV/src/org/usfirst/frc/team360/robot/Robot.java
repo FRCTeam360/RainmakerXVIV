@@ -93,19 +93,9 @@ public class Robot extends TimedRobot {
 			
 		}
 		if(RobotMap.shouldElevatorStop && elevator.getPosition() == 0) {
-			manualElevator = new MoveManualElevator();
-			manualElevator.start();
-			
+			manualElevator = new StopElevator();
+			manualElevator.start();	
 		}
-		
-//		if (elevator.zeroActive() && !RobotMap.wasZeroActive) {
-//			elevator.zeroSensor();
-//			RobotMap.wasZeroActive = true;
-//		} else if (!elevator.zeroActive() && RobotMap.wasZeroActive) {
-//			RobotMap.wasZeroActive = false;
-//		
-//	}
-		
 	}
 
 	@Override
@@ -129,11 +119,11 @@ public class Robot extends TimedRobot {
 		RobotMap.robotMode = "Auto";
 		logger.initLogger();	
 //		autonomousCommand = new StartLeftDropCubeRightScale();
-		//autonomousCommand = new StartRightDropCubeRightSwitch();
+		autonomousCommand = new StartCenterDropCubeLeftSwitch2Cube();
 //		autonomousCommand = autoController.chooseAutoMode();
-//		autonomousCommand = new StartRightDropCubeRightScale();
-
-		autonomousCommand = new StartCenterDropCubeRightSwitch();
+//		autonomousCommand = new StartCenterDropCubeRightSwitch();
+//		autonomousCommand = new StartLeftDropCubeLeftSwitch();
+//		autonomousCommand = new StartCenterDropCubeRightSwitch();
 //		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
@@ -151,7 +141,9 @@ public class Robot extends TimedRobot {
 //		 + "velocity" + driveTrain.getLeftVelocity() + "Vel error" + ( driveTrain.getLeftVelocity() 
 //			- driveTrain.getLeftMotionProfileVelocitySetPoint()));
 		driveTrain.debugMotionProfiling();
-		
+		SmartDashboard.putNumber("Elevator Position", elevator.getPosition());
+
+		elevator.Process();
 		Scheduler.getInstance().run();
 		
 		
@@ -176,12 +168,10 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		SmartDashboard.putNumber("Left Velocity",  driveTrain.getLeftVelocity());
-		SmartDashboard.putNumber("Right Velocity", driveTrain.getRightVelocity());
 //		System.out.println("Left Velocity" + driveTrain.getLeftVelocity());
 //		System.out.println("Right Velocity" + driveTrain.getRightVelocity());
 		//System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
-		System.out.println("Amps: " + intake.currentDraw());
+		//System.out.println("Amps: " + intake.currentDraw());
 		//System.out.println("Elevator Output Voltage:" + elevator.getMotorOutputVoltage());
 		elevator.Process();
 		Scheduler.getInstance().run();
