@@ -25,17 +25,14 @@ public class MoveElevator extends Command {
 
 	// Called just before this Command runs the first time
     protected void initialize() {
-    		if(pos == 0) {
-    			RobotMap.shouldElevatorStop = true;
-    		}
-
-       	 pos = (wantedPos * Constants.realEncoderCountsToInches) - Robot.elevator.getPosition();	
-        	SmartDashboard.putNumber("el Position", Robot.elevator.getPosition());
-        	SmartDashboard.putNumber("wanted Position", wantedPos * Constants.realEncoderCountsToInches);
-        	SmartDashboard.putNumber("Pos", pos);
        	RobotMap.shouldElevatorStop = false;
-	    	Robot.elevator.motionMagicInit();
-	    	Robot.elevator.setMotorPosition(pos);
+    	if(wantedPos == 0) {
+    		RobotMap.shouldElevatorStop = true;
+    	}
+
+       	pos = wantedPos * Constants.realEncoderCountsToInches;//(wantedPos * Constants.realEncoderCountsToInches) - Robot.elevator.getPosition();	
+	    Robot.elevator.motionMagicInit();
+	    Robot.elevator.setMotorPosition(pos);
     }
 
     // Called repeatedly when this Command is scheduled to run
