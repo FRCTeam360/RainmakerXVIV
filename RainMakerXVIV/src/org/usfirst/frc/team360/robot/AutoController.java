@@ -189,30 +189,18 @@ public class AutoController {
 		
 		try {
 			if("Center".equals(startChooser.getSelected())){	
-				if("Cross Line".equals(LeftLeft.getSelected()) ||
-						"Cross Line".equals(LeftRight.getSelected()) ||
-						"Cross Line".equals(RightLeft.getSelected()) || 
-						"Cross Line".equals(RightRight.getSelected())){
-							SmartDashboard.putString("Selected Auto", "Crossing Line");
-							SmartDashboard.putBoolean("Ready for auto", true);
+				if("Cross Line".equals(LeftLeft.getSelected())){
 					} else if ("Left Center Switch".equals(LeftLeft.getSelected()) ||
 							"Left Center Switch".equals(LeftRight.getSelected())) {
-							SmartDashboard.putString("Selected Auto", "Left Center Switch");
-							SmartDashboard.putBoolean("Ready for auto", true);
 					} else if ("Right Center Switch".equals(RightLeft.getSelected()) ||
 							"Right Center Switch".equals(RightRight.getSelected())) {
-							SmartDashboard.putString("Selected Auto", "Right Center Scale");
-							SmartDashboard.putBoolean("Ready for auto", true);
 					} else {
 						SmartDashboard.putString("Selected Auto", "ERROR: INVALID AUTO");
 						SmartDashboard.putBoolean("Ready for auto", false);
 					}
 				
 			} else if("Left".equals(startChooser.getSelected())){
-				if("Cross Line".equals(LeftLeft.getSelected()) ||
-					"Cross Line".equals(LeftRight.getSelected()) ||
-					"Cross Line".equals(RightLeft.getSelected()) || 
-					"Cross Line".equals(RightRight.getSelected())){
+				if("Cross Line".equals(LeftRight.getSelected())){
 						SmartDashboard.putString("Selected Auto", "Crossing Line");
 						SmartDashboard.putBoolean("Ready for auto", true);
 				} else if ("Left Switch".equals(LeftLeft.getSelected()) ||
@@ -229,10 +217,7 @@ public class AutoController {
 				}
 				
 			} else if("Right".equals(startChooser.getSelected())) {
-				if("Cross Line".equals(LeftLeft.getSelected()) ||
-						"Cross Line".equals(LeftRight.getSelected()) ||
-						"Cross Line".equals(RightLeft.getSelected()) || 
-						"Cross Line".equals(RightRight.getSelected())){
+				if("Cross Line".equals(RightLeft.getSelected())){
 							SmartDashboard.putString("Selected Auto", "Crossing Line");
 							SmartDashboard.putBoolean("Ready for auto", true);
 					} else if ("Right Switch".equals(RightRight.getSelected()) ||
