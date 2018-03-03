@@ -38,9 +38,9 @@ public class MoveElevator extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     		
-    	Robot.elevator.Process();
-    	SmartDashboard.putNumber("Elev Position", Robot.elevator.getPosition());
-    	SmartDashboard.putNumber("Future Position", pos);
+//    	Robot.elevator.Process();
+//    	SmartDashboard.putNumber("Elev Position", Robot.elevator.getPosition());
+ //   	SmartDashboard.putNumber("Future Position", pos);
     		
     }
 

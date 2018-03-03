@@ -35,22 +35,22 @@ public class PathGeneration {
 		lowGearConfig.encoder_ticks_per_rev = 4096;
 	}
 	public void generateAll(){
-//		generateCrossLine();
-//		generateCenterToRightSwitch();
-//		generateCenterToLeftSwitch();
-//		generateLeftToLeftSwitch();
-//		generateRightToRightSwitch();
-//		generateRightToRightScale();
-//		generateLeftToLeftScale();
-//		generateBackTwoFeet();
-//		generateCenterToLeftTwoCubePart1();
-//		generateCenterToLeftTwoCubePart2();
-//		generateCenterToLeftTwoCubePart3();
+		generateCrossLine();
+		generateCenterToRightSwitch();
+		generateCenterToLeftSwitch();
+		generateLeftToLeftSwitch();
+		generateRightToRightSwitch();
+		generateRightToRightScale();
+		generateLeftToLeftScale();
+		generateBackTwoFeet();
+		generateCenterToLeftTwoCubePart1();
+		generateCenterToLeftTwoCubePart2();
+		generateCenterToLeftTwoCubePart3();
 		generateCenterToLeftTwoCubePart4();
-//		generateCenterToRightTwoCubePart1();
-//		generateCenterToRightTwoCubePart2();
-//		generateCenterToRightTwoCubePart3();
-//		generateCenterToRightTwoCubePart4();
+		generateCenterToRightTwoCubePart1();
+		generateCenterToRightTwoCubePart2();
+		generateCenterToRightTwoCubePart3();
+		generateCenterToRightTwoCubePart4();
 	}
 	
 

@@ -69,20 +69,20 @@ public class DriveTrain extends Subsystem {
 		resetTalons(motorLSlave);
 	}
 	public void debugMotionProfiling() {
-		SmartDashboard.putNumber("right percent", motorLMaster.getMotorOutputPercent());
-		SmartDashboard.putNumber("left percent", motorRMaster.getMotorOutputPercent());
-		
-		SmartDashboard.putNumber("right velocity", getRightVelocity());
-		SmartDashboard.putNumber("left velocity", getLeftVelocity());
-
-		SmartDashboard.putNumber("right error", getRightVelocity() 
-				- getRightMotionProfileVelocitySetPoint());
-		SmartDashboard.putNumber("left error", getLeftVelocity() 
-				- getLeftMotionProfileVelocitySetPoint());
-		SmartDashboard.putNumber("right position error", getRightPosition() 
-				- getRightMotionProfilePositionSetPoint());
-		SmartDashboard.putNumber("left position error", getLeftPosition() 
-				- getLeftMotionProfilePositionSetPoint());
+//		SmartDashboard.putNumber("right percent", motorLMaster.getMotorOutputPercent());
+//		SmartDashboard.putNumber("left percent", motorRMaster.getMotorOutputPercent());
+//		
+//		SmartDashboard.putNumber("right velocity", getRightVelocity());
+//		SmartDashboard.putNumber("left velocity", getLeftVelocity());
+//
+//		SmartDashboard.putNumber("right error", getRightVelocity() 
+//				- getRightMotionProfileVelocitySetPoint());
+//		SmartDashboard.putNumber("left error", getLeftVelocity() 
+//				- getLeftMotionProfileVelocitySetPoint());
+//		SmartDashboard.putNumber("right position error", getRightPosition() 
+//				- getRightMotionProfilePositionSetPoint());
+//		SmartDashboard.putNumber("left position error", getLeftPosition() 
+//				- getLeftMotionProfilePositionSetPoint());
 	}
 	public void brakeMode() {
 		motorRMaster.setNeutralMode(NeutralMode.Brake);

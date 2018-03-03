@@ -73,10 +73,10 @@ public class Elevator extends Subsystem {
 	
 	public void Process(){
 		
-		SmartDashboard.putNumber("ElevatorVel", elevatorMaster.getSelectedSensorVelocity(0));
-	    SmartDashboard.putNumber("ElevatorPos",  getPosition());
-	    SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
-	    SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(0));
+//		SmartDashboard.putNumber("ElevatorVel", elevatorMaster.getSelectedSensorVelocity(0));
+//	    SmartDashboard.putNumber("ElevatorPos",  getPosition());
+//	    SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
+//	    SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(0));
     	
 //    	SmartDashboard.putNumber("ActTrajVelocity", elevatorMaster.getActiveTrajectoryVelocity());
 //		SmartDashboard.putNumber("ActTrajPosition", elevatorMaster.getActiveTrajectoryPosition());
