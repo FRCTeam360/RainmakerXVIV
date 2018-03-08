@@ -29,7 +29,7 @@ public class Constants {
 	
 	public final double compElevatorTopScale = 78;
 	public final double compElevatorMidScale = 70;
-	public final double compElevatorSwitchHeight = 36;
+	public final double compElevatorSwitchHeight = 35;
 	public final double compElevatorIntakePos = 0;
 	public final double compElevatorOffGround = 10;
 	

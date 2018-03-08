@@ -11,6 +11,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MoveElevatorToTopScale extends CommandGroup {
 
     public MoveElevatorToTopScale() {
-    		addSequential(new MoveElevator(Constants.realElevatorTopScale));
+    //		addSequential(new MoveElevator(Constants.realElevatorTopScale));
     }
 }

@@ -6,9 +6,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class StartCenterDropCubeRightSwitch2Cube extends CommandGroup {
     public StartCenterDropCubeRightSwitch2Cube() {
-		addSequential(new AutoShift(RobotMap.ShiftState.UP)); 	
-		addParallel(new StartCenterDropCubeRightSwitchDropTimed());
-	   	addSequential(new FollowTrajectory("CenterToRightSwitch"));
+		addSequential(new StartCenterDropCubeRightSwitch());
         addSequential(new FollowTrajectory("CenterToRightTwoCubePart1"));
         addSequential(new FollowTrajectory("CenterToRightTwoCubePart2"));
         addSequential(new FollowTrajectory("CenterToRightTwoCubePart3"));

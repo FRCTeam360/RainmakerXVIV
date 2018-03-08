@@ -21,6 +21,8 @@ public class AutoController {
 	Command crossLineMotionProfiled;
 	Command startCenterDropCubeLeftSwitch;
 	Command startCenterDropCubeRightSwitch;
+	Command startCenterDropCubeLeftSwitch2Cube;
+	Command startCenterDropCubeRightSwitch2Cube;
 	Command startLeftDropCubeLeftSwitch;
 	Command startRightDropCubeRightSwitch;
 	Command startLeftDropCubeLeftScale;
@@ -34,6 +36,8 @@ public class AutoController {
 		startCenterDropCubeRightSwitch = new StartCenterDropCubeRightSwitch();
 		startLeftDropCubeLeftSwitch = new StartLeftDropCubeLeftSwitch();
 		startRightDropCubeRightSwitch = new StartRightDropCubeRightSwitch();
+		startCenterDropCubeLeftSwitch2Cube = new StartCenterDropCubeLeftSwitch2Cube();
+		startCenterDropCubeRightSwitch2Cube = new StartCenterDropCubeRightSwitch2Cube();
 		startLeftDropCubeLeftScale = new StartLeftDropCubeLeftScale();
 		startRightDropCubeRightScale = new StartRightDropCubeRightScale();
 
@@ -124,24 +128,27 @@ public class AutoController {
 					LeftLeft = new SendableChooser<>();
 					//LeftLeft.addDefault("Cross Line", "Cross Line");
 					LeftLeft.addObject("Center Left Switch", "Center Left Switch");
+					//LeftLeft.addObject("Center Left Switch 2 Cube", "Center Left Switch 2 Cube");
 					//LeftLeft.addObject("Center Left Two Cube Switch", "Center Left Two Cube Switch");
 					//Set LeftRight Options
 					LeftRight = new SendableChooser<>();
 					//LeftRight.addDefault("Cross Line", "Cross Line");
 					LeftRight.addObject("Center Left Switch", "Center Left Switch");
+					//LeftRight.addObject("Center Left Switch 2 Cube", "Center Left Switch 2 Cube");
 					//LeftLeft.addObject("Center Left Two Cube Switch", "Center Left Two Cube Switch");
 					//Set RightLeft Options
 					RightLeft = new SendableChooser<>();
 					//RightLeft.addDefault("Cross Line", "Cross Line");
 					RightLeft.addObject("Center Right Switch", "Center Right Switch");
+					//RightLeft.addObject("Center Left Switch 2 Cube", "Center Right Switch 2 Cube");
 					//RightLeft.addObject("Center Right Two Cube Switch", "Center Right Two Cube Switch");
 					//Set RightRight Options
 					RightRight = new SendableChooser<>();
 					//RightRight.addDefault("Cross Line", "Cross Line");
 					RightRight.addObject("Center Right Switch", "Center Right Switch");
+					//RightRight.addObject("Center Left Switch 2 Cube", "Center Right Switch 2 Cube");
 					//RightRight.addObject("Center Right Two Cube Switch", "Center Right Two Cube Switch");
 
-					
 					SmartDashboard.putData("Left Left", LeftLeft);
 					SmartDashboard.putData("Left Right", LeftRight);
 					SmartDashboard.putData("Right Left", RightLeft);
@@ -197,6 +204,9 @@ public class AutoController {
 				if ("Cross Line".equals(LeftLeft.getSelected())) {
 					SmartDashboard.putString("Selected  Auto", "Crossing Line");
 					return crossLineMotionProfiled;
+				} else if ("Center Left Switch 2 Cube".equals(LeftLeft.getSelected())) {
+					SmartDashboard.putString("Selected  Auto", "Center To Left Switch 2 Cube");
+					return startCenterDropCubeLeftSwitch2Cube;
 				} else {
 					SmartDashboard.putString("Selected  Auto", "Center To Left Switch");
 					return startCenterDropCubeLeftSwitch;
@@ -206,6 +216,9 @@ public class AutoController {
 				if ("Cross Line".equals(LeftRight.getSelected())) {
 					SmartDashboard.putString("Selected  Auto", "Crossing Line");
 					return crossLineMotionProfiled;
+				} else if ("Center Left Switch 2 Cube".equals(LeftRight.getSelected())) {
+					SmartDashboard.putString("Selected  Auto", "Center To Left Switch 2 Cube");
+					return startCenterDropCubeLeftSwitch2Cube;
 				} else {
 					SmartDashboard.putString("Selected  Auto", "Center To Left Switch");
 					return startCenterDropCubeLeftSwitch;
@@ -215,15 +228,21 @@ public class AutoController {
 				if ("Cross Line".equals(RightLeft.getSelected())) {
 					SmartDashboard.putString("Selected  Auto", "Crossing Line");
 					return crossLineMotionProfiled;
+				} else if ("Center Right Switch 2 Cube".equals(RightLeft.getSelected())) {
+					SmartDashboard.putString("Selected  Auto", "Center To Right Switch 2 Cube");
+					return startCenterDropCubeLeftSwitch2Cube;
 				} else {
 					SmartDashboard.putString("Selected  Auto", "Center To Right Switch");
 					return startCenterDropCubeRightSwitch;
 				}
 			} else if ("R".equals((String.valueOf(gameData.charAt(0))))&&
 					"R".equals((String.valueOf(gameData.charAt(1))))) {
-				if ("Cross Line".equals(RightLeft.getSelected())) {
+				if ("Cross Line".equals(RightRight.getSelected())) {
 					SmartDashboard.putString("Selected  Auto", "Crossing Line");
 					return crossLineMotionProfiled;
+				} else if ("Center Right Switch 2 Cube".equals(RightRight.getSelected())) {
+					SmartDashboard.putString("Selected  Auto", "Center To Right Switch 2 Cube");
+					return startCenterDropCubeLeftSwitch2Cube;
 				} else {
 					SmartDashboard.putString("Selected  Auto", "Center To Right Switch");
 					return startCenterDropCubeRightSwitch;

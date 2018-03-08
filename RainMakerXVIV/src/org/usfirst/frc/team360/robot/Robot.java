@@ -174,7 +174,7 @@ public class Robot extends TimedRobot {
 		//System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
 		//System.out.println("Amps: " + intake.currentDraw());
 		//System.out.println("Elevator Output Voltage:" + elevator.getMotorOutputVoltage());
-		System.out.println(elevator.getPosition());
+//		System.out.println("E " + elevator.getPosition() + " L " + driveTrain.getLeftPosition() + " R " + driveTrain.getRightPosition());
 		elevator.Process();
 		Scheduler.getInstance().run();
 	}
@@ -184,6 +184,7 @@ public class Robot extends TimedRobot {
 		elevatorHold.start();
 	}
 	@Override
+	
 	public void testPeriodic() {
 		Scheduler.getInstance().run();
 	}
