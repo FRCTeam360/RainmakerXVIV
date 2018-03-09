@@ -35,8 +35,7 @@ public class IntakePulseAndFlashLEDs extends CommandGroup {
 		addParallel(new LEDColor(RobotMap.Color.RED, 1.5, 100, true, false));
     	addSequential(new IntakeClose());
     	addSequential(new IntakePulse(.75, 18, .25, true));
-    	//addSequential(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true, false));
-    	addParallel(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true, false));
+    	addSequential(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true, false));
     	addSequential(new MoveElevatorOffGround());
     }
 }
