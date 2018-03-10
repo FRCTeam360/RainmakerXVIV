@@ -26,7 +26,7 @@ public class UltraSonicReadyToDrop extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.ultraSonic.getUltrasonicInches();
-    	if(Robot.ultraSonic.range < 1) {
+    	if(Robot.ultraSonic.range < 40) {
     		System.out.println("Ready to drop");
     	} else {
     		System.out.println("Not ready to drop");
