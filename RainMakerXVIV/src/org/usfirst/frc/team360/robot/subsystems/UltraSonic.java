@@ -1,7 +1,7 @@
 package org.usfirst.frc.team360.robot.subsystems;
 
 import org.usfirst.frc.team360.robot.RobotMap;
-import org.usfirst.frc.team360.robot.commands.UltraSonicRead;
+import org.usfirst.frc.team360.robot.commands.UltraSonicReadyToDrop;
 
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,7 +19,7 @@ public class UltraSonic extends Subsystem {
     }
 
     public void initDefaultCommand() {
-    	setDefaultCommand(new UltraSonicRead());
+    	setDefaultCommand(new UltraSonicReadyToDrop());
     }
 }
 

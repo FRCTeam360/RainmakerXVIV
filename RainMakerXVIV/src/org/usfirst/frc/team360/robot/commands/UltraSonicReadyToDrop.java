@@ -10,12 +10,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class UltraSonicRead extends Command {
+public class UltraSonicReadyToDrop extends Command {
 	
 	public Ultrasonic ultra = RobotMap.ultra;
-	public double range;
 
-    public UltraSonicRead() {
+    public UltraSonicReadyToDrop() {
     	//requires(Robot.ultraSonic);
     }
 
@@ -27,6 +26,9 @@ public class UltraSonicRead extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.ultraSonic.getUltrasonicInches();
+    	if(Robot.ultraSonic.range < 1) {
+    		System.out.println("Ready to drop");
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

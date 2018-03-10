@@ -28,7 +28,7 @@ public class Robot extends TimedRobot {
 	public static Shifter shifter;
 	public static Elevator elevator;
 	public static Pneumatics pneumatics;
-	public static UltraSonicRead ultraSonicRead;
+	public static UltraSonicReadyToDrop ultraSonicRead;
 	public static DriveTrain driveTrain;
 	public static Climber climber;
 	public static NavX navX;
@@ -75,7 +75,7 @@ public class Robot extends TimedRobot {
 		elevator = new Elevator();
 	//	elevator.zeroSensor();
 		climber = new Climber();
-		ultraSonicRead = new UltraSonicRead();
+		ultraSonicRead = new UltraSonicReadyToDrop();
 		navX = new NavX();
 		intake = new Intake();
 		led = new LED();
