@@ -51,6 +51,8 @@ public class RobotMap {
 	
 	public static enum RobotID {COMP, PRACTICE, UNKNOWN};
 	public static RobotID robotID = RobotID.UNKNOWN;
+	
+	public static Ultrasonic ultra = new Ultrasonic(1,1);
 	 
 	public static Compressor compressor = new Compressor();
 	
