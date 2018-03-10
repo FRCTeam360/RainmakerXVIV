@@ -28,6 +28,8 @@ public class UltraSonicReadyToDrop extends Command {
     	Robot.ultraSonic.getUltrasonicInches();
     	if(Robot.ultraSonic.range < 1) {
     		System.out.println("Ready to drop");
+    	} else {
+    		System.out.println("Not ready to drop");
     	}
     }
 
