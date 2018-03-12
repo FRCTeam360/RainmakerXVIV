@@ -118,6 +118,10 @@ public class Robot extends TimedRobot {
 		elevatorRelease.start();
 		RobotMap.robotMode = "Auto";
 		logger.initLogger();	
+//		autonomousCommand = new StartLeftDropCubeRightScale();
+//		autonomousCommand = new StartRightDropCubeRightSwitch();
+		autonomousCommand = autoController.chooseAutoMode();
+//		autonomousCommand = new StartRightDropCubeRightScale();
 //		autonomousCommand = new StartRightDropCubeRightScale();
 //		autonomousCommand = new StartCenterDropCubeLeftSwitch2Cube();
 		autonomousCommand = autoController.chooseAutoMode();
