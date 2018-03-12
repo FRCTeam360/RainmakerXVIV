@@ -20,7 +20,7 @@ public class StartLeftDropCubeLeftSwitchDropTimed extends CommandGroup {
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
-        addSequential(new WaitCommand(4.9));
+        addSequential(new WaitCommand(4.5));
         addSequential(new IntakeOpen());
         // Command1 and Command2 will run in parallel.
 

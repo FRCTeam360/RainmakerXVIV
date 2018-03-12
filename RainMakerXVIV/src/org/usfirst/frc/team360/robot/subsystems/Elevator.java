@@ -36,8 +36,8 @@ public class Elevator extends Subsystem {
 		
 		elevatorSlave.follow(elevatorMaster);
 		
-		elevatorMaster.setInverted(true);
-		elevatorSlave.setInverted(true);
+		elevatorMaster.setInverted(false);
+		elevatorSlave.setInverted(false);
 
 		elevatorMaster.setNeutralMode(NeutralMode.Brake);
 		elevatorSlave.setNeutralMode(NeutralMode.Brake);
@@ -67,18 +67,16 @@ public class Elevator extends Subsystem {
 //		elevatorMaster.config_kP(0, 4, kTimeoutMs);
 //		elevatorMaster.config_kI(0, 0, kTimeoutMs);
 //		elevatorMaster.config_kD(0, 60, kTimeoutMs);
+
 		
-		elevatorMaster.setSelectedSensorPosition(0, kPIDLoopIdx, kTimeoutMs);
-		
-		zeroSensor = 50;
 	}
 	
 	public void Process(){
 		
-		SmartDashboard.putNumber("ElevatorVel", elevatorMaster.getSelectedSensorVelocity(0));
-	    SmartDashboard.putNumber("ElevatorPos",  elevatorMaster.getSelectedSensorPosition(0));
-	    SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
-	    SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(0));
+//		SmartDashboard.putNumber("ElevatorVel", elevatorMaster.getSelectedSensorVelocity(0));
+//	    SmartDashboard.putNumber("ElevatorPos",  getPosition());
+//	    SmartDashboard.putNumber("ElevatorOutputPercent", elevatorMaster.getMotorOutputPercent());
+//	    SmartDashboard.putNumber("ElevatorError", elevatorMaster.getClosedLoopError(0));
     	
 //    	SmartDashboard.putNumber("ActTrajVelocity", elevatorMaster.getActiveTrajectoryVelocity());
 //		SmartDashboard.putNumber("ActTrajPosition", elevatorMaster.getActiveTrajectoryPosition());
@@ -95,7 +93,7 @@ public class Elevator extends Subsystem {
 		elevatorMaster.set(ControlMode.PercentOutput, 0);
 	}
 	public double getPosition() {
-		return elevatorMaster.getSelectedSensorPosition(Robot.elevator.kPIDLoopIdx);
+		return elevatorMaster.getSelectedSensorPosition(0);
 	}
 	public void motionMagicInit() {
 		/* set acceleration and vcruise velocity - see documentation */
@@ -130,23 +128,10 @@ public class Elevator extends Subsystem {
 		}
 	}
 	
-//	public double getElevatorOutput() {
-//		return elevatorMaster.getMotorOutputPercent();
-//	}
-//	
-//	public double getElevatorVelocity() {
-//		return elevatorMaster.getSelectedSensorVelocity(kPIDLoopIdx);
-//	}
-//	
-//	public void elevatorOutputIsFine() {
-//		if(getElevatorVelocity() > 600 && getElevatorOutput() > 10) {
-//			elevatorMaster.set(ControlMode.PercentOutput, 0);
-//			DriverStation.reportWarning("EleVaTOr BRoKeN!!!!", false);
-//			Command stopElevator;
-//			stopElevator = new StopElevator();
-//			stopElevator.start();
-//		}
-//	}
+	public void zeroElevator() {
+		elevatorMaster.setSelectedSensorPosition(0, 0, kTimeoutMs);
+		
+	}
 	
     public void initDefaultCommand() {
     }
