@@ -9,7 +9,6 @@ import org.usfirst.frc.team360.robot.subsystems.Elevator;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -17,30 +16,25 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class MoveElevator extends Command {
 	
 	public double pos;
-	double wantedPos;
+	
 	public MoveElevator(double wantedPosition) {
 		requires(Robot.elevator);
-		wantedPos = wantedPosition;
+	    pos = (wantedPosition * Constants.realEncoderCountsToInches) - Robot.elevator.getPosition();
+		
 	}
 
 	// Called just before this Command runs the first time
     protected void initialize() {
-       	RobotMap.shouldElevatorStop = false;
-    	if(wantedPos == 0) {
-    		RobotMap.shouldElevatorStop = true;
-    	}
-
-       	pos = wantedPos * Constants.realEncoderCountsToInches;//(wantedPos * Constants.realEncoderCountsToInches) - Robot.elevator.getPosition();	
-	    Robot.elevator.motionMagicInit();
-	    Robot.elevator.setMotorPosition(pos);
+	    //	Robot.elevator.motionMagicInit();
+	    //	Robot.elevator.setMotorPosition(pos);
+	    	System.out.println("Elev Position" + Robot.elevator.getPosition());
+	    	System.out.println("Future Position" + pos);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     		
-//    	Robot.elevator.Process();
-//    	SmartDashboard.putNumber("Elev Position", Robot.elevator.getPosition());
- //   	SmartDashboard.putNumber("Future Position", pos);
+    	Robot.elevator.Process();
     		
     }
 

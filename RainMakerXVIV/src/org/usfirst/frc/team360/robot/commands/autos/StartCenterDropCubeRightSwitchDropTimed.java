@@ -1,6 +1,5 @@
 package org.usfirst.frc.team360.robot.commands.autos;
 
-import org.usfirst.frc.team360.robot.commands.IntakeAutoOut;
 import org.usfirst.frc.team360.robot.commands.IntakeOpen;
 import org.usfirst.frc.team360.robot.commands.MoveElevator;
 
@@ -22,7 +21,7 @@ public class StartCenterDropCubeRightSwitchDropTimed extends CommandGroup {
         // use addParallel()
         // e.g. addParallel(new Command1());
         addSequential(new WaitCommand(3.75));
-        addSequential(new IntakeAutoOut());
+        addSequential(new IntakeOpen());
         // Command1 and Command2 will run in parallel.
 
         // A command group will require all of the subsystems that each member

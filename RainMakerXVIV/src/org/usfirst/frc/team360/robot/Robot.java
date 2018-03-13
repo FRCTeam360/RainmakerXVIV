@@ -7,15 +7,9 @@
 
 package org.usfirst.frc.team360.robot;
 
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
-import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.RobotMap.IntakeState;
 import org.usfirst.frc.team360.robot.commands.*;
@@ -46,7 +40,7 @@ public class Robot extends TimedRobot {
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-		public static void camera(){
+	/*	public static void Camera(){
 	new Thread(() -> {
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(640, 480);
@@ -63,7 +57,7 @@ public class Robot extends TimedRobot {
             outputStream.putFrame(output);
         }
     }).start();
-}
+}*/
 	@Override
 	public void robotInit() {
 		constants = new Constants();
@@ -81,21 +75,19 @@ public class Robot extends TimedRobot {
 		releaseElevator = new ReleaseElevator();
 		oi = new OI();
 		autoController = new AutoController();
-		camera();
 	}
-	Command manualElevator;
+	
 	@Override 
 	public void robotPeriodic() {	
 		logger.logDriverStationConnection();
-		if(! RobotMap.elevatorLimitSwitch.get()) {
-			elevator.zeroElevator();
-			RobotMap.currentPos = 0;
-			
-		}
-		if(RobotMap.shouldElevatorStop && elevator.getPosition() == 0) {
-			manualElevator = new StopElevator();
-			manualElevator.start();	
-		}
+//		if (elevator.zeroActive() && !RobotMap.wasZeroActive) {
+//			elevator.zeroSensor();
+//			RobotMap.wasZeroActive = true;
+//		} else if (!elevator.zeroActive() && RobotMap.wasZeroActive) {
+//			RobotMap.wasZeroActive = false;
+//		
+//	}
+		
 	}
 
 	@Override
@@ -106,7 +98,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		autoController.smartDashboardAutoController();
+	//	autoController.smartDashboardAutoController();
 		Scheduler.getInstance().run();
 	}
 	
@@ -122,13 +114,6 @@ public class Robot extends TimedRobot {
 //		autonomousCommand = new StartRightDropCubeRightSwitch();
 		autonomousCommand = autoController.chooseAutoMode();
 //		autonomousCommand = new StartRightDropCubeRightScale();
-//		autonomousCommand = new StartRightDropCubeRightScale();
-//		autonomousCommand = new StartCenterDropCubeLeftSwitch2Cube();
-		autonomousCommand = autoController.chooseAutoMode();
-		// autoController.chooseAutoMode();
-//		autonomousCommand = new StartCenterDropCubeRightSwitch();
-//		autonomousCommand = new StartLeftDropCubeLeftSwitch();
-//		autonomousCommand = new StartCenterDropCubeRightSwitch();
 //		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
@@ -138,20 +123,17 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousPeriodic() {
+
 //		System.out.println("right velocity" + driveTrain.motorLMaster.getMotorOutputPercent() + "velocity" + driveTrain.getRightVelocity()
 //		 + "velocity" + driveTrain.getRightVelocity() + "Vel error"  + ( driveTrain.getRightVelocity() 
 //					- driveTrain.getRightMotionProfileVelocitySetPoint()));
 //		System.out.println("left velocity" + driveTrain.motorRMaster.getMotorOutputPercent() + "velocity" + driveTrain.getLeftVelocity()
 //		 + "velocity" + driveTrain.getLeftVelocity() + "Vel error" + ( driveTrain.getLeftVelocity() 
 //			- driveTrain.getLeftMotionProfileVelocitySetPoint()));
-	//	driveTrain.debugMotionProfiling();
-//		SmartDashboard.putNumber("Elevator Position", elevator.getPosition());
-
-	//	elevator.Process();
+		driveTrain.debugMotionProfiling();
+		
 		Scheduler.getInstance().run();
 		
-		
-				
 	}
 
 	@Override
@@ -167,29 +149,29 @@ public class Robot extends TimedRobot {
 		stopElevator.start();
 		
 		Command elevatorRelease = new ElevatorRelease();
-		
 		elevatorRelease.start();
 }
 
 	@Override
 	public void teleopPeriodic() {
+		SmartDashboard.putNumber("Left Velocity",  driveTrain.getLeftVelocity());
+		SmartDashboard.putNumber("Right Velocity", driveTrain.getRightVelocity());
+		
 //		System.out.println("Left Velocity" + driveTrain.getLeftVelocity());
 //		System.out.println("Right Velocity" + driveTrain.getRightVelocity());
 		//System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
-		//System.out.println("Amps: " + intake.currentDraw());
+		System.out.println("Amps: " + intake.currentDraw());
 		//System.out.println("Elevator Output Voltage:" + elevator.getMotorOutputVoltage());
-//		System.out.println("E " + elevator.getPosition() + " L " + driveTrain.getLeftPosition() + " R " + driveTrain.getRightPosition());
 		elevator.Process();
 		Scheduler.getInstance().run();
 	}
 	@Override
 	public void testInit() {
+		
 		Command elevatorHold = new ElevatorHold();
 		elevatorHold.start();
 	}
 	@Override
-	
 	public void testPeriodic() {
-		Scheduler.getInstance().run();
 	}
 }
