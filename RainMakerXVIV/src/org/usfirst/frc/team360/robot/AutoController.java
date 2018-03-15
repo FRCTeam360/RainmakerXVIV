@@ -1,6 +1,7 @@
 package org.usfirst.frc.team360.robot;
 
 import org.usfirst.frc.team360.robot.commands.autos.CrossLineMotionProfiled;
+import org.usfirst.frc.team360.robot.RobotMap.ScaleSide;
 import org.usfirst.frc.team360.robot.commands.autos.*;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -20,7 +21,9 @@ public class AutoController {
 
 	Command doNothingAuto;
 	Command crossLineMotionProfiled;
+	Command startCenterDropCubeLeftScale;
 	Command startCenterDropCubeLeftSwitch;
+	Command startCenterDropCubeRightScale;
 	Command startCenterDropCubeRightSwitch;
 	Command startCenterDropCubeLeftSwitch2Cube;
 	Command startCenterDropCubeRightSwitch2Cube;
