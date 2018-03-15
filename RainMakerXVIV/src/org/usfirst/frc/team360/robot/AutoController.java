@@ -21,9 +21,7 @@ public class AutoController {
 	Command doNothingAuto;
 	Command crossLineMotionProfiled;
 	Command startCenterDropCubeLeftSwitch;
-	Command startCenterDropCubeLeftScale;
 	Command startCenterDropCubeRightSwitch;
-	Command startCenterDropCubeRightScale;
 	Command startCenterDropCubeLeftSwitch2Cube;
 	Command startCenterDropCubeRightSwitch2Cube;
 	Command startLeftDropCubeLeftSwitch;
