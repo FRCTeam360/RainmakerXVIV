@@ -21,7 +21,7 @@ public class StartLeftDropCubeLeftScaleRaiseTimed extends CommandGroup {
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
-        addSequential(new WaitCommand(2.75));
+        addSequential(new WaitCommand(3.5));
         addSequential(new MoveElevatorToTopScale());
         // Command1 and Command2 will run in parallel.
 

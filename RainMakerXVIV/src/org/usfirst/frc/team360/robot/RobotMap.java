@@ -30,7 +30,7 @@ public class RobotMap {
 
 	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
 
-	public static DoubleSolenoid elevatorReleasePneumatic = new DoubleSolenoid(1, 0);
+	public static DoubleSolenoid elevatorReleasePneumatic = new DoubleSolenoid(0, 1);
 	
 	public static DoubleSolenoid shifter = new DoubleSolenoid(3, 2);
 	
@@ -39,8 +39,6 @@ public class RobotMap {
 	
 	public static enum ShiftState {UP, DOWN, UNKNOWN}
 	public static ShiftState shiftState = ShiftState.UNKNOWN;
-	
-	public static boolean shouldElevatorStop = false;
 	
 	public static enum IntakeState{IN, OUT, UNKNOWN}
 	public static IntakeState intakeState = IntakeState.UNKNOWN;
@@ -64,8 +62,8 @@ public class RobotMap {
 	
 	public static VictorSP motorClimber1 = new VictorSP(0);
 	public static VictorSP motorClimber2 = new VictorSP(1);
-	public static VictorSP motorIntake1 = new VictorSP(3);
-	public static VictorSP motorIntake2 = new VictorSP(2);
+	public static VictorSP motorIntake1 = new VictorSP(2);
+	public static VictorSP motorIntake2 = new VictorSP(3);
 	
 	public static Spark LED_Control = new Spark(4);
 	
