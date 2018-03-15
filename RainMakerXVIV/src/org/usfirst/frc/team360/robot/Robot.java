@@ -114,6 +114,12 @@ public class Robot extends TimedRobot {
 //		autonomousCommand = new StartRightDropCubeRightSwitch();
 		autonomousCommand = autoController.chooseAutoMode();
 //		autonomousCommand = new StartRightDropCubeRightScale();
+//		autonomousCommand = new StartRightDropCubeRightScale();
+//		autonomousCommand = new StartCenterDropCubeLeftSwitch2Cube();
+		// autoController.chooseAutoMode();
+//		autonomousCommand = new StartCenterDropCubeRightSwitch();
+//		autonomousCommand = new StartLeftDropCubeLeftSwitch();
+//		autonomousCommand = new StartCenterDropCubeRightSwitch();
 //		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
 		if (autonomousCommand != null){
 			autonomousCommand.start();	
