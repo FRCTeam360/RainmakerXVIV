@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class StartRightDropCubeRightSwitch extends CommandGroup {
     public StartRightDropCubeRightSwitch() {
 		addSequential(new AutoShift(RobotMap.ShiftState.UP));
+		addParallel(new MoveElevatorToSwitchHeight());
    	 	addParallel(new StartRightDropCubeRightSwitchDropTimed());
-   	 	addParallel(new MoveElevatorToIntakePos());
     	addSequential(new FollowTrajectory("RightToRightSwitch"));
     }
 }
