@@ -25,5 +25,5 @@ public class EndingPoints {
 	
 	public static WaypointSequence.Waypoint rightSideSwitchFrontFace = 
 			new WaypointSequence.Waypoint(0, 1, 0);
-	
+
 }
