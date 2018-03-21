@@ -36,7 +36,7 @@ public class LED extends Subsystem {
 		RobotMap.color = Color.GREEN;
 	}
 	public void setLEDBlue() {
-		LEDControl(0.81);
+		LEDControl(0.87);
 		RobotMap.color = Color.BLUE;
 	}
 	public void setLEDViolet() {
@@ -92,7 +92,7 @@ public class LED extends Subsystem {
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        //setDefaultCommand(new LEDShiftState());
     }
 }
 
