@@ -14,7 +14,7 @@ import javafx.stage.*;
 
 public class Plotter {
 	
-	public Plotter(){}
+public Plotter(){}
 	
 	public void plotChezyTrajectory(Path path) {
 		Stage stage = new Stage();
