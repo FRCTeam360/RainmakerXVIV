@@ -16,7 +16,7 @@ public class StartCenterDropCubeRightSwitch2Cube extends CommandGroup {
         addSequential(new WaitCommand(.75));
         addParallel(new MoveElevatorToSwitchHeight());
         addSequential(new FollowTrajectory("CenterToRightTwoCubePart3"));
-		addParallel(new StartCenterDropCubeLeftSwitchDropTimed2());
+		addParallel(new StartCenterDropCubeRightSwitchDropTimed2());
         addSequential(new FollowTrajectory("CenterToRightTwoCubePart4"));
     }
 }
