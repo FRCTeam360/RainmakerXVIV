@@ -46,7 +46,7 @@ public class IntakePulse extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 	    	if(time.get() < period/2) {
-	    		Robot.intake.controlRightMotor(speed);
+	    		Robot.intake.controlRightMotor(speed*1.25);
 	    	}else if(time.get() > period/2 && time.get() < period) {
 	    		Robot.intake.controlRightMotor(0);
 	    	}else {

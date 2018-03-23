@@ -10,5 +10,6 @@ public class StartCenterDropCubeLeftSwitch extends CommandGroup {
 	   	addParallel(new MoveElevatorToSwitchHeight());
 		addParallel(new StartCenterDropCubeLeftSwitchDropTimed());
         addSequential(new FollowTrajectory("CenterToLeftSwitch"));
+	   	addParallel(new StopElevator());
     }
 }

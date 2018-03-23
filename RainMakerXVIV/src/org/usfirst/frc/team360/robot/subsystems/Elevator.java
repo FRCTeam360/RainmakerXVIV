@@ -36,15 +36,15 @@ public class Elevator extends Subsystem {
 		
 		elevatorSlave.follow(elevatorMaster);
 		
-		elevatorMaster.setInverted(false);
-		elevatorSlave.setInverted(false);
+		elevatorMaster.setInverted(true);
+		elevatorSlave.setInverted(true);
 
 		elevatorMaster.setNeutralMode(NeutralMode.Brake);
 		elevatorSlave.setNeutralMode(NeutralMode.Brake);
 		
 		/* first choose the sensor */
 		elevatorMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
-		elevatorMaster.setSensorPhase(false);
+		elevatorMaster.setSensorPhase(true);
 		
 		/* Set relevant frame periods to be at least as fast as periodic rate*/
 		elevatorMaster.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, kTimeoutMs);

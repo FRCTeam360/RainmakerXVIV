@@ -13,7 +13,7 @@ public class IntakeIn extends CommandGroup {
 	
     public IntakeIn() {
     	addParallel(new LEDColor(RobotMap.Color.GREEN, 1/3, 2, true, false));
-    	addSequential(new IntakeOpen());
+    	addSequential(new IntakeNeutral());
     	addSequential(new IntakeControl(.5, 25, false));
     }
 }

@@ -96,6 +96,7 @@ public class Robot extends TimedRobot {
 			manualElevator = new StopElevator();
 			manualElevator.start();	
 		}
+	//	System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
 	}
 
 	@Override
@@ -119,9 +120,8 @@ public class Robot extends TimedRobot {
 		RobotMap.robotMode = "Auto";
 		logger.initLogger();	
 //		autonomousCommand = new StartRightDropCubeRightScale();
-//		autonomousCommand = new StartCenterDropCubeLeftSwitch2Cube();
-		autonomousCommand = autoController.chooseAutoMode();
-		// autoController.chooseAutoMode();
+		autonomousCommand = new StartCenterDropCubeRightSwitch2Cube();
+//		autonomousCommand = autoController.chooseAutoMode();
 //		autonomousCommand = new StartCenterDropCubeRightSwitch();
 //		autonomousCommand = new StartLeftDropCubeLeftSwitch();
 //		autonomousCommand = new StartCenterDropCubeRightSwitch();
@@ -171,11 +171,10 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 //		System.out.println("Left Velocity" + driveTrain.getLeftVelocity());
 //		System.out.println("Right Velocity" + driveTrain.getRightVelocity());
-		//System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
 		//System.out.println("Amps: " + intake.currentDraw());
 		//System.out.println("Elevator Output Voltage:" + elevator.getMotorOutputVoltage());
 //		System.out.println("E " + elevator.getPosition() + " L " + driveTrain.getLeftPosition() + " R " + driveTrain.getRightPosition());
-		elevator.Process();
+	//	elevator.Process();
 		Scheduler.getInstance().run();
 	}
 	@Override
