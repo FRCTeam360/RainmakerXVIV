@@ -52,20 +52,21 @@ public class OI {
 //		buttonElevSwitch.whenPressed(new MoveElevatorToSwitchHeight());
 //		buttonElevTopSc.whenPressed(new MoveElevatorToTopScale());// old
 		buttonElevIntake.whenPressed(new MoveElevatorToIntakePos());
-		buttonElevOffGround.whenActive(new MoveElevatorOffGround());
+		button2.whenPressed(new MoveElevatorOffGround());
 		buttonElevSwitch.whenPressed(new MoveElevatorToSwitchHeight());
 		buttonElevMidSc.whenPressed(new MoveElevatorToMidScale());
 		buttonElevTopSc.whenPressed(new MoveElevatorToTopScale());
 		buttonManualElevator.whileHeld(new MoveManualElevator());
 			
 		buttonOutTake.whileHeld(new IntakeOut());
-		pulsingIntake.whenPressed
-		(new IntakePulseAndFlashLEDs());
+		pulsingIntake.whenPressed(new IntakePulseAndFlashLEDs());
 		buttonManualIntake.whileHeld(new IntakeManual());
+		buttonManualElevator.whenPressed(new IntakeStop());
 
 //		buttonWinchUp.whileHeld(new RunClimberUp());
 		button.whenPressed(new IntakeOpen());
 		button2.whenPressed(new IntakeClose());
 		//buttonLockElevator.whenPressed(new ElevatorHold());
 	 }
+	
 }

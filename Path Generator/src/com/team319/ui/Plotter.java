@@ -21,8 +21,8 @@ public Plotter(){}
 		
 		stage.setTitle("Scatter Chart Sample");
 		
-		final NumberAxis xAxis = new NumberAxis(-10, 35, 2);
-		final NumberAxis yAxis = new NumberAxis(-10, 35, 2);
+		final NumberAxis xAxis = new NumberAxis(-20, 20, 2);
+		final NumberAxis yAxis = new NumberAxis(-20, 20, 2);
 		final ScatterChart<Number, Number> sc = new ScatterChart<Number, Number>(xAxis, yAxis);
 		xAxis.setLabel("x");
 		yAxis.setLabel("y");

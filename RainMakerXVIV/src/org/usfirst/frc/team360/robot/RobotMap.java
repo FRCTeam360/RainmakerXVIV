@@ -41,6 +41,8 @@ public class RobotMap {
 	public static enum ShiftState {UP, DOWN, UNKNOWN}
 	public static ShiftState shiftState = ShiftState.UNKNOWN;
 	
+	public static double goalElevPos = 0;
+	
 	public static boolean shouldElevatorStop = false;
 	
 	public static enum IntakeState{IN, OUT, UNKNOWN}

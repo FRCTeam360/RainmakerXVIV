@@ -92,11 +92,12 @@ public class Robot extends TimedRobot {
 			RobotMap.currentPos = 0;
 			
 		}
-		if(RobotMap.shouldElevatorStop && elevator.getPosition() == 0) {
+		if((((Math.abs(RobotMap.goalElevPos - elevator.getPosition())<100) 
+				&& RobotMap.goalElevPos == Constants.realElevatorIntakePos) && RobotMap.shouldElevatorStop)) {
 			manualElevator = new StopElevator();
 			manualElevator.start();	
 		}
-	//	System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
+		System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
 	}
 
 	@Override
@@ -119,11 +120,11 @@ public class Robot extends TimedRobot {
 		elevatorRelease.start();
 		RobotMap.robotMode = "Auto";
 		logger.initLogger();	
-//		autonomousCommand = new StartRightDropCubeRightScale();
-		autonomousCommand = new StartCenterDropCubeRightSwitch2Cube();
+//		autonomousCommand = new StartLeftDropCubeLeftScale();
+//		autonomousCommand = new StartCenterDropCubeLeftSwitch2Cube();
 //		autonomousCommand = autoController.chooseAutoMode();
 //		autonomousCommand = new StartCenterDropCubeRightSwitch();
-//		autonomousCommand = new StartLeftDropCubeLeftSwitch();
+		autonomousCommand = new StartRightDropCubeLeftScale();
 //		autonomousCommand = new StartCenterDropCubeRightSwitch();
 //		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
 		if (autonomousCommand != null){

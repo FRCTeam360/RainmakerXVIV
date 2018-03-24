@@ -20,11 +20,11 @@ public class MoveElevator extends Command {
 
 	// Called just before this Command runs the first time
     protected void initialize() {
+    	RobotMap.goalElevPos = wantedPos;
        	RobotMap.shouldElevatorStop = false;
     	if(wantedPos == 0) {
     		RobotMap.shouldElevatorStop = true;
     	}
-
        	pos = wantedPos * Constants.realEncoderCountsToInches;//(wantedPos * Constants.realEncoderCountsToInches) - Robot.elevator.getPosition();	
 	    Robot.elevator.motionMagicInit();
 	    Robot.elevator.setMotorPosition(pos);

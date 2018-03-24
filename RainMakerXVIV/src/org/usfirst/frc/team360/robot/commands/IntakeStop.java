@@ -1,19 +1,18 @@
 package org.usfirst.frc.team360.robot.commands;
 
-import org.usfirst.frc.team360.robot.OI;
 import org.usfirst.frc.team360.robot.Robot;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class IntakeManual extends Command {
+public class IntakeStop extends Command {
 
-    public IntakeManual() {
-    		requires(Robot.intake);
+    public IntakeStop() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time
@@ -22,11 +21,7 @@ public class IntakeManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		if(Math.abs(OI.joyOI.getRawAxis(5)) > .1) {
-    			Robot.intake.controlMotor(OI.joyOI.getRawAxis(3));
-    		} else {
-    			Robot.intake.stop();
-    		}
+    	Robot.intake.stop();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,12 +31,10 @@ public class IntakeManual extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    		Robot.intake.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    		end();
     }
 }

@@ -67,6 +67,9 @@ public class Elevator extends Subsystem {
 //		elevatorMaster.config_kP(0, 4, kTimeoutMs);
 //		elevatorMaster.config_kI(0, 0, kTimeoutMs);
 //		elevatorMaster.config_kD(0, 60, kTimeoutMs);
+		
+		elevatorMaster.configContinuousCurrentLimit(40, 10);
+		elevatorSlave.configContinuousCurrentLimit(40, 10);
 	
 	}
 	
