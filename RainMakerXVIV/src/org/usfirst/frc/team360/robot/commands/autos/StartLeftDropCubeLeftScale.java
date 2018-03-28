@@ -1,5 +1,6 @@
 package org.usfirst.frc.team360.robot.commands.autos;
 
+import org.usfirst.frc.team360.robot.Robot;
 import org.usfirst.frc.team360.robot.RobotMap;
 import org.usfirst.frc.team360.robot.commands.*;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -11,6 +12,5 @@ public class StartLeftDropCubeLeftScale extends CommandGroup {
     	addParallel(new StartLeftDropCubeLeftScaleRaiseTimed());
     	addSequential(new FollowTrajectory("LeftToLeftScale"));
         addSequential(new FollowTrajectory("MoveTwoFeetBack"));
-        addSequential(new MoveElevatorToIntakePos());
     }
 }

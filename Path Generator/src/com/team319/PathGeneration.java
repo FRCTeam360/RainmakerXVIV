@@ -35,29 +35,29 @@ public class PathGeneration {
 		lowGearConfig.encoder_ticks_per_rev = 4096;
 	}
 	public void generateAll(){
-		generateCrossLine();
-		generateCenterToRightSwitch();
-		generateCenterToLeftSwitch();
-		generateLeftToLeftSwitch();
-		generateRightToRightSwitch();
-		generateRightToRightScale();
-		generateRightToRightScalePart1();
-		generateRightToRightScalePart2();
-		generateRightToRightScalePart3();
-		generateRightToRightScalePart4();
+//		generateCrossLine();
+//		generateCenterToRightSwitch();
+//		generateCenterToLeftSwitch();
+//		generateLeftToLeftSwitch();
+//		generateRightToRightSwitch();
+//		generateRightToRightScale();
+//		generateRightToRightScalePart1();
+//		generateRightToRightScalePart2();
+//		generateRightToRightScalePart3();
+//		generateRightToRightScalePart4();
 		generateRightToLeftScalePart1();
 		generateRightToLeftScalePart2();
-		generateLeftToRightScalePart1();
-		generateLeftToRightScalePart2();
-		generateBackTwoFeet();
-		generateCenterToLeftTwoCubePart1();
-		generateCenterToLeftTwoCubePart2();
-		generateCenterToLeftTwoCubePart3();
-		generateCenterToLeftTwoCubePart4();
-		generateCenterToRightTwoCubePart1();
-		generateCenterToRightTwoCubePart2();
-		generateCenterToRightTwoCubePart3();
-		generateCenterToRightTwoCubePart4();
+//		generateLeftToRightScalePart1();
+//		generateLeftToRightScalePart2();
+//		generateBackTwoFeet();
+//		generateCenterToLeftTwoCubePart1();
+//		generateCenterToLeftTwoCubePart2();
+//		generateCenterToLeftTwoCubePart3();
+//		generateCenterToLeftTwoCubePart4();
+//		generateCenterToRightTwoCubePart1();
+//		generateCenterToRightTwoCubePart2();
+//		generateCenterToRightTwoCubePart3();
+//		generateCenterToRightTwoCubePart4();
 	}
 	
 
@@ -237,14 +237,13 @@ public class PathGeneration {
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(14, 0, 0));
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(18, 3, Math.toRadians(89.99)));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(18, 14, Math.toRadians(89.99)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(18, 12, Math.toRadians(89.99)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	public void generateRightToLeftScalePart2(){
 		BobPath wantedPath = new BobPath(highGearConfig, "RightToLeftScalePart2", 1);
 		wantedPath.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-		wantedPath.addWaypoint(new WaypointSequence.Waypoint(2, -3
-				, Math.toRadians(89.99)));
+		wantedPath.addWaypoint(new WaypointSequence.Waypoint(3, -3, Math.toRadians(89.99)));
 		BobPathGenerator.exportPath("Paths", wantedPath);
 	}
 	public void generateLeftToRightScalePart1(){
