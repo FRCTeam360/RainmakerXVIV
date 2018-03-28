@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class StartCenterDropCubeRightSwitchDropTimed extends CommandGroup {
 
     public StartCenterDropCubeRightSwitchDropTimed() {
-        addSequential(new WaitCommand(3.75));
+        addSequential(new WaitCommand(2.9));
         addSequential(new IntakeAutoOut());
     }
 }

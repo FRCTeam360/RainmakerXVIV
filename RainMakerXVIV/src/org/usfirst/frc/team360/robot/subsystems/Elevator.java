@@ -44,7 +44,7 @@ public class Elevator extends Subsystem {
 		
 		/* first choose the sensor */
 		elevatorMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
-		elevatorMaster.setSensorPhase(true);
+		elevatorMaster.setSensorPhase(false);
 		
 		/* Set relevant frame periods to be at least as fast as periodic rate*/
 		elevatorMaster.setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 10, kTimeoutMs);
@@ -68,8 +68,8 @@ public class Elevator extends Subsystem {
 //		elevatorMaster.config_kI(0, 0, kTimeoutMs);
 //		elevatorMaster.config_kD(0, 60, kTimeoutMs);
 		
-		elevatorMaster.configContinuousCurrentLimit(40, 10);
-		elevatorSlave.configContinuousCurrentLimit(40, 10);
+		elevatorMaster.configContinuousCurrentLimit(70, 10);
+		elevatorSlave.configContinuousCurrentLimit(70, 10);
 	
 	}
 	

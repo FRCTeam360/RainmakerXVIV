@@ -10,5 +10,6 @@ public class StartRightDropCubeRightSwitch extends CommandGroup {
 		addParallel(new MoveElevatorToSwitchHeight());
    	 	addParallel(new StartRightDropCubeRightSwitchDropTimed());
     	addSequential(new FollowTrajectory("RightToRightSwitch"));
+    	addSequential(new StopElevator());
     }
 }

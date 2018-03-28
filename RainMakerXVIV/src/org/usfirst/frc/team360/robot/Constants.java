@@ -27,7 +27,7 @@ public class Constants {
 	private final double compRightDriveTrainPathPlanningI = 0;
 	private final double compRightDriveTrainPathPlanningD = 100;
 	
-	public final double compElevatorTopScale = 78;
+	public final double compElevatorTopScale = 81;
 	public final double compElevatorMidScale = 70;
 	public final double compElevatorSwitchHeight = 35;
 	public final double compElevatorIntakePos = 0;
