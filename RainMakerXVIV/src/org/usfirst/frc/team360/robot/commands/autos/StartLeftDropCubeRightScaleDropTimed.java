@@ -14,5 +14,6 @@ public class StartLeftDropCubeRightScaleDropTimed extends CommandGroup {
     public StartLeftDropCubeRightScaleDropTimed() {
         addSequential(new WaitCommand(2.75));
         addSequential(new IntakeOpen());
+        addSequential(new IntakeOut());
         }
 }

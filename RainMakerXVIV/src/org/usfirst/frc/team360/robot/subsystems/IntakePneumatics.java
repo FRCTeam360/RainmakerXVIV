@@ -22,13 +22,13 @@ public class IntakePneumatics extends Subsystem {
 		RobotMap.intakeState = IntakeState.IN;
 	}
 	public void open() {
-		intakePneumaticsOpen.set(DoubleSolenoid.Value.kForward);
-		intakePneumaticsClose.set(DoubleSolenoid.Value.kForward);
+		intakePneumaticsOpen.set(DoubleSolenoid.Value.kReverse);
+		intakePneumaticsClose.set(DoubleSolenoid.Value.kReverse);
 		RobotMap.intakeState = IntakeState.IN;
 	}
 	public void close() {
-		intakePneumaticsOpen.set(DoubleSolenoid.Value.kReverse);
-		intakePneumaticsClose.set(DoubleSolenoid.Value.kReverse);
+		intakePneumaticsOpen.set(DoubleSolenoid.Value.kForward);
+		intakePneumaticsClose.set(DoubleSolenoid.Value.kForward);
 		RobotMap.intakeState = IntakeState.OUT;
 	}
 

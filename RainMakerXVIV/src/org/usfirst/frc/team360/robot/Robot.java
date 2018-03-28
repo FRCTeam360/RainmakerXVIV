@@ -97,7 +97,7 @@ public class Robot extends TimedRobot {
 			manualElevator = new StopElevator();
 			manualElevator.start();	
 		}
-		System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
+	//	System.out.println("ElevatorInches" + elevator.getPosition() / Constants.realEncoderCountsToInches);
 	}
 
 	@Override
@@ -124,7 +124,7 @@ public class Robot extends TimedRobot {
 //		autonomousCommand = new StartCenterDropCubeLeftSwitch2Cube();
 //		autonomousCommand = autoController.chooseAutoMode();
 //		autonomousCommand = new StartCenterDropCubeRightSwitch();
-		autonomousCommand = new StartLeftDropCubeRightScale();
+		autonomousCommand = new StartCenterDropCubeRightSwitch2Cube();
 //		autonomousCommand = new StartCenterDropCubeRightSwitch();
 //		autonomousCommand = new StartCenterDropCubeRightSwitch();
 //		autonomousCommand = new FollowTrajectory("DriveStraight10Feet");
