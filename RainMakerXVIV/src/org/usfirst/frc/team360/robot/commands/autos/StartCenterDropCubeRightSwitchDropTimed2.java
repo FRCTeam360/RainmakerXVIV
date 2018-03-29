@@ -21,7 +21,7 @@ public class StartCenterDropCubeRightSwitchDropTimed2 extends CommandGroup {
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
-        addSequential(new WaitCommand(2));
+        addSequential(new WaitCommand(2.1));
         addSequential(new IntakeAutoOut());
         // Command1 and Command2 will run in parallel.
 
